@@ -56,12 +56,13 @@ Friend Class SBBPDF
             Dim sigCert As New SigningCertificate
 
             If cert.ValidFrom < Now AndAlso cert.ValidTo > Now AndAlso (cert.Extensions.KeyUsage.DigitalSignature OrElse cert.Extensions.KeyUsage.NonRepudiation) Then
-                If QualifiedCertificatesOnly AndAlso Not IsCertificateQualified(cert) Then
+                Dim isQualified As Boolean = IsCertificateQualified(cert)
+                If QualifiedCertificatesOnly AndAlso Not isQualified Then
                     Continue For
                 End If
 
                 sigCert.Certificate = cert.ToX509Certificate2(False)
-                sigCert.IsQualified = IsCertificateQualified(cert)
+                sigCert.IsQualified = isQualified
                 res.Add(sigCert)
             End If
         Next

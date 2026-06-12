@@ -30,6 +30,7 @@ Friend Class FrmPdfSigner
     Private _ActiveTasks As List(Of Task)
     Private _CtrlIsDown As Boolean
     Private _SaveLayout As Boolean = True
+    Private _RefreshingProviders As Boolean
     Private ReadOnly _SingleBatchOpenID As Integer
 
     Private WithEvents ViewerBaseOriginalControl As New ViewerBase
@@ -585,7 +586,8 @@ Friend Class FrmPdfSigner
 
         If selectedProvider.SupportsLocalCertificates AndAlso BtnRefreshCertificates.Enabled Then
             BarComboCert.Enabled = True
-            BtnRefreshCertificates_ItemClick(Nothing, Nothing)
+            ' RefreshCryptoProviders triggers the refresh itself; avoid enumerating the cert store twice
+            If Not _RefreshingProviders Then BtnRefreshCertificates_ItemClick(Nothing, Nothing)
         Else
             BarComboCert.Enabled = False
         End If
@@ -1206,13 +1208,18 @@ Friend Class FrmPdfSigner
 
         ComboProvider.Items.Clear()
 
-        For Each provider As CryptoProviderBase In activeProviders
-            ComboProvider.Items.Add(provider)
+        _RefreshingProviders = True
+        Try
+            For Each provider As CryptoProviderBase In activeProviders
+                ComboProvider.Items.Add(provider)
 
-            If provider.ProviderType = docitem.SetupData.DefaultCryptographicProvider Then
-                BarComboProvider.EditValue = provider
-            End If
-        Next
+                If provider.ProviderType = docitem.SetupData.DefaultCryptographicProvider Then
+                    BarComboProvider.EditValue = provider
+                End If
+            Next
+        Finally
+            _RefreshingProviders = False
+        End Try
 
         BtnRefreshCertificates_ItemClick(Nothing, Nothing)
     End Sub
