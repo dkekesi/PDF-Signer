@@ -252,6 +252,9 @@
   <data name="Index_Skip_Note_Missing" xml:space="preserve">
     <value>If 'Allow skip required documents' is enabled then the Skip note index field must be selected.</value>
   </data>
+  <data name="MNBSigner_Basic_Auth_Requires_Https" xml:space="preserve">
+    <value>Username/password (Basic) authentication is only allowed over an HTTPS URL for the MNBSigner provider.</value>
+  </data>
   <data name="MNBSigner_Domain_Missing" xml:space="preserve">
     <value>The domain name of the user used to connect to the MNB Signer web service must be provided.</value>
   </data>

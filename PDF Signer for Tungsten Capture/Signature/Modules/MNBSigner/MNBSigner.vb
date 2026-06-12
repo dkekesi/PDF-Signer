@@ -18,6 +18,15 @@ Friend Class MNBSigner
         Dim res As SignatureResult
         Dim bind As BasicHttpBinding = GetHttpBinding()
 
+        ' Basic credentials must never travel over plain HTTP
+        If _settings.IsMNBSignerUserPasswordAuthentication AndAlso _settings.MNBSignerURL.Scheme <> Uri.UriSchemeHttps Then
+            Dim httpRes As New SignatureResult With {
+                .ErrorMessage = "Felhasználónév/jelszó alapú (Basic) hitelesítés csak HTTPS kapcsolaton engedélyezett! Állítsa át az MNBSigner URL-t HTTPS-re a dokumentumosztály beállításaiban."
+            }
+            httpRes.SignatureLog = httpRes.ErrorMessage
+            Return httpRes
+        End If
+
         Using clt As New MNBSignerServiceClient(bind, New EndpointAddress(_settings.MNBSignerURL.ToString))
             If _settings.IsMNBSignerUserPasswordAuthentication Then
                 bind.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic

@@ -293,6 +293,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Username/password (Basic) authentication is only allowed over an HTTPS URL for the MNBSigner provider..
+        '''</summary>
+        Friend Shared ReadOnly Property MNBSigner_Basic_Auth_Requires_Https() As String
+            Get
+                Return ResourceManager.GetString("MNBSigner_Basic_Auth_Requires_Https", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
         '''  Looks up a localized string similar to The domain name of the user used to connect to the MNB Signer web service must be provided..
         '''</summary>
         Friend Shared ReadOnly Property MNBSigner_Domain_Missing() As String
