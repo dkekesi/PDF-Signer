@@ -4,8 +4,6 @@ Imports PDFSigner.My.Resources
 Imports PDFSignerCommon
 
 Friend Class SignatureOperation
-    Private Const GCFileSizeLimit As Integer = 10485760
-
     Friend Function SignDocument(ByRef Document As DocumentItem, FileToSign As Stream, CryptographicProviderSettings As CryptoProviderBase, SigningCertificate As SigningCertificate, DocumentSize As String, PartialCopyData As String, UserDisplayName As String) As SignatureResult
         Document.ErrorMessage = Nothing
 
@@ -60,11 +58,6 @@ Friend Class SignatureOperation
             End With
 
             Document.ProgressPercent = 30
-
-            ' garbage collect if file is larger than 10 MB
-            If Document.FileSize > GCFileSizeLimit Then
-                GarbageCollector.Execute()
-            End If
 
             ' call PDF pre-processor
             Dim preProc As New PDFPreProcessor
@@ -254,9 +247,11 @@ Friend Class SignatureOperation
                 End If
             End If
 
-            ' garbage collect in case file was larger than 10 MB
-            If Document.FileSize > GCFileSizeLimit Then
-                GarbageCollector.Execute()
+            ' deterministically release the signed-file stream (MNB MemoryTributary / MQFTP FileStream);
+            ' SBB and PDFStreamer return the input stream, which is disposed above
+            If sigRes IsNot Nothing AndAlso sigRes.SignedFile IsNot Nothing AndAlso sigRes.SignedFile IsNot FileToSign Then
+                sigRes.SignedFile.Dispose()
+                sigRes.SignedFile = Nothing
             End If
 
             Document.ProgressPercent = 100
