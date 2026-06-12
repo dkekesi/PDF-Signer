@@ -11,16 +11,10 @@ Friend Module LogConfig
         Dim fileTarget As New FileTarget With
             {
                 .ArchiveEvery = FileArchivePeriod.Month,
-                .ArchiveDateFormat = "yyMM",
-                .ArchiveNumbering = ArchiveNumberingMode.Date,
-                .ConcurrentWrites = True,
-                .ConcurrentWriteAttempts = 25,
-                .ConcurrentWriteAttemptDelay = 100,
+                .ArchiveSuffixFormat = "_{1:yyMM}",
                 .FileName = Path.Combine(KofaxRegistry.KofaxLogFolder, "PDFSigner.txt"),
-                .FileNameKind = FilePathKind.Absolute,
                 .Encoding = Text.Encoding.UTF8,
-                .Layout = "${date:format=yyyy.MM.dd. HH\:mm\:ss.fff} [${level:uppercase=true}] ${machinename} (${windows-identity}) - ${message}",
-                .NetworkWrites = True
+                .Layout = "${date:format=yyyy.MM.dd. HH\:mm\:ss.fff} [${level:uppercase=true}] ${machinename} (${windows-identity}) - ${message}"
             }
 
         Dim wr As New Wrappers.AsyncTargetWrapper With
