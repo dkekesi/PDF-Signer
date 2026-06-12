@@ -93,9 +93,10 @@ Friend Class SignatureOperation
 
             ' call external signing routine
             If TypeOf sigReq.SignSettings Is PDFSignerCryptoProvider Then
-                Dim sbb As New SBBPDF
-                sbb.Initialize(sigReq.SignSettings)
-                sigRes = sbb.SignDocument(sigReq)
+                Using sbb As New SBBPDF
+                    sbb.Initialize(sigReq.SignSettings)
+                    sigRes = sbb.SignDocument(sigReq)
+                End Using
             End If
             If TypeOf sigReq.SignSettings Is PDFStreamerCryptoProvider Then
                 Dim pdfstr As New PDFStreamer
@@ -260,8 +261,9 @@ Friend Class SignatureOperation
     End Function
 
     Friend Function GetCertificatesFromMyWinCertStore(QualifiedCertificatesOnly As Boolean) As List(Of SigningCertificate)
-        Dim sbb As New SBBPDF
-        Return sbb.GetCertificatesFromStore(QualifiedCertificatesOnly)
+        Using sbb As New SBBPDF
+            Return sbb.GetCertificatesFromStore(QualifiedCertificatesOnly)
+        End Using
     End Function
 
     Private Function GetMetaDataSettings(Document As DocumentItem, DocumentSize As String) As MetaData
@@ -292,8 +294,9 @@ Friend Class SignatureOperation
     End Function
 
     Friend Sub ActivateSBBLicense()
-        Dim e As New SBBPDF
-        e.ActivateLicense()
+        Using e As New SBBPDF
+            e.ActivateLicense()
+        End Using
     End Sub
 
     Private Function GetDocumentUID(Document As DocumentItem) As String

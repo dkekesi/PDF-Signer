@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Linq
 Imports System.Text
+Imports NLog
 Imports PDFSignerCommon
 Imports SBCertValidator
 Imports SBCMS
@@ -17,6 +18,10 @@ Imports SBX509
 Imports SBX509Ext
 
 Friend Class SBBPDF
+    Implements IDisposable
+
+    Private Shared ReadOnly _logger As Logger = LogManager.GetCurrentClassLogger()
+
     Private ReadOnly HTTPSClient As New TElHTTPSClient
     Private ReadOnly TSPClient As New TElHTTPTSPClient
     Private PADESSignatureHandler As TElPDFAdvancedPublicKeySecurityHandler
@@ -124,21 +129,21 @@ Friend Class SBBPDF
         HTTPSClient.HTTPProxyUsername = _settings.ProxyUserName
         HTTPSClient.HTTPProxyPassword = _settings.ProxyPassword
 
-        _tsaHostValidator = New HostBoundCertificateValidator(_settings.TSAURL?.Host, _sbSignLog)
-        AddHandler HTTPSClient.OnCertificateValidate, AddressOf _tsaHostValidator.OnCertificateValidate
-        AddHandler HTTPSClient.OnCertValidatorFinished, AddressOf HTTPSClient_OnCertValidatorFinished
-        AddHandler PADESSignatureHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
-        AddHandler PADESSignatureHandler.OnCertValidatorFinished, AddressOf PADESHandler_OnCertValidatorFinished
-        AddHandler PADESDocTimeStampHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
-        AddHandler PADESDocTimeStampHandler.OnCertValidatorFinished, AddressOf PADESHandler_OnCertValidatorFinished
-        AddHandler TSPClient.OnBeforeSign, AddressOf TSPClient_OnBeforeSign
-        AddHandler TSPClient.OnCertificateValidate, AddressOf TSPClient_OnCertificateValidate
-        AddHandler TSPClient.OnHTTPError, AddressOf TSPClient_OnHTTPError
-        AddHandler TSPClient.OnTSPError, AddressOf TSPClient_OnTSPError
-
         '********** "Off-line validating signing certificate" **********
 
         Try
+            _tsaHostValidator = New HostBoundCertificateValidator(_settings.TSAURL?.Host, _sbSignLog)
+            AddHandler HTTPSClient.OnCertificateValidate, AddressOf _tsaHostValidator.OnCertificateValidate
+            AddHandler HTTPSClient.OnCertValidatorFinished, AddressOf HTTPSClient_OnCertValidatorFinished
+            AddHandler PADESSignatureHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
+            AddHandler PADESSignatureHandler.OnCertValidatorFinished, AddressOf PADESHandler_OnCertValidatorFinished
+            AddHandler PADESDocTimeStampHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
+            AddHandler PADESDocTimeStampHandler.OnCertValidatorFinished, AddressOf PADESHandler_OnCertValidatorFinished
+            AddHandler TSPClient.OnBeforeSign, AddressOf TSPClient_OnBeforeSign
+            AddHandler TSPClient.OnCertificateValidate, AddressOf TSPClient_OnCertificateValidate
+            AddHandler TSPClient.OnHTTPError, AddressOf TSPClient_OnHTTPError
+            AddHandler TSPClient.OnTSPError, AddressOf TSPClient_OnTSPError
+
             _sbSignLog.AppendLine("Aláíró tanúsítvány off-line ellenőrzése")
 
             ' search for signing certificate
@@ -585,8 +590,6 @@ Friend Class SBBPDF
             SafeDispose(SystemStore)
             SafeDispose(CertStorage)
             SafeDispose(_TrustedRootCertStorage)
-            SafeDispose(HTTPSClient)
-            SafeDispose(TSPClient)
 
         End Try
 
@@ -599,8 +602,18 @@ Friend Class SBBPDF
     Private Shared Sub SafeDispose(SBBObject As Object)
         Try
             TryCast(SBBObject, IDisposable)?.Dispose()
-        Catch
+        Catch ex As Exception
+            _logger.Debug(ex, "SBB objektum felszabadítása sikertelen")
         End Try
+    End Sub
+
+    ''' <summary>
+    ''' SBBPDF instances are single-use: disposing releases the HTTP/TSP clients,
+    ''' so a disposed instance must not sign again. Callers wrap usages in Using.
+    ''' </summary>
+    Public Sub Dispose() Implements IDisposable.Dispose
+        SafeDispose(HTTPSClient)
+        SafeDispose(TSPClient)
     End Sub
 
     Private Sub AttachHostValidator(HttpClient As TElHTTPSClient, TargetHost As String)
