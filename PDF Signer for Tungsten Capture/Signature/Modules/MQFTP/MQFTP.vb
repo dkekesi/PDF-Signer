@@ -75,6 +75,10 @@ Friend Class MQFTP
                     responseArrived = True
                 Else
                     responseArrived = Not pdfWatcher.WaitForChanged(WatcherChangeTypes.Changed Or WatcherChangeTypes.Created, timeOut).TimedOut
+
+                    ' a response landing between the existence check and WaitForChanged subscribing
+                    ' raises no event; re-check before declaring a timeout
+                    If Not responseArrived Then responseArrived = File.Exists(pdfInPath)
                 End If
             End Using
 
@@ -112,7 +116,10 @@ Friend Class MQFTP
     Private Function ImpersonateIdentity(DomainName As String, UserName As String, Password As String) As WindowsImpersonationContext
         Dim userToken = IntPtr.Zero
 
-        ' NEW_CREDENTIALS: the supplied credentials apply to outbound network access only (share access)
+        ' NEW_CREDENTIALS: local identity stays the same; the supplied credentials are used for
+        ' outbound network access (SMB share) only. PROVIDER_WINNT50 is mandatory for this logon type.
+        ' Note: the password is NOT validated at logon time - bad credentials surface later as
+        ' access/existence failures on the exchange folders, not as a logon error here.
         Dim success = NativeMethods.LogonUser(UserName, DomainName, Password, CInt(NativeMethods.LogonType.LOGON32_LOGON_NEW_CREDENTIALS), CInt(NativeMethods.LogonProvider.LOGON32_PROVIDER_WINNT50), userToken)
 
         If Not success Then
