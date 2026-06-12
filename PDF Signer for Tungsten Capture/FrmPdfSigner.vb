@@ -129,7 +129,7 @@ Friend Class FrmPdfSigner
         _FullUserName = DirectoryServices.AccountManagement.UserPrincipal.Current.DisplayName
         BarLabelUser.Caption = String.Format(Messages.Logged_In_User, _FullUserName, Environment.UserDomainName, Environment.UserName)
 
-        _logger.Info(Messages.Module_Version_Started, MessageBoxTitle, ProductVersion.ToString)
+        _logger.Info(Messages.Module_Version_Started, MessageBoxTitle, ProductVersion)
 
         If String.IsNullOrEmpty(KofaxRegistry.KofaxBinPath) Then
             MsgBox(Messages.Registry_Kofax_Bin_Path_Not_Found, MsgBoxStyle.Critical, MessageBoxTitle)
