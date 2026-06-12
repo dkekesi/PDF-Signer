@@ -204,6 +204,65 @@ than the original can no longer leave stale trailing bytes.
    log); sign/skip/reject through end-of-batch (P2 — close-batch prompt still appears,
    no UI freeze); re-save provider passwords in the Setup panel and sign again (S2).
 
+## Addendum (2026-06-12, round 2): follow-up batch A1–A5, B1, B3–B10
+
+Approved scope: the deselected audit items A1–A5 and the reviewer follow-ups B1,
+B3–B10 from round 1 (B2 — `X509Chain.ExtraStore` population — and the large
+refactors A6–A8 remain out of scope). Decisions taken:
+
+- **A1 (MNB Basic auth over HTTP):** enforce in both places. Runtime
+  (`MNBSigner.SignDocument`) refuses user/password authentication on a non-HTTPS
+  URL with a Hungarian error; the provider's `Validate()` in
+  `MNBSignerCryptoProvider.vb` rejects the combination at save time (new
+  `Messages` resource entry + `hu` variant).
+- **A2 (MQFTP delete-while-open):** open the response stream with
+  `FileShare.Delete` (new optional share-mode parameter on
+  `FileOperation.ReadFileStreamWhenAvailable`), so `DeleteWhenAvailable` succeeds
+  immediately and the file disappears when the stream is disposed (in
+  `SignatureOperation`'s `Finally`). Not verifiable without a live MTRACK
+  exchange — flagged for the user's MQFTP smoke test.
+- **A3 (MQFTP response race):** arm the `FileSystemWatcher` *before* moving the
+  request file out of staging, and check `File.Exists` before blocking in
+  `WaitForChanged`; track arrival in a local boolean instead of relying solely on
+  `WaitForChangedResult`.
+- **A4 (impersonation logon type):** `LOGON32_LOGON_NEW_CREDENTIALS` +
+  `LOGON32_PROVIDER_WINNT50` (both enum members already exist in
+  `NativeMethods.vb`). Credentials then apply to outbound network access only —
+  flagged for the MQFTP smoke test.
+- **A5:** delete the dead `SHA256Managed` lines (and the stale comment) from
+  `Encrypt.RSAVerifySignedString`.
+- **B1:** `_DocumentActionRunning` reentrancy guard wrapping the bodies of the
+  three sign/skip/reject handlers (early return + `Try/Finally` reset).
+- **B3:** wildcard bases must contain a dot (`*.com` rejected); CN fallback only
+  when the certificate has *no* SAN extension (not merely no dNSName entries).
+- **B4:** `SBBPDF` implements `IDisposable` (disposing its two `ReadOnly` HTTP
+  clients; documented as single-use); `SignatureOperation` wraps all three
+  `SBBPDF` usages in `Using`; `SafeDispose` logs swallowed exceptions via NLog
+  Debug.
+- **B5:** `Encrypt` polish — `IVSizeBytes` constant, shared `CreateAes(iv)`
+  factory, stricter v2 length guard (≥ 32 and block-aligned), legacy decrypt
+  returns `Nothing` on malformed Base64 instead of throwing (improves the
+  license-load failure mode from crash to error message).
+- **B6:** `SignMultiPass` ownership-flag `Try/Finally` replaces the six inline
+  `mtSigned.Dispose()` calls; `SignSinglePass` throws `EndOfStreamException`
+  (Hungarian message) on short read.
+- **B7:** `ComboProvider.Items.Clear()` moved inside the refresh guard; stale
+  `BarComboProvider.EditValue` reset to the first active provider when the
+  previous selection is no longer offered; the trailing certificate refresh runs
+  only when the selected provider supports local certificates.
+- **B8:** explicit `Return IconType.Batch` (with comment) instead of
+  `Return Nothing`; NLog warning on malformed `-B` argument.
+- **B9:** validator file XML docs unified to English; DER parser comments
+  (tautological-tag call site, long-form length); set the SBB `Reason` flag on
+  `cvInvalid` if a suitable constant exists, otherwise document why it stays 0.
+- **B10:** the `AddHandler` block in `SBBPDF.SignDocument` moves inside the
+  `Try` so the unhooking `Finally` is always reachable once handlers exist.
+
+Verification as in round 1: builds (Debug + FullRelease|x86), the Encrypt
+PowerShell harness (legacy sample reconstructed manually with the static IV,
+since the legacy encrypt path no longer exists), and the user's manual smoke
+tests — now explicitly including an MQFTP exchange test (A2/A3/A4).
+
 ## Risks
 
 - **S1** is the highest-deployment-risk change: endpoints with certificates not
