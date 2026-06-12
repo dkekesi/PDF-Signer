@@ -31,6 +31,12 @@ Friend Class SBBPDF
     Private _signRequest As SignatureRequest
     Private _settings As PDFSignerCryptoProvider
 
+    ' last attached TLS validator per HTTP client; lets us unhook before re-attaching
+    ' if SBB ever reuses a client instance across retrievals (instance lives per signing run)
+    Private ReadOnly _attachedHostValidators As New Dictionary(Of Object, HostBoundCertificateValidator)
+
+    Private _tsaHostValidator As HostBoundCertificateValidator
+
     Friend Sub Initialize(ProviderSettings As PDFSignerCryptoProvider)
         _settings = ProviderSettings
     End Sub
@@ -109,7 +115,7 @@ Friend Class SBBPDF
         '********** Setting up HTTP client **********
 
         HTTPSClient.DNS.Enabled = False
-        HTTPSClient.AutoValidateCertificates = False ' validation is done in HTTPSClient_OnCertificateValidate (SBB's built-in validation does not work)
+        HTTPSClient.AutoValidateCertificates = False ' validation is done in _tsaHostValidator.OnCertificateValidate (SBB's built-in validation does not work)
         HTTPSClient.SSLEnabled = True
         HTTPSClient.UseHTTPProxy = _settings.IsProxyEnabled
         HTTPSClient.HTTPProxyHost = _settings.ProxyServer.ToString
@@ -118,7 +124,8 @@ Friend Class SBBPDF
         HTTPSClient.HTTPProxyUsername = _settings.ProxyUserName
         HTTPSClient.HTTPProxyPassword = _settings.ProxyPassword
 
-        AddHandler HTTPSClient.OnCertificateValidate, AddressOf HTTPSClient_OnCertificateValidate
+        _tsaHostValidator = New HostBoundCertificateValidator(_settings.TSAURL?.Host, _sbSignLog)
+        AddHandler HTTPSClient.OnCertificateValidate, AddressOf _tsaHostValidator.OnCertificateValidate
         AddHandler HTTPSClient.OnCertValidatorFinished, AddressOf HTTPSClient_OnCertValidatorFinished
         AddHandler PADESSignatureHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
         AddHandler PADESSignatureHandler.OnCertValidatorFinished, AddressOf PADESHandler_OnCertValidatorFinished
@@ -551,7 +558,7 @@ Friend Class SBBPDF
             Return res
 
         Finally
-            RemoveHandler HTTPSClient.OnCertificateValidate, AddressOf HTTPSClient_OnCertificateValidate
+            If _tsaHostValidator IsNot Nothing Then RemoveHandler HTTPSClient.OnCertificateValidate, AddressOf _tsaHostValidator.OnCertificateValidate
             RemoveHandler HTTPSClient.OnCertValidatorFinished, AddressOf HTTPSClient_OnCertValidatorFinished
             RemoveHandler PADESSignatureHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
             RemoveHandler PADESSignatureHandler.OnCertValidatorFinished, AddressOf PADESHandler_OnCertValidatorFinished
@@ -596,6 +603,17 @@ Friend Class SBBPDF
         End Try
     End Sub
 
+    Private Sub AttachHostValidator(HttpClient As TElHTTPSClient, TargetHost As String)
+        Dim previous As HostBoundCertificateValidator = Nothing
+        If _attachedHostValidators.TryGetValue(HttpClient, previous) Then
+            RemoveHandler HttpClient.OnCertificateValidate, AddressOf previous.OnCertificateValidate
+        End If
+
+        Dim hostValidator As New HostBoundCertificateValidator(TargetHost, _sbSignLog)
+        AddHandler HttpClient.OnCertificateValidate, AddressOf hostValidator.OnCertificateValidate
+        _attachedHostValidators(HttpClient) = hostValidator
+    End Sub
+
     Private Sub TSPClient_OnBeforeSign(Sender As Object, Signer As Object)
         _sbSignLog.AppendLine($"  Időbélyeg kérése, TSA URL: {_settings.TSAURL}")
     End Sub
@@ -631,18 +649,6 @@ Friend Class SBBPDF
         Dim sigCert As TElX509Certificate = sigChain.Certificates(0)
         Return sigCert.ValidTo
     End Function
-
-    Private Sub HTTPSClient_OnCertificateValidate(Sender As Object, X509Certificate As TElX509Certificate, ByRef Validity As TSBCertificateValidity, ByRef Reason As Integer)
-        Dim targetHost As String = _settings.TSAURL?.Host
-        Dim failureReason As String = Nothing
-
-        If ServerCertificateValidator.Validate(X509Certificate, targetHost, failureReason) Then
-            Validity = TSBCertificateValidity.cvOk
-        Else
-            Validity = TSBCertificateValidity.cvInvalid
-            _sbSignLog.AppendLine($"  TLS tanúsítvány hiba ({targetHost}): {failureReason}")
-        End If
-    End Sub
 
     Private Sub HTTPSClient_OnCertValidatorFinished(Sender As Object, CertValidator As TElX509CertificateValidator, Cert As TElX509Certificate, ByRef Validity As TSBCertificateValidity, ByRef Reason As Integer)
         If Validity <> TSBCertificateValidity.cvOk Then
@@ -781,13 +787,15 @@ Friend Class SBBPDF
             clnt.HTTPClient.HTTPProxyUsername = _settings.ProxyUserName
             clnt.HTTPClient.HTTPProxyPassword = _settings.ProxyPassword
 
+            Dim ocspHost As String = Nothing
             Try
-                Dim hostValidator As New HostBoundCertificateValidator(New Uri(OCSPLocation).Host, _sbSignLog)
-                AddHandler clnt.HTTPClient.OnCertificateValidate, AddressOf hostValidator.OnCertificateValidate
-                ' no RemoveHandler: the OCSP client is transient, released after the retrieval
+                ocspHost = New Uri(OCSPLocation).Host
             Catch ex As UriFormatException
                 _sbSignLog.AppendLine($"  Érvénytelen OCSP URL: {OCSPLocation}")
             End Try
+
+            ' attach unconditionally: a Nothing host fails closed inside Validate
+            AttachHostValidator(clnt.HTTPClient, ocspHost)
 
             If _settings.IsProxyEnabled Then
                 _sbSignLog.AppendLine($"  HTTP proxy szerver {_settings.ProxyServer}:{_settings.ProxyPort} , felhasználó: '{_settings.ProxyUserName}', autentikáció: {_CodeTranslator.ProxyAuthMethodToString(_settings.ProxyAuthMethod)} beállítva OCSP letöltéshez")
@@ -810,13 +818,15 @@ Friend Class SBBPDF
             retr.HTTPClient.HTTPProxyUsername = _settings.ProxyUserName
             retr.HTTPClient.HTTPProxyPassword = _settings.ProxyPassword
 
+            Dim crlHost As String = Nothing
             Try
-                Dim hostValidator As New HostBoundCertificateValidator(New Uri(Location).Host, _sbSignLog)
-                AddHandler retr.HTTPClient.OnCertificateValidate, AddressOf hostValidator.OnCertificateValidate
-                ' no RemoveHandler: the CRL retriever is transient, released after the retrieval
+                crlHost = New Uri(Location).Host
             Catch ex As UriFormatException
                 _sbSignLog.AppendLine($"  Érvénytelen CRL URL: {Location}")
             End Try
+
+            ' attach unconditionally: a Nothing host fails closed inside Validate
+            AttachHostValidator(retr.HTTPClient, crlHost)
 
             If _settings.IsProxyEnabled Then
                 _sbSignLog.AppendLine($"  HTTP proxy szerver {_settings.ProxyServer}:{_settings.ProxyPort} , felhasználó: '{_settings.ProxyUserName}', autentikáció: {_CodeTranslator.ProxyAuthMethodToString(_settings.ProxyAuthMethod)} beállítva CRL letöltéshez")
