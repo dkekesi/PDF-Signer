@@ -47,28 +47,31 @@ Friend Class SBBPDF
         Dim res As New List(Of SigningCertificate)
         Dim SystemStore As New TElWinCertStorage
 
-        SystemStore.SystemStores.BeginUpdate()
-        SystemStore.SystemStores.Add("MY")
-        SystemStore.SystemStores.EndUpdate()
+        Try
+            SystemStore.SystemStores.BeginUpdate()
+            SystemStore.SystemStores.Add("MY")
+            SystemStore.SystemStores.EndUpdate()
 
-        For i As Integer = 0 To SystemStore.Count - 1
-            Dim cert As TElX509Certificate = SystemStore.Certificates(i)
-            Dim sigCert As New SigningCertificate
+            For i As Integer = 0 To SystemStore.Count - 1
+                Dim cert As TElX509Certificate = SystemStore.Certificates(i)
+                Dim sigCert As New SigningCertificate
 
-            If cert.ValidFrom < Now AndAlso cert.ValidTo > Now AndAlso (cert.Extensions.KeyUsage.DigitalSignature OrElse cert.Extensions.KeyUsage.NonRepudiation) Then
-                Dim isQualified As Boolean = IsCertificateQualified(cert)
-                If QualifiedCertificatesOnly AndAlso Not isQualified Then
-                    Continue For
+                If cert.ValidFrom < Now AndAlso cert.ValidTo > Now AndAlso (cert.Extensions.KeyUsage.DigitalSignature OrElse cert.Extensions.KeyUsage.NonRepudiation) Then
+                    Dim isQualified As Boolean = IsCertificateQualified(cert)
+                    If QualifiedCertificatesOnly AndAlso Not isQualified Then
+                        Continue For
+                    End If
+
+                    sigCert.Certificate = cert.ToX509Certificate2(False)
+                    sigCert.IsQualified = isQualified
+                    res.Add(sigCert)
                 End If
+            Next
 
-                sigCert.Certificate = cert.ToX509Certificate2(False)
-                sigCert.IsQualified = isQualified
-                res.Add(sigCert)
-            End If
-        Next
-
-        TryCast(SystemStore, IDisposable)?.Dispose()
-        Return res
+            Return res
+        Finally
+            SafeDispose(SystemStore)
+        End Try
     End Function
 
     Private Function IsCertificateQualified(Certificate As TElX509Certificate) As Boolean
@@ -571,19 +574,27 @@ Friend Class SBBPDF
             End If
 
             ' release SBB objects deterministically (types that implement IDisposable)
-            Try
-                TryCast(doc, IDisposable)?.Dispose()
-                TryCast(SystemStore, IDisposable)?.Dispose()
-                TryCast(CertStorage, IDisposable)?.Dispose()
-                TryCast(_TrustedRootCertStorage, IDisposable)?.Dispose()
-                TryCast(HTTPSClient, IDisposable)?.Dispose()
-                TryCast(TSPClient, IDisposable)?.Dispose()
-            Catch
-            End Try
+            SafeDispose(doc)
+            SafeDispose(SystemStore)
+            SafeDispose(CertStorage)
+            SafeDispose(_TrustedRootCertStorage)
+            SafeDispose(HTTPSClient)
+            SafeDispose(TSPClient)
 
         End Try
 
     End Function
+
+    ''' <summary>
+    ''' Disposes an SBB object if it implements IDisposable; teardown failures must not
+    ''' mask the signing result, so exceptions are swallowed per object.
+    ''' </summary>
+    Private Shared Sub SafeDispose(SBBObject As Object)
+        Try
+            TryCast(SBBObject, IDisposable)?.Dispose()
+        Catch
+        End Try
+    End Sub
 
     Private Sub TSPClient_OnBeforeSign(Sender As Object, Signer As Object)
         _sbSignLog.AppendLine($"  Időbélyeg kérése, TSA URL: {_settings.TSAURL}")
