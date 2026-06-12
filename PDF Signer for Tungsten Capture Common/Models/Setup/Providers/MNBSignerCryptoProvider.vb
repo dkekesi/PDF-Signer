@@ -43,7 +43,7 @@ Public Class MNBSignerCryptoProvider
             If MNBSignerURL.Scheme.ToLower <> "http" AndAlso MNBSignerURL.Scheme.ToLower <> "https" Then
                 Return Messages.MNBSigner_URL_Not_Http
             End If
-            If IsMNBSignerUserPasswordAuthentication AndAlso MNBSignerURL.Scheme.ToLower <> "https" Then
+            If IsMNBSignerUserPasswordAuthentication AndAlso MNBSignerURL.Scheme <> Uri.UriSchemeHttps Then
                 Return Messages.MNBSigner_Basic_Auth_Requires_Https
             End If
             If Not IsMNBSignerWindowsAuthentication AndAlso Not IsMNBSignerUserPasswordAuthentication Then

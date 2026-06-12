@@ -253,7 +253,7 @@
     <value>Ha az 'Allow skip required documents' be van kapcsolva, akkor a Skip note indexmezőt meg kell adni!</value>
   </data>
   <data name="MNBSigner_Basic_Auth_Requires_Https" xml:space="preserve">
-    <value>Felhasználónév/jelszó alapú (Basic) hitelesítés csak HTTPS URL-lel engedélyezett az MNBSigner szolgáltatónál!</value>
+    <value>Felhasználónév/jelszó alapú (Basic) hitelesítés csak HTTPS URL-lel engedélyezett az MNBSigner szolgáltatónál! Állítsa át az MNBSigner URL-t HTTPS-re.</value>
   </data>
   <data name="MNBSigner_Domain_Missing" xml:space="preserve">
     <value>Az MNB Signer web service-hez kapcsolódó user domain nevét kötelező megadni!</value>
