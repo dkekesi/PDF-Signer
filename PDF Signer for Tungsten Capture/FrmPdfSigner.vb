@@ -580,7 +580,12 @@ Friend Class FrmPdfSigner
     End Sub
 
     Private Sub BarComboProvider_EditValueChanged(sender As Object, e As EventArgs) Handles BarComboProvider.EditValueChanged
-        Dim selectedProvider As CryptoProviderBase = CType(BarComboProvider.EditValue, CryptoProviderBase)
+        Dim selectedProvider As CryptoProviderBase = TryCast(BarComboProvider.EditValue, CryptoProviderBase)
+
+        If selectedProvider Is Nothing Then
+            BarComboCert.Enabled = False
+            Return
+        End If
 
         If selectedProvider.SupportsLocalCertificates AndAlso BtnRefreshCertificates.Enabled Then
             BarComboCert.Enabled = True
