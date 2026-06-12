@@ -14,7 +14,7 @@ Friend Class MQFTP
 
     Friend Function SignDocument(Request As SignatureRequest) As SignatureResult
         Dim res As New SignatureResult
-        Dim pdfWatchRes As WaitForChangedResult
+        Dim responseArrived As Boolean
         Dim StagingFolderName As String = "Staging"
         Dim MQFolderOutStaging As String = Path.Combine(_settings.MQFolderOut, StagingFolderName)
         Dim timeOut As Integer = CalculateTimeOut(Request.FileToSign.Length)
@@ -55,35 +55,37 @@ Friend Class MQFTP
 
             ' write file into output MQ exchange folder
             _sbSignLog.AppendLine("Aláírás nélküli PDF fájl küldése hitelesítésre")
-            '_logger.Debug("Aláírás nélküli PDF fájl írása staging mappába (ID: {0})", Request.KofaxDocumentGUID)
             Using fs As New FileStream(pdfOutStagingPath, FileMode.Create, FileAccess.Write, FileShare.None)
                 Request.FileToSign.Seek(0, SeekOrigin.Begin)
                 Request.FileToSign.CopyTo(fs)
             End Using
-            '_logger.Debug("Aláírás nélküli PDF fájl mozgatása staging mappából MQFTP mappába (ID: {0})", Request.KofaxDocumentGUID)
-            fileOp.MoveWhenAvailable(pdfOutStagingPath, pdfOutPath)
 
-            _sbSignLog.AppendLine("Várakozás MTRACK válaszra")
-            '_logger.Debug("Várakozás MTRACK válaszra (ID: {0})", Request.KofaxDocumentGUID)
-
+            ' arm the watcher before the request leaves staging, so a fast response cannot be missed
             Using pdfWatcher As New FileSystemWatcher With {
                 .Path = _settings.MQFolderIn,
                 .Filter = pdfFileNameWithExtension,
                 .EnableRaisingEvents = True,
                 .IncludeSubdirectories = False
             }
-                pdfWatchRes = pdfWatcher.WaitForChanged(WatcherChangeTypes.Changed Or WatcherChangeTypes.Created, timeOut)
+                fileOp.MoveWhenAvailable(pdfOutStagingPath, pdfOutPath)
+
+                _sbSignLog.AppendLine("Várakozás MTRACK válaszra")
+
+                If File.Exists(pdfInPath) Then
+                    responseArrived = True
+                Else
+                    responseArrived = Not pdfWatcher.WaitForChanged(WatcherChangeTypes.Changed Or WatcherChangeTypes.Created, timeOut).TimedOut
+                End If
             End Using
 
-            If Not pdfWatchRes.TimedOut Then
+            If responseArrived Then
                 _sbSignLog.AppendLine("MTRACK válasz beérkezett, válasz beolvasása")
-                '_logger.Debug("MTRACK válasz beolvasása (ID: {0})", Request.KofaxDocumentGUID)
 
-                signedDoc = fileOp.ReadFileStreamWhenAvailable(pdfInPath)
+                ' open with FileShare.Delete so the exchange file can be deleted while we still hold the stream
+                signedDoc = fileOp.ReadFileStreamWhenAvailable(pdfInPath, FileShare.Read Or FileShare.Delete)
 
                 If signedDoc IsNot Nothing Then
                     _sbSignLog.AppendLine("MTRACK válasz beolvasva")
-                    '_logger.Debug("MTRACK válasz beolvasva (ID: {0})", Request.KofaxDocumentGUID)
                     fileOp.DeleteWhenAvailable(pdfInPath)
                 Else
                     res.ErrorMessage = "Időtúllépés: az MTRACK felől beérkezett hitelesített dokumentumot nem sikerült beolvasni a fájlrendszerből a határidőn (10 mp) belül, mert egy másik folyamat lock-olta!"
@@ -93,7 +95,7 @@ Friend Class MQFTP
             End If
         End Using
 
-        If pdfWatchRes.TimedOut Then
+        If Not responseArrived Then
             res.ErrorMessage = $"Időtúllépés: az MTRACK felől nem érkezett hitelesített dokumentum a határidőn ({timeOut / 1000} mp) belül!"
             res.SignatureLog = _sbSignLog.ToString
             Return res
@@ -110,7 +112,8 @@ Friend Class MQFTP
     Private Function ImpersonateIdentity(DomainName As String, UserName As String, Password As String) As WindowsImpersonationContext
         Dim userToken = IntPtr.Zero
 
-        Dim success = NativeMethods.LogonUser(UserName, DomainName, Password, CInt(NativeMethods.LogonType.LOGON32_LOGON_INTERACTIVE), CInt(NativeMethods.LogonProvider.LOGON32_PROVIDER_DEFAULT), userToken)
+        ' NEW_CREDENTIALS: the supplied credentials apply to outbound network access only (share access)
+        Dim success = NativeMethods.LogonUser(UserName, DomainName, Password, CInt(NativeMethods.LogonType.LOGON32_LOGON_NEW_CREDENTIALS), CInt(NativeMethods.LogonProvider.LOGON32_PROVIDER_WINNT50), userToken)
 
         If Not success Then
             Throw New SecurityException($"nem sikerült bejelentkezni '{UserName}' felhasználóval az MQFTP cserekönyvtárak eléréséhez!")

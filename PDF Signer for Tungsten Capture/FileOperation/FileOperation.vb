@@ -30,7 +30,7 @@ Friend Class FileOperation
         Throw New IOException(String.Format(errMsg, FileNameWithPath, maxRetryCount, exMsg))
     End Function
 
-    Friend Function ReadFileStreamWhenAvailable(FileNameWithPath As String) As Stream
+    Friend Function ReadFileStreamWhenAvailable(FileNameWithPath As String, Optional ShareMode As FileShare = FileShare.Read) As Stream
         Const maxRetryCount As Integer = 15
         Dim retryCount As Integer = 0
         Dim errMsg As String = Messages.File_Read_Error
@@ -38,7 +38,7 @@ Friend Class FileOperation
 
         While retryCount < maxRetryCount
             Try
-                Dim strm As FileStream = File.OpenRead(FileNameWithPath)
+                Dim strm As New FileStream(FileNameWithPath, FileMode.Open, FileAccess.Read, ShareMode)
                 Return strm
 
             Catch Ex As IOException
