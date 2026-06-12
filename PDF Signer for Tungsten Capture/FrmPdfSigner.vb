@@ -112,7 +112,10 @@ Friend Class FrmPdfSigner
         InitializeComponent()
 
         If args IsNot Nothing AndAlso args.Count > 0 AndAlso args(0).StartsWith("-B") Then
-            _SingleBatchOpenID = args(0).Substring(2) ' we cut off "-B" from the beginning
+            Dim batchId As Integer
+            If Integer.TryParse(args(0).Substring(2), batchId) Then ' we cut off "-B" from the beginning
+                _SingleBatchOpenID = batchId
+            End If
         End If
     End Sub
 
@@ -343,6 +346,8 @@ Friend Class FrmPdfSigner
             If ShowMessage Then MsgBox(Messages.Signature_Tasks_Running, MsgBoxStyle.Exclamation, Resources.MessageBoxTitle)
             Return True
         End If
+
+        Return False
     End Function
 
 #Region "Ribbon items"
@@ -1159,6 +1164,8 @@ Friend Class FrmPdfSigner
                 Return False ' we didn't find any document, just displayed the first one, hence False is returned
             End If
         End If
+
+        Return False
     End Function
 
     Private Function AllDocumentsProcessed() As Boolean

@@ -227,6 +227,8 @@ Friend Class BatchParser
                 Return IconType.Page
             End If
         End If
+
+        Return Nothing
     End Function
 
     Private Function GetSignedDocumentPath(DocumentSetup As SetupModel, KofaxPDFFilePath As String) As String
