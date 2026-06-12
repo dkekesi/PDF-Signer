@@ -3,8 +3,8 @@ Imports System.Text
 Imports SBX509
 
 ''' <summary>
-''' TLS szerver tanúsítványok ellenőrzése a Windows tanúsítványtár alapján
-''' (lánc felépítése + hosztnév egyezés).
+''' Validates TLS server certificates against the Windows trust store
+''' (chain building + hostname matching).
 ''' </summary>
 Friend Class ServerCertificateValidator
 
@@ -68,10 +68,11 @@ Friend Class ServerCertificateValidator
     End Function
 
     Private Shared Function MatchesHost(Certificate As X509Certificate2, TargetHost As String) As Boolean
-        Dim names As List(Of String) = GetSubjectAlternativeDnsNames(Certificate)
+        Dim hasSan As Boolean
+        Dim names As List(Of String) = GetSubjectAlternativeDnsNames(Certificate, hasSan)
 
-        If names.Count = 0 Then
-            ' no SAN extension: fall back to the subject name (CN)
+        If Not hasSan Then
+            ' RFC 6125: fall back to the subject CN only when the certificate has no SAN extension at all
             Dim cn As String = Certificate.GetNameInfo(X509NameType.DnsName, False)
             If Not String.IsNullOrEmpty(cn) Then names.Add(cn)
         End If
@@ -88,9 +89,12 @@ Friend Class ServerCertificateValidator
 
         ' wildcard: "*.example.com" matches exactly one leading label
         If Pattern.StartsWith("*.", StringComparison.Ordinal) Then
+            Dim base As String = Pattern.Substring(2)
+            If base.IndexOf("."c) < 0 Then Return False ' reject single-label bases like "*.com"
+
             Dim dotIndex As Integer = Host.IndexOf("."c)
             If dotIndex > 0 Then
-                Return String.Equals(Pattern.Substring(2), Host.Substring(dotIndex + 1), StringComparison.OrdinalIgnoreCase)
+                Return String.Equals(base, Host.Substring(dotIndex + 1), StringComparison.OrdinalIgnoreCase)
             End If
         End If
 
@@ -101,11 +105,13 @@ Friend Class ServerCertificateValidator
     ''' Extracts dNSName entries from the SAN extension (OID 2.5.29.17) at the DER
     ''' level, independent of OS display language.
     ''' </summary>
-    Private Shared Function GetSubjectAlternativeDnsNames(Certificate As X509Certificate2) As List(Of String)
+    Private Shared Function GetSubjectAlternativeDnsNames(Certificate As X509Certificate2, ByRef HasSanExtension As Boolean) As List(Of String)
         Dim res As New List(Of String)
+        HasSanExtension = False
 
         For Each ext As X509Extension In Certificate.Extensions
             If ext.Oid Is Nothing OrElse ext.Oid.Value <> "2.5.29.17" Then Continue For
+            HasSanExtension = True
 
             Dim data As Byte() = ext.RawData
             ' DER SEQUENCE of GeneralName; dNSName is context tag [2] = &H82 (IA5String)
@@ -117,6 +123,7 @@ Friend Class ServerCertificateValidator
             While pos < seqEnd
                 Dim tag As Byte = data(pos)
                 Dim len As Integer
+                ' the tag byte was already read into "tag"; the call only validates and consumes the header
                 If Not ReadTagAndLength(data, pos, tag, len) Then Exit While
 
                 If tag = &H82 Then
@@ -144,6 +151,7 @@ Friend Class ServerCertificateValidator
         If first < &H80 Then
             Length = first
         Else
+            ' high bit set: the low 7 bits give the count of following big-endian length bytes
             Dim byteCount As Integer = first And &H7F
             If byteCount = 0 OrElse byteCount > 4 OrElse Position + byteCount > Data.Length Then Return False
             For i As Integer = 1 To byteCount
@@ -158,9 +166,9 @@ Friend Class ServerCertificateValidator
 End Class
 
 ''' <summary>
-''' Egy adott kiszolgálóhoz kötött TLS tanúsítvány-ellenőrző az OCSP/CRL letöltő
-''' HTTP kliensekhez. (Lambdák ByRef paraméterekkel nem használhatók eseménykezelőként,
-''' ezért kell külön osztály.)
+''' A host-bound TLS certificate validator for the OCSP/CRL download HTTP clients.
+''' (Lambdas with ByRef parameters cannot be used as event handlers, hence the
+''' separate class.)
 ''' </summary>
 Friend Class HostBoundCertificateValidator
     Private ReadOnly _targetHost As String
@@ -177,6 +185,7 @@ Friend Class HostBoundCertificateValidator
             Validity = TSBCertificateValidity.cvOk
         Else
             Validity = TSBCertificateValidity.cvInvalid
+            Reason = Reason Or SBX509.__Global.vrUnknownCA
             _log.AppendLine($"  TLS tanúsítvány hiba ({_targetHost}): {failureReason}")
         End If
     End Sub
