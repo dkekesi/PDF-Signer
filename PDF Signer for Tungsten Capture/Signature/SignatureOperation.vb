@@ -107,7 +107,6 @@ Friend Class SignatureOperation
             If TypeOf sigReq.SignSettings Is PDFStreamerCryptoProvider Then
                 Dim pdfstr As New PDFStreamer
                 pdfstr.Initialize(sigReq.SignSettings)
-                'sigRes = pdfstr.SignDocument(sigReq)
                 sigRes = pdfstr.SignDocumentStream(sigReq)
             End If
             If TypeOf sigReq.SignSettings Is MQFTPCryptoProvider Then

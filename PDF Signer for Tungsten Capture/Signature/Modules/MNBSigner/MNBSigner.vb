@@ -45,13 +45,16 @@ Friend Class MNBSigner
 
     Private Function SignSinglePass(Request As SignatureRequest, Client As MNBSignerServiceClient) As SignatureResult
         Dim res As New SignatureResult
-        Dim PdfBin As Byte()
 
-        Using mt As New MemoryTributary
-            Request.FileToSign.Seek(0, SeekOrigin.Begin)
-            Request.FileToSign.CopyTo(mt)
-            PdfBin = mt.ToArray
-        End Using
+        ' read the whole document into the request buffer without an intermediate copy
+        Dim PdfBin(CInt(Request.FileToSign.Length) - 1) As Byte
+        Request.FileToSign.Seek(0, SeekOrigin.Begin)
+        Dim offset As Integer = 0
+        While offset < PdfBin.Length
+            Dim bytesRead As Integer = Request.FileToSign.Read(PdfBin, offset, PdfBin.Length - offset)
+            If bytesRead = 0 Then Exit While
+            offset += bytesRead
+        End While
 
         Dim response As ReturnModelOfFileContentModeliOGFhNrL
 

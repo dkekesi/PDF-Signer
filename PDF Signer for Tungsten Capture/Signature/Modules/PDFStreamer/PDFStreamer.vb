@@ -10,51 +10,6 @@ Friend Class PDFStreamer
         _settings = ProviderSettings
     End Sub
 
-    Friend Function SignDocument(Request As SignatureRequest) As SignatureResult
-        Dim res As New SignatureResult
-
-        Dim req As New DocumentCreateRequest
-        Dim response As DocumentCreateResponse
-
-        Using mt As New MemoryTributary
-            Request.FileToSign.Seek(0, SeekOrigin.Begin)
-            Request.FileToSign.CopyTo(mt)
-
-            With req
-                .DocumentConfigurationFilename = _settings.PDFStreamerConfigFile
-                .AuthorizationKey = _settings.PDFStreamerAuthorizationCode
-                .PDFDocument = New FileData With {.Content = mt.ToArray, .FileNameWithExtension = "sign.pdf"}
-                .TransactionID = 1
-            End With
-        End Using
-
-        PDFStreamerProxy.SetDefaultBindingAndAddress(_settings.PDFStreamerURL.ToString, False)
-        Try
-            Using clt As New PDFStreamerClient(PDFStreamerProxy.ServiceBinding, PDFStreamerProxy.RemoteAddress)
-                response = clt.CreatePDF(req)
-            End Using
-        Catch ex As Exception
-            res.ErrorMessage = ex.Message
-            res.SignatureLog = ex.ToString
-            Return res
-        End Try
-
-        res.ErrorMessage = response.ErrorMessage
-        res.SignatureLog = response.DocumentLog
-
-        If response.ValidUntil IsNot Nothing Then
-            res.SignatureExpiration = response.ValidUntil
-        End If
-
-        If response.PDFDocument IsNot Nothing AndAlso response.PDFDocument.Content IsNot Nothing Then
-            Dim mt As New MemoryTributary(response.PDFDocument.Content)
-            res.SignedFile = mt
-        End If
-
-        Return res
-
-    End Function
-
     Friend Function SignDocumentStream(Request As SignatureRequest) As SignatureResult
         Dim res As New SignatureResult
 
