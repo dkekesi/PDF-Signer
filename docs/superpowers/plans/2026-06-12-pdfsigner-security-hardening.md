@@ -161,8 +161,8 @@ git commit -m "Add explicit returns (BC42353) and safe -B argument parsing"
 Remove:
 
 ```vb
-        ' to generate license key go to https://www.nsoftware.com/full/SBNJA
-        ' And use this product key: XSBNJ-ADNXR-F2026-11151-YUF19-54BXW-CXM
+        ' to generate license key go to <nsoftware generator URL — redacted>
+        ' And use this product key: <redacted>
 ```
 
 The `SBUtils.Unit.SetLicenseKey(...)` line stays unchanged.
