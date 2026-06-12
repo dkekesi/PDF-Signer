@@ -152,7 +152,7 @@ Friend Class ServerCertificateValidator
             Next
         End If
 
-        Return Position + Length <= Data.Length
+        Return Length >= 0 AndAlso Position + Length <= Data.Length
     End Function
 
 End Class
