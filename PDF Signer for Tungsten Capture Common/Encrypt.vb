@@ -19,8 +19,6 @@ Public Class Encrypt
         Dim res As Boolean
 
         Using rsa = New RSACryptoServiceProvider()
-            'Don't do this, do the same as you did in SignData:
-            'byte[] bytesToVerify = Convert.FromBase64String(originalMessage);
             Dim encoder = New UTF8Encoding()
             Dim bytesToVerify As Byte() = encoder.GetBytes(OriginalMessage)
             Dim signedBytes As Byte() = Convert.FromBase64String(SignatureString)
@@ -78,8 +76,7 @@ Public Class Encrypt
 
     ''' <summary>
     ''' Decrypt string with AES256. Accepts both the v2 format (random IV) and the
-    ''' legacy static-IV format for backward compatibility with existing setup data
-    ''' and license files.
+    ''' legacy static-IV format for backward compatibility with existing setup data.
     ''' </summary>
     ''' <param name="StringToDecrypt">String to decrypt</param>
     ''' <returns>Decrypted string value</returns>

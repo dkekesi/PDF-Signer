@@ -12,10 +12,8 @@ Imports PDFSignerCommon.My.Resources
 Imports System.ComponentModel
 Imports System.Globalization
 Imports System.IO
-Imports System.Linq
 Imports System.Reflection
 Imports System.Threading
-Imports System.Threading.Tasks
 Imports PDFStreamer.WCFCommon.Helper
 Imports Kofax.Capture.SDK.CustomModule
 #End Region
@@ -47,7 +45,7 @@ Friend Class FrmPdfSigner
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
         If keyData = Keys.F1 Then
             HelpProvider.ShowHelp(_FormCSHIDString)
-            ' indicate that you handled this keystroke
+            ' Indicate that you handled this keystroke
             Return True
         End If
 
@@ -63,14 +61,14 @@ Friend Class FrmPdfSigner
         If currentItem.GetType Is GetType(DocumentItem) Then
             If PdfViewerOriginal.CurrentPageNumber > 0 Then
                 If BatchTree.FocusedNode.Nodes.Count - 1 >= PdfViewerOriginal.CurrentPageNumber Then
-                    ' get the actual node
+                    ' Get the actual node
                     If TypeOf PdfViewerOriginal Is DevExpressPDFViewer Then
                         BatchTree.FocusedNode = BatchTree.FocusedNode.Nodes(PdfViewerOriginal.CurrentPageNumber - 1)
                     Else
                         BatchTree.FocusedNode = BatchTree.FocusedNode.Nodes(PdfViewerOriginal.CurrentPageNumber)
                     End If
                 Else
-                    ' get the last node, if for some reason there are fewer pages than in the PDF
+                    ' Get the last node, if for some reason there are fewer pages than in the PDF
                     BatchTree.FocusedNode = BatchTree.FocusedNode.Nodes(BatchTree.FocusedNode.Nodes.Count - 1)
                 End If
             End If
@@ -78,14 +76,14 @@ Friend Class FrmPdfSigner
 
         If currentItem.GetType Is GetType(PageItem) Then
             If BatchTree.FocusedNode.ParentNode.Nodes.Count - 1 >= PdfViewerOriginal.CurrentPageNumber Then
-                ' get the actual node
+                ' Get the actual node
                 If TypeOf PdfViewerOriginal Is DevExpressPDFViewer Then
                     BatchTree.FocusedNode = BatchTree.FocusedNode.ParentNode.Nodes(PdfViewerOriginal.CurrentPageNumber - 1)
                 Else
                     BatchTree.FocusedNode = BatchTree.FocusedNode.ParentNode.Nodes(PdfViewerOriginal.CurrentPageNumber)
                 End If
             Else
-                ' get the last node, if for some reason there are fewer than pages in the PDF
+                ' Get the last node, if for some reason there are fewer pages than in the PDF
                 BatchTree.FocusedNode = BatchTree.FocusedNode.ParentNode.Nodes(BatchTree.FocusedNode.ParentNode.Nodes.Count - 1)
             End If
         End If
