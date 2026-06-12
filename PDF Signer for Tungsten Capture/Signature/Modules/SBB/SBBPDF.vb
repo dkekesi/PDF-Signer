@@ -723,7 +723,7 @@ Friend Class SBBPDF
         _sbSignLog.AppendLine($"  '{_CertTranslator.GetIssuedToName(Certificate)}' tanúsítvány (kiadó: '{_CertTranslator.GetIssuerName(Certificate)}') OCSP válasza kiértékelve")
     End Sub
 
-    Private Sub CertValidator_OnAfterCRLUse(Sender As Object, Certificate As TElX509Certificate, CACertificate As TElX509Certificate, CRL As SBCRL.TElCertificateRevocationList)
+    Private Sub CertValidator_OnAfterCRLUse(Sender As Object, Certificate As TElX509Certificate, CACertificate As TElX509Certificate, CRL As SBCRL.TElAbstractCRL)
         _sbSignLog.AppendLine($"  '{_CertTranslator.GetIssuedToName(Certificate)}' tanúsítvány (kiadó: '{_CertTranslator.GetIssuerName(Certificate)}') CRL-je kiértékelve")
     End Sub
 
@@ -737,7 +737,7 @@ Friend Class SBBPDF
         _sbSignLog.AppendLine($"  OCSP hiba a '{_CertTranslator.GetIssuedToName(Certificate)}' tanúsítvány (kiadó: '{_CertTranslator.GetIssuerName(Certificate)}') ellenőrzésekor. Hely: {Location}, hibakód: {_CodeTranslator.GetOCSPError(ErrorCode)}")
     End Sub
 
-    Private Sub CertValidator_OnCRLRetrieved(Sender As Object, Certificate As TElX509Certificate, CACertificate As TElX509Certificate, NameType As SBX509Ext.TSBGeneralName, Location As String, CRL As SBCRL.TElCertificateRevocationList)
+    Private Sub CertValidator_OnCRLRetrieved(Sender As Object, Certificate As TElX509Certificate, CACertificate As TElX509Certificate, NameType As SBX509Ext.TSBGeneralName, Location As String, CRL As SBCRL.TElAbstractCRL)
         _sbSignLog.AppendLine($"  '{_CertTranslator.GetIssuedToName(Certificate)}' tanúsítvány (kiadó: '{_CertTranslator.GetIssuerName(Certificate)}') CRL-je sikeresen letöltve. Hely: {Location}")
     End Sub
 
