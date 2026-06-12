@@ -36,8 +36,6 @@ Friend Class SBBPDF
     End Sub
 
     Friend Sub ActivateLicense()
-        ' to generate license key go to https://www.nsoftware.com/full/SBNJA
-        ' And use this product key: XSBNJ-ADNXR-F2026-11151-YUF19-54BXW-CXM
         SBUtils.Unit.SetLicenseKey("53424E4A41444E58524632303236313131353159554631393534004955475658465444494C465800303030303030303000004A574A30585037483239325A0000")
         SBPDF.Unit.Initialize()
         SBPDFSecurity.Unit.Initialize()
