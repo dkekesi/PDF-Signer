@@ -603,7 +603,7 @@ Friend Class SBBPDF
         Try
             TryCast(SBBObject, IDisposable)?.Dispose()
         Catch ex As Exception
-            _logger.Debug(ex, "SBB objektum felszabadítása sikertelen")
+            _logger.Debug("SBB objektum ({0}) felszabadítása sikertelen: {1}", SBBObject?.GetType().Name, ex.ToString)
         End Try
     End Sub
 
