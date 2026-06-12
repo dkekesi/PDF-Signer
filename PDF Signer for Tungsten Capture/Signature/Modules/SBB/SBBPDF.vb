@@ -109,7 +109,7 @@ Friend Class SBBPDF
         '********** Setting up HTTP client **********
 
         HTTPSClient.DNS.Enabled = False
-        HTTPSClient.AutoValidateCertificates = False ' causes skipping TLS certificate validation, which doesn't work in SBB at the moment
+        HTTPSClient.AutoValidateCertificates = False ' validation is done in HTTPSClient_OnCertificateValidate (SBB's built-in validation does not work)
         HTTPSClient.SSLEnabled = True
         HTTPSClient.UseHTTPProxy = _settings.IsProxyEnabled
         HTTPSClient.HTTPProxyHost = _settings.ProxyServer.ToString
@@ -633,7 +633,15 @@ Friend Class SBBPDF
     End Function
 
     Private Sub HTTPSClient_OnCertificateValidate(Sender As Object, X509Certificate As TElX509Certificate, ByRef Validity As TSBCertificateValidity, ByRef Reason As Integer)
-        Validity = TSBCertificateValidity.cvOk
+        Dim targetHost As String = _settings.TSAURL?.Host
+        Dim failureReason As String = Nothing
+
+        If ServerCertificateValidator.Validate(X509Certificate, targetHost, failureReason) Then
+            Validity = TSBCertificateValidity.cvOk
+        Else
+            Validity = TSBCertificateValidity.cvInvalid
+            _sbSignLog.AppendLine($"  TLS tanúsítvány hiba ({targetHost}): {failureReason}")
+        End If
     End Sub
 
     Private Sub HTTPSClient_OnCertValidatorFinished(Sender As Object, CertValidator As TElX509CertificateValidator, Cert As TElX509Certificate, ByRef Validity As TSBCertificateValidity, ByRef Reason As Integer)
@@ -765,13 +773,21 @@ Friend Class SBBPDF
             Dim clnt As TElHTTPOCSPClient = CType(OCSPClient, TElHTTPOCSPClient)
 
             clnt.HTTPClient.DNS.Enabled = False
-            clnt.HTTPClient.AutoValidateCertificates = False ' causes skipping TLS certificate validation, which doesn't work in SBB at the moment
+            clnt.HTTPClient.AutoValidateCertificates = False ' validation is done by the HostBoundCertificateValidator attached below
             clnt.HTTPClient.UseHTTPProxy = _settings.IsProxyEnabled
             clnt.HTTPClient.HTTPProxyHost = _settings.ProxyServer.ToString
             clnt.HTTPClient.HTTPProxyPort = _settings.ProxyPort
             clnt.HTTPClient.HTTPProxyAuthentication = _settings.ProxyAuthMethod
             clnt.HTTPClient.HTTPProxyUsername = _settings.ProxyUserName
             clnt.HTTPClient.HTTPProxyPassword = _settings.ProxyPassword
+
+            Try
+                Dim hostValidator As New HostBoundCertificateValidator(New Uri(OCSPLocation).Host, _sbSignLog)
+                AddHandler clnt.HTTPClient.OnCertificateValidate, AddressOf hostValidator.OnCertificateValidate
+                ' no RemoveHandler: the OCSP client is transient, released after the retrieval
+            Catch ex As UriFormatException
+                _sbSignLog.AppendLine($"  Érvénytelen OCSP URL: {OCSPLocation}")
+            End Try
 
             If _settings.IsProxyEnabled Then
                 _sbSignLog.AppendLine($"  HTTP proxy szerver {_settings.ProxyServer}:{_settings.ProxyPort} , felhasználó: '{_settings.ProxyUserName}', autentikáció: {_CodeTranslator.ProxyAuthMethodToString(_settings.ProxyAuthMethod)} beállítva OCSP letöltéshez")
@@ -786,13 +802,21 @@ Friend Class SBBPDF
             Dim retr As TElHTTPCRLRetriever = CType(Retriever, TElHTTPCRLRetriever)
 
             retr.HTTPClient.DNS.Enabled = False
-            retr.HTTPClient.AutoValidateCertificates = False ' causes skipping TLS certificate validation, which doesn't work in SBB at the moment
+            retr.HTTPClient.AutoValidateCertificates = False ' validation is done by the HostBoundCertificateValidator attached below
             retr.HTTPClient.UseHTTPProxy = _settings.IsProxyEnabled
             retr.HTTPClient.HTTPProxyHost = _settings.ProxyServer.ToString
             retr.HTTPClient.HTTPProxyPort = _settings.ProxyPort
             retr.HTTPClient.HTTPProxyAuthentication = _settings.ProxyAuthMethod
             retr.HTTPClient.HTTPProxyUsername = _settings.ProxyUserName
             retr.HTTPClient.HTTPProxyPassword = _settings.ProxyPassword
+
+            Try
+                Dim hostValidator As New HostBoundCertificateValidator(New Uri(Location).Host, _sbSignLog)
+                AddHandler retr.HTTPClient.OnCertificateValidate, AddressOf hostValidator.OnCertificateValidate
+                ' no RemoveHandler: the CRL retriever is transient, released after the retrieval
+            Catch ex As UriFormatException
+                _sbSignLog.AppendLine($"  Érvénytelen CRL URL: {Location}")
+            End Try
 
             If _settings.IsProxyEnabled Then
                 _sbSignLog.AppendLine($"  HTTP proxy szerver {_settings.ProxyServer}:{_settings.ProxyPort} , felhasználó: '{_settings.ProxyUserName}', autentikáció: {_CodeTranslator.ProxyAuthMethodToString(_settings.ProxyAuthMethod)} beállítva CRL letöltéshez")
