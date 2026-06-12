@@ -351,6 +351,33 @@ Friend Class FrmPdfSigner
         Return False
     End Function
 
+    ''' <summary>
+    ''' Common epilogue of sign/skip/reject: jump to the next signable document, or —
+    ''' when none is left — wait for the running signing tasks, re-check (a task may
+    ''' have failed and made its document signable again), then offer to close the batch.
+    ''' </summary>
+    Private Async Function FinishDocumentActionAsync(ClosingLogMessage As String) As Task
+        If SelectNextSignableDocument(False) Then Return
+
+        If _ActiveTasks IsNot Nothing Then Await Task.WhenAll(_ActiveTasks)
+
+        ' yield once so data-binding callbacks posted by the worker threads are processed
+        Await Task.Yield()
+
+        ' we have to check it again, as a previously in-progress task might have come back with an error
+        If SelectNextSignableDocument(False) Then Return
+
+        If Not AllDocumentsProcessed() Then Return
+        If _Batch Is Nothing Then Return
+
+        _logger.Debug(ClosingLogMessage, _Batch.Name)
+
+        Dim keepApplicationOpen As Boolean = CloseBatch(True, True, True)
+
+        ' if program was opened in single batch mode, then we close the application
+        If _SingleBatchOpenID > 0 AndAlso Not keepApplicationOpen Then Close()
+    End Function
+
 #Region "Ribbon items"
 
 #Region "Home ribbon"
@@ -484,28 +511,7 @@ Friend Class FrmPdfSigner
             t.RunSynchronously()
         End If
 
-        ' we didn't move to a different document after signing (maybe we were on the last document), so we offer to close the batch
-        If Not SelectNextSignableDocument(False) Then
-            Await Task.WhenAll(_ActiveTasks)
-
-            ' wait for async operations to complete
-            Thread.Sleep(200)
-
-            ' we have to check it again, as a previously in-progress task might have come back with error, and we should jump to that document
-            If Not SelectNextSignableDocument(False) Then
-                If AllDocumentsProcessed() Then
-                    _logger.Debug(Messages.Batch_Closing, _Batch.Name)
-
-                    If _Batch IsNot Nothing Then
-                        Dim keepApplicationOpen As Boolean = CloseBatch(True, True, True)
-
-                        ' if program was opened in single batch mode, then we close the application
-                        If _SingleBatchOpenID > 0 AndAlso Not keepApplicationOpen Then Close()
-                    End If
-
-                End If
-            End If
-        End If
+        Await FinishDocumentActionAsync(Messages.Batch_Closing)
     End Sub
 
     Private Sub BtnRemoveSignatures_Click(sender As Object, e As ItemClickEventArgs) Handles BtnRemoveSignatures.ItemClick
@@ -556,28 +562,7 @@ Friend Class FrmPdfSigner
 
             PdfViewerSigned.CloseDocument()
 
-            ' we didn't move to a different document after skipping (maybe we were on the last document), so we offer to close the batch
-            If Not SelectNextSignableDocument(False) Then
-                Await Task.WhenAll(_ActiveTasks)
-
-                ' we wait for all events to complete
-                Thread.Sleep(200)
-
-                ' we have to check it again, as a previously in-progress task might have come back with an error
-                If Not SelectNextSignableDocument(False) Then
-                    If AllDocumentsProcessed() Then
-                        _logger.Debug(Messages.Batch_Closing_With_Rejected_PDF, _Batch.Name)
-
-                        If _Batch IsNot Nothing Then
-                            Dim keepApplicationOpen As Boolean = CloseBatch(True, True, True)
-
-                            ' if program was opened in single batch mode, then we close the application
-                            If _SingleBatchOpenID > 0 AndAlso Not keepApplicationOpen Then Close()
-                        End If
-
-                    End If
-                End If
-            End If
+            Await FinishDocumentActionAsync(Messages.Batch_Closing_With_Rejected_PDF)
         End If
     End Sub
 
@@ -656,28 +641,7 @@ Friend Class FrmPdfSigner
 
             PdfViewerSigned.CloseDocument()
 
-            ' we didn't move to a different document after rejecting (maybe we were on the last document), so we offer to close the batch
-            If Not SelectNextSignableDocument(False) Then
-                Await Task.WhenAll(_ActiveTasks)
-
-                ' we wait for all events to complete
-                Thread.Sleep(200)
-
-                'we have to check it again, as a previously in-progress task might have come back with an error
-                If Not SelectNextSignableDocument(False) Then
-                    If AllDocumentsProcessed() Then
-                        _logger.Debug(Messages.Batch_Closing_With_Rejected_PDF, _Batch.Name)
-
-                        If _Batch IsNot Nothing Then
-                            Dim keepApplicationOpen As Boolean = CloseBatch(True, True, True)
-
-                            ' if program was opened in single batch mode, then we close the application
-                            If _SingleBatchOpenID > 0 AndAlso Not keepApplicationOpen Then Close()
-                        End If
-
-                    End If
-                End If
-            End If
+            Await FinishDocumentActionAsync(Messages.Batch_Closing_With_Rejected_PDF)
         End If
     End Sub
 
