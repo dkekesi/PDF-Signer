@@ -63,6 +63,9 @@ Friend Class PDFStreamer
             End If
         End While
 
+        ' truncate: a signed file shorter than the original must not leave stale trailing bytes
+        Request.FileToSign.SetLength(Request.FileToSign.Position)
+
         res.SignedFile = Request.FileToSign
 
         Return res
