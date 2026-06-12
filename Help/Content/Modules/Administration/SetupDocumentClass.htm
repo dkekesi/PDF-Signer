@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="6501" MadCap:lastWidth="1028">
+    <head><title></title>
+    </head>
+    <map id="map1">
+        <area shape="rectangle" coords="8,38,265,62" href="#Alairas" />
+        <area shape="rectangle" coords="12,65,419,225" href="#indexme" />
+        <area shape="rectangle" coords="423,64,655,225" href="#Vonalkod" />
+        <area shape="rectangle" coords="12,230,654,483" href="#Masolatk" />
+        <area shape="rectangle" coords="11,488,653,557" href="#Alairt" />
+        <area shape="rectangle" coords="10,590,651,614" href="#Kriptogr" />
+        <area shape="rectangle" coords="11,618,652,895" href="#Kriptogr2" />
+        <area shape="rectangle" coords="15,904,387,928" href="#Beallita" />
+        <area shape="rectangle" coords="10,562,652,587" href="#Megtekint" />
+    </map>
+    <body>
+        <h1>Dokumentumosztály hitelesítési beállításai</h1>
+        <p>Válasszuk ki azt a dokumentumosztályt, amelynek beállításait módosítani szeretnék. Minden dokumentumosztályhoz eltérő beállítások adhatók meg, így biztosítva az esetelegesen eltérő jogszabályi követelményeknek való megfelelést. A dokumentumosztály kiválasztása után kattintsunk rajta jobb egérgombbal.</p>
+        <p>
+            <img src="../../Resources/Images/Screenshots/DocClassContextMenu.png" class="Screenshot" />
+        </p>
+        <p class="ImageTitle">Dokumentumosztály helyzetérzékeny menüje</p>
+        <p>A megjelenő menü alján válasszuk ki a <i>PDF Signer Setup...</i> menüpontot, mire megjelenik a dokumentum-osztályhoz tartozó beállítóablak.</p>
+        <h2>A párbeszédablak felépítése</h2>
+        <p>
+            <img src="../../Resources/Images/Screenshots/SetupDialog.png" class="Screenshot" usemap="#map1" />
+        </p>
+        <p class="ImageTitle"><MadCap:variable name="MyVariables.PDFSigner" /> beállítóablaka</p>
+        <p style="vertical-align: sub;">Az ablakban megjelenített szövegek nyelve a <MadCap:variable name="MyVariables.KC" /> Administration modul felületének nyelvéhez igazodik.</p>
+        <p style="vertical-align: sub;">Az ablak az alábbi részekből áll:</p>
+        <ul>
+            <li><a href="#Alairas">Aláírás bekapcsolva (Signing enabled) jelölőnégyzet</a>
+            </li>
+            <li><a href="#indexme"><MadCap:variable name="MyVariables.KC" /> indexmezők (<MadCap:variable name="MyVariables.KC" /> index fields)</a>
+            </li>
+            <li><a href="#Vonalkod">Aláírás-vezérlés (Signing control)</a>
+            </li>
+            <li><a href="#Masolatk">Másolatkészítési záradék adatai (Conversion clause data)</a>
+            </li>
+            <li><a href="#Alairt">Aláírt fájl elnevezése (Signed file naming)</a>
+            </li>
+            <li><a href="#Megtekint">Megtekintő-választó lista (Document viewer)</a>
+            </li>
+            <li><a href="#Kriptogr">Kriptográfiai szolgáltató-választó lista (Cryptographic provider)</a>
+            </li>
+            <li><a href="#Kriptogr2">Kriptográfiai szolgáltatók beállításai</a>
+            </li>
+            <li><a href="#Beallita">Beállítások importálása/exportálása</a>
+            </li>
+        </ul>
+        <h3><a name="Alairas"></a>Aláírás bekapcsolva jelölőnégyzet</h3>
+        <p>Amennyiben a jelölőnégyzet be van kapcsolva, úgy a dokumentumosztályba szkennelt iratok a <MadCap:variable name="MyVariables.PDFSigner" /> modulban – további beállításoktól függően – hitelesítésre kerülnek.</p>
+        <h3><a name="indexme"></a><MadCap:variable name="MyVariables.KC" /> indexmezők (<MadCap:variable name="MyVariables.KC" /> index fields)</h3>
+        <p>Ezekben a legördülő listákban választható ki, hogy a dokumentum-hitelesítéssel kapcsolatos meta-adatokat mely indexmezőkből vegye, illetve mely indexmezőkbe töltse a <MadCap:variable name="MyVariables.PDFSigner" />.</p>
+        <ul>
+            <li><b>Aláírva? (Is signed?):</b> ebbe az indexmezőbe fog bekerülni annak a ténye, hogy egy adott dokumentum átesett-e hitelesítésen, vagy sem. A hitelesített iratok esetén a mező értéke "1", a nem hitelesített iratok esetén a mező értéke "0" vagy üres.</li>
+            <li><b>Aláírás időpontja (Sign date time):</b> ebbe az indexmezőbe fog bekerülni a hitelesítés dátuma és időpontja XML DateTime formában.</li>
+        </ul>
+        <p class="info">Ez a mező nem az időbélyegzőben szereplő időpontot tartalmazza, hanem azt az időpillanatot, amikor az aláírt állomány a <MadCap:variable name="MyVariables.KC" /> rendszerben letárolásra került. Az időpont a kliens munkaállomásról származó, a géphez beállított időzóna szerinti idő.</p>
+        <ul>
+            <li><b>Aláíró felhasználó (Signing user):</b> kliens oldali aláírás esetén az aláírást követően az itt kiválasztott indexmezőbe kerül az aláíró tanúsítványban szereplő tulajdonos neve. Szerver oldali aláírás esetén (PDF Streamer vagy MQFTP kriptográfiai modulok esetén) a <MadCap:variable name="MyVariables.PDFSigner" /> modulba bejelentkezett felhasználó AD-ból származó polgári neve.</li>
+            <li><b>Aláírás lejárta (Signature expiry):</b> ebbe az indexmezőbe fog bekerülni a hitelesített dokumentum hitelességének lejárati időpontja. A <MadCap:variable name="MyVariables.PDFSigner" /> modul komplex algoritmus alapján számolja ki a lejárati dátumot, figyelembe véve az aláírt dokumentumokon szereplő összes aláírást és időbélyeget. Az így megállapított időpont az az időpont, ami előtt a dokumentumot ismét időbélyegezni szükséges, ha a hitelességét továbbra is meg kívánjuk őrizni. A dátum és időpont XML DateTime formában kerül tárolásra.</li>
+            <li><b>Hitelesítés kihagyásának oka (Skip note):</b> amennyiben az <a href="#Vonalkod">aláírás-vezérlésnél</a> engedélyezett a hitelesítés kihagyása, úgy a kihagyás oka ebbe az indexmezőbe fog bekerülni.</li>
+        </ul>
+        <p class="IconBullet">
+            <img src="../../Resources/Images/Icons/DeleteIndex.png" class="BulletIcon" /><b>Indexmező hozzárendelésének törlése:</b> ezzel az ikonnal lehet törölni az indexmező-hozzárendeléseket.</p>
+        <h3><a name="Vonalkod"></a>Aláírás-vezérlés (Signing control)</h3>
+        <p>Ezen a panelen állíthatjuk be, hogy a dokumentum-osztályhoz tartozó mely iratokat kell aláírással ellátni.</p>
+        <ul>
+            <li><b>Minden dokumentumot alá kell írni (All documents need signing):</b> ha a jelölőnégyzet be van jelölve, akkor a dokumentumosztályhoz tartozó összes szkennelt iratot alá kell írni, függetlenül attól, hogy a vonalkódként megadott mezőben milyen aláírás-vezérlő karakterek találhatók.</li>
+            <li><b>Vonalkód (Bar code):</b> annak az indexmezőnek a neve, amelyben a dokumentumot egyedileg azonosító adat található. Amennyiben egy adott dokumentum-osztályban nem kell az összes iratot aláírni, akkor ebben az indexmezőben kell megadni azt a vezérlőkaraktert, ami mutatja, hogy a szkennelt irt aláírandó-e, vagy sem.</li>
+            <li><b>Aláírás-jelölő (Signature marker):</b> az a Vonalkód indexmezőben fix pozícióban lévő karakter, aminek jelenléte esetén a dokumentumot kötelező aláírni.</li>
+            <li><b>Aláírás-jelölő pozíciója (Signature marker position):</b> az a Vonalkód indexmezőben balról számolt fix pozíció, ahol az aláírás jelölő karakter található.</li>
+            <li><b>Hitelesítés kihagyásának engedélyezése (Allow skip required documents):</b> ha a jelölőnégyzet be van jelölve, akkor a dokumentumosztályhoz tartozó dokumentumok hitelesítése kihagyható és a nem hiteles dokumentum fog továbbküldésre kerülni.</li>
+        </ul>
+        <h3><a name="Masolatk"></a>Másolatkészítési záradék adatai (Conversion clause data)</h3>
+        <p>Ezen a panelen lehet megadni a hitelesítési másolatkészítés záradékába kerülő fix meta adatokat.</p>
+        <ul>
+            <li><b>Dokumentum neve indexmezőből (Document name from index):</b> itt lehet kiválasztani azt az indexmezőt, amelyből a dokumentum megnevezését kell betölteni. A mezőt üresen hagyva automatikusan a következő adat alapján próbálja előállítani a rendszer a dokumentum nevét.</li>
+            <li><b>Dokumentum neve Form Type alapján (Document name from Form Type):</b> amennyiben be van jelölve, és a <i>Dokumentum neve indexmezőből (Document name from index)</i> indexmező nincs megadva, akkor a dokumentum megnevezése a <MadCap:variable name="MyVariables.KC" />-ben beállított dokumentumtípus (Form Type) lesz.</li>
+            <li><b>Dokumentum nevének alapértéke (Document name default):</b> ha nincs kiválasztva indexmező, amiből a dokumentum nevét veszi a rendszer, és a <i>Dokumentum neve Form Type alapján (Document name from Form Type)</i> jelölőnégyzet sincs bekapcsolva, akkor az itt megadott alapérték lesz az összes aláírt dokumentum megnevezése. Ha ezt az értéket is üresen hagyjuk, akkor a dokumentum nevét a vonalkód alapján generálja a <MadCap:variable name="MyVariables.PDFSigner" /> modul.</li>
+            <li><b>Másolatkészítő szervezet neve (Copying organization name):</b> a másolatkészítést végző szervezet megnevezése.</li>
+            <li><b>Másolatkészítési szabályzat neve (Copying regulation name):</b> a másolatkészítési szabályzat megnevezése.</li>
+            <li><b>Másolatkészítési szabályzat URL (Copying regulation URL):</b> a másolatkészítési szabályzat elérhetősége. Az URL-nek Internet felől elérhető link-nek kell lennie, hogy a dokumentumot bárki megtekinthesse, aki a hiteles másolatokkal kapcsolatba kerül.</li>
+            <li><b>Másolatkészítési szabályzat verziója (Copying regulation version):</b> a dokumentumokra vonatkozó másolatkészítési szabályzat verziószáma.</li>
+            <li>
+                <p><b>Záradék formátuma (Clause format):</b> a hitelesítési másolatkészítési záradék formátuma. Lehetséges értékek: XML, vagy Text. Az XML formátumú záradék angol nyelvű tag-eket, a Text formátumú magyar nyelvű megnevezéseket tartalmaz.</p>
+            </li>
+        </ul>
+        <ul>
+            <li><b>Aláírási szabályzat URL (Signature policy URL):</b> az aláírási szabályzat elérhetősége. Az URL-nek Internet felől elérhető link-nek kell lennie, hogy a dokumentumot bárki megtekinthesse, aki a hiteles másolatokkal kapcsolatba kerül.</li>
+            <li><b>Aláírási szabályzat hash (Signature policy hash):</b> az aláírási szabályzat SHA-1 lenyomata.</li>
+            <li><b>Aláírási szabályzat OID (Signature policy OID):</b> az aláírási szabályzat OID-je, a <a href="http://www.oid-info.com/">http://www.oid-info.com/</a> oldalon szereplő nyilvántartás alapján.</li>
+        </ul>
+        <h3><a name="Alairt"></a>Aláírt fájl elnevezése (Signed file naming)</h3>
+        <p>Ezen a panelen adható meg, hogy az aláírt és az eredeti fájlok hogyan kerüljenek tárolásra.</p>
+        <ul>
+            <li><b>A Kofax PDF Generator által készített fájl felülírása (Overwrite original file created by Kofax PDF Generator):</b> az opció választásakor az eredeti (aláíratlan) PDF fájl felülíródik az aláírt fájllal. Az eredeti fájl ugyanabban a mappában kerül mentésre <i>_original</i> utótaggal a fájl nevében. Ezt az eljárást használva nem kell az Export Connector-okat módosítani.</li>
+            <li><b>Új fájl készítése (Create new file):</b> ezzel az opcióval a Kofax PDF Generator által készített eredeti fájl változatlan marad a hitelesítést követően, mert az aláírt fájl új néven kerül mentésre. Az opció csak akkor alkalmazható, ha egyedi Export Connector-okat használunk, amiben az új fájlnevet le tudjuk kezelni.</li>
+            <li><b>Fájlnév utótag (Append to original file name):</b> ha az <i>Új fájl készítése</i> opció be van kapcsolva, akkor a fájlnévhez az itt megadott utótagot fűzi a modul (pl. "_signed").</li>
+            <li><b>Új kiterjesztés (Replace extension):</b> amennyiben az aláírt fájl formátuma nem PDF (hanem pl. XAdES), akkor lehetőség van az aláírt fájl kiterjesztésének megváltoztatására.</li>
+        </ul>
+        <h3><a name="Megtekint"></a>Megtekintő-választó lista (Document viewer)</h3>
+        <p>Ebből a listából lehet kiválasztani, hogy mely komponenssel tekintjük meg a dokumentumokat. Az alábbi komponensek állnak rendelkezésre:</p>
+        <ul>
+            <li><b>Simple viewer:</b> csak dokumentum-megtekintésre alkalmas, nem támogatja az oldalműveleteket (forgatás és törlés), valamint miniatűrnézetek (thumbnails) sem állnak rendelkezésre. Gyorsabb és kevesebb memóriát igényel, mint az Advanced viewer.</li>
+            <li><b>Advanced viewer:</b> a dokumentumok megtekintésén felül támogatja az oldalműveleteket (forgatás és törlés), valamint miniatűrnézetek (thumbnails) is elérhetők. Lassabb és több memóriát igényel, mint a Simple viewer.</li>
+        </ul>
+        <h3><a name="Kriptogr"></a>Kriptográfiai szolgáltató-választó lista (Cryptographic provider)</h3>
+        <p>Ebből a listából lehet kiválasztani, hogy mely kriptográfiai szolgáltatóval írjuk alá a dokumentumokat. Minden kriptográfiai szolgáltatónak más beállításai vannak. Az alábbi kriptográfiai szolgáltatók állnak rendelkezésre:</p>
+        <ul>
+            <li><a href="#PDF Sign">PDF Signer: a <MadCap:variable name="MyVariables.PDFSigner" /> beépített kliens oldali hitelesítő modulja</a>
+            </li>
+            <li><a href="#PDF Stre">PDF Streamer: szerver oldali hitelesítő modul</a>
+            </li>
+            <li><a href="#MQFTP">hitelesítő komponens IBM Websphere MQ-n keresztül hívva</a>
+            </li>
+        </ul>
+        <h3><a name="Kriptogr2"></a>Kriptográfiai szolgáltatók beállításai</h3>
+        <p>Az alábbi fejezet az egyes kriptográfiai szolgáltatók beállításait mutatja be.</p>
+        <h4><a name="PDF Sign"></a>PDF Signer</h4>
+        <p>
+            <img src="../../Resources/Images/Screenshots/CryptoProviderSetupPDFSigner.png" class="Screenshot" />
+        </p>
+        <p class="ImageTitle">PDF Signer beépített kriptográfiai moduljának beállítási felülete</p>
+        <h5>Aláírási beállítások (Signature settings)</h5>
+        <ul>
+            <li><b>Aláíró szervezet (Signing organization):</b> az aláíráson Adobe Reader-ben megjelenítendő név. Eltérhet az aláíró tanúsítványban szereplő névtől.</li>
+            <li><b>Aláírás oka (Signing reason):</b> az aláírás oka, amely Adobe Reader-ben is megjelenik .</li>
+            <li><b>Visszavonás ellenőrzés (Revocation check):</b> az aláíró tanúsítvány visszavonásának ellenőrzési módja. Lehetséges értékek:<ul><li><b>Nincs ellenőrzés (None):</b> az aláíró tanúsítványt nem ellenőrzi a rendszer külső forrásból, csak a helyi cache-ből (nem javasolt, csak ha később hozzárendeljük a aláíráshoz az online beszerzett visszavonási információkat).</li><li><b>CRL:</b> ellenőrzés visszavonási listával.</li><li><b>OCSP:</b> ellenőrzés OCSP-vel. Ha a tanúsítvány nem ellenőrizhető OCSP-vel (pl. mert a hitelesítés-szolgáltató nem nyújtja a szolgáltatást), akkor az aláírási művelet megszakad.</li><li><b>OCSP vagy CRL, ha OCSP nem elérhető (OCSP (CRL fallback)):</b> ellenőrzés OCSP-vel. Ha a tanúsítvány nem ellenőrizhető OCSP-vel, akkor CRL-el kerül ellenőrzésre.</li></ul></li>
+            <li><b>Hash algoritmus (Hash method):</b> az aláíráshoz használt, az aláírandó dokumentumból képzett lenyomat (hash) képzésének algoritmusa.</li>
+        </ul>
+        <h5>Időbélyegzés beállításai (Time stamping...)</h5>
+        <ul>
+            <li><b>Időbélyegzés bekapcsolva (Time stamping enabled):</b> a hitelesített dokumentumon az aláírás mellett időbélyeget is elhelyez a rendszer.</li>
+            <li><b>TSA URL:</b> az időbélyeg-szolgáltató URL-je.</li>
+            <li><b>TSA felhasználónév (TSA connection user):</b> az időbélyeg-szolgáltatóhoz történő kapcsolódáshoz használt felhasználónév. Ha a belépéshez nem kell felhasználónév, akkor a mezőt hagyjuk üresen.</li>
+            <li><b>Jelszó (Password):</b> az időbélyeg-szolgáltatóhoz történő kapcsolódáshoz használt felhasználónévhez tartozó jelszó. Ha a belépéshez nem kell felhasználónév, vagy nem tartozik hozzá jelszó, akkor a mezőt hagyjuk üresen.</li>
+            <li><b>Dokumentumszintű időbélyeg készítése (Create document time stamp):</b> az aláírt PDF dokumentumra nem aláírásszintű, hanem dokumentumszintű időbélyeget helyez el a rendszer.</li>
+            <li><b>Egymenetes PAdES B-LTA készítése (Create single-pass PAdES B-LTA):</b> a PDF dokumentumra egy lépésben PAdES B-LTA szabvány szerinti aláírás készül, amely a legmagasabb szintű aláírás: beágyazva tartalmazza az összes visszavonási információt és ezeket dokumentumszintű időbélyeggel védi. Amennyiben ez az opció be van kapcsolva, akkor a visszavonás ellenőrzést OCSP-re kell állítani és a dokumentumszintű időbélyeg készítése opciót be kell kapcsolni.</li>
+        </ul>
+        <p class="warning">Figyelem! A PAdES B-LTA aláírások dokumentumonként két időbélyeget követelnek meg, ami az időbélyeg szolgáltató terheltségétől és az internet kapcsolat sebességétől függően pár dokumentumonként másodperccel lassítja a hitelesítési folyamatot. Az időbélyegzés költsége fájlonként kétszeres lesz!</p>
+        <h5>Proxy szerver beállításai (Proxy)</h5>
+        <ul>
+            <li><b>Proxy használat bekapcsolva (Proxy enabled):</b> a külső hálózattal történő kommunikáció proxy szerveren keresztül történik. A beállítás befolyásolja az időbélyeg lekéréseket, a CRL letöltéseket és az OCSP válaszok beszerzését.</li>
+            <li><b>Szerver név vagy IP (Server name/IP):</b> a proxy szerver neve vagy IP-je.</li>
+            <li><b>Port:</b> a proxy szerverhez történő kapcsolódáshoz használt port.</li>
+            <li><b>Azonosítási eljárás típusa (Authentication):</b> a proxy szerverre történő bejelentkezéshez szükséges azonosítás típusa. Lehetséges eljárások: nincs azonosítás (No authentication), felhasználónévvel és jelszóval történő azonosítás (User/Password), Digest autentikálás, NTLM autentikálás.</li>
+            <li><b>Proxy felhasználónév (Proxy user name):</b> a proxy szerverre történő bejelentkezéshez szükséges felhasználónév.</li>
+            <li><b>Proxy jelszó (Password):</b> a proxy szerverre történő bejelentkezéshez szükséges felhasználónévhez tartozó jelszó.</li>
+        </ul>
+        <h4><a name="PDF Stre"></a>PDF Streamer</h4>
+        <p>
+            <img src="../../Resources/Images/Screenshots/CryptoProviderSetupPDFStreamer.png" class="Screenshot" />
+        </p>
+        <p class="ImageTitle">PDF Streamer kriptográfiai modul beállítási felülete</p>
+        <h5>Szolgáltatás beállítása (Service settings)</h5>
+        <ul>
+            <li><b>Szolgáltatás URL-je (Web service URL):</b> a PDF Streamer szolgáltatás elérhetősége.</li>
+            <li><b>Konfigurációs fájl neve (Configuration file name):</b> a másolatkészítés hitelesítéséhez használt konfigurációs állomány neve.</li>
+            <li><b>Hitelesítési kód (Authorization code):</b> a konfigurációs fájl hoz tartozó hitelesítési kód, amivel a szolgáltatás hívható.</li>
+        </ul>
+        <h4><a name="MQFTP"></a>MQFTP</h4>
+        <p>
+            <img src="../../Resources/Images/Screenshots/CryptoProviderSetupMQFTP.png" class="Screenshot" />
+        </p>
+        <p class="ImageTitle">MQFTP beállítási felülete</p>
+        <h5>Szolgáltatás beállítása (MQFTP server mode settings)</h5>
+        <ul>
+            <li><b>MQFTP kimenő mappa (Outgoing folder):</b> a hitelesítésre váró dokumentumok cserekönyvtára.</li>
+            <li><b>MQFTP bejövő mappa (Incoming folder):</b> a visszatérő, hitelesített dokumentumok cserekönyvtára.</li>
+            <li><b>Felhasználó tartománya (Logon domain):</b> a cserekönyvtárak elérésére jogosult felhasználó tartományának neve.</li>
+            <li><b>Felhasználónév (User name):</b> a cserekönyvtárak elérésére jogosult felhasználó login neve.</li>
+            <li><b>Jelszó (Password):</b> a cserekönyvtárak elérésére jogosult felhasználó jelszava.</li>
+            <li><b>Document UID:</b> a fájlnévképzéshez használt egyedi azonosítót tartalmazó indexmező. Ha nincs megadva, akkor a fájlnév a <MadCap:variable name="MyVariables.KC" /> által kiosztott GUID lesz.</li>
+        </ul>
+        <h4>MNB Signer</h4>
+        <p>
+            <img src="../../Resources/Images/Screenshots/CryptoProviderSetupMNBSigner.png" class="Screenshot">
+            </img>
+        </p>
+        <p class="ImageTitle">MNB Signer beállítási felülete</p>
+        <h5>Szolgáltatás beállítása (MQFTP server mode settings)</h5>
+        <ul>
+            <li><b>Szolgáltatás elérhetősége (Web Service URL):</b> az MNB Signer szerveren futó szolgáltatás elérési útvonala.</li>
+            <li><b>Szolgáltatáshívás időtúllépési ideje (Web service timeout):</b> az időtartam (másodpercben), ami alatt a szolgáltatás hívásának be kell fejeződnie.</li>
+            <li><b>Aláírás időtúllépési ideje (Signing timeout):</b> az időtartam (másodpercben), ami alatt a darabolt aláírásnak a szerveren el  kell készülnie.</li>
+            <li><b>Darabolt fájl mérete (Chunk size):</b> az a fájlméret (byte-ban), ami felett az aláírandó fájlt darabokban kell küldeni az MNB Signer szerver felé. Az ennél kisebb fájlok egy menetben kerülnek aláírásra, míg a nagyobb fájlok küldése és fogadása az itt beállított méretű darabokban történik.</li>
+            <li><b>Windows azonosítás (Windows authentication):</b> a szolgáltatást igénybe vevő felhasználó azonosítása a kliensre bejelentkezett felhasználó Windows domain adatai alapján történik.</li>
+            <li><b>Felhasználónév+jelszó azonosítás (User/password authentication):</b> a szolgáltatást igénybe vevő felhasználó azonosítása egy fix felhasználónév+jelszó párossal történik.</li>
+            <li><b>Domain név (Domain name):</b> felhasználónév+jelszó párossal történő azonosításkor a fix felhasználó domain neve.</li>
+            <li><b>Felhasználónév (User name):</b> felhasználónév+jelszó párossal történő azonosításkor a fix felhasználó login neve.</li>
+            <li><b>Jelszó (Password):</b> felhasználónév+jelszó párossal történő azonosításkor a fix felhasználó jelszava.</li>
+            <li><b>Document UID:</b> a fájlnévképzéshez használt egyedi azonosítót tartalmazó indexmező. Ha nincs megadva, akkor a fájlnév a <MadCap:variable name="MyVariables.KC" /> által kiosztott GUID lesz.</li>
+        </ul>
+        <h3><a name="Beallita"></a>Beállítások importálása/exportálása</h3>
+        <ul>
+            <li><b>Beállítások importálása (Import settings):</b> a korábban exportált beállításokat lehet betölteni XML fájlból.</li>
+            <li><b>Beállítások exportálása (Export settings):</b> XML fájlba menti a párbeszédablak beállításait.</li>
+            <li><b>Beállítások törlése (Reset settings):</b> alaphelyzetbe állítja a párbeszédablak beállításait.</li>
+        </ul>
+    </body>
+</html>

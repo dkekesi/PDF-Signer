@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultTarget
+  Version="2"
+  Comment=""
+  Type="WebHelp2"
+  Destinations=""
+  GlossaryTermConversion="first"
+  MasterPage="/Content/Resources/MasterPages/OnlineHelp.flmsp"
+  OutputFolder="C:\Projects\PDFSigner\Help\"
+  GetLatestBeforeCompile="false"
+  PreCompileScaledImages="false"
+  GenerateWebSafeImages="false"
+  FixHtmlHelpLinks="false"
+  Skin="/Project/Skins/HTML5.flskn"
+  ExcludeUnreferencedContent="true"
+  OutputFile="index"
+  MoveOutputContentToRoot="true"
+  AliasFile="/Project/Advanced/Aliases.flali"
+  EnableSitemap="false"
+  ServerEnabled="false"
+  MasterToc="/Project/TOCs/Online Help.fltoc"
+  ConditionTagExpression="include[Default.NemKiadhato or &quot;Default.Not Ready for Publish&quot; or Default.PrintOnly or Default.ScreenOnly]">
+  <PrintedOutput
+    CollapseMargins="true" />
+  <Destinations>
+    <Destination
+      Link="/Project/Destinations/HTML5Destination.fldes" />
+    <Destination
+      Link="/Project/Destinations/HTML5DestinationAdminDebug.fldes" />
+    <Destination
+      Link="/Project/Destinations/HTML5DestinationAdminRelease.fldes" />
+  </Destinations>
+  <Variables>
+    <Variable
+      Name="MyVariables/FolderEles">\\eway-server\eSzamla\Eles</Variable>
+    <Variable
+      Name="MyVariables/FolderTeszt">\\eway-server\eSzamla\Teszt</Variable>
+    <Variable
+      Name="MyVariables/ServerName">Szerver</Variable>
+  </Variables>
+</CatapultTarget>

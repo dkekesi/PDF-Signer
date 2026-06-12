@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultAliasFile>
+    <Map Name="OPENBATCH" Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/OpenBatch.htm" />
+    <Map Name="SYSTEMREQUIREMENTS" Link="/Content/Installation/SystemRequirements.htm" />
+    <Map Name="SETUPADMINISTRATION" Link="/Content/Modules/Administration/SetupAdministration.htm" />
+    <Map Name="MAINWINDOW" Link="/Content/Modules/PDF Signer/UserInterface/MainWindow.htm" />
+    <Map Name="SETUPBATCHCLASS" Link="/Content/Modules/Administration/SetupBatchClass.htm" />
+    <Map Name="ERRORHANDLING" Link="/Content/Modules/PDF Signer/OperatorTasks/ErrorHandling.htm" />
+    <Map Name="INTRODUCTION" Link="/Content/Introduction.htm" />
+    <Map Name="OPERATORTASKS" Link="/Content/Modules/PDF Signer/OperatorTasks.htm" />
+    <Map Name="ABOUT" Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/About.htm" />
+    <Map Name="BATCHOPENING" Link="/Content/Modules/PDF Signer/OperatorTasks/BatchOpening.htm" />
+    <Map Name="REJECTDOCUMENT" Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/RejectDocument.htm" />
+    <Map Name="INSTALLATION" Link="/Content/Installation/Installation.htm" />
+    <Map Name="SETUPDOCUMENTCLASS" Link="/Content/Modules/Administration/SetupDocumentClass.htm" />
+    <Map Name="DOCUMENTCERTIFICATION" Link="/Content/Modules/PDF Signer/OperatorTasks/DocumentCertification.htm" />
+    <Map Name="CLOSEBATCH" Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/CloseSuspendBatch.htm" />
+    <Map Name="SKIPDOCUMENT" Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/SkipSigning.htm" />
+</CatapultAliasFile>

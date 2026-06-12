@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultDestination
+  Version="1"
+  Comment="Online Help HU"
+  Host=""
+  User="MyAccountId"
+  Password=""
+  Directory="C:\Projects\PDFSigner\DEV\Help\hu"
+  Port=""
+  ViewUrl=""
+  Type="file"
+  UploadLogFile="false"
+  RemoveStale="false"
+  ChangedOnly="false"></CatapultDestination>

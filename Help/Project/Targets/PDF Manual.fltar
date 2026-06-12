@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultTarget
+  Version="2"
+  Comment=""
+  Type="PDF"
+  Destinations=""
+  GlossaryTermConversion="marked"
+  PatchHeadingLevels="true"
+  MasterPageLayout="/Content/Resources/PageLayouts/PrintedOutput.flpgl"
+  InjectBookHeadings="true"
+  UseEmptyAltText="false"
+  OutputFile="PDF Signer for Kofax Capture manual.pdf"
+  OutputFolder="C:\Projects\PDFSigner\Help"
+  ConditionTagExpression="include[Default.NemKiadhato or &quot;Default.Not Ready for Publish&quot; or Default.PrintOnly or Default.ScreenOnly] ">
+  <PrintedOutput
+    CollapseMargins="true" />
+  <PDF
+    ShowUsedBookmarks="false"
+    Tagged="true"
+    InitialMagnification="FitH"
+    PageLayout="OneColumn"
+    RestrictPermissions="true"
+    RestrictEditing="true"
+    RestrictPrinting="false"
+    ModifyPassword="J9GNVALeEAjeXarvYxPTaA=="
+    ImageCompression="Automatic"
+    DownsampleImages="false"
+    ImagePPIThreshold="300" />
+  <DocumentProperties
+    Title="eWay Adminisztráció modul kézikönyv"
+    Author="Doc-Soft Kkt." />
+  <RelationshipTables />
+</CatapultTarget>

@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Clause_Format_Missing" xml:space="preserve">
+    <value>The clause format is not selected.</value>
+  </data>
+  <data name="Copying_Organization_Missing" xml:space="preserve">
+    <value>The name of the copying organization is not provided.</value>
+  </data>
+  <data name="Copying_Regulation_Name_Missing" xml:space="preserve">
+    <value>The name of the copying regulation is not provided.</value>
+  </data>
+  <data name="Copying_Regulation_URL_Missing" xml:space="preserve">
+    <value>The URL of the copying regulation is not provided.</value>
+  </data>
+  <data name="Copying_Regulation_Version_Missing" xml:space="preserve">
+    <value>The version of the copying regulation is not provided.</value>
+  </data>
+  <data name="Header_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Index_Bar_Code_Missing" xml:space="preserve">
+    <value>The field containing the bar code must be selected when signature is controlled by bar code content.</value>
+  </data>
+  <data name="Revocation_Method_Missing" xml:space="preserve">
+    <value>The method for revocation checking is not selected.</value>
+  </data>
+  <data name="Signature_Hash_Algorithm_Missing" xml:space="preserve">
+    <value>The signature hash algorithm is not selected.</value>
+  </data>
+  <data name="Signature_Marker_Missing" xml:space="preserve">
+    <value>Signature marker is not provided.</value>
+  </data>
+  <data name="Time_Stamp_Hash_Algorithm_Missing" xml:space="preserve">
+    <value>The time stamp hash algorithm is not selected.</value>
+  </data>
+  <data name="TSA_URL_Missing" xml:space="preserve">
+    <value>The URL for the TSA is not provided.</value>
+  </data>
+  <data name="Publish_Invalid_Index_Field" xml:space="preserve">
+    <value>Invalid index field selected in the signature setup of document class '{0}'.</value>
+  </data>
+  <data name="Publish_No_Doc_Class_Has_Signing_Enabled" xml:space="preserve">
+    <value>No document class has signing enabled.</value>
+  </data>
+  <data name="Ask_Save_Changes" xml:space="preserve">
+    <value>Save settings before exiting?</value>
+  </data>
+  <data name="Header_Save_Changes" xml:space="preserve">
+    <value>Save settings</value>
+  </data>
+  <data name="Signature_Policy_Hash_Error" xml:space="preserve">
+    <value>Invalid signature policy hash (not a valid Base64 encoded string).</value>
+  </data>
+  <data name="Crypto_Provider_Not_Selected" xml:space="preserve">
+    <value>The default cryptographic provider is not selected.</value>
+  </data>
+  <data name="Header_File_Save_Error" xml:space="preserve">
+    <value>Error while saving the selected file</value>
+  </data>
+  <data name="Header_File_Open_Error" xml:space="preserve">
+    <value>Error while opening the selected file</value>
+  </data>
+  <data name="Header_Reset_Settings" xml:space="preserve">
+    <value>Reset settings</value>
+  </data>
+  <data name="Reset_Settings" xml:space="preserve">
+    <value>Are you sure you want to reset all settings?</value>
+  </data>
+  <data name="XML_Schema_Error" xml:space="preserve">
+    <value>Cannot interpret settings due to XML schema error.</value>
+  </data>
+  <data name="PDFStreamer_AuthCode_Missing" xml:space="preserve">
+    <value>PDF Streamer authorization code is not provided.</value>
+  </data>
+  <data name="PDFStreamer_ConfigFile_Missing" xml:space="preserve">
+    <value>PDF Streamer configuration file is not provided.</value>
+  </data>
+  <data name="PDFStreamer_URL_Missing" xml:space="preserve">
+    <value>PDF Streamer URL is not provided.</value>
+  </data>
+  <data name="File_Append_Text_Invalid" xml:space="preserve">
+    <value>The provided file name append text contains characters that are not allowed in file names.</value>
+  </data>
+  <data name="File_Naming_Not_Selected" xml:space="preserve">
+    <value>Signed file naming method is not selected.</value>
+  </data>
+  <data name="File_New_Parameters_Not_Set" xml:space="preserve">
+    <value>If new file is to be created after signing then either the file name postfix (appeneded text) or the replacement extension (or both) must be provided.</value>
+  </data>
+  <data name="File_Replacement_Extension_Invalid" xml:space="preserve">
+    <value>The provided replacement extension contains characters that are not allowed in file names.</value>
+  </data>
+  <data name="Header_Help_Display_Error" xml:space="preserve">
+    <value>Error displaying Help topic</value>
+  </data>
+  <data name="MQ_Domain_Missing" xml:space="preserve">
+    <value>The domain name of the user used to connect to the MQFTP exchange directories must be provided.</value>
+  </data>
+  <data name="MQ_FolderIn_Missing" xml:space="preserve">
+    <value>The MQFTP folder for incoming files must be provided.</value>
+  </data>
+  <data name="MQ_FolderOut_Missing" xml:space="preserve">
+    <value>The MQFTP folder for outgoing files must be provided.</value>
+  </data>
+  <data name="MQ_Password_Missing" xml:space="preserve">
+    <value>The password for the user used to connect to the MQFTP exchange directories must be provided.</value>
+  </data>
+  <data name="MQ_UserName_Missing" xml:space="preserve">
+    <value>The user name used to connect to the MQFTP exchange directories must be provided.</value>
+  </data>
+  <data name="Exception_Loading_Setup_Values" xml:space="preserve">
+    <value>Exception occured while loading existing settings:
+{0}</value>
+  </data>
+  <data name="LTA_Signature_Config_Incorrect" xml:space="preserve">
+    <value>If 'Create single-pass PAdES B-LTA' is enabled, then following settings must be applied:
+- 'Create document time stamp' enabled,
+- Revocation check must be set to OCSP.</value>
+  </data>
+  <data name="Proxy_Server_Missing" xml:space="preserve">
+    <value>Proxy server name or IP is not provided.</value>
+  </data>
+  <data name="Proxy_Server_Invalid" xml:space="preserve">
+    <value>Proxy server must be provided as FQDN or IP address. Do not use 'http(s)://' prefix and do not include the port.</value>
+  </data>
+  <data name="Proxy_Auth_Method_Missing" xml:space="preserve">
+    <value>Proxy authentication mode is not selected.</value>
+  </data>
+  <data name="Proxy_User_Missing" xml:space="preserve">
+    <value>Proxy user name must be provided if authentication method is set to 'user/password'.</value>
+  </data>
+  <data name="Document_Viewer_Not_Selected" xml:space="preserve">
+    <value>The document viewer is not selected.</value>
+  </data>
+  <data name="Index_Skip_Note_Missing" xml:space="preserve">
+    <value>If 'Allow skip required documents' is enabled then the Skip note index field must be selected.</value>
+  </data>
+  <data name="MNBSigner_Domain_Missing" xml:space="preserve">
+    <value>The domain name of the user used to connect to the MNB Signer web service must be provided.</value>
+  </data>
+  <data name="MNBSigner_Password_Missing" xml:space="preserve">
+    <value>The password for the user used to connect to the MNB Signer web service must be provided.</value>
+  </data>
+  <data name="MNBSigner_URL_Missing" xml:space="preserve">
+    <value>MNB Signer URL is not provided.</value>
+  </data>
+  <data name="MNBSigner_UserName_Missing" xml:space="preserve">
+    <value>The user name used to connect to the MNB Signer web service must be provided.</value>
+  </data>
+  <data name="MNBSigner_Auth_Method_Not_Selected" xml:space="preserve">
+    <value>MNB Signer authentication method is not selected.</value>
+  </data>
+  <data name="MNBSigner_URL_Not_Http" xml:space="preserve">
+    <value>URL must address 'http' or 'https' resource.</value>
+  </data>
+  <data name="URL_Not_Complete" xml:space="preserve">
+    <value>The provided URL is incomplete.</value>
+  </data>
+  <data name="No_Crypto_Provider_Enabled" xml:space="preserve">
+    <value>At least one cryptographic provider must be enabled.</value>
+  </data>
+  <data name="Default_Crypto_Provider_Not_Enabled" xml:space="preserve">
+    <value>The cryptographic provider selected as default is not enabled.</value>
+  </data>
+  <data name="Reset_CSS_In_Kofax_Admin" xml:space="preserve">
+    <value>Would you like to delete all CSSs that start with '{0}' from the Kofax Administration database? This cannot be undone!</value>
+  </data>
+</root>

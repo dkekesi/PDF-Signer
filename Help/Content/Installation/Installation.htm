@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="863" MadCap:lastWidth="1054">
+    <head><title></title>
+    </head>
+    <body>
+        <h1><MadCap:variable name="MyVariables.PDFSigner" /> telepítése</h1>
+        <h2>A telepítőkészlet tartalma</h2>
+        <p>A <MadCap:variable name="MyVariables.PDFSigner" /> rendszer telepítője az alábbi fájlokat és mappákat tartalmazza:</p>
+        <ul>
+            <li>a rendszer MSI telepítőcsomagja (PDFSignerSetup.msi)</li>
+            <li>a <MadCap:variable name="MyVariables.PDFSigner" /> rendszer licencfájlja</li>
+            <li>követelmények mappa (Prerequisites mappa)<ul><li>.NET Framework 4.6.1 angol nyelvi verzió (NDP461-KB3102436-x86-x64-AllOS-ENU.exe)</li></ul></li>
+        </ul>
+        <h2>A telepítés menete</h2>
+        <h3>Követelmények telepítése</h3>
+        <h4>.NET FrameWork 4.6.1 telepítése</h4>
+        <p>Amennyiben még nincs telepítve, úgy a <MadCap:variable name="MyVariables.PDFSigner" /> telepítőkészlet <i>Prerequisites</i> mappájából telepítsük fel a .NET Framework 4.6.1-es verzióját. Mindenhol fogadjuk el az alapértelmezett beállításokat.</p>
+        <h3>A <MadCap:variable name="MyVariables.PDFSigner" /> installálása</h3>
+        <p class="warning">Figyelem! A <MadCap:variable name="MyVariables.PDFSigner" /> csak olyan munkaállomásra vagy szervere telepíthető, amelyen a <MadCap:variable name="MyVariables.KC" /> kliens előzőleg telepítve lett!</p>
+        <p>A követelmények telepítését követően jelentkezzünk be helyi adminisztrátori jogokkal rendelkező felhasználóval, és indítsuk el a telepítőt a <code>PDFSignerSetup.msi</code> programmal.</p>
+        <p>A megjelenő ablakban olvassuk el, majd fogadjuk el a licencszerződést az <i>I accept the terms in the License Agreement</i> jelölőnégyzet bejelölésével.</p>
+        <p>Az <code>Install</code> gombra kattintva megtörténik a rendszer telepítése. A&#160;telepítőben semmilyen beállításra nincs lehetőség, mivel a program automatikusan a <MadCap:variable name="MyVariables.KC" /> alkalmazás megfelelő könyvtárába települ.</p>
+        <p>A <code>Finish</code> gomb megnyomására a telepítő bezárul.</p>
+        <h3>A <MadCap:variable name="MyVariables.PDFSigner" /> licencfájl telepítése</h3>
+        <p>A licencfájl telepítése attól függ, hogy a <MadCap:variable name="MyVariables.KC" /> rendszert hálózatos (Server) vagy egymunkaállomásos (Standalone) módban telepítettük.</p>
+        <h4>Licencfájl telepítés hálózatos (Server) installáció esetén</h4>
+        <p>Hozzunk létre a Kofax fájlmegosztáson (alapértelmezés szerint <code>\\kofaxszervernév\CaptureSV</code>) belül egy új mappát <code>PDFSigner</code> néven. A kapott <code>PDFSigner.license</code> fájlt másoljuk ebbe a mappába.</p>
+        <h4>Licencfájl telepítés egymunkaállomásos (Standalone) installáció esetén</h4>
+        <p>Másoljuk a <code>PDFSigner.license</code> fájlt a <MadCap:variable name="MyVariables.KC" /> Bin mappájába.</p>
+    </body>
+</html>

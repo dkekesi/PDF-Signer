@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <body>
+        <p class="warning">Figyelem! A <MadCap:variable name="MyVariables.PDFSigner" /> modul 32 bites (a <MadCap:variable name="MyVariables.KC" /> rendszer limitációi miatt), ezért a hitelesíthető fájlméret  korlátozott! A hitelesíthető fájlméret függ a PDF&#160;állomány képi tartalmától is: színes oldalakat tartalmazó állományok esetén a hitelesíthető fájlméret jelentősen csökken, mivel a megtekintőben megnyitott állományok jelentős mennyiségű memóriát foglalnak! Általánosságban elmondható, hogy csak 1 bites fekete-fehér oldalakat tartalmazó dokumentumból kb. 1500 oldalas hitelesíthető, míg színes oldalak esetén 70-80  (A/4, 300 dpi esetén)! Ezek a számok csak nagyságrendi becslések, a hitelesíthető dokumentumméret ezen felül függ az operációs rendszertől (32 vagy 64 bites), a munkaállomás memóriájának méretétől és az elérhető szabad memória töredezettségétől.</p>
+    </body>
+</html>

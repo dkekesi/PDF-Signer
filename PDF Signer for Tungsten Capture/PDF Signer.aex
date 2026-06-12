@@ -1,0 +1,23 @@
+[Modules]
+PDF Signer
+
+[PDF Signer]
+RuntimeProgram=PDFSigner.exe
+ModuleID=DocSoft.PDFSigner
+Description=Module for electronically signing PDF documents
+Version=11.2
+SupportsNonImageFiles=True
+SupportsTableFields=True
+Function=Validation
+SetupProgram = PDFSigner Setup
+
+[PDFSigner Setup]
+OCXFile=PDFSignerSetup.dll
+ProgID=PDFSignerSetup.Setup
+Visible=0
+MinSizeX=300
+MinSizeY=550
+DocumentClassMenus=PDFSignerSetupMenu
+
+[PDFSignerSetupMenu]
+MenuText=PDF Signer Setup...

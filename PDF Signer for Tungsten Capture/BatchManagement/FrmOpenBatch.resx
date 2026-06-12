@@ -1,0 +1,1049 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SplitContainer.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="SplitContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="GridBatch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="GridBatch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="GridBatchName.Caption" xml:space="preserve">
+    <value>Batch name</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GridBatchName.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridBatchName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GridBatchName.Width" type="System.Int32, mscorlib">
+    <value>315</value>
+  </data>
+  <data name="GridBatchClass.Caption" xml:space="preserve">
+    <value>Batch class</value>
+  </data>
+  <data name="GridBatchClass.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridBatchClass.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="GridBatchClass.Width" type="System.Int32, mscorlib">
+    <value>208</value>
+  </data>
+  <data name="GridBatchDateTime.Caption" xml:space="preserve">
+    <value>Batch creation time</value>
+  </data>
+  <data name="GridBatchDateTime.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridBatchDateTime.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="GridBatchDateTime.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="GridBatchStatus.Caption" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="GridBatchStatus.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridBatchStatus.VisibleIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="GridBatchStatus.Width" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="GridBatchDocCount.Caption" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="GridBatchDocCount.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridBatchDocCount.VisibleIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="GridBatchDocCount.Width" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="GridBatchPageCount.Caption" xml:space="preserve">
+    <value>Pages</value>
+  </data>
+  <data name="GridBatchPageCount.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridBatchPageCount.VisibleIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="GridBatchPageCount.Width" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="GridBatchPriority.Caption" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="GridBatchPriority.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridBatchPriority.VisibleIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="GridBatchPriority.Width" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="GridBatch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>960, 448</value>
+  </data>
+  <data name="GridBatch.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;GridBatch.Name" xml:space="preserve">
+    <value>GridBatch</value>
+  </data>
+  <data name="&gt;&gt;GridBatch.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridBatch.Parent" xml:space="preserve">
+    <value>SplitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;GridBatch.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SplitContainer.Panel1.Text" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="SplitContainerFilters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="SplitContainerFilters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="GridFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="GridFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 35</value>
+  </data>
+  <data name="GridFilterName.Caption" xml:space="preserve">
+    <value>Saved filter name</value>
+  </data>
+  <data name="GridFilterName.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridFilterName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GridFilterName.Width" type="System.Int32, mscorlib">
+    <value>145</value>
+  </data>
+  <data name="GridFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 117</value>
+  </data>
+  <data name="GridFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;GridFilter.Name" xml:space="preserve">
+    <value>GridFilter</value>
+  </data>
+  <data name="&gt;&gt;GridFilter.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridFilter.Parent" xml:space="preserve">
+    <value>SplitContainerFilters.Panel1</value>
+  </data>
+  <data name="&gt;&gt;GridFilter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="StandaloneBarDockControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="StandaloneBarDockControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <metadata name="BarManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>134, 17</value>
+  </metadata>
+  <data name="TBConditionsText.Caption" xml:space="preserve">
+    <value>Current filter conditions</value>
+  </data>
+  <data name="TBConditionsEnabled.Caption" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="TBConditionAdd.Caption" xml:space="preserve">
+    <value>Add condition</value>
+  </data>
+  <data name="TBConditionDelete.Caption" xml:space="preserve">
+    <value>Delete condition</value>
+  </data>
+  <data name="TBConditionDeleteAll.Caption" xml:space="preserve">
+    <value>Delete all conditions</value>
+  </data>
+  <data name="TBConditionSave.Caption" xml:space="preserve">
+    <value>Save as filter</value>
+  </data>
+  <data name="BarDockControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="BarDockControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="BarDockControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>745, 35</value>
+  </data>
+  <data name="BarDockControl.Text" xml:space="preserve">
+    <value>StandaloneBarDockControl2</value>
+  </data>
+  <data name="&gt;&gt;BarDockControl.Name" xml:space="preserve">
+    <value>BarDockControl</value>
+  </data>
+  <data name="&gt;&gt;BarDockControl.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.StandaloneBarDockControl, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BarDockControl.Parent" xml:space="preserve">
+    <value>SplitContainerFilters.Panel2</value>
+  </data>
+  <data name="&gt;&gt;BarDockControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ToolBarCondition.Text" xml:space="preserve">
+    <value>Conditions</value>
+  </data>
+  <data name="TBFiltersText.Caption" xml:space="preserve">
+    <value>Saved filters</value>
+  </data>
+  <data name="TBFilterDelete.Caption" xml:space="preserve">
+    <value>Delete filter</value>
+  </data>
+  <data name="TBFilterDeleteAll.Caption" xml:space="preserve">
+    <value>Delete all filters</value>
+  </data>
+  <data name="ToolBarFilter.Text" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="barDockControlTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="barDockControlTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>984, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Name" xml:space="preserve">
+    <value>barDockControlTop</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlTop.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="barDockControlBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="barDockControlBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 661</value>
+  </data>
+  <data name="barDockControlBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>984, 0</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Name" xml:space="preserve">
+    <value>barDockControlBottom</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlBottom.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="barDockControlLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="barDockControlLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="barDockControlLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 661</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Name" xml:space="preserve">
+    <value>barDockControlLeft</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlLeft.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="barDockControlRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="barDockControlRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>984, 0</value>
+  </data>
+  <data name="barDockControlRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 661</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Name" xml:space="preserve">
+    <value>barDockControlRight</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarDockControl, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;barDockControlRight.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>56</value>
+  </metadata>
+  <data name="BtnOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="BtnOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>660, 624</value>
+  </data>
+  <data name="BtnOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="BtnOK.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="BtnOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;BtnOK.Name" xml:space="preserve">
+    <value>BtnOK</value>
+  </data>
+  <data name="&gt;&gt;BtnOK.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BtnOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnOK.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="BtnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>872, 624</value>
+  </data>
+  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="BtnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.Name" xml:space="preserve">
+    <value>BtnCancel</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>984, 661</value>
+  </data>
+  <data name="BtnRefresh.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="BtnRefresh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>766, 624</value>
+  </data>
+  <data name="BtnRefresh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="BtnRefresh.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="BtnRefresh.Text" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="&gt;&gt;BtnRefresh.Name" xml:space="preserve">
+    <value>BtnRefresh</value>
+  </data>
+  <data name="&gt;&gt;BtnRefresh.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BtnRefresh.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnRefresh.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
+        AAAjcI0BEUFTBgAJDA0AAAAQAAAAEQAAABEAAAARAAAAEQAAABEAAAARAAAAEQAAABEAAAAQAAIEDgIW
+        HQgGLj0CInqbuQRznf4Dc57/A3Oe/wNznv8Dc57/A3Oe/wNznv8Dc57/A3Oe/wNznv8Dc57/A3Oe/wNy
+        nPEBLj9cCCYxBg54n//O7fn/2vT//9r0///a9P//2vT//9r0///a9P//2vT//9r0///a9P//2vT//9r0
+        //+i0+b/BWeMywUVHAskfp7/r9zt/5rh+/+D2vv/g9r7/4Pa+/+D2vv/g9r7/4Pa+/+D2vv/g9r7/4Pa
+        +/+O3fv/zO36/wx7pfYCCw4RPIKa/43J4P+U3vr/Y8/4/2PP+P9jz/j/Y8/4/2PP+P9jz/j/Y8/4/2PP
+        +P9jz/j/ZM/4/8nv/f8tkbf/Ax0nN1GDk/9vudX/meD6/1DJ9/9Qyff/UMn3/1DJ9/9Qyff/UMn3/1DJ
+        9/9Qyff/UMn3/1DJ9/+u5/z/U6nK/wk7TmVmhIv/VqzM/7/t//972///e9v//3vb//972///e9v//3vb
+        //972///e9v//3vb//972///rej//3zB2/8PVW+RhI2L/zqew//R8v7/iN79/4je/f+I3v3/iN79/4je
+        /f+I3v3/iN79/4je/f+I3v3/iN79/6Xm/v+h1ur/Fm+Qvaadk/8nlLz/1PH8/5zi/P+X4Pz/l+D8/5fg
+        /P+X4Pz/l+D8/5fg/P+X4Pz/l+D8/5fg/P+k5Pz/xen3/x+Ot+eyppv/RqLE/7Tf8P/b9P7/2/T+/9v0
+        /v/b9P7/2/T+/9v0/v/b9P7/2/T+/9v0/v/b9P7/2/T+/9v0/f8plr7/tKmd/6bP3f8rlbz/IJG7/yCR
+        u/8gkbv/IJG7/yCRu/8gkbv/IJG7/yCRu/8gkbv/IJG7/yCRu/8gkbv/KZW8u7Wpnf/++vb//PLo//rx
+        5//68Of/+vDn//rw5v/5697/+erb//nq2//56tv/+erb//nz7v+jlon/AAAAAAAAAAC1qZ3//+rZ///W
+        s///2rX//963///iuf//6sj///r1///48v//+PL///jy///48v/8+PT/p5qM+QAAAAAAAAAArqKV/vvv
+        5f//6db//+vX///t2P//79n/9vDm/7Ckl/+nmoz/p5qM/6eajP+nmoz/p5qM+6yfkpsAAAAAAAAAALCj
+        lYenmoz1p5qM/6eajP+nmoz/p5qM/6eajPOzp5lzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAMAAAAD
+        AAAA/wAA//8AAA==
+</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>900, 500</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Open batch</value>
+  </data>
+  <data name="&gt;&gt;GridViewBatch.Name" xml:space="preserve">
+    <value>GridViewBatch</value>
+  </data>
+  <data name="&gt;&gt;GridViewBatch.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridBatchName.Name" xml:space="preserve">
+    <value>GridBatchName</value>
+  </data>
+  <data name="&gt;&gt;GridBatchName.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridBatchClass.Name" xml:space="preserve">
+    <value>GridBatchClass</value>
+  </data>
+  <data name="&gt;&gt;GridBatchClass.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridBatchDateTime.Name" xml:space="preserve">
+    <value>GridBatchDateTime</value>
+  </data>
+  <data name="&gt;&gt;GridBatchDateTime.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridBatchStatus.Name" xml:space="preserve">
+    <value>GridBatchStatus</value>
+  </data>
+  <data name="&gt;&gt;GridBatchStatus.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridBatchDocCount.Name" xml:space="preserve">
+    <value>GridBatchDocCount</value>
+  </data>
+  <data name="&gt;&gt;GridBatchDocCount.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridBatchPageCount.Name" xml:space="preserve">
+    <value>GridBatchPageCount</value>
+  </data>
+  <data name="&gt;&gt;GridBatchPageCount.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridBatchPriority.Name" xml:space="preserve">
+    <value>GridBatchPriority</value>
+  </data>
+  <data name="&gt;&gt;GridBatchPriority.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridViewFilters.Name" xml:space="preserve">
+    <value>GridViewFilters</value>
+  </data>
+  <data name="&gt;&gt;GridViewFilters.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridFilterName.Name" xml:space="preserve">
+    <value>GridFilterName</value>
+  </data>
+  <data name="&gt;&gt;GridFilterName.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BarManager1.Name" xml:space="preserve">
+    <value>BarManager1</value>
+  </data>
+  <data name="&gt;&gt;BarManager1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ToolBarCondition.Name" xml:space="preserve">
+    <value>ToolBarCondition</value>
+  </data>
+  <data name="&gt;&gt;ToolBarCondition.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBConditionsText.Name" xml:space="preserve">
+    <value>TBConditionsText</value>
+  </data>
+  <data name="&gt;&gt;TBConditionsText.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBConditionsEnabled.Name" xml:space="preserve">
+    <value>TBConditionsEnabled</value>
+  </data>
+  <data name="&gt;&gt;TBConditionsEnabled.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarCheckItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBConditionAdd.Name" xml:space="preserve">
+    <value>TBConditionAdd</value>
+  </data>
+  <data name="&gt;&gt;TBConditionAdd.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBConditionDelete.Name" xml:space="preserve">
+    <value>TBConditionDelete</value>
+  </data>
+  <data name="&gt;&gt;TBConditionDelete.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBConditionDeleteAll.Name" xml:space="preserve">
+    <value>TBConditionDeleteAll</value>
+  </data>
+  <data name="&gt;&gt;TBConditionDeleteAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBConditionSave.Name" xml:space="preserve">
+    <value>TBConditionSave</value>
+  </data>
+  <data name="&gt;&gt;TBConditionSave.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;ToolBarFilter.Name" xml:space="preserve">
+    <value>ToolBarFilter</value>
+  </data>
+  <data name="&gt;&gt;ToolBarFilter.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.Bar, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBFiltersText.Name" xml:space="preserve">
+    <value>TBFiltersText</value>
+  </data>
+  <data name="&gt;&gt;TBFiltersText.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBFilterDelete.Name" xml:space="preserve">
+    <value>TBFilterDelete</value>
+  </data>
+  <data name="&gt;&gt;TBFilterDelete.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;TBFilterDeleteAll.Name" xml:space="preserve">
+    <value>TBFilterDeleteAll</value>
+  </data>
+  <data name="&gt;&gt;TBFilterDeleteAll.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarButtonItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridViewCondition.Name" xml:space="preserve">
+    <value>GridViewCondition</value>
+  </data>
+  <data name="&gt;&gt;GridViewCondition.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridConditionName.Name" xml:space="preserve">
+    <value>GridConditionName</value>
+  </data>
+  <data name="&gt;&gt;GridConditionName.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditFilterBy.Name" xml:space="preserve">
+    <value>LookUpEditFilterBy</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditFilterBy.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridConditionBatchField.Name" xml:space="preserve">
+    <value>GridConditionBatchField</value>
+  </data>
+  <data name="&gt;&gt;GridConditionBatchField.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridConditionRelation.Name" xml:space="preserve">
+    <value>GridConditionRelation</value>
+  </data>
+  <data name="&gt;&gt;GridConditionRelation.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditFilterRelation.Name" xml:space="preserve">
+    <value>LookUpEditFilterRelation</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditFilterRelation.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridConditionValue.Name" xml:space="preserve">
+    <value>GridConditionValue</value>
+  </data>
+  <data name="&gt;&gt;GridConditionValue.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;NumericSpinEdit.Name" xml:space="preserve">
+    <value>NumericSpinEdit</value>
+  </data>
+  <data name="&gt;&gt;NumericSpinEdit.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;DateTimeEdit.Name" xml:space="preserve">
+    <value>DateTimeEdit</value>
+  </data>
+  <data name="&gt;&gt;DateTimeEdit.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditValueBoolean.Name" xml:space="preserve">
+    <value>LookUpEditValueBoolean</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditValueBoolean.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditStatus.Name" xml:space="preserve">
+    <value>LookUpEditStatus</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditStatus.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditFilterRelationTemporary.Name" xml:space="preserve">
+    <value>LookUpEditFilterRelationTemporary</value>
+  </data>
+  <data name="&gt;&gt;LookUpEditFilterRelationTemporary.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit, DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;WsManager.Name" xml:space="preserve">
+    <value>WsManager</value>
+  </data>
+  <data name="&gt;&gt;WsManager.Type" xml:space="preserve">
+    <value>DevExpress.Utils.WorkspaceManager, DevExpress.Utils.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;BarStaticItem2.Name" xml:space="preserve">
+    <value>BarStaticItem2</value>
+  </data>
+  <data name="&gt;&gt;BarStaticItem2.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.BarStaticItem, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmOpenBatch</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="StandaloneBarDockControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 35</value>
+  </data>
+  <data name="StandaloneBarDockControl1.Text" xml:space="preserve">
+    <value>StandaloneBarDockControl2</value>
+  </data>
+  <data name="&gt;&gt;StandaloneBarDockControl1.Name" xml:space="preserve">
+    <value>StandaloneBarDockControl1</value>
+  </data>
+  <data name="&gt;&gt;StandaloneBarDockControl1.Type" xml:space="preserve">
+    <value>DevExpress.XtraBars.StandaloneBarDockControl, DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;StandaloneBarDockControl1.Parent" xml:space="preserve">
+    <value>SplitContainerFilters.Panel1</value>
+  </data>
+  <data name="&gt;&gt;StandaloneBarDockControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="SplitContainerFilters.Panel1.Text" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="GridCondition.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="GridCondition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 35</value>
+  </data>
+  <data name="GridConditionName.Caption" xml:space="preserve">
+    <value>Filter by</value>
+  </data>
+  <data name="LookUpEditFilterBy.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="DevExpress.Utils.v25.2" name="DevExpress.Utils.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="LookUpEditFilterBy.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v25.2">
+    <value>Combo</value>
+  </data>
+  <data name="LookUpEditFilterBy.Columns" xml:space="preserve">
+    <value>DisplayName</value>
+  </data>
+  <data name="LookUpEditFilterBy.Columns1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LookUpEditFilterBy.Columns2" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <assembly alias="DevExpress.Data.v25.2" name="DevExpress.Data.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="LookUpEditFilterBy.Columns3" type="DevExpress.Utils.FormatType, DevExpress.Data.v25.2">
+    <value>None</value>
+  </data>
+  <data name="LookUpEditFilterBy.Columns4" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LookUpEditFilterBy.Columns5" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LookUpEditFilterBy.Columns6" type="DevExpress.Utils.HorzAlignment, DevExpress.Data.v25.2">
+    <value>Default</value>
+  </data>
+  <data name="LookUpEditFilterBy.Columns7" type="DevExpress.Data.ColumnSortOrder, DevExpress.Data.v25.2">
+    <value>Ascending</value>
+  </data>
+  <data name="LookUpEditFilterBy.Columns8" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v25.2">
+    <value>Default</value>
+  </data>
+  <data name="GridConditionName.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridConditionName.VisibleIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GridConditionName.Width" type="System.Int32, mscorlib">
+    <value>174</value>
+  </data>
+  <data name="GridConditionBatchField.Caption" xml:space="preserve">
+    <value>Batch field</value>
+  </data>
+  <data name="GridConditionBatchField.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridConditionBatchField.VisibleIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="GridConditionBatchField.Width" type="System.Int32, mscorlib">
+    <value>145</value>
+  </data>
+  <data name="GridConditionRelation.Caption" xml:space="preserve">
+    <value>Filter relation</value>
+  </data>
+  <data name="LookUpEditFilterRelation.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LookUpEditFilterRelation.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v25.2">
+    <value>Combo</value>
+  </data>
+  <data name="LookUpEditFilterRelation.Columns" xml:space="preserve">
+    <value>DisplayName</value>
+  </data>
+  <data name="LookUpEditFilterRelation.Columns1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LookUpEditFilterRelation.Columns2" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="LookUpEditFilterRelation.Columns3" type="DevExpress.Utils.FormatType, DevExpress.Data.v25.2">
+    <value>None</value>
+  </data>
+  <data name="LookUpEditFilterRelation.Columns4" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LookUpEditFilterRelation.Columns5" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LookUpEditFilterRelation.Columns6" type="DevExpress.Utils.HorzAlignment, DevExpress.Data.v25.2">
+    <value>Default</value>
+  </data>
+  <data name="LookUpEditFilterRelation.Columns7" type="DevExpress.Data.ColumnSortOrder, DevExpress.Data.v25.2">
+    <value>None</value>
+  </data>
+  <data name="LookUpEditFilterRelation.Columns8" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v25.2">
+    <value>Default</value>
+  </data>
+  <data name="GridConditionRelation.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridConditionRelation.VisibleIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="GridConditionRelation.Width" type="System.Int32, mscorlib">
+    <value>187</value>
+  </data>
+  <data name="GridConditionValue.Caption" xml:space="preserve">
+    <value>Filter value</value>
+  </data>
+  <data name="GridConditionValue.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GridConditionValue.VisibleIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="GridConditionValue.Width" type="System.Int32, mscorlib">
+    <value>192</value>
+  </data>
+  <data name="NumericSpinEdit.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="NumericSpinEdit.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v25.2">
+    <value>Combo</value>
+  </data>
+  <data name="NumericSpinEdit.Mask.EditMask" xml:space="preserve">
+    <value>N00</value>
+  </data>
+  <data name="DateTimeEdit.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="DateTimeEdit.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v25.2">
+    <value>Combo</value>
+  </data>
+  <data name="DateTimeEdit.Mask.EditMask" xml:space="preserve">
+    <value>yyyy-MM-dd HH:mm:ss</value>
+  </data>
+  <data name="LookUpEditValueBoolean.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LookUpEditValueBoolean.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v25.2">
+    <value>Combo</value>
+  </data>
+  <data name="LookUpEditValueBoolean.Columns" xml:space="preserve">
+    <value>DisplayName</value>
+  </data>
+  <data name="LookUpEditValueBoolean.Columns1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LookUpEditStatus.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LookUpEditStatus.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v25.2">
+    <value>Combo</value>
+  </data>
+  <data name="LookUpEditStatus.Columns" xml:space="preserve">
+    <value>DisplayName</value>
+  </data>
+  <data name="LookUpEditStatus.Columns1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LookUpEditFilterRelationTemporary.AutoHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LookUpEditFilterRelationTemporary.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v25.2">
+    <value>Combo</value>
+  </data>
+  <data name="LookUpEditFilterRelationTemporary.Columns" xml:space="preserve">
+    <value>DisplayName</value>
+  </data>
+  <data name="LookUpEditFilterRelationTemporary.Columns1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GridCondition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>745, 117</value>
+  </data>
+  <data name="GridCondition.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;GridCondition.Name" xml:space="preserve">
+    <value>GridCondition</value>
+  </data>
+  <data name="&gt;&gt;GridCondition.Type" xml:space="preserve">
+    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;GridCondition.Parent" xml:space="preserve">
+    <value>SplitContainerFilters.Panel2</value>
+  </data>
+  <data name="&gt;&gt;GridCondition.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SplitContainerFilters.Panel2.Text" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="SplitContainerFilters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>960, 152</value>
+  </data>
+  <data name="SplitContainerFilters.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="SplitContainerFilters.Text" xml:space="preserve">
+    <value>SplitContainerControl1</value>
+  </data>
+  <data name="&gt;&gt;SplitContainerFilters.Name" xml:space="preserve">
+    <value>SplitContainerFilters</value>
+  </data>
+  <data name="&gt;&gt;SplitContainerFilters.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SplitContainerControl, DevExpress.Utils.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;SplitContainerFilters.Parent" xml:space="preserve">
+    <value>SplitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;SplitContainerFilters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SplitContainer.Panel2.Text" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="SplitContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>960, 606</value>
+  </data>
+  <data name="SplitContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="SplitContainer.Text" xml:space="preserve">
+    <value>SplitContainerControl1</value>
+  </data>
+  <data name="&gt;&gt;SplitContainer.Name" xml:space="preserve">
+    <value>SplitContainer</value>
+  </data>
+  <data name="&gt;&gt;SplitContainer.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SplitContainerControl, DevExpress.Utils.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;SplitContainer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SplitContainer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="WsManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="BarStaticItem2.Caption" xml:space="preserve">
+    <value>Filter conditions</value>
+  </data>
+</root>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultToc
+  Version="1">
+  <TocEntry
+    Title="Bevezető"
+    Link="/Content/Introduction.htm" />
+  <TocEntry
+    Title="Megfelelőség">
+    <TocEntry
+      Title="Műszaki megfelelőség"
+      Link="/Content/Compliance/TechnicalCompliance.htm" />
+    <TocEntry
+      Title="Jogi megfelelőség"
+      Link="/Content/Compliance/LegalCompliance.htm" />
+  </TocEntry>
+  <TocEntry
+    Title="Telepítés">
+    <TocEntry
+      Title="Rendszerkövetelmények"
+      Link="/Content/Installation/SystemRequirements.htm" />
+    <TocEntry
+      Title="PDF Signer for Kofax Capture telepítése"
+      Link="/Content/Installation/Installation.htm" />
+  </TocEntry>
+  <TocEntry
+    Title="PDF Signer beállítása"
+    Link="/Content/Modules/Administration/SetupAdministration.htm">
+    <TocEntry
+      Title="Kötegosztályok beállítása"
+      Link="/Content/Modules/Administration/SetupBatchClass.htm" />
+    <TocEntry
+      Title="Dokumentumosztály hitelesítési beállításai"
+      Link="/Content/Modules/Administration/SetupDocumentClass.htm" />
+  </TocEntry>
+  <TocEntry
+    Title="PDF Signer használata"
+    Link="/Content/Modules/PDF Signer/OperatorTasks.htm">
+    <TocEntry
+      Title="Felhasználói feladatok">
+      <TocEntry
+        Title="Köteg megnyitása"
+        Link="/Content/Modules/PDF Signer/OperatorTasks/BatchOpening.htm" />
+      <TocEntry
+        Title="Dokumentumok hitelesítése"
+        Link="/Content/Modules/PDF Signer/OperatorTasks/DocumentCertification.htm" />
+      <TocEntry
+        Title="Hibakezelés"
+        Link="/Content/Modules/PDF Signer/OperatorTasks/ErrorHandling.htm" />
+    </TocEntry>
+    <TocEntry
+      Title="Felhasználói felület"
+      Link="/Content/Modules/PDF Signer/UserInterface/MainWindow.htm">
+      <TocEntry
+        Title="Ablakok">
+        <TocEntry
+          Title="Köteg megnyitása"
+          Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/OpenBatch.htm" />
+        <TocEntry
+          Title="Dokumentum elutasítása"
+          Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/RejectDocument.htm" />
+        <TocEntry
+          Title="Dokumentum hitelesítésének kihagyása"
+          Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/SkipSigning.htm" />
+        <TocEntry
+          Title="Köteg felfüggesztése, lezárása"
+          Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/CloseSuspendBatch.htm" />
+        <TocEntry
+          Title="Névjegy"
+          Link="/Content/Modules/PDF Signer/UserInterface/Dialogs/About.htm" />
+      </TocEntry>
+    </TocEntry>
+  </TocEntry>
+</CatapultToc>

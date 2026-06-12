@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="54" MadCap:lastWidth="1106">
+    <body>
+        <p class="IconBullet">
+            <img src="../Images/Icons/DeletePage.png" class="BulletIcon" /><b>Törlés (Del):</b> törli a hitelesítendő dokumentum kiválasztott oldalát. A modulban dokumentum nem törölhető, csak egyes oldalak. Minden dokumentumnak legalább egy oldalból kell állnia, ezért az utolsó oldal nem törölhető.</p>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="2229" MadCap:lastWidth="1054">
+    <head><title></title>
+    </head>
+    <map id="map1">
+        <area shape="rectangle" coords="8,42,265,79" href="#Alairas" />
+        <area shape="rectangle" coords="16,80,597,269" href="#indexme" />
+        <area shape="rectangle" coords="605,80,866,269" href="#Vonalkod" />
+        <area shape="rectangle" coords="16,274,866,491" href="#Masolatk" />
+        <area shape="rectangle" coords="16,498,866,585" href="#Alairt" />
+        <area shape="rectangle" coords="16,603,866,638" href="#Kriptogr" />
+        <area shape="rectangle" coords="16,644,866,977" href="#Kriptogr2" />
+        <area shape="rectangle" coords="16,992,434,1027" href="#Beallita" />
+    </map>
+    <body>
+        <h1>Kötegosztályok beállítása</h1>
+        <p>A <MadCap:variable name="MyVariables.KC" /> Administration modulban válasszuk ki azt a kötegosztályt (batch class), melyben a <MadCap:variable name="MyVariables.PDFSigner" /> modult használni szeretnénk, majd kattintsunk rajta a jobb egérgombbal és válasszuk a Properties (tulajdonságok) menüpontot. indítása után válasszuk ki azt a dokumentumosztályt, amelynek beállításait módosítani szeretnék. Minden dokumentumosztályhoz eltérő beállítások adhatók meg, így biztosítva az esetelegesen eltérő jogszabályi követelményeknek való megfelelést. A dokumentumosztály kiválasztása után kattintsunk rajta jobb egérgombbal.</p>
+        <p>
+            <img src="../../Resources/Images/Screenshots/BatchClassContextMenu.png" class="Screenshot" />
+        </p>
+        <p class="ImageTitle">Kötegosztály helyzetérzékeny menüje</p>
+        <p>A megjelenő ablakban kattintsunk a Queues (folyamatelemek) fülre.</p>
+        <p>
+            <img src="../../Resources/Images/Screenshots/SetupBatchClass.png" class="Screenshot" />
+        </p>
+        <p class="ImageTitle">Kötegosztály folyamatelemeinek beállítása</p>
+        <p>A bal oldali Available queues (elérhető folyamatelemek) listában  válasszuk ki a <i>PDF Generator</i>-t és kattintsunk a középen lévő Add &gt;&gt; (Hozzáadás) gombra, mire a <i>PDF Generator</i> átkerül a jobb oldali Selected queues (kiválasztott folyamatelemek) listába. A lépést ismételjük meg a <i>PDF Signer</i> folyamatelemmel is. Ezt követően a Selected queues (kiválasztott folyamatelemek) listában fogjuk meg az egérbal gombját nyomva tartva a <i>PDF Signer</i>-t és húzzuk a PDF Generator alá.</p>
+        <p class="warning">Figyelem! A Selected Queues (kiválasztott folyamatelemek) listába kötelező felvenni mind a <i>PDF Generator</i>, mind a <i>PDF Signer</i> modulokat, és a <i>PDF Generator</i> modulnak a <i>PDF Signer</i> előtt kell lennie!</p>
+        <p>Természetesen a listában lehet több folyamatelem is, sőt a <i>PDF Generator</i> és a <i>PDF Signer</i> modulok közé további folyamatelemek ékelődhetnek (pl. validálás). A Selected Queues (kiválasztott folyamatelemek) listának az alábbiak szerint kell kinéznie:</p>
+        <p>
+            <img src="../../Resources/Images/Screenshots/SetupBatchClass2.png" class="Screenshot" />
+        </p>
+        <p class="ImageTitle">Kötegosztály folyamatelemeinek helyes beállítása</p>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultVariableSet>
+  <Variable
+    Comment=""
+    Name="PDFSigner">PDF Signer for Tungsten Capture</Variable>
+  <Variable
+    Name="DocSoft"
+    Comment="">Doc-Soft Kkt</Variable>
+  <Variable
+    Name="ServerName"
+    Comment="">Szerver</Variable>
+  <Variable
+    Name="KC"
+    Comment="">Tungsten Capture</Variable>
+</CatapultVariableSet>

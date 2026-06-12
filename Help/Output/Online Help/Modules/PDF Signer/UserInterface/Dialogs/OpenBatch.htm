@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="hu" xml:lang="hu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="PDF Signer használata|Felhasználói felület|Ablakok">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Köteg megnyitása ablak</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Resources/Stylesheets/Styles.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../../OperatorTasks.htm">PDF Signer használata</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../MainWindow.htm">Felhasználói felület</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Ablakok</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Köteg megnyitása</span>
+        </div>
+        <map id="map1" name="map1">
+            <area shape="rectangle" coords="20,43,1000,292" href="#Koteglis" />
+            <area shape="rectangle" coords="21,301,228,449" href="#Mentett" />
+            <area shape="rectangle" coords="235,300,1000,450" href="#Aktualis" />
+        </map>
+        <h1>Köteg megnyitása ablak</h1>
+        <p>Amennyiben van hitelesítésre várakozó köteg, akkor a <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> modul indításakor automatikusan megjelenik a Köteg megnyitása ablak.</p>
+        <p>
+            <img src="../../../../Resources/Images/Screenshots/OpenBatch.png" class="Screenshot" usemap="#map1" />
+        </p>
+        <p class="ImageTitle">Köteg megnyitása</p>
+        <h2>Párbeszédablak felépítése</h2>
+        <p>Az ablak az alábbi fő részekből áll:</p>
+        <ul>
+            <li value="1"><a href="#Koteglis">Köteglista</a>
+            </li>
+            <li value="2"><a href="#Mentett">Mentett szűrők</a>
+            </li>
+            <li value="3"><a href="#Aktualis">Aktuális szűrési feltételek</a>
+            </li>
+        </ul>
+        <h3><a name="Koteglis"></a>Köteglista</h3>
+        <p>A panelen lévő listából választhatjuk ki a hitelesíteni kívánt köteget.</p>
+        <ul>
+            <li value="1"><b>Köteg neve:</b> ebben az oszlopban látható a szkenneléskor megadott kötegnév.</li>
+            <li value="2"><b>Kötegtípus:</b> a feldolgozási folyamat (Batch class) neve.</li>
+            <li value="3"><b>Köteglétrehozás ideje:</b> a szkennelés megkezdésének időpontja.</li>
+            <li value="4"><b>Státusz:</b> a köteg státusza. Lehetséges értékek: Várakozik (a köteg készen áll a hitelesítésre), Felfüggesztve (a köteg már meg lett nyitva a <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> modulban, de még nem került hitelesítésre az összes dokumentum).</li>
+            <li value="5"><b>Dokumentumok:</b> a kötegben lévő dokumentumok száma.</li>
+            <li value="6"><b>Oldalak:</b> a kötegben lévő oldalak száma.</li>
+            <li value="7"><b>Prioritás:</b> a köteg prioritása. Az alacsonyabb számmal jelölt prioritású kötegek hamarabb feldolgozásra kerülnek.</li>
+        </ul>
+        <h3><a name="Mentett"></a>Mentett szűrők</h3>
+        <p>A panelen találhatók azok a szűrők, amelyeket korábban az adott felhasználó elmentett. Minden Windows felhasználónévhez saját szűrők tartoznak, azaz amennyiben több felhasználó használ egy adott munkaállomást, akkor ők nem látják egymás szűrőit.</p>
+        <p>A panel az alábbi részekből áll:</p>
+        <ul>
+            <li value="1"><a href="#Ikonsor">Ikonsor</a>
+            </li>
+            <li value="2"><a href="#Mentett2">Mentett szűrők listája</a>
+            </li>
+        </ul>
+        <h4><a name="Ikonsor"></a>Ikonsor</h4>
+        <p class="IconBullet">
+            <img src="../../../../Resources/Images/Icons/Delete.png" class="BulletIcon" /><b>Szűrő törlése:</b> megerősítést követően törli a kiválasztott szűrőt.</p>
+        <p class="IconBullet">
+            <img src="../../../../Resources/Images/Icons/DeleteAll.png" class="BulletIcon" /><b>Minden szűrő törlése:</b> megerősítést követően törli a Windows felhasználóhoz tartozó összes mentett szűrőt.</p>
+        <h4><a name="Mentett2"></a>Mentett szűrők listája</h4>
+        <p>A listában az alábbi oszlopok találhatók:</p>
+        <ul>
+            <li value="1"><b>Mentett szűrő neve:</b> a mentéskor megadott név. A név nem módosítható: átnevezéshez be kell tölteni a szűrőt, lementeni új névvel, majd a régit törölni kell.</li>
+        </ul>
+        <h3><a name="Aktualis"></a>Aktuális szűrési feltételek</h3>
+        <p>A panelen találhatók azok a szűrési feltételek, amelyekkel a <a href="#Koteglis">köteglistában</a> lévő kötegekre jelenleg szűr a rendszer.</p>
+        <p class="warning">Figyelem! Ahhoz, hogy a köteglista az aktuális szűrési feltételeknek megfelelő kötegeket tartalmazza, a szűrő módosítását követően kattintsunk az ablak alján lévő <i>Frissítés</i> gombra.</p>
+        <p>A panel az alábbi részekből áll:</p>
+        <ul>
+            <li value="1"><a href="#Ikonsor2">Ikonsor</a>
+            </li>
+            <li value="2"><a href="#Szuresi">Szűrési feltételek listája</a>
+            </li>
+        </ul>
+        <h4><a name="Ikonsor2"></a>Ikonsor</h4>
+        <ul>
+            <li value="1"><b>Bekapcsolva:</b> a szűrési feltételek aktívak, a köteglistában csak a feltételeknek megfelelő kötegek jelennek meg.</li>
+        </ul>
+        <p class="IconBullet">
+            <img src="../../../../Resources/Images/Icons/Add.png" class="BulletIcon" /><b>Feltétel hozzáadása:</b> új feltétel felvétele az aktuális szűrési feltételek közé.</p>
+        <p class="IconBullet">
+            <img src="../../../../Resources/Images/Icons/Delete.png" class="BulletIcon" /><b>Feltétel törlése:</b> kiválasztott feltétel törlése az aktuális szűrési feltételek közül.</p>
+        <p class="IconBullet">
+            <img src="../../../../Resources/Images/Icons/DeleteAll.png" class="BulletIcon" /><b>Minden feltétel törlése:</b>az összes feltétel törlése az aktuális szűrési feltételek közül. A <a href="#Koteglis">köteglistában</a> minden várakozó vagy felfüggesztett köteg megjelenik.</p>
+        <h4><a name="Szuresi"></a>Szűrési feltételek listája</h4>
+        <p>A listában az alábbi oszlopok találhatók:</p>
+        <ul>
+            <li value="1"><b>Szűrési feltétel:</b> a köteg szűrendő tulajdonsága (pl. neve, létrehozás dátuma, kötegmező) választható ki legördülő listából.</li>
+            <li value="2"><b>Kötegmező neve:</b> amennyiben szűrési feltételként kötegmezőt állítunk be, úgy ebben az oszlopban kell megadni a kötegmező nevét szabad szöveges bevitellel. Minden más szűrési feltétel esetén az oszlop tartalma törlődik.</li>
+            <li value="3"><b>Reláció:</b> a szűrési feltétel és szűrési érték összehasonlításának módja, amely legördülő listából választható. A lehetséges értékek a választott szűrési feltételtől függenek.</li>
+            <li value="4"><b>Szűrési érték:</b> a szűrési feltételnek megfeleltetett érték, szabad szöveges mezőben.</li>
+        </ul>
+        <p class="info">Az összes szűrési feltétel között ÉS&#160;logikai összefüggés van, azaz az összes feltételnek meg kell felelni egy adott kötegnek, hogy a <a href="#Koteglis">köteglistában</a> megjelenjen. A szabály alól kivétel a <i>Kötegosztály</i> szűrési feltétel, amiből többet is meg lehet adni, mivel köztük VAGY&#160;logikai összefüggés áll fent.</p>
+        <p class="copyright">Copyright © 2025. <span class="MyVariablesDocSoft">Doc-Soft Kkt</span>. Minden jog fenntartva.</p>
+    </body>
+</html>

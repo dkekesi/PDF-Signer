@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Product Id="351252D2-3D0A-4B16-B0D8-5F9E63410430" Name="PDF Signer for Tungsten Capture" Language="1033" Version="11.1" Manufacturer="Doc-Soft" UpgradeCode="3ff1f4f2-4d24-499d-9809-ebaaf0b1cf23">
+	<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+	<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Media Id="1" Cabinet="PDFSigner.cab" EmbedCab="yes" />
+
+    <Property Id="ARPPRODUCTICON" Value="PDFSigner.ico" />
+    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+    <UI>
+      <UIRef Id="WixUI_Minimal" />
+    </UI>
+
+    <Icon Id="PDFSigner.ico" SourceFile="..\PDF Signer for Tungsten Capture\PDFSigner.ico" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="EULA_PDFSignerForKC_hu.rtf" />
+    <WixVariable Id="WixUIDialogBmp" Value="Dialog.bmp" />
+    <WixVariable Id="WixUISupportPerUser" Value="0" />
+
+    <PropertyRef Id="WIXNETFX4RELEASEINSTALLED"/>
+	<Condition Message="This application requires .NET Framework 4.8 or higher. Please install .NET Framework 4.8 (from the 'Prerequisites' folder or download from Microsoft's web site), then run this installer again.">
+	    <![CDATA[Installed OR (WIXNETFX4RELEASEINSTALLED >= "#528040")]]>
+	</Condition>
+	<Condition Message="This installer must be run with elevated rights (as local administrator).">
+        <![CDATA[Installed OR Privileged]]>
+    </Condition>
+    <Condition Message="This application is only supported on Windows Vista, Windows Server 2008, or higher.">
+      <![CDATA[Installed OR (VersionNT >= 600)]]>
+    </Condition>
+
+    <Property Id="INSTALLFOLDER">
+      <RegistrySearch Id='InstallPathRegistry' Type='raw' Root='HKLM' Key='SOFTWARE\Kofax Image Products\Ascent Capture\3.0' Name='ExePath' Win64='no'/>
+    </Property>
+
+    <Condition Message="Tungsten Capture client installation folder not found.">
+      <![CDATA[Installed OR INSTALLFOLDER]]>
+    </Condition>
+
+    <Property Id="WixQuietExecCmdLine" Value=" " />
+    <CustomAction Id="InstallCM" Property="WixQuietExecCmdLine" Value="&quot;[INSTALLFOLDER]\RegAscCM.exe&quot; /f [INSTALLFOLDER]\PDF Signer.aex" />
+    <CustomAction Id="InstallWFA" Property="WixQuietExecCmdLine" Value="&quot;[INSTALLFOLDER]\RegAscCM.exe&quot; /f [INSTALLFOLDER]\PDF Signer for Tungsten Capture WFA.aex" />
+    <CustomAction Id="QtExecCommand" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="check" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="INSTALLFOLDER">
+        <Directory Id="Dir_Lang_HU" Name="hu">
+          <Directory Id="Dir_Help" Name="help" />
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" />
+    </Directory>
+
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="PDF_Signer_for_KC_exe" Guid="04739ACB-C935-4AE6-B6CF-2D0E5E7B20A9">
+        <File Source="..\PDF Signer for Tungsten Capture\bin\Release\PDFSigner.exe" KeyPath="yes" Checksum="yes"> 
+        	<Shortcut Id="Short_Desktop" Name="PDF Signer" Icon="PDFSigner.ico" IconIndex="0" Directory="DesktopFolder" WorkingDirectory="INSTALLFOLDER" Advertise="yes" />
+        </File>
+        <File Source="..\PDF Signer for Tungsten Capture\bin\Release\PDFSigner.exe.config" KeyPath="no" />
+      </Component>
+
+      <Component Id="PDF_Signer_for_KC_WFA_dll" Guid="3EA10A63-3BA2-46B6-B876-815A5F0E1279">
+        <File Source="..\PDF Signer for Tungsten Capture WFA\bin\Release\PDFSignerWFA.dll" KeyPath="yes" Checksum="yes" />
+      </Component>
+
+      <Component Id="PDF_Signer_for_KC_Setup_dll" Guid="CBEC6DC1-2CC3-4D47-B389-A7023CAD7401">
+        <File Source="..\PDF Signer for Tungsten Capture Setup\bin\Release\PDFSignerSetup.dll" KeyPath="yes" Checksum="yes" />
+      </Component>
+
+      <Component Id="PDF_Signer_for_KC_Common_dll" Guid="97ABD9B3-ABA0-49E1-8BB7-8088CADBB3E9">
+        <File Source="..\PDF Signer for Tungsten Capture Common\bin\Release\PDFSignerCommon.dll" KeyPath="yes" Checksum="yes" />
+      </Component>
+
+      <Component Id="PDF_Signer_for_KC_aex" Guid="BE115C61-7788-4C51-81DB-57F21CAAFB51">
+        <File Source="..\PDF Signer for Tungsten Capture\PDF Signer.aex" KeyPath="yes" />
+      </Component>
+
+      <Component Id="PDF_Signer_for_KC_WFA_aex" Guid="4ED2331C-C6A2-434F-A4B1-E1E0ABB8095F">
+        <File Source="..\PDF Signer for Tungsten Capture WFA\PDF Signer for Tungsten Capture WFA.aex" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="Dir_Lang_HU">
+      <Component Id="PDF_Signer_for_KC_resources_dll" Guid="6218915D-844E-411B-A124-70C3FC6A9496">
+        <File Source="..\PDF Signer for Tungsten Capture\bin\Release\hu\PDFSigner.resources.dll" KeyPath="yes" Checksum="yes"/>
+      </Component>
+
+      <Component Id="PDF_Signer_for_KC_Setup_resources_dll" Guid="FFF43EE4-F2E5-48E7-AEB6-7B23057A8671">
+        <File Source="..\PDF Signer for Tungsten Capture Setup\bin\Release\hu\PDFSignerSetup.resources.dll" KeyPath="yes" Checksum="yes"/>
+      </Component>
+
+      <Component Id="PDF_Signer_for_KC_Common_resources_dll" Guid="2A8B3081-FAF1-4DF7-B9EA-0B29AB5B1348">
+        <File Source="..\PDF Signer for Tungsten Capture Common\bin\Release\hu\PDFSignerCommon.resources.dll" KeyPath="yes" Checksum="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="Feat_PDFSignerKC" Title="PDF Signer for Tungsten Capture" Level="1" Display="expand" Absent="disallow" AllowAdvertise="no">
+      <ComponentRef Id="PDF_Signer_for_KC_exe" />
+      <ComponentRef Id="PDF_Signer_for_KC_WFA_dll" />
+      <ComponentRef Id="PDF_Signer_for_KC_Setup_dll" />
+      <ComponentRef Id="PDF_Signer_for_KC_Common_dll" />
+      <ComponentRef Id="PDF_Signer_for_KC_aex" />
+      <ComponentRef Id="PDF_Signer_for_KC_WFA_aex" />
+      <ComponentRef Id="PDF_Signer_for_KC_resources_dll" />
+      <ComponentRef Id="PDF_Signer_for_KC_Setup_resources_dll" />
+      <ComponentRef Id="PDF_Signer_for_KC_Common_resources_dll" />
+      <ComponentGroupRef Id="OnlineHelp" />
+    </Feature>
+
+    <InstallExecuteSequence>
+      <Custom Action="InstallCM" After="InstallFinalize" />
+      <Custom Action="InstallWFA" After="InstallCM" />
+      <Custom Action="QtExecCommand" After="InstallWFA" />
+    </InstallExecuteSequence>
+  </Product>
+</Wix>

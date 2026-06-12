@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PageStyles>
+    <Page Name="First" Width="800" Height="800" Padding="20px" PageSize="A4" PageType="first" PaddingLeft="1.5cm" PaddingRight="1.5cm" PaddingTop="1.5cm" PaddingBottom="1.5cm">
+        <Frame Flow="body" ColumnCount="1" Anchors="" PaddingLeft="0in" PaddingRight="0in" PaddingTop="0in" PaddingBottom="0in" X="0in" Y="41px" Right="0in" Bottom="0.4166667in" Width="17.96521cm" Height="24.52687cm">
+        </Frame>
+        <Frame X="0px" Y="-19px" Width="679px" Height="1.508125cm" Flow="header" Right="0px" Bottom="970px" Anchors="" BorderBottomStyle="solid" BorderBottomWidth="0.5px" BorderBottomColor="#1e90ff">
+            <Content>
+                <xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml">
+                    <xhtml:body>
+                        <xhtml:p> <![CDATA[ ]]></xhtml:p>
+                    </xhtml:body>
+                </xhtml:html>
+            </Content>
+        </Frame>
+        <Frame X="0px" Y="-7px" Width="247px" Height="32px" Flow="decoration" Right="432px" Bottom="983px" BackgroundImage="../Images/PrintedLayoutParts/Logo.svg" BackgroundRepeat="stretch" />
+        <Frame Flow="footer" Anchors="Left" Right="0in" X="0in" Y="25.90271cm" ColumnCount="1" PaddingLeft="0in" PaddingRight="0in" PaddingTop="0in" PaddingBottom="0in" FlowIndex="1" Height="1.455208cm" BorderTopStyle="solid" BorderTopWidth="0.5px" BorderTopColor="#1e90ff" Width="17.96521cm" Bottom="-26px" TextAlign="center" VerticalAlign="bottom">
+            <Content>
+                <xhtml:html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+                    <xhtml:head>
+                    </xhtml:head>
+                    <xhtml:body>
+                        <xhtml:p xhtml:class="Footer" xhtml:style="color: #1e90ff;"><MadCap:variable xhtml:name="MyVariables.PDFSigner" />kézikönyv – © <MadCap:variable xhtml:name="MyVariables.DocSoft" />.</xhtml:p>
+                        <xhtml:p xhtml:class="Footer" xhtml:style="color: #1e90ff;"><MadCap:variable xhtml:name="System.LongDate" />
+                        </xhtml:p>
+                        <xhtml:p xhtml:class="Footer" xhtml:style="color: #1e90ff;"><MadCap:variable xhtml:name="System.PageNumber" />/<MadCap:variable xhtml:name="System.PageCount" />. oldal</xhtml:p>
+                    </xhtml:body>
+                </xhtml:html>
+            </Content>
+        </Frame>
+        <Frame X="539px" Y="-60px" Width="140px" Height="140px" FlowIndex="1" Flow="decoration" Right="0px" Bottom="928px" BackgroundImage="../Images/PrintedLayoutParts/DocSoftLogo.svg" BackgroundRepeat="stretch" Anchors="" />
+    </Page>
+    <Page Width="800" Height="800" Padding="20px" PageSize="A4" PageType="title" PaddingLeft="1.5cm" PaddingRight="1.5cm" PaddingTop="1.5cm" PaddingBottom="1.5cm" Name="Title">
+        <Frame X="0px" Y="0px" Width="679px" Height="1008px" Flow="body" Right="0px" Bottom="0px" />
+    </Page>
+    <Page Name="Normal" Width="800" Height="800" Padding="20px" PageSize="A4" PageType="normal" PaddingLeft="1.5cm" PaddingRight="1.5cm" PaddingTop="1.5cm" PaddingBottom="1.5cm">
+        <Frame Flow="body" ColumnCount="1" Anchors="" PaddingLeft="0in" PaddingRight="0in" PaddingTop="0in" PaddingBottom="0in" X="0in" Y="41px" Right="0in" Bottom="0.4166667in" Width="17.96521cm" Height="24.52687cm">
+        </Frame>
+        <Frame X="0px" Y="-19px" Width="679px" Height="1.508125cm" Flow="header" Right="0px" Bottom="970px" Anchors="" BorderBottomStyle="solid" BorderBottomWidth="0.5px" BorderBottomColor="#1e90ff">
+            <Content>
+                <xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml">
+                    <xhtml:body>
+                        <xhtml:p> <![CDATA[ ]]></xhtml:p>
+                    </xhtml:body>
+                </xhtml:html>
+            </Content>
+        </Frame>
+        <Frame X="0px" Y="-7px" Width="247px" Height="32px" Flow="decoration" Right="432px" Bottom="983px" BackgroundImage="../Images/PrintedLayoutParts/Logo.svg" BackgroundRepeat="stretch" />
+        <Frame Flow="footer" Anchors="Left" Right="0in" X="0in" Y="25.90271cm" ColumnCount="1" PaddingLeft="0in" PaddingRight="0in" PaddingTop="0in" PaddingBottom="0in" FlowIndex="1" Height="1.455208cm" BorderTopStyle="solid" BorderTopWidth="0.5px" BorderTopColor="#1e90ff" Width="17.96521cm" Bottom="-26px" TextAlign="center" VerticalAlign="bottom">
+            <Content>
+                <xhtml:html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+                    <xhtml:head>
+                    </xhtml:head>
+                    <xhtml:body>
+                        <xhtml:p xhtml:class="Footer" xhtml:style="color: #1e90ff;"><MadCap:variable xhtml:name="MyVariables.eWayAdmin" /> modul kézikönyv – © <MadCap:variable xhtml:name="MyVariables.DocSoft" />.</xhtml:p>
+                        <xhtml:p xhtml:class="Footer" xhtml:style="color: #1e90ff;"><MadCap:variable xhtml:name="System.LongDate" />
+                        </xhtml:p>
+                        <xhtml:p xhtml:class="Footer" xhtml:style="color: #1e90ff;"><MadCap:variable xhtml:name="System.PageNumber" />/<MadCap:variable xhtml:name="System.PageCount" />. oldal</xhtml:p>
+                    </xhtml:body>
+                </xhtml:html>
+            </Content>
+        </Frame>
+        <Frame X="539px" Y="-60px" Width="140px" Height="140px" FlowIndex="1" Flow="decoration" Right="0px" Bottom="928px" BackgroundImage="../Images/PrintedLayoutParts/DocSoftLogo.svg" BackgroundRepeat="stretch" Anchors="" />
+    </Page>
+</PageStyles>

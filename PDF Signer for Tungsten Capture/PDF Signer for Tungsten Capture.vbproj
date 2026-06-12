@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sub Main</StartupObject>
+    <RootNamespace>PDFSigner</RootNamespace>
+    <AssemblyName>PDFSigner</AssemblyName>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <SignManifests>false</SignManifests>
+    <ManifestCertificateThumbprint>1DFB560CCF2930FCD74562024BB5C883ABE408A2</ManifestCertificateThumbprint>
+    <ManifestKeyFile>PDF Signer NET_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>PDFSigner.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <WarningLevel>1</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <WarningLevel>1</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>Off</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FullRelease|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\FullRelease\</OutputPath>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Drawing.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v25.2.Core, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v25.2.Drawing, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v25.2.Core, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPdfViewer.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v25.2, Version=25.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Kofax.Capture.SDK.CustomModule">
+      <HintPath>..\lib\Kofax\Kofax.Capture.SDK.CustomModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Kofax.Capture.SDK.Data">
+      <HintPath>..\lib\Kofax\Kofax.Capture.SDK.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Kofax.DBLite">
+      <HintPath>..\lib\Kofax\Kofax.DBLite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="nsoftware.SecureBlackbox">
+      <HintPath>..\lib\nsoftware.SecureBlackbox.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="PDFStreamer.WCFCommon">
+      <HintPath>..\lib\PDFSigner\PDFStreamer.WCFCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TallComponents.PDF.Controls.WinForms">
+      <HintPath>..\Lib\TallComponents.PDF.Controls.WinForms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BatchManagement\Filter\BatchFilter.vb" />
+    <Compile Include="BatchManagement\Filter\BatchFilterConditionItem.vb" />
+    <Compile Include="BatchManagement\BatchListItem.vb" />
+    <Compile Include="BatchManagement\BatchManager.vb" />
+    <Compile Include="BatchManagement\Filter\FilterBy.vb" />
+    <Compile Include="BatchManagement\Filter\FilterByItem.vb" />
+    <Compile Include="BatchManagement\Filter\FilterRelation.vb" />
+    <Compile Include="BatchManagement\Filter\FilterRelationItem.vb" />
+    <Compile Include="BatchManagement\Filter\FilterValue.vb" />
+    <Compile Include="BatchManagement\Filter\FilterValueItem.vb" />
+    <Compile Include="BatchManagement\Filter\FrmSaveFilter.Designer.vb">
+      <DependentUpon>FrmSaveFilter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BatchManagement\Filter\FrmSaveFilter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileOperation\FileOperation.vb" />
+    <Compile Include="FrmSkip.Designer.vb">
+      <DependentUpon>FrmSkip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSkip.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper\Constant.vb" />
+    <Compile Include="Helper\GarbageCollector.vb" />
+    <Compile Include="Helper\LayoutManager.vb" />
+    <Compile Include="Models\PostProcessModel.vb" />
+    <Compile Include="Models\PreProcessModel.vb" />
+    <Compile Include="Parser\CSSParser.vb" />
+    <Compile Include="Logging\LogConfig.vb" />
+    <Compile Include="Program.vb" />
+    <Compile Include="Registry\PDFSignerCurrentUserRegistry.vb" />
+    <Compile Include="Service References\MNBSignerServiceReference\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PDFStreamerServiceReference\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Signature\Modules\SBB\CertificateTranslator.vb" />
+    <Compile Include="Signature\Modules\SBB\SBBCodeTranslator.vb" />
+    <Compile Include="Signature\Modules\MNBSigner\MNBSigner.vb" />
+    <Compile Include="Signature\Modules\MQFTP\FileUtil.vb" />
+    <Compile Include="Signature\Modules\MQFTP\MQFTP.vb" />
+    <Compile Include="Signature\Modules\SBB\SBBPDF.vb" />
+    <Compile Include="BatchManagement\FrmCloseSuspend.Designer.vb">
+      <DependentUpon>FrmCloseSuspend.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BatchManagement\FrmCloseSuspend.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentOperation.vb" />
+    <Compile Include="Language\GUIText.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GUIText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Language\Messages.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetaDataModel.vb" />
+    <Compile Include="Models\SignatureModel.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Parser\BatchParser.vb" />
+    <Compile Include="FrmAbout.Designer.vb">
+      <DependentUpon>FrmAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPdfSigner.Designer.vb">
+      <DependentUpon>FrmPdfSigner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPdfSigner.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\DataModel.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="FrmReject.Designer.vb">
+      <DependentUpon>FrmReject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReject.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.vb" />
+    <Compile Include="Signature\Modules\MQFTP\NativeMethods.vb" />
+    <Compile Include="Signature\Modules\PDFStreamer\PDFStreamer.vb" />
+    <Compile Include="Signature\Modules\PDFStreamer\PDFStreamerProxy.vb" />
+    <Compile Include="Signature\PDFPostProcessor.vb" />
+    <Compile Include="Signature\PDFPreProcessor.vb" />
+    <Compile Include="Signature\SignatureOperation.vb" />
+    <Compile Include="BatchManagement\FrmOpenBatch.Designer.vb">
+      <DependentUpon>FrmOpenBatch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BatchManagement\FrmOpenBatch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Viewers\DevExpressPDFViewer.Designer.vb">
+      <DependentUpon>DevExpressPDFViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Viewers\DevExpressPDFViewer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\ViewerBase.Designer.vb">
+      <DependentUpon>ViewerBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Viewers\ViewerBase.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Viewers\TallPDFViewer.Designer.vb">
+      <DependentUpon>TallPDFViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Viewers\TallPDFViewer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BatchManagement\Filter\FrmSaveFilter.hu.resx">
+      <DependentUpon>FrmSaveFilter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchManagement\Filter\FrmSaveFilter.resx">
+      <DependentUpon>FrmSaveFilter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchManagement\FrmOpenBatch.hu.resx">
+      <DependentUpon>FrmOpenBatch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchManagement\FrmOpenBatch.resx">
+      <DependentUpon>FrmOpenBatch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchManagement\FrmCloseSuspend.hu.resx">
+      <DependentUpon>FrmCloseSuspend.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchManagement\FrmCloseSuspend.resx">
+      <DependentUpon>FrmCloseSuspend.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAbout.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmAbout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPdfSigner.hu.resx">
+      <DependentUpon>FrmPdfSigner.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPdfSigner.resx">
+      <DependentUpon>FrmPdfSigner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSkip.hu.resx">
+      <DependentUpon>FrmSkip.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSkip.resx">
+      <DependentUpon>FrmSkip.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\GUIText.hu.resx" />
+    <EmbeddedResource Include="Language\GUIText.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GUIText.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\Messages.hu.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\Messages.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReject.hu.resx">
+      <DependentUpon>FrmReject.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReject.resx">
+      <DependentUpon>FrmReject.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\DevExpressPDFViewer.resx">
+      <DependentUpon>DevExpressPDFViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\ViewerBase.resx">
+      <DependentUpon>ViewerBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\TallPDFViewer.hu.resx">
+      <DependentUpon>TallPDFViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewers\TallPDFViewer.resx">
+      <DependentUpon>TallPDFViewer.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BaseApplicationManifest Include="My Project\app.manifest" />
+    <None Include="app.config" />
+    <None Include="FodyWeavers.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\BatchContents.datasource" />
+    <None Include="My Project\DataSources\BatchFilter.datasource" />
+    <None Include="My Project\DataSources\BatchFilterItem.datasource" />
+    <None Include="My Project\DataSources\DocumentItem.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="PDF Signer.aex" />
+    <None Include="Service References\MNBSignerServiceReference\MNBSignerService.wsdl" />
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfArrayOfKeyValueOfintFileForSignatureModelu_SutftZ0uHEDJ7Dj.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfASiCServerSignatureValidationModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfFileContentModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfFileModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfFormDataModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfGetServerSignChunkResultModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfInitServerSignChunkResultModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfSendServerSignChunkResultModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfSignerCheckModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfSignerCheckResultModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfSigningControlModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfSignServerSignChunkResultModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\PDFSigner.MNBSignerServiceReference.ReturnModelOfWaitForSignServerSignChunkResultModeliOGFhNrL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PDFStreamerServiceReference\PDFSigner.PDFStreamerServiceReference.DocumentCreateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PDFStreamerServiceReference\PDFStreamer.wsdl" />
+    <None Include="Signature\Modules\MNBSigner\MNBSigner - Fejlesztoi dokumentacio.docx" />
+    <None Include="Signature\Modules\MNBSigner\MNBSignerService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PDFSigner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BatchManagement\Filter\filter.xml" />
+    <Content Include="FodyWeavers.xml" />
+    <Content Include="PDFSigner.ico" />
+    <None Include="Service References\MNBSignerServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\MNBSignerServiceReference\configuration.svcinfo" />
+    <None Include="Service References\MNBSignerServiceReference\configuration91.svcinfo" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Add.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\DeleteAll.png" />
+    <None Include="Resources\AddAttachment.png" />
+    <None Include="Service References\PDFStreamerServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\PDFStreamerServiceReference\configuration.svcinfo" />
+    <None Include="Service References\PDFStreamerServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PDF Signer for Tungsten Capture Common\PDF Signer for Tungsten Capture Common.vbproj">
+      <Project>{544d1913-6343-4b6f-978a-ef886d216da1}</Project>
+      <Name>PDF Signer for Tungsten Capture Common</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MNBSignerServiceReference\" />
+    <WCFMetadataStorage Include="Service References\PDFStreamerServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Costura.Fody">
+      <Version>4.1.0</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Fody">
+      <Version>6.6.3</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="NLog">
+      <Version>5.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="NLog.WindowsIdentity">
+      <Version>5.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Program Files (x86)\Tungsten\Capture\Bin\"</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.4\analyzers\dotnet\DevExpress.Generator.dll" Visible="false" Condition="Exists('C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.4\analyzers\dotnet\DevExpress.Generator.dll')" />
+  </ItemGroup>
+</Project>

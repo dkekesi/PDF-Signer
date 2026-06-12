@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UrlList>
+    <Url Source="Resources/Snippets/PDFTablazatKulcsszavak.flsnp" />
+    <Url Source="Resources/Snippets/EljarasTesztPanel.flsnp" />
+    <Url Source="Resources/Snippets/PDFExtractorZonaRajzoloIkonsor.flsnp" />
+    <Url Source="Resources/Snippets/PDFbevezeto.flsnp" />
+    <Url Source="Resources/Snippets/KimenetParameterezese.flsnp" />
+    <Url Source="Resources/Snippets/NaplobejegyzesekLista.flsnp" />
+    <Url Source="Resources/Snippets/NaplobejegyzesekIkonsor.flsnp" />
+    <Url Source="Resources/Snippets/DokumentumLista.flsnp" />
+    <Url Source="Resources/Snippets/ElesImportProfilokListaja.flsnp" />
+    <Url Source="Resources/Snippets/ElesImportProfilokIkonsor.flsnp" />
+    <Url Source="Resources/Snippets/HibakezelesAltalanos.flsnp" />
+    <Url Source="Resources/Snippets/eWayRendszerFeladatai.flsnp" />
+    <Url Source="Resources/Snippets/FelugyeloiFeladatokListaja.flsnp" />
+    <Url Source="Resources/Snippets/AdatkinyeroProfilokTesztelese.flsnp" />
+    <Url Source="Resources/Snippets/FormazoProfilokTipusai.flsnp" />
+    <Url Source="Resources/Snippets/AdatkinyeroProfilokTipusai.flsnp" />
+    <Url Source="Resources/Snippets/AzonositasiSzabalyokTesztelese.flsnp" />
+    <Url Source="Resources/Snippets/RegExTar.flsnp" />
+    <Url Source="Resources/Snippets/AlapertelmezettFormatumok.flsnp" />
+    <Url Source="Resources/Snippets/FormazoProfilLablec.flsnp" />
+    <Url Source="Resources/Snippets/ProfilTeszteleseGomb.flsnp" />
+    <Url Source="Resources/Snippets/KimenetTorlese.flsnp" />
+    <Url Source="Resources/Snippets/KimenetHozzaadasa.flsnp" />
+    <Url Source="Resources/Snippets/FajlnevSzuro.flsnp" />
+    <Url Source="Resources/Snippets/AdatkinyeroProfilokListaja.flsnp" />
+    <Url Source="Resources/Snippets/AdatkinyeroProfilokIkonsor.flsnp" />
+    <Url Source="Resources/Snippets/TesztIkonok.flsnp" />
+</UrlList>

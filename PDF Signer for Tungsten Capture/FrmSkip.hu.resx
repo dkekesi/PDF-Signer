@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LabelControl1.Appearance.FontSizeDelta" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LabelControl1.Appearance.FontStyleDelta" type="System.Drawing.FontStyle, System.Drawing">
+    <value>Regular</value>
+  </data>
+  <data name="LabelControl1.Appearance.GradientMode" type="System.Drawing.Drawing2D.LinearGradientMode, System.Drawing">
+    <value>Horizontal</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LabelControl1.Appearance.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="LabelControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>558, 46</value>
+  </data>
+  <data name="LabelControl1.Text" xml:space="preserve">
+    <value>Biztosan kihagyja a dokumentum hitelesítését? 
+A dokumentumon történt változtatások, aláírások törlésre kerülnek!</value>
+  </data>
+  <data name="LabelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="LabelControl2.Text" xml:space="preserve">
+    <value>Sztenderd ok:</value>
+  </data>
+  <data name="LabelControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
+  </data>
+  <data name="LabelControl3.Text" xml:space="preserve">
+    <value>Egyéb ok:</value>
+  </data>
+  <data name="ComboNote.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 78</value>
+  </data>
+  <data name="ComboNote.Properties.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ComboNote.Properties.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ComboNote.Properties.AutoHeight" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ComboNote.Properties.NullValuePrompt" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ComboNote.Properties.NullValuePromptShowForEmptyValue" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ComboNote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>486, 20</value>
+  </data>
+  <data name="BtnOK.ImageOptions.ImageIndex" type="System.Int32, mscorlib">
+    <value>-1</value>
+  </data>
+  <data name="BtnOK.ImageOptions.SvgImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="BtnCancel.ImageOptions.ImageIndex" type="System.Int32, mscorlib">
+    <value>-1</value>
+  </data>
+  <data name="BtnCancel.ImageOptions.SvgImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Mégsem</value>
+  </data>
+  <data name="MemoNote.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 111</value>
+  </data>
+  <data name="MemoNote.Properties.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MemoNote.Properties.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MemoNote.Properties.NullValuePrompt" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MemoNote.Properties.NullValuePromptShowForEmptyValue" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="MemoNote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>486, 108</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAbm56wUVFk/8+Pq//Pj6v/0VFk/9paXL/enp6/3p6ev9pcW3/O4Bj/zifeP84n3j/OIRk5ww/
+        KicAAAAAFBRKLUNDtf9XV9X/Wlq7/2Bgvf9hYdT/TU29/9nZ4v/X4Nz/QKmD/1Xat/9K0rD/StKw/1Xa
+        uP8yonnuDEEsKC4vo7dWV9T/W1zZ/1tbtv/o5+n/kI+1/05Ozf9qabr/XaqN/1TZt/8dTkH/QsCh/x9U
+        R/9Ex6b/Vdq3/x6OZK85Prf3PEGy/1xdt/9gaN3/Tkag/7uXh/9EQ6v/P0K2/zmuiv9P1bj/GRcW/x4o
+        JP8ZGBf/ITQu/0axmP8xq4TzPEm790RLtv/t7fH/U06i/2d54v9YU63/TlG4/0BMuP83so//XN/I/zAt
+        K/8yNzT/MC0r/zRAO/9QsaD/MK6L9C08rbZecdz/l5jB/8ejiP9dYLH/a4Xm/2J64P9gX6T/Wrec/2nl
+        1f9McGn/YNPE/051bv9h2sr/aOfV/xyge7AWGlQtUWLF/2Ny3/9MTLf/T1LA/2d+4v9Yasj/uZqF/83X
+        0/9FvKH/eevc/2ro2P9q6Nj/eevd/zi4m+4NUD4oqqqpA4mKk/92esr/W2LG/1pixv9waKv/vZ+G/+PI
+        q//08vL/ppqU/1ipkf9Qv6b/UsOq/0Kbhf8YV0YqAAAAAKqpqQOgoKD/+vn4//f39v/29PL/9vTy//bz
+        8f/29fX/9fPz//Py8f/y8O//8e7s//b08/97e3v/k5KSAwAAAACpqakDoKCg//n49v/Fq6f/xqyo/8at
+        qv/FrKn/xq6q//X09P/z8vL/8e/u/+/s6//z8fD/enp6/4yMjAUAAAAAqampA6CgoP/5+Pb/9vXy//f2
+        9f/4+Pf/+Pj4//f39//19fX/8fDw/+vq6v/n5eT/6+no/3d3d/+BgIAHAAAAAKmpqQOgoKD/+Pf0/8au
+        qf/Hr6r/yLCs/8iwrf/Jsq//9fX1/7Ozs/+kpKT/o6Oj/6Ojov+EhIT8aWhoCFxcXAGpqakDoKCg//n3
+        9f/y7+v/8/Du//Ty8P/19PP/9fT0//X19f+mpqb/+vj3//T08/+jo6P/T09Pf2RkZAQAAAAAqKioA6Cg
+        oP/49/X/9vTw//b08v/39vT/+Pj2//j4+P/39/f/p6en//Py8v+hoaH+V1dXf0ZGRgdaWloBAAAAAKen
+        pwOgoKD/+fn2//7+/v/+/v7//v7+//7+/v/+/v7//f39/6Wlpf+goKD9a2trd1hYWAZhYWECAAAAAAAA
+        AAAAAAAApKSktZ+fn/+fn5//n5+f/5+fn/+fn5//n5+f/56env+Tk5P2lJSUaoeHhwNxcXEBAAAAAAAA
+        AAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAAAAAAEAAAAB
+        AAAAAwAAgAcAAA==
+</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Dokumentum hitelesítésének kihagyása</value>
+  </data>
+</root>

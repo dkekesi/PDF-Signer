@@ -1,0 +1,612 @@
+/*<meta />*/
+
+body
+{
+	font-family: Verdana, Tahoma, sans-serif;
+}
+
+h1
+{
+	font-weight: bold;
+	font-family: Verdana, sans-serif;
+	margin-top: 0pt;
+	margin-right: 0px;
+	margin-left: 0px;
+	color: #1e90ff;
+	font-variant: normal;
+	font-size: 22pt;
+	mc-auto-number-offset: 7px;
+	margin-bottom: 5.5pt;
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+h2
+{
+	font-weight: bold;
+	font-family: Verdana, sans-serif;
+	color: #1e90ff;
+	margin-bottom: 6pt;
+	margin-top: 24pt;
+	font-size: 16pt;
+}
+
+h3
+{
+	margin-bottom: 6pt;
+	font-weight: bold;
+	font-style: italic;
+	color: #1e90ff;
+	font-size: 12pt;
+	margin-top: 20pt;
+}
+
+h4
+{
+	font-weight: bold;
+	margin-bottom: 6pt;
+	color: #1e90ff;
+	font-size: 11pt;
+	margin-top: 18pt;
+}
+
+p
+{
+	font-family: Verdana, sans-serif;
+	font-size: 10pt;
+	margin-top: 6px;
+	margin-bottom: 6pt;
+	mc-hyphenate: always;
+}
+
+li
+{
+	margin-bottom: 6pt;
+}
+
+a.expandspot
+{
+	color: #008000;
+	cursor: hand;
+	font-weight: bold;
+	font-style: italic;
+	text-decoration: none none none;
+}
+
+span.expandtext
+{
+	color: #000000;
+	font-weight: normal;
+	font-style: normal;
+}
+
+a.dropspot
+{
+	cursor: hand;
+	font-weight: bold;
+	font-style: normal;
+	font-family: Verdana, sans-serif;
+	color: #a82384;
+	text-decoration: none none none;
+}
+
+a.glossterm
+{
+	color: #800000;
+	cursor: hand;
+	font-style: italic;
+	text-decoration: none none none;
+}
+
+span.glosstext
+{
+	font-style: italic;
+	font-weight: normal;
+	color: #0000ff;
+}
+
+ol,
+ul
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 10pt;
+}
+
+p.Tip
+{
+	margin-right: 18pt;
+	margin-bottom: 4.5pt;
+	margin-left: 9pt;
+	margin-top: 8pt;
+	mc-next-tag: P;
+	color: #000000;
+	background-color: #e6e6e6;
+}
+
+a:visited
+{
+	color: #a82384;
+}
+
+a:hover
+{
+	color: #a82384;
+}
+
+a:active
+{
+	color: #a82384;
+}
+
+MadCap|conceptLink.conceptLink_1
+{
+	mc-popup-type: menu;
+	mc-display-type: button;
+	mc-label: See Also;
+}
+
+MadCap|expandingHead.expandspot
+{
+	color: #008000;
+	cursor: hand;
+	font-weight: bold;
+	font-style: italic;
+	text-decoration: none none none;
+}
+
+MadCap|dropDownHotspot.dropspot
+{
+	cursor: hand;
+	font-weight: bold;
+	font-style: normal;
+	color: #a82384;
+	text-decoration: none none none;
+}
+
+MadCap|expandingBody.expandtext
+{
+	color: #000000;
+	font-weight: normal;
+	font-style: normal;
+}
+
+MadCap|glossaryTerm.glossterm
+{
+	color: #800000;
+	cursor: hand;
+	font-style: italic;
+	text-decoration: none none none;
+}
+
+MadCap|expandingBody.glossterm
+{
+	font-style: italic;
+	font-weight: normal;
+	color: #0000ff;
+}
+
+span.span_5
+{
+	color: #0000ff;
+}
+
+td
+{
+	font: verdana;
+	font-size: 9pt;
+}
+
+p.toptable
+{
+	margin-top: 0pt;
+	font-size: 9pt;
+	margin-bottom: 0pt;
+}
+
+p.Nomargin
+{
+	margin-bottom: 0pt;
+}
+
+MadCap|dropDownHead
+{
+	
+}
+
+MadCap|breadcrumbsProxy
+{
+	font-family: Verdana, sans-serif;
+	font-size: 10pt;
+}
+
+@media non-print
+{
+	body
+	{
+		
+	}
+}
+
+p.seeAlso
+{
+	font-family: Verdana, sans-serif;
+	font-size: 10pt;
+	margin-bottom: 3.50em;
+	margin-top: 3.50em;
+}
+
+p.copyright
+{
+	font-family: Verdana, sans-serif;
+	margin-bottom: 12pt;
+	font-size: 10pt;
+	text-align: center;
+	margin-top: 3.50em;
+}
+
+table
+{
+	margin-bottom: 12pt;
+}
+
+img.BulletIcon
+{
+	font-weight: normal;
+	text-decoration: none;
+	border-spacing: 5;
+	vertical-align: middle;
+	mc-thumbnail-max-height: auto;
+	mc-float: none;
+	padding-right: 6px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+img
+{
+	mc-float: frame-center;
+}
+
+p.imgbullet
+{
+	text-align: left;
+	vertical-align: middle;
+}
+
+p.warning
+{
+	font-family: Verdana, sans-serif;
+	margin-bottom: 12pt;
+	font-size: 10pt;
+	margin-top: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-left-style: solid;
+	border-left-width: 4px;
+	border-left-color: #ffd700;
+	border-right-style: solid;
+	border-right-width: 4px;
+	border-right-color: #ffd700;
+	border-top-style: solid;
+	border-top-width: 4px;
+	border-top-color: #ffd700;
+	border-bottom-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #ffd700;
+	color: #8b0000;
+	background-color: #f5f5f5;
+}
+
+p.ImageTitle
+{
+	font-family: Verdana, sans-serif;
+	text-align: center;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 9pt;
+	margin-bottom: 10pt;
+	margin-top: -6pt;
+}
+
+p.info
+{
+	font-family: Verdana, sans-serif;
+	margin-bottom: 12pt;
+	font-size: 10pt;
+	margin-top: 6px;
+	color: #000000;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-left-style: solid;
+	border-left-width: 4px;
+	border-left-color: #1e90ff;
+	border-right-style: solid;
+	border-right-width: 4px;
+	border-right-color: #1e90ff;
+	border-top-style: solid;
+	border-top-width: 4px;
+	border-top-color: #1e90ff;
+	border-bottom-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #1e90ff;
+	background-color: #f5f5f5;
+}
+
+p.IconBullet
+{
+	margin-top: 0pt;
+	font-family: Verdana, sans-serif;
+	font-size: 10pt;
+	margin-bottom: 6pt;
+	padding-left: 40px;
+	text-indent: -30px;
+}
+
+p.IconBulletLevel2
+{
+	margin-top: 0pt;
+	font-family: Verdana, sans-serif;
+	font-size: 10pt;
+	padding-left: 65px;
+	text-indent: -28px;
+	margin-bottom: 4pt;
+}
+
+h5
+{
+	font-size: 10pt;
+	color: #1e90ff;
+	font-weight: bold;
+	font-style: italic;
+	margin-top: 14pt;
+	margin-bottom: 6pt;
+}
+
+p.Footer
+{
+	margin-top: 0pt;
+	font-family: Verdana, sans-serif;
+	font-size: 10pt;
+	text-align: left;
+	margin-bottom: 0;
+}
+
+p.Title
+{
+	margin-top: 0pt;
+	margin-bottom: 12pt;
+	font-size: 26pt;
+	font-weight: bold;
+	font-style: italic;
+	font-family: Verdana;
+	color: #1e90ff;
+}
+
+p.Title2
+{
+	margin-top: 0pt;
+	margin-bottom: 12pt;
+	font-family: Verdana;
+	color: #1e90ff;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 16pt;
+}
+
+img.Screenshot
+{
+	mc-float: frame-center;
+	clear: both;
+	vertical-align: baseline;
+}
+
+img.InlineIcon
+{
+	font-weight: normal;
+	text-decoration: none;
+	border-spacing: 5;
+	vertical-align: middle;
+	mc-thumbnail-max-height: auto;
+	padding-left: 5px;
+	padding-right: 5px;
+	mc-float: none;
+}
+
+@media print
+{
+	img.Screenshot
+	{
+		max-width: 18cm;
+		clear: none;
+		mc-float: center;
+	}
+
+	p
+	{
+		font-size: 12pt;
+		font-family: 'Adobe Garamond Pro';
+		text-align: justify;
+	}
+
+	h1
+	{
+		font-variant: small-caps;
+		padding-top: 0px;
+		padding-bottom: 2px;
+		font-family: 'Adobe Garamond Pro';
+		mc-auto-number-offset: 24pt;
+		mc-auto-number-format: 'GA:{n+} ';
+		margin-bottom: 5.5pt;
+		mc-auto-number-position: inside-head;
+	}
+
+	h2
+	{
+		font-family: 'Adobe Garamond Pro';
+		mc-auto-number-offset: 24pt;
+		mc-auto-number-format: 'GA:{n}.{n+} ';
+	}
+
+	h3
+	{
+		font-family: 'Adobe Garamond Pro';
+		mc-heading-level: 0;
+		mc-auto-number-format: 'GA:{n}.{n}.{n+} ';
+	}
+
+	h4
+	{
+		font-family: 'Adobe Garamond Pro';
+		mc-heading-level: 0;
+		mc-auto-number-format: 'GA:{n}.{n}.{n}.{n+} ';
+	}
+
+	p.Footer
+	{
+		font-family: 'Adobe Garamond Pro';
+		font-size: 10pt;
+	}
+
+	p.IconBullet
+	{
+		font-size: 12pt;
+		font-family: 'Adobe Garamond Pro';
+	}
+
+	p.IconBulletLevel2
+	{
+		font-size: 12pt;
+		font-family: 'Adobe Garamond Pro';
+	}
+
+	p.ImageTitle
+	{
+		font-size: 11pt;
+		font-family: 'Adobe Garamond Pro';
+	}
+
+	ol
+	{
+		font-size: 12pt;
+		font-family: 'Adobe Garamond Pro';
+	}
+
+	ul
+	{
+		font-size: 12pt;
+		font-family: 'Adobe Garamond Pro';
+	}
+
+	p.warning
+	{
+		font-size: 12pt;
+		font-family: 'Adobe Garamond Pro';
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	p.info
+	{
+		font-size: 12pt;
+		font-family: 'Adobe Garamond Pro';
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	p.Title
+	{
+		font-variant: small-caps;
+		font-family: 'Adobe Garamond Pro';
+	}
+
+	p.Title2
+	{
+		font-variant: small-caps;
+		font-family: 'Adobe Garamond Pro';
+	}
+
+	p.copyright
+	{
+		font-family: 'Adobe Garamond Pro';
+	}
+
+	h5
+	{
+		font-family: 'Adobe Garamond Pro';
+		font-size: 11pt;
+		mc-heading-level: 0;
+		mc-auto-number-format: 'GA:{n}.{n}.{n}.{n}.{n+} ';
+	}
+
+	h6
+	{
+		mc-heading-level: 0;
+	}
+
+	p.TOC1
+	{
+		margin-left: 0;
+	}
+
+	MadCap|tocProxy
+	{
+		border-top-color: #ffffff;
+		border-top-style: none;
+		border-top-width: 0px;
+		padding-left: 0px;
+	}
+
+	img.BulletIcon
+	{
+		max-width: 12pt;
+		max-height: 12pt;
+	}
+
+	img.BulletIconSmall
+	{
+		max-width: 12pt;
+		max-height: 12pt;
+	}
+
+	img.InlineIcon
+	{
+		max-width: 12pt;
+		max-height: 12pt;
+	}
+}
+
+p.ExpandingText
+{
+	color: #006400;
+}
+
+img.BulletIconSmall
+{
+	font-weight: normal;
+	text-decoration: none;
+	border-spacing: 5;
+	vertical-align: middle;
+	mc-thumbnail-max-height: auto;
+	mc-float: none;
+	padding-left: 9px;
+	padding-right: 5px;
+}
+
+p.TOC1
+{
+	margin-left: 0;
+}
+
+ul.Level2
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 10pt;
+	margin-left: 60px;
+}
+

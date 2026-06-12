@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="hu" xml:lang="hu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="PDF Signer használata|Felhasználói feladatok">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Dokumentumok hitelesítése</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Resources/Stylesheets/Styles.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../OperatorTasks.htm">PDF Signer használata</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Felhasználói feladatok</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Dokumentumok hitelesítése</span>
+        </div>
+        <h1>Dokumentumok hitelesítése</h1>
+        <p>A <a href="BatchOpening.htm">megnyitott köteg</a>ben lévő dokumentumok hitelesítése a <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> modul <a href="../UserInterface/MainWindow.htm">főképernyőjén</a> történik.</p>
+        <p>
+            <img src="../../../Resources/Images/Screenshots/MainWindow_UnsignedDocument.png" />
+        </p>
+        <p class="ImageTitle"><span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> modul főképernyője</p>
+        <p>A felhasználó feladata a megnyitott kötegben lévő szkennelt dokumentumok másolatkészítési jogszabályok szerinti tartalmi vagy formai összehasonlítása a papíralapú eredetikkel. Amennyiben a szkennelt dokumentum megegyezik a papíralapú eredetivel, úgy az iratot a <i>Dokumentum aláírása</i> vagy az <i>F9</i> gyorsbillentyű segítségével kell hitelesíteni. A hitelesítést követően a program automatikusan a következő hitelesítésre váró iratra ugrik.</p>
+        <p class="warning">Figyelem! A <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> modul 32 bites (a <span class="MyVariablesKC">Tungsten Capture</span> rendszer limitációi miatt), ezért a hitelesíthető fájlméret  korlátozott! A hitelesíthető fájlméret függ a PDF&#160;állomány képi tartalmától is: színes oldalakat tartalmazó állományok esetén a hitelesíthető fájlméret jelentősen csökken, mivel a megtekintőben megnyitott állományok jelentős mennyiségű memóriát foglalnak! Általánosságban elmondható, hogy csak 1 bites fekete-fehér oldalakat tartalmazó dokumentumból kb. 1500 oldalas hitelesíthető, míg színes oldalak esetén 70-80  (A/4, 300 dpi esetén)! Ezek a számok csak nagyságrendi becslések, a hitelesíthető dokumentumméret ezen felül függ az operációs rendszertől (32 vagy 64 bites), a munkaállomás memóriájának méretétől és az elérhető szabad memória töredezettségétől.</p>
+        <p>Ha az irat kisebb javításra szorul, pl. oldalakat kell elforgatni vagy törölni, akkor az a hitelesítés előtt a <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> modulban is elvégezhető a <i>Forgatás</i> és <i>Törlés</i> ikonokkal. Amennyiben nagyobb javítási munkák szükségesek a tartalmi vagy formai egyezőség biztosításához, pl. hiányzó oldalakat kell beszúrni, akkor a <a href="ErrorHandling.htm">dokumentumot el kell utasítani</a> az <i>Elutasítás</i> ikonnal és a javításokat a <span class="MyVariablesKC">Tungsten Capture</span> sztender hibakezelő moduljában (Quality Control) kell elvégezni.</p>
+        <p>Ha az adminisztrátor engedélyezte, akkor bizonyos esetekben lehetőség van a <a href="../UserInterface/Dialogs/SkipSigning.htm">hitelesítés kihagyására</a> is. Ekkor az eredeti, nem hiteles dokumentum fog továbbításra kerülni a célrendszerbe.</p>
+        <p>Miután a kötegben lévő összes iratot hitelesítettük vagy elutasítottuk, zárjuk le a köteget a <i>Lezárás</i> ikonnal.</p>
+        <p class="copyright">Copyright © 2025. <span class="MyVariablesDocSoft">Doc-Soft Kkt</span>. Minden jog fenntartva.</p>
+    </body>
+</html>

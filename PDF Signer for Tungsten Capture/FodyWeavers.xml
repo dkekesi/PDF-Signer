@@ -1,0 +1,26 @@
+﻿<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
+	<Costura>
+		<IncludeAssemblies>
+			PDFStreamer.Common
+			PDFStreamer.WCFCommon
+			DevExpress.Data.Desktop.v25.2
+			DevExpress.Data.v25.2
+			DevExpress.Drawing.v25.2
+			DevExpress.Pdf.v25.2.Core
+			DevExpress.Pdf.v25.2.Drawing
+			DevExpress.Printing.v25.2.Core
+			DevExpress.Utils.v25.2
+			DevExpress.XtraBars.v25.2
+			DevExpress.XtraEditors.v25.2
+			DevExpress.XtraGrid.v25.2
+			DevExpress.XtraLayout.v25.2
+			DevExpress.XtraPdfViewer.v25.2
+			DevExpress.XtraPrinting.v25.2
+			DevExpress.XtraTreeList.v25.2
+			NLog
+			NLog.WindowsIdentity
+			nsoftware.SecureBlackbox
+			TallComponents.PDF.Controls.WinForms
+		</IncludeAssemblies>
+	</Costura>
+</Weavers>

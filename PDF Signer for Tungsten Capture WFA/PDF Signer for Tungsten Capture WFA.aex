@@ -1,0 +1,10 @@
+[Workflow Agents]
+PDF Signer for Tungsten Capture WFA
+
+[PDF Signer for Tungsten Capture WFA]
+WorkflowAgentID=PDFSignerWFA.PDFSignerWFA
+WorkflowAgentProgID=DocSoft.PDFSignerWFA
+WorkflowAgentFile=PDFSignerWFA.dll
+Description=Workflow Agent to skip PDF Signer for Tungsten Capture if no documents need signing in a batch.
+Version=11.2
+SupportsNonImageFiles=True

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="hu" xml:lang="hu" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Telepítés">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>PDF&#160;Signer for Tungsten Capture telepítése</title>
+        <link href="../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/Styles.css" rel="stylesheet" />
+        <script src="../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><span class="MCBreadcrumbsSelf">Telepítés</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">PDF Signer for Kofax Capture telepítése</span>
+        </div>
+        <h1><span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> telepítése</h1>
+        <h2>A telepítőkészlet tartalma</h2>
+        <p>A <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> rendszer telepítője az alábbi fájlokat és mappákat tartalmazza:</p>
+        <ul>
+            <li value="1">a rendszer MSI telepítőcsomagja (PDFSignerSetup.msi)</li>
+            <li value="2">a <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> rendszer licencfájlja</li>
+            <li value="3">követelmények mappa (Prerequisites mappa)<ul><li value="1">.NET Framework 4.6.1 angol nyelvi verzió (NDP461-KB3102436-x86-x64-AllOS-ENU.exe)</li></ul></li>
+        </ul>
+        <h2>A telepítés menete</h2>
+        <h3>Követelmények telepítése</h3>
+        <h4>.NET FrameWork 4.6.1 telepítése</h4>
+        <p>Amennyiben még nincs telepítve, úgy a <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> telepítőkészlet <i>Prerequisites</i> mappájából telepítsük fel a .NET Framework 4.6.1-es verzióját. Mindenhol fogadjuk el az alapértelmezett beállításokat.</p>
+        <h3>A <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> installálása</h3>
+        <p class="warning">Figyelem! A <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> csak olyan munkaállomásra vagy szervere telepíthető, amelyen a <span class="MyVariablesKC">Tungsten Capture</span> kliens előzőleg telepítve lett!</p>
+        <p>A követelmények telepítését követően jelentkezzünk be helyi adminisztrátori jogokkal rendelkező felhasználóval, és indítsuk el a telepítőt a <code>PDFSignerSetup.msi</code> programmal.</p>
+        <p>A megjelenő ablakban olvassuk el, majd fogadjuk el a licencszerződést az <i>I accept the terms in the License Agreement</i> jelölőnégyzet bejelölésével.</p>
+        <p>Az <code>Install</code> gombra kattintva megtörténik a rendszer telepítése. A&#160;telepítőben semmilyen beállításra nincs lehetőség, mivel a program automatikusan a <span class="MyVariablesKC">Tungsten Capture</span> alkalmazás megfelelő könyvtárába települ.</p>
+        <p>A <code>Finish</code> gomb megnyomására a telepítő bezárul.</p>
+        <h3>A <span class="MyVariablesPDFSigner">PDF&#160;Signer for Tungsten Capture</span> licencfájl telepítése</h3>
+        <p>A licencfájl telepítése attól függ, hogy a <span class="MyVariablesKC">Tungsten Capture</span> rendszert hálózatos (Server) vagy egymunkaállomásos (Standalone) módban telepítettük.</p>
+        <h4>Licencfájl telepítés hálózatos (Server) installáció esetén</h4>
+        <p>Hozzunk létre a Kofax fájlmegosztáson (alapértelmezés szerint <code>\\kofaxszervernév\CaptureSV</code>) belül egy új mappát <code>PDFSigner</code> néven. A kapott <code>PDFSigner.license</code> fájlt másoljuk ebbe a mappába.</p>
+        <h4>Licencfájl telepítés egymunkaállomásos (Standalone) installáció esetén</h4>
+        <p>Másoljuk a <code>PDFSigner.license</code> fájlt a <span class="MyVariablesKC">Tungsten Capture</span> Bin mappájába.</p>
+        <p class="copyright">Copyright © 2025. <span class="MyVariablesDocSoft">Doc-Soft Kkt</span>. Minden jog fenntartva.</p>
+    </body>
+</html>

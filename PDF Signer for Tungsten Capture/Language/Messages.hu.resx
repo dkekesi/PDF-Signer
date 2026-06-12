@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Added_Certification_Clause_To_PDF" xml:space="preserve">
+    <value>Hitelesítési záradék hozzáadva a PDF fájlhoz</value>
+  </data>
+  <data name="Adding_Certification_Clause_To_PDF" xml:space="preserve">
+    <value>  Hitelesítési záradék hozzáadása a PDF dokumentumhoz</value>
+  </data>
+  <data name="All_Documents_Signed" xml:space="preserve">
+    <value>Az összes aláírandó dokumentumon szerepel aláírás, vagy el lett utasítva.
+Megnyitja a köteget?</value>
+  </data>
+  <data name="Ask_All_Documents_Processed" xml:space="preserve">
+    <value>A köteg minden hitelesítendő dokumentuma feldolgozva.
+Lezárja a köteget?</value>
+  </data>
+  <data name="Ask_Close_Batch" xml:space="preserve">
+    <value>Biztosan lezárja a köteget?</value>
+  </data>
+  <data name="Ask_Delete_All_Saved_Filters" xml:space="preserve">
+    <value>Biztosan törli az összes mentett szűrőt?</value>
+  </data>
+  <data name="Ask_Delete_And_Remove_Signatures" xml:space="preserve">
+    <value>Biztosan törli a kiválasztott oldalt?
+A művelet törli az összes aláírást a kiválasztott dokumentumról!</value>
+  </data>
+  <data name="Ask_Delete_Page" xml:space="preserve">
+    <value>Biztosan törli a kiválasztott oldalt?</value>
+  </data>
+  <data name="Ask_Delete_Saved_Filter" xml:space="preserve">
+    <value>Biztosan törli a kiválasztott szűrőt?</value>
+  </data>
+  <data name="Ask_Remove_Signatures" xml:space="preserve">
+    <value>Biztosan törli az összes aláírást a kiválasztott dokumentumról?</value>
+  </data>
+  <data name="Ask_Rotate_And_Remove_Signatures" xml:space="preserve">
+    <value>Biztosan elforgatja a kiválasztott oldalt?
+A művelet törli az összes aláírást a kiválasztott dokumentumról!</value>
+  </data>
+  <data name="Ask_Suspend_Batch" xml:space="preserve">
+    <value>Biztosan felfüggeszti a köteget?</value>
+  </data>
+  <data name="Ask_Suspend_Batch_With_Signable_Docs" xml:space="preserve">
+    <value>A kötegben nincs minden aláírandó dokumentum aláírva!
+Felfüggeszti a köteget?</value>
+  </data>
+  <data name="Batch_Closed" xml:space="preserve">
+    <value>'{0}' köteg lezárva</value>
+  </data>
+  <data name="Batch_Closed_Completed" xml:space="preserve">
+    <value>'{0}' köteg lezárva és befejezve (Completed)</value>
+  </data>
+  <data name="Batch_Closed_Has_Rejected" xml:space="preserve">
+    <value>'{0}' köteg lezárva, de hibás dokumentumot tartalmaz</value>
+  </data>
+  <data name="Batch_Not_Available" xml:space="preserve">
+    <value>A kiválasztott köteg nem érhető el vagy nem lehet megnyitni!</value>
+  </data>
+  <data name="Batch_Suspended" xml:space="preserve">
+    <value>'{0}' köteg felfüggesztve</value>
+  </data>
+  <data name="Checking_PDF_Encryption" xml:space="preserve">
+    <value>  Aláírandó PDF dokumentum titkosításának ellenőrzése</value>
+  </data>
+  <data name="Check_PDF_Can_Be_Opened" xml:space="preserve">
+    <value>  PDF dokumentum megnyithatóságának ellenőrzése</value>
+  </data>
+  <data name="Clause_Attachment_Prepared" xml:space="preserve">
+    <value>  '{0}' csatolmány előkészítve</value>
+  </data>
+  <data name="Creating_Certification_Clause" xml:space="preserve">
+    <value>Hitelesítési záradék készítése</value>
+  </data>
+  <data name="Document_Not_Identified" xml:space="preserve">
+    <value>A kiválasztott dokumentumot nem lehet aláírni, mert nincs azonosítva (nincs dokumentumtípus hozzárendelve)!</value>
+  </data>
+  <data name="Document_Not_Setup_For_Signing" xml:space="preserve">
+    <value>A kiválasztott dokumentumot nem lehet aláírni, mert a dokumentumhoz nincs beállítva az Administration modulban az aláírás!</value>
+  </data>
+  <data name="Error_File_Sizes_Identical" xml:space="preserve">
+    <value>Hiba az aláírt fájlban: az aláírt fájl mérete ({0} byte) kisebb vagy megegyezik az aláíratlan fájl méretével ({1} byte)!</value>
+  </data>
+  <data name="Error_No_Attachments_In_PDF" xml:space="preserve">
+    <value>A PDF dokumentumban nem szerepel csatolmány (hitelesítési záradék)!</value>
+  </data>
+  <data name="Error_No_Clause_Content_Returned" xml:space="preserve">
+    <value>A kriptográfiai komponens nem adta vissza a záradék tartalmát!</value>
+  </data>
+  <data name="Error_No_Signature_In_PDF" xml:space="preserve">
+    <value>  A PDF dokumentumon nem található aláírás!</value>
+  </data>
+  <data name="Error_No_Signed_File_Name_Returned" xml:space="preserve">
+    <value>A kriptográfiai komponens nem adta vissza az aláírt állomány nevét!</value>
+  </data>
+  <data name="Error_No_Signed_File_Returned" xml:space="preserve">
+    <value>A kriptográfiai komponens nem adott vissza aláírt állományt!</value>
+  </data>
+  <data name="Error_Opening_Batch" xml:space="preserve">
+    <value>Hiba a '{0}' köteg megnyitásakor: {1}</value>
+  </data>
+  <data name="Error_Opening_PDF_For_Validation" xml:space="preserve">
+    <value>  Hiba a PDF dokumentum előzetes ellenőrzéskori megnyitása közben: {0}</value>
+  </data>
+  <data name="Error_PDF_Encrypted" xml:space="preserve">
+    <value>  A PDF dokumentum nem módosítható vagy titkosított, ezért a kért művelet nem végezhető el!</value>
+  </data>
+  <data name="Exception_Document_Name_Cannot_Be_Determined" xml:space="preserve">
+    <value>Nem lehet meghatározni a hitelesítési záradékhoz szükséges dokumentumnevet!</value>
+  </data>
+  <data name="Exception_Signer_Name_Not_Provided" xml:space="preserve">
+    <value>Az aláíró személy neve nincs megadva (nincs kiválasztva aláíró tanúsítvány vagy a tanúsítványban nem szerepel név vagy a bejelentkezett felhasználónak nincs megadva a teljes neve (Full Name) az Active Directory-ban)!</value>
+  </data>
+  <data name="Exception_Signing" xml:space="preserve">
+    <value>Hiba a dokumentum aláírása közben: {0}</value>
+  </data>
+  <data name="Exception_Unknown_Document_Type" xml:space="preserve">
+    <value>A(z) {0} .NET adattípusú dokumentum aláírása nincs implementálva!</value>
+  </data>
+  <data name="Exception_Unknown_Metadata_Format" xml:space="preserve">
+    <value>Ismeretlen metaadat formátum ({0}).</value>
+  </data>
+  <data name="File_Delete_Error" xml:space="preserve">
+    <value>{0} törlése sikertelen {1} alkalommal: {2}</value>
+  </data>
+  <data name="File_Move_Error" xml:space="preserve">
+    <value>{0} mozgatása {1} helyre sikertelen {2} alkalommal: {3}</value>
+  </data>
+  <data name="File_Read_Error" xml:space="preserve">
+    <value>{0} olvasása sikertelen {1} alkalommal: {2}</value>
+  </data>
+  <data name="File_Write_Error" xml:space="preserve">
+    <value>{0} írása sikertelen {1} alkalommal: {2}</value>
+  </data>
+  <data name="Filter_Already_Exists" xml:space="preserve">
+    <value>A megadott szűrő már létezik. Módosítja?</value>
+  </data>
+  <data name="Filter_Batch_Field_Not_Set" xml:space="preserve">
+    <value>Feltétel {0}: '{1}' szűrési feltétel esetén kötelező a kötegmező nevét megadni!</value>
+  </data>
+  <data name="Filter_By_Criteria_Not_Set" xml:space="preserve">
+    <value>Feltétel {0}: szűrési feltétel nincs kiválasztva!</value>
+  </data>
+  <data name="Filter_By_Criteria_Not_Unique" xml:space="preserve">
+    <value>A 'Szűrési feltétel' oszlop értékének egyedinek kell lennie, kivéve 'Kötegtípus' választása esetén, amiből több feltétel is megadható!</value>
+  </data>
+  <data name="Filter_Load_Error" xml:space="preserve">
+    <value>Hiba a '{0}' szűrő megnyitásakor: {1}</value>
+  </data>
+  <data name="Filter_Name_Not_Provided" xml:space="preserve">
+    <value>Nincs megadva a szűrő neve!</value>
+  </data>
+  <data name="Filter_Relation_Not_Set" xml:space="preserve">
+    <value>Feltétel {0}: reláció nincs kiválasztva!</value>
+  </data>
+  <data name="Filter_Relation_Not_Supported" xml:space="preserve">
+    <value>Feltétel {0}: a választott szűrési feltétel nem támogatja a választott relációt!</value>
+  </data>
+  <data name="Filter_Value_Not_Set" xml:space="preserve">
+    <value>Feltétel {0}: szűrési érték nincs megadva!</value>
+  </data>
+  <data name="Header_Sign_Error" xml:space="preserve">
+    <value>Aláírás hiba</value>
+  </data>
+  <data name="Kofax_Generated_PDF_File_Not_Found" xml:space="preserve">
+    <value>A Tungsten Capture-rel generált PDF fájl nem található! Lehetséges okok:
+1. a dokumentumot elutasították (Reject) a PDF Generator lépés előtt;
+2. a dokumentum nincs azonosítva;
+3. a dokumentum-osztályban nincs bekapcsolva a PDF Generator;
+4. a PDF fájlt törölték.</value>
+  </data>
+  <data name="Last_Page_Cannot_Be_Deleted" xml:space="preserve">
+    <value>A dokumentum utolsó oldala nem törölhető!</value>
+  </data>
+  <data name="Layout_Reset_Error" xml:space="preserve">
+    <value>A felhasználói felület alapértelmezettre állítása közben hiba történt: {0}</value>
+  </data>
+  <data name="Layout_Reset_Restart_Needed" xml:space="preserve">
+    <value>A felhasználói felület alapértelmezettre állításához indítsa újra az alkalmazást!</value>
+  </data>
+  <data name="License_Developer_Mode" xml:space="preserve">
+    <value>Fejlesztői mód! Produktív felhasználás nem engedélyezett!</value>
+  </data>
+  <data name="License_Serial_Mismatch" xml:space="preserve">
+    <value>A {0} modul ezen példánya csak a(z) {1} szériaszámú Tungsten Capture rendszerben használható!
+A jelenlegi rendszer szériaszáma: {2}</value>
+  </data>
+  <data name="Logged_In_User" xml:space="preserve">
+    <value>Bejelentkezett felhasználó: {0} ({1}\{2})</value>
+  </data>
+  <data name="Looking_For_Signatures_In_PDF" xml:space="preserve">
+    <value>  PDF dokumentumon lévő aláírások keresése</value>
+  </data>
+  <data name="Main_Window_Title" xml:space="preserve">
+    <value>{0} - {1}</value>
+  </data>
+  <data name="Module_Not_Registered" xml:space="preserve">
+    <value>A {0} custom modul nincs regisztrálva a Tungsten Capture rendszerben! Használja az Administration modul Custom Module Manager-ét!</value>
+  </data>
+  <data name="Module_Version_Started" xml:space="preserve">
+    <value>{0} {1} elindítva</value>
+  </data>
+  <data name="Module_Version_Stopped" xml:space="preserve">
+    <value>{0} {1} leállítva</value>
+  </data>
+  <data name="No_Signing_Certificate_Selected" xml:space="preserve">
+    <value>Nincs kiválasztva aláíró tanúsítvány!</value>
+  </data>
+  <data name="No_Unreleased_Documents" xml:space="preserve">
+    <value>A kötegben csak exportált dokumentumok találhatók, ezért a köteg lezárásra kerül.</value>
+  </data>
+  <data name="Original_Document_Must_Be_Viewed" xml:space="preserve">
+    <value>Az aláírás megkezdéséhez az eredeti dokumentum nézetre kell váltani.</value>
+  </data>
+  <data name="PDF_Already_Signed" xml:space="preserve">
+    <value>  A PDF dokumentumon már szerepel aláírás, ezért nem lehet hitelesíteni (a hitelesítési záradék nem csatolható a meglévő aláírás megsértése nélkül)!</value>
+  </data>
+  <data name="PDF_Cannot_Be_Opened" xml:space="preserve">
+    <value>  A PDF dokumentum nem nyitható meg: {ex}</value>
+  </data>
+  <data name="PDF_Can_Be_Opened" xml:space="preserve">
+    <value>  PDF dokumentum megnyitható</value>
+  </data>
+  <data name="PDF_File_Not_Found" xml:space="preserve">
+    <value>A Tungsten Capture-rel generált PDF fájl nem található (típus: {0}).</value>
+  </data>
+  <data name="PDF_Has_Attachments" xml:space="preserve">
+    <value>  PDF dokumentumban szerepel csatolmány</value>
+  </data>
+  <data name="PDF_Not_Encrypted" xml:space="preserve">
+    <value>  Az aláírandó PDF dokumentum nem titkosított</value>
+  </data>
+  <data name="PDF_No_Signatures" xml:space="preserve">
+    <value>  A PDF dokumentumon nem szerepel aláírás</value>
+  </data>
+  <data name="PostProcess_Validating_Signed_PDF" xml:space="preserve">
+    <value>Aláírt PDF dokumentum utólagos ellenőrzése</value>
+  </data>
+  <data name="Registry_Kofax_Bin_Path_Not_Found" xml:space="preserve">
+    <value>Nem található a registry-ben a Kofax ExePath! Lehetséges, hogy a munkaállomásra nincs telepítve Tungsten Capture!</value>
+  </data>
+  <data name="Rejected_Document_Cannot_Be_Signed" xml:space="preserve">
+    <value>A kiválasztott dokumentumot nem lehet aláírni, mert a dokumentum vagy egyes oldalai el lettek utasítva!</value>
+  </data>
+  <data name="Rejected_Document_Cannot_Be_Skipped" xml:space="preserve">
+    <value>A kiválasztott dokumentum hitelesítését nem lehet kihagyni, mert a dokumentum vagy egyes oldalai el lettek utasítva!</value>
+  </data>
+  <data name="Signature_Tasks_Running" xml:space="preserve">
+    <value>Kérem, várja meg, amíg minden dokumentum aláírása befejeződik!</value>
+  </data>
+  <data name="Skip_Note_Required" xml:space="preserve">
+    <value>A hitelesítés kihagyásának okát kötelező megadni!</value>
+  </data>
+  <data name="Unhandled_Exception" xml:space="preserve">
+    <value>Végzetes hiba nem kezelt kivétel miatt: {0}</value>
+  </data>
+  <data name="Validating_PDF" xml:space="preserve">
+    <value>Aláírandó PDF dokumentum előzetes ellenőrzése</value>
+  </data>
+  <data name="Validating_PDF_Attachments" xml:space="preserve">
+    <value>  PDF dokumentum csatolmányainak ellenőrzése</value>
+  </data>
+  <data name="Validating_PDF_Finished" xml:space="preserve">
+    <value>A PDF dokumentum előzetes ellenőrzése befejeződött</value>
+  </data>
+  <data name="Validating_PDF_Signature" xml:space="preserve">
+    <value>  PDF dokumentum aláírásának ellenőrzése</value>
+  </data>
+  <data name="Workspace_Load_Error" xml:space="preserve">
+    <value>{0} form alapértelemzett felhasználói felületének visszaállítása betöltési hiba miatt: {1}</value>
+  </data>
+  <data name="Workspace_Save_Error" xml:space="preserve">
+    <value>Hiba az {0} form mentésekor: {1}</value>
+  </data>
+  <data name="Error_No_Signed_By_Returned" xml:space="preserve">
+    <value>A kriptográfiai komponens nem adta vissza az aláíró nevét!</value>
+  </data>
+  <data name="PDF_Has_Signature" xml:space="preserve">
+    <value>  A PDF dokumentumon szerepel aláírás</value>
+  </data>
+  <data name="PostProcess_Validation_Completed" xml:space="preserve">
+    <value>Utólagos ellenőrzés nem talált hibát</value>
+  </data>
+  <data name="Batch_Opened" xml:space="preserve">
+    <value>'{0}' köteg megnyitva</value>
+  </data>
+  <data name="Document_Signed" xml:space="preserve">
+    <value>Dokumentum sikeresen aláírva (típus: '{0}', ID: {1}, időtartam: {2})</value>
+  </data>
+  <data name="Document_Sign_Error" xml:space="preserve">
+    <value>Hiba a dokumentum aláírásakor (típus: '{0}', ID: {1}): {2}</value>
+  </data>
+  <data name="Document_Sign_Exception" xml:space="preserve">
+    <value>Kivétel: {0}</value>
+  </data>
+  <data name="Batch_Closing" xml:space="preserve">
+    <value>'{0}' köteg lezárásra készül</value>
+  </data>
+  <data name="Document_Signatures_Removed" xml:space="preserve">
+    <value>Dokumentum aláírásai törölve (típus: '{0}', ID: {1})</value>
+  </data>
+  <data name="Document_Skipped" xml:space="preserve">
+    <value>Dokumentum hitelesítése kihagyva (típus: '{0}', ID: {1})</value>
+  </data>
+  <data name="Batch_Closing_With_Rejected_PDF" xml:space="preserve">
+    <value>'{0}' köteg lezárásra készül dokumentum elutasítását követően</value>
+  </data>
+  <data name="Batch_Closing_With_Skipped_PDF" xml:space="preserve">
+    <value>'{0}' köteg lezárásra készül dokumentum hitelesítésének kihagyását követően</value>
+  </data>
+  <data name="Document_Rejected" xml:space="preserve">
+    <value>Dokumentum elutasítva (típus: '{0}', ID: {1})</value>
+  </data>
+  <data name="Document_Unrejected" xml:space="preserve">
+    <value>Dokumentum elutasítása visszavonva (típus: '{0}', ID: {1})</value>
+  </data>
+  <data name="Page_Rotated_Left" xml:space="preserve">
+    <value>Dokumentum {0}. oldala balra forgatva (típus: '{1}', ID: {2})</value>
+  </data>
+  <data name="Page_Rotated_Right" xml:space="preserve">
+    <value>Dokumentum {0}. oldala jobbra forgatva (típus: '{1}', ID: {2})</value>
+  </data>
+  <data name="Page_Deleted" xml:space="preserve">
+    <value>Dokumentum {0}. oldala törölve (típus: '{1}', ID: {2})</value>
+  </data>
+</root>

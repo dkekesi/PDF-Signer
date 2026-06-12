@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11206.111
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDF Signer for Tungsten Capture", "PDF Signer for Tungsten Capture\PDF Signer for Tungsten Capture.vbproj", "{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9467F12-306B-4802-9F89-6C59FA143152} = {E9467F12-306B-4802-9F89-6C59FA143152}
+		{78033DAB-AECA-4676-8582-E02571D2AE4D} = {78033DAB-AECA-4676-8582-E02571D2AE4D}
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDF Signer for Tungsten Capture Setup", "PDF Signer for Tungsten Capture Setup\PDF Signer for Tungsten Capture Setup.vbproj", "{E9467F12-306B-4802-9F89-6C59FA143152}"
+	ProjectSection(ProjectDependencies) = postProject
+		{544D1913-6343-4B6F-978A-EF886D216DA1} = {544D1913-6343-4B6F-978A-EF886D216DA1}
+	EndProjectSection
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PDF Signer for Tungsten Capture Installer", "PDF Signer for Tungsten Capture Installer\PDF Signer for Tungsten Capture Installer.wixproj", "{58C9E93D-AC90-4088-B388-BC28B0D173CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9467F12-306B-4802-9F89-6C59FA143152} = {E9467F12-306B-4802-9F89-6C59FA143152}
+		{544D1913-6343-4B6F-978A-EF886D216DA1} = {544D1913-6343-4B6F-978A-EF886D216DA1}
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB} = {DE276830-C34D-4F84-B2DD-142FFEB6A3FB}
+		{78033DAB-AECA-4676-8582-E02571D2AE4D} = {78033DAB-AECA-4676-8582-E02571D2AE4D}
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDF Signer for Tungsten Capture Common", "PDF Signer for Tungsten Capture Common\PDF Signer for Tungsten Capture Common.vbproj", "{544D1913-6343-4B6F-978A-EF886D216DA1}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDF Signer for Tungsten Capture WFA", "PDF Signer for Tungsten Capture WFA\PDF Signer for Tungsten Capture WFA.vbproj", "{78033DAB-AECA-4676-8582-E02571D2AE4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		FullRelease|Any CPU = FullRelease|Any CPU
+		FullRelease|x86 = FullRelease|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.Debug|x86.ActiveCfg = Debug|x86
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.Debug|x86.Build.0 = Debug|x86
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.FullRelease|Any CPU.ActiveCfg = FullRelease|Any CPU
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.FullRelease|Any CPU.Build.0 = FullRelease|Any CPU
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.FullRelease|x86.ActiveCfg = Release|x86
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.FullRelease|x86.Build.0 = Release|x86
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.Release|x86.ActiveCfg = Release|x86
+		{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}.Release|x86.Build.0 = Release|x86
+		{E9467F12-306B-4802-9F89-6C59FA143152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9467F12-306B-4802-9F89-6C59FA143152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9467F12-306B-4802-9F89-6C59FA143152}.Debug|x86.ActiveCfg = Debug|x86
+		{E9467F12-306B-4802-9F89-6C59FA143152}.Debug|x86.Build.0 = Debug|x86
+		{E9467F12-306B-4802-9F89-6C59FA143152}.FullRelease|Any CPU.ActiveCfg = FullRelease|Any CPU
+		{E9467F12-306B-4802-9F89-6C59FA143152}.FullRelease|Any CPU.Build.0 = FullRelease|Any CPU
+		{E9467F12-306B-4802-9F89-6C59FA143152}.FullRelease|x86.ActiveCfg = Release|x86
+		{E9467F12-306B-4802-9F89-6C59FA143152}.FullRelease|x86.Build.0 = Release|x86
+		{E9467F12-306B-4802-9F89-6C59FA143152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9467F12-306B-4802-9F89-6C59FA143152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9467F12-306B-4802-9F89-6C59FA143152}.Release|x86.ActiveCfg = Release|x86
+		{E9467F12-306B-4802-9F89-6C59FA143152}.Release|x86.Build.0 = Release|x86
+		{58C9E93D-AC90-4088-B388-BC28B0D173CD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{58C9E93D-AC90-4088-B388-BC28B0D173CD}.Debug|x86.ActiveCfg = Debug|x86
+		{58C9E93D-AC90-4088-B388-BC28B0D173CD}.FullRelease|Any CPU.ActiveCfg = Release|x86
+		{58C9E93D-AC90-4088-B388-BC28B0D173CD}.FullRelease|x86.ActiveCfg = Release|x86
+		{58C9E93D-AC90-4088-B388-BC28B0D173CD}.FullRelease|x86.Build.0 = Release|x86
+		{58C9E93D-AC90-4088-B388-BC28B0D173CD}.Release|Any CPU.ActiveCfg = Release|x86
+		{58C9E93D-AC90-4088-B388-BC28B0D173CD}.Release|x86.ActiveCfg = Release|x86
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.Debug|x86.ActiveCfg = Debug|x86
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.Debug|x86.Build.0 = Debug|x86
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.FullRelease|Any CPU.ActiveCfg = FullRelease|Any CPU
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.FullRelease|Any CPU.Build.0 = FullRelease|Any CPU
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.FullRelease|x86.ActiveCfg = Release|x86
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.FullRelease|x86.Build.0 = Release|x86
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.Release|x86.ActiveCfg = Release|x86
+		{544D1913-6343-4B6F-978A-EF886D216DA1}.Release|x86.Build.0 = Release|x86
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.Debug|x86.ActiveCfg = Debug|x86
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.Debug|x86.Build.0 = Debug|x86
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.FullRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.FullRelease|Any CPU.Build.0 = Release|Any CPU
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.FullRelease|x86.ActiveCfg = Release|x86
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.FullRelease|x86.Build.0 = Release|x86
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.Release|x86.ActiveCfg = Release|x86
+		{78033DAB-AECA-4676-8582-E02571D2AE4D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {155473D3-91F0-42F4-842C-F0E69BEBA56F}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = PDF Signer NET.vsmdi
+	EndGlobalSection
+EndGlobal

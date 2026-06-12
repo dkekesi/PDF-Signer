@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Clause_Format_Missing" xml:space="preserve">
+    <value>Nincs kiválasztva a hitelesítési záradék formátuma!</value>
+  </data>
+  <data name="Copying_Organization_Missing" xml:space="preserve">
+    <value>Nincs megadva a másolatkészítő szervezet neve!</value>
+  </data>
+  <data name="Copying_Regulation_Name_Missing" xml:space="preserve">
+    <value>Nincs megadva a másolatkészítési szabályzat megnevezése!</value>
+  </data>
+  <data name="Copying_Regulation_URL_Missing" xml:space="preserve">
+    <value>Nincs megadva a másolatkészítési szabályzat elérhetősége!</value>
+  </data>
+  <data name="Copying_Regulation_Version_Missing" xml:space="preserve">
+    <value>Nincs megadva a másolatkészítési szabályzat verziószáma!</value>
+  </data>
+  <data name="Header_Error" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="Index_Bar_Code_Missing" xml:space="preserve">
+    <value>A vonalkódot tartalmazó mezőt kötelező megadni, ha a hitelesítés szükségességét a vonalkód tartalma alapján vezéreljük!</value>
+  </data>
+  <data name="Revocation_Method_Missing" xml:space="preserve">
+    <value>A visszavonás-ellenőrzés módja nincs kiválasztva!</value>
+  </data>
+  <data name="Signature_Hash_Algorithm_Missing" xml:space="preserve">
+    <value>Nincs kiválasztva az aláírás hash algoritmusa!</value>
+  </data>
+  <data name="Signature_Marker_Missing" xml:space="preserve">
+    <value>Az aláírást jelölő karakter nincs megadva!</value>
+  </data>
+  <data name="Time_Stamp_Hash_Algorithm_Missing" xml:space="preserve">
+    <value>Nincs kiválasztva az időbélyeg hash algoritmusa!</value>
+  </data>
+  <data name="TSA_URL_Missing" xml:space="preserve">
+    <value>Az időbélyeg-szolgáltató URL-je nincs megadva!</value>
+  </data>
+  <data name="Publish_Invalid_Index_Field" xml:space="preserve">
+    <value>'{0}' dokumentumosztály aláírási beállításai közt szereplő egyik indexmező már nem létezik.</value>
+  </data>
+  <data name="Publish_No_Doc_Class_Has_Signing_Enabled" xml:space="preserve">
+    <value>Egyetlen dokumentumosztálynál sincs bekapcsolva az aláírás!</value>
+  </data>
+  <data name="Ask_Save_Changes" xml:space="preserve">
+    <value>Kilépés előtt menti a beállításokat?</value>
+  </data>
+  <data name="Header_Save_Changes" xml:space="preserve">
+    <value>Beállítások mentése</value>
+  </data>
+  <data name="Signature_Policy_Hash_Error" xml:space="preserve">
+    <value>Hibás aláírás szabályzat hash (nem Base64 kódolású string)!</value>
+  </data>
+  <data name="Crypto_Provider_Not_Selected" xml:space="preserve">
+    <value>Az alapértelmezett kriptográfiai szolgáltató nincs kiválasztva!</value>
+  </data>
+  <data name="Header_Reset_Settings" xml:space="preserve">
+    <value>Beállítások alapértelmezettre állítása</value>
+  </data>
+  <data name="Reset_Settings" xml:space="preserve">
+    <value>Biztosan alapértelmezettre állítja az összes beállítást?</value>
+  </data>
+  <data name="Header_File_Open_Error" xml:space="preserve">
+    <value>Hiba a kiválasztott fájl betöltésekor</value>
+  </data>
+  <data name="Header_File_Save_Error" xml:space="preserve">
+    <value>Hiba a megadott fájl mentésekor</value>
+  </data>
+  <data name="XML_Schema_Error" xml:space="preserve">
+    <value>XML séma hiba miatt a beállítások nem értelmezhetők!</value>
+  </data>
+  <data name="File_Append_Text_Invalid" xml:space="preserve">
+    <value>A fájlnév utótag olyan karaktert tartalmaz, amely nem forulhat elő fájlnévben!</value>
+  </data>
+  <data name="File_Naming_Not_Selected" xml:space="preserve">
+    <value>Nincs kiválasztva az aláírt fájl elnevezésének módja!</value>
+  </data>
+  <data name="File_New_Parameters_Not_Set" xml:space="preserve">
+    <value>Ha aláírás után új fájlt kell létrehozni, akkor legalább a fájlnév utótagot vagy az új kiterjesztést (vagy mindkettőt) meg kell adni!</value>
+  </data>
+  <data name="File_Replacement_Extension_Invalid" xml:space="preserve">
+    <value>Az új kiterjesztés olyan karaktert tartalmaz, amely nem forulhat elő fájlnévben!</value>
+  </data>
+  <data name="Header_Help_Display_Error" xml:space="preserve">
+    <value>Hiba a súgófájl megnyitásakor</value>
+  </data>
+  <data name="PDFStreamer_AuthCode_Missing" xml:space="preserve">
+    <value>PDF Streamer authorizációs kód nincs megadva!</value>
+  </data>
+  <data name="PDFStreamer_ConfigFile_Missing" xml:space="preserve">
+    <value>PDF Streamer konfigurációs fájl nincs megadva!</value>
+  </data>
+  <data name="PDFStreamer_URL_Missing" xml:space="preserve">
+    <value>PDF Streamer URL nincs megadva!</value>
+  </data>
+  <data name="MQ_Domain_Missing" xml:space="preserve">
+    <value>Az MQFTP mappákhoz kapcsolódó user domain nevét kötelező megadni!</value>
+  </data>
+  <data name="MQ_FolderIn_Missing" xml:space="preserve">
+    <value>A bejövő fájlok MQFTP mappáját kötelező megadni!</value>
+  </data>
+  <data name="MQ_FolderOut_Missing" xml:space="preserve">
+    <value>A kimenő fájlok MQFTP mappáját kötelező megadni!</value>
+  </data>
+  <data name="MQ_Password_Missing" xml:space="preserve">
+    <value>Az MQFTP mappákhoz kapcsolódó user jelszavát kötelező megadni!</value>
+  </data>
+  <data name="MQ_UserName_Missing" xml:space="preserve">
+    <value>Az MQFTP mappákhoz kapcsolódó user nevét kötelező megadni!</value>
+  </data>
+  <data name="Exception_Loading_Setup_Values" xml:space="preserve">
+    <value>Hiba a meglévő beállítások betöltése közben:
+{0}</value>
+  </data>
+  <data name="LTA_Signature_Config_Incorrect" xml:space="preserve">
+    <value>Ha be van kapcsolva az egymenetes PAdES B-LTA készítése, akkor a következő beállítások is szükségesek:
+- dokumentum-szintű időbélyeg elhelyezése bekapcsolva;
+- visszavonás ellenőrzés: OCSP-re állítva.</value>
+  </data>
+  <data name="Proxy_Server_Missing" xml:space="preserve">
+    <value>A proxy szerver neve vagy IP-je nincs megadva!</value>
+  </data>
+  <data name="Proxy_Server_Invalid" xml:space="preserve">
+    <value>A proxy szervert FQDN-nel vagy IP címmel kell megadni! Ne használjon 'http(s)://' előtagot és ebben a mezőben ne adja meg a portot sem.</value>
+  </data>
+  <data name="Proxy_Auth_Method_Missing" xml:space="preserve">
+    <value>A proxy azonosítás módja nincs kiválasztva!</value>
+  </data>
+  <data name="Proxy_User_Missing" xml:space="preserve">
+    <value>'User/password' autentikáció esetén kötelező megadni a proxy felhasználónevet!</value>
+  </data>
+  <data name="Document_Viewer_Not_Selected" xml:space="preserve">
+    <value>A dokumentum-megtekintő nincs kiválasztva!</value>
+  </data>
+  <data name="Index_Skip_Note_Missing" xml:space="preserve">
+    <value>Ha az 'Allow skip required documents' be van kapcsolva, akkor a Skip note indexmezőt meg kell adni!</value>
+  </data>
+  <data name="MNBSigner_Domain_Missing" xml:space="preserve">
+    <value>Az MNB Signer web service-hez kapcsolódó user domain nevét kötelező megadni!</value>
+  </data>
+  <data name="MNBSigner_Password_Missing" xml:space="preserve">
+    <value>Az MNB Signer web service-hez kapcsolódó user jelszavát kötelező megadni!</value>
+  </data>
+  <data name="MNBSigner_URL_Missing" xml:space="preserve">
+    <value>MNB Signer URL nincs megadva!</value>
+  </data>
+  <data name="MNBSigner_UserName_Missing" xml:space="preserve">
+    <value>Az MNB Signer web service-hez kapcsolódó user nevét kötelező megadni!</value>
+  </data>
+  <data name="MNBSigner_Auth_Method_Not_Selected" xml:space="preserve">
+    <value>Nincs kiválasztva az MNB Signer autentikáció módja!</value>
+  </data>
+  <data name="MNBSigner_URL_Not_Http" xml:space="preserve">
+    <value>Az URL-nek 'http'-vel vagy 'https'-sel kell kezdődnie!</value>
+  </data>
+  <data name="URL_Not_Complete" xml:space="preserve">
+    <value>A megadott URL nem teljes!</value>
+  </data>
+  <data name="No_Crypto_Provider_Enabled" xml:space="preserve">
+    <value>Leglább egy kriptográfiai szolgáltatót be kell kapcsolni!</value>
+  </data>
+  <data name="Default_Crypto_Provider_Not_Enabled" xml:space="preserve">
+    <value>Az alapértelmezettnek kiválasztott kriptográfiai szolgáltató nincs bekapcsolva!</value>
+  </data>
+  <data name="Reset_CSS_In_Kofax_Admin" xml:space="preserve">
+    <value>Törli az összes "{0}" kezdetű CSS-t a Kofax Administration adatbázisból? A műveletet nem lehet visszavonni!</value>
+  </data>
+</root>

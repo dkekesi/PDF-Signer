@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultUser
+  PrimaryTarget="/Project/Targets/eWay-HTML5.fltar"
+  ImageFolder="C:\Projects\eWay\Help\Content\Resources\Images\Screenshots\"
+  AliasFileEnableDefaultSkin="false"
+  AliasFileEnableIdentifierCapitalization="false"
+  AliasFileEnablePrefix="false"
+  AliasFileEnablePrimaryHeaderFile="false"
+  AliasFileEnableTopicNameInIdentifier="true"
+  AliasFileIdentifierStartingValue="1000"
+  AliasFileIdentifierPrefix=""
+  AliasFileSelectDefaultSkin=""
+  AliasFileSelectPrimaryHeaderFile=""
+  AliasFileNumberFormat="0" />
