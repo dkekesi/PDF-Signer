@@ -67,6 +67,7 @@ Friend Class SBBPDF
             End If
         Next
 
+        TryCast(SystemStore, IDisposable)?.Dispose()
         Return res
     End Function
 
@@ -345,6 +346,7 @@ Friend Class SBBPDF
                     sig = doc.Signatures(i)
                     If (TypeOf sig.Handler Is TElPDFAdvancedPublicKeySecurityHandler) Then
                         PADESSignatureHandler = CType(sig.Handler, TElPDFAdvancedPublicKeySecurityHandler)
+                        RemoveHandler PADESSignatureHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
                         AddHandler PADESSignatureHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
                         PADESSignatureHandler.AutoCollectRevocationInfo = True
                         PADESSignatureHandler.IgnoreChainValidationErrors = False
@@ -426,6 +428,7 @@ Friend Class SBBPDF
                     If (TypeOf sig.Handler Is TElPDFAdvancedPublicKeySecurityHandler) Then
                         PADESDocTimeStampHandler = CType(sig.Handler, TElPDFAdvancedPublicKeySecurityHandler)
                         If PADESDocTimeStampHandler.PAdESSignatureType = TSBPAdESSignatureType.pastDocumentTimestamp Then
+                            RemoveHandler PADESDocTimeStampHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
                             AddHandler PADESDocTimeStampHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
                             PADESDocTimeStampHandler.AutoCollectRevocationInfo = True
                             PADESDocTimeStampHandler.IgnoreChainValidationErrors = False
@@ -551,6 +554,10 @@ Friend Class SBBPDF
             RemoveHandler PADESSignatureHandler.OnCertValidatorFinished, AddressOf PADESHandler_OnCertValidatorFinished
             RemoveHandler PADESDocTimeStampHandler.OnCertValidatorPrepared, AddressOf PADESHandler_OnCertValidatorPrepared
             RemoveHandler PADESDocTimeStampHandler.OnCertValidatorFinished, AddressOf PADESHandler_OnCertValidatorFinished
+            RemoveHandler TSPClient.OnBeforeSign, AddressOf TSPClient_OnBeforeSign
+            RemoveHandler TSPClient.OnCertificateValidate, AddressOf TSPClient_OnCertificateValidate
+            RemoveHandler TSPClient.OnHTTPError, AddressOf TSPClient_OnHTTPError
+            RemoveHandler TSPClient.OnTSPError, AddressOf TSPClient_OnTSPError
 
             If _signRequest.DocItem.FileSize > Constant.MemoryStreamSizeLimit Then
                 Try
@@ -562,6 +569,17 @@ Friend Class SBBPDF
                 Catch
                 End Try
             End If
+
+            ' release SBB objects deterministically (types that implement IDisposable)
+            Try
+                TryCast(doc, IDisposable)?.Dispose()
+                TryCast(SystemStore, IDisposable)?.Dispose()
+                TryCast(CertStorage, IDisposable)?.Dispose()
+                TryCast(_TrustedRootCertStorage, IDisposable)?.Dispose()
+                TryCast(HTTPSClient, IDisposable)?.Dispose()
+                TryCast(TSPClient, IDisposable)?.Dispose()
+            Catch
+            End Try
 
         End Try
 
@@ -653,6 +671,17 @@ Friend Class SBBPDF
 
         _sbSignLog.AppendLine($"'{_CertTranslator.GetIssuedToName(Cert)}' tanúsítványláncának ellenőrzése")
 
+        ' the same validator instance can be prepared multiple times per run; avoid double subscription
+        RemoveHandler CertValidator.OnBeforeCRLRetrieverUse, AddressOf CertValidator_OnBeforeCRLRetrieverUse
+        RemoveHandler CertValidator.OnBeforeOCSPClientUse, AddressOf CertValidator_OnBeforeOCSPClientUse
+        RemoveHandler CertValidator.OnCRLError, AddressOf CertValidator_OnCRLError
+        RemoveHandler CertValidator.OnCRLNeeded, AddressOf CertValidator_OnCRLNeeded
+        RemoveHandler CertValidator.OnCRLRetrieved, AddressOf CertValidator_OnCRLRetrieved
+        RemoveHandler CertValidator.OnOCSPError, AddressOf CertValidator_OnOCSPError
+        RemoveHandler CertValidator.OnAfterCRLUse, AddressOf CertValidator_OnAfterCRLUse
+        RemoveHandler CertValidator.OnAfterOCSPResponseUse, AddressOf CertValidator_OnAfterOCSPResponseUse
+        RemoveHandler CertValidator.OnBeforeCertificateValidation, AddressOf CertValidator_OnBeforeCertificateValidation
+        RemoveHandler CertValidator.OnAfterCertificateValidation, AddressOf CertValidator_OnAfterCertificateValidation
         AddHandler CertValidator.OnBeforeCRLRetrieverUse, AddressOf CertValidator_OnBeforeCRLRetrieverUse
         AddHandler CertValidator.OnBeforeOCSPClientUse, AddressOf CertValidator_OnBeforeOCSPClientUse
         AddHandler CertValidator.OnCRLError, AddressOf CertValidator_OnCRLError
@@ -672,6 +701,18 @@ Friend Class SBBPDF
         If Validity <> TSBCertificateValidity.cvOk Then
             _sbSignLog.AppendLine(CertValidator.InternalLogger.Log.Text)
         End If
+
+        ' the validator is finished; unhook everything we attached in OnCertValidatorPrepared
+        RemoveHandler CertValidator.OnBeforeCRLRetrieverUse, AddressOf CertValidator_OnBeforeCRLRetrieverUse
+        RemoveHandler CertValidator.OnBeforeOCSPClientUse, AddressOf CertValidator_OnBeforeOCSPClientUse
+        RemoveHandler CertValidator.OnCRLError, AddressOf CertValidator_OnCRLError
+        RemoveHandler CertValidator.OnCRLNeeded, AddressOf CertValidator_OnCRLNeeded
+        RemoveHandler CertValidator.OnCRLRetrieved, AddressOf CertValidator_OnCRLRetrieved
+        RemoveHandler CertValidator.OnOCSPError, AddressOf CertValidator_OnOCSPError
+        RemoveHandler CertValidator.OnAfterCRLUse, AddressOf CertValidator_OnAfterCRLUse
+        RemoveHandler CertValidator.OnAfterOCSPResponseUse, AddressOf CertValidator_OnAfterOCSPResponseUse
+        RemoveHandler CertValidator.OnBeforeCertificateValidation, AddressOf CertValidator_OnBeforeCertificateValidation
+        RemoveHandler CertValidator.OnAfterCertificateValidation, AddressOf CertValidator_OnAfterCertificateValidation
     End Sub
 
     Private Sub CertValidator_OnBeforeCertificateValidation(Sender As Object, Certificate As TElX509Certificate, CACertificate As TElX509Certificate)
