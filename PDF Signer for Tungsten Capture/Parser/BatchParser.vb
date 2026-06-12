@@ -228,7 +228,8 @@ Friend Class BatchParser
             End If
         End If
 
-        Return Nothing
+        ' unreachable: all TreeItem kinds are handled above; explicit value (enum zero) for clarity
+        Return IconType.Batch
     End Function
 
     Private Function GetSignedDocumentPath(DocumentSetup As SetupModel, KofaxPDFFilePath As String) As String

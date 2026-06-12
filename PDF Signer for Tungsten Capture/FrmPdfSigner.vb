@@ -114,6 +114,8 @@ Friend Class FrmPdfSigner
             Dim batchId As Integer
             If Integer.TryParse(args(0).Substring(2), batchId) Then ' we cut off "-B" from the beginning
                 _SingleBatchOpenID = batchId
+            Else
+                _logger.Warn("Érvénytelen -B kötegazonosító a parancssorban: {0}", args(0))
             End If
         End If
     End Sub
