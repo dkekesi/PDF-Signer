@@ -8,6 +8,18 @@ Public Class Encrypt
     Private Const AesIV256 As String = "uB$xu!yCE|2k}1M2"
     Private Const AesKey256 As String = "Ms@fr8U1#BUiVZ^*}MgR8E{gDekTctHM"
     Private Const CipherTextV2Prefix As String = "v2:"
+    Private Const IVSizeBytes As Integer = 16 ' AES block size; also the length of the v2 prepended IV
+
+    Private Function CreateAes(IV As Byte()) As AesCryptoServiceProvider
+        Return New AesCryptoServiceProvider() With {
+            .BlockSize = 128,
+            .KeySize = 256,
+            .IV = IV,
+            .Key = Encoding.UTF8.GetBytes(AesKey256),
+            .Mode = CipherMode.CBC,
+            .Padding = PaddingMode.PKCS7
+        }
+    End Function
 
     Private Function GetRSAKeyFromString(KeyString As String) As RSAParameters
         Dim sr = New IO.StringReader(KeyString)
@@ -25,8 +37,6 @@ Public Class Encrypt
 
             Try
                 rsa.ImportParameters(GetRSAKeyFromString(My.Resources.LicensePublicKey))
-                Dim Hash = New SHA256Managed()
-                Dim hashedData As Byte() = Hash.ComputeHash(signedBytes)
                 res = rsa.VerifyData(bytesToVerify, CryptoConfig.MapNameToOID("SHA256"), signedBytes)
                 Return res
             Catch
@@ -47,19 +57,12 @@ Public Class Encrypt
         If String.IsNullOrEmpty(StringToEncrypt) Then Return String.Empty
 
         Try
-            Dim iv(15) As Byte
+            Dim iv(IVSizeBytes - 1) As Byte
             Using rng As RandomNumberGenerator = RandomNumberGenerator.Create()
                 rng.GetBytes(iv)
             End Using
 
-            Using aes256 As New AesCryptoServiceProvider() With {
-                .BlockSize = 128,
-                .KeySize = 256,
-                .IV = iv,
-                .Key = Encoding.UTF8.GetBytes(AesKey256),
-                .Mode = CipherMode.CBC,
-                .Padding = PaddingMode.PKCS7
-            }
+            Using aes256 As AesCryptoServiceProvider = CreateAes(iv)
                 Dim src As Byte() = Encoding.Unicode.GetBytes(StringToEncrypt)
                 Using encrypt As ICryptoTransform = aes256.CreateEncryptor()
                     Dim cipherBytes As Byte() = encrypt.TransformFinalBlock(src, 0, src.Length)
@@ -93,21 +96,14 @@ Public Class Encrypt
     Private Function AES256DecryptV2(Base64Payload As String) As String
         Try
             Dim payload As Byte() = Convert.FromBase64String(Base64Payload)
-            If payload.Length <= 16 Then Return Nothing
+            If payload.Length < IVSizeBytes * 2 OrElse (payload.Length - IVSizeBytes) Mod IVSizeBytes <> 0 Then Return Nothing
 
-            Dim iv(15) As Byte
-            Buffer.BlockCopy(payload, 0, iv, 0, 16)
+            Dim iv(IVSizeBytes - 1) As Byte
+            Buffer.BlockCopy(payload, 0, iv, 0, IVSizeBytes)
 
-            Using aes256 As New AesCryptoServiceProvider() With {
-                .BlockSize = 128,
-                .KeySize = 256,
-                .IV = iv,
-                .Key = Encoding.UTF8.GetBytes(AesKey256),
-                .Mode = CipherMode.CBC,
-                .Padding = PaddingMode.PKCS7
-            }
+            Using aes256 As AesCryptoServiceProvider = CreateAes(iv)
                 Using decrypt As ICryptoTransform = aes256.CreateDecryptor()
-                    Dim dest As Byte() = decrypt.TransformFinalBlock(payload, 16, payload.Length - 16)
+                    Dim dest As Byte() = decrypt.TransformFinalBlock(payload, IVSizeBytes, payload.Length - IVSizeBytes)
                     Return Encoding.Unicode.GetString(dest)
                 End Using
             End Using
@@ -117,24 +113,17 @@ Public Class Encrypt
     End Function
 
     Private Function AES256DecryptLegacy(StringToDecrypt As String) As String
-        Using aes256 As New AesCryptoServiceProvider() With {
-            .BlockSize = 128,
-            .KeySize = 256,
-            .IV = Encoding.UTF8.GetBytes(AesIV256),
-            .Key = Encoding.UTF8.GetBytes(AesKey256),
-            .Mode = CipherMode.CBC,
-            .Padding = PaddingMode.PKCS7
-        }
-            Dim src As Byte() = System.Convert.FromBase64String(StringToDecrypt)
+        Try
+            Dim src As Byte() = Convert.FromBase64String(StringToDecrypt)
 
-            Try
+            Using aes256 As AesCryptoServiceProvider = CreateAes(Encoding.UTF8.GetBytes(AesIV256))
                 Using decrypt As ICryptoTransform = aes256.CreateDecryptor()
                     Dim dest As Byte() = decrypt.TransformFinalBlock(src, 0, src.Length)
                     Return Encoding.Unicode.GetString(dest)
                 End Using
-            Catch
-                Return Nothing
-            End Try
-        End Using
+            End Using
+        Catch
+            Return Nothing
+        End Try
     End Function
 End Class
