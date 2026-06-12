@@ -66,13 +66,14 @@ Friend Class MQFTP
             _sbSignLog.AppendLine("Várakozás MTRACK válaszra")
             '_logger.Debug("Várakozás MTRACK válaszra (ID: {0})", Request.KofaxDocumentGUID)
 
-            Dim pdfWatcher As New FileSystemWatcher With {
+            Using pdfWatcher As New FileSystemWatcher With {
                 .Path = _settings.MQFolderIn,
                 .Filter = pdfFileNameWithExtension,
                 .EnableRaisingEvents = True,
                 .IncludeSubdirectories = False
             }
-            pdfWatchRes = pdfWatcher.WaitForChanged(WatcherChangeTypes.Changed Or WatcherChangeTypes.Created, timeOut)
+                pdfWatchRes = pdfWatcher.WaitForChanged(WatcherChangeTypes.Changed Or WatcherChangeTypes.Created, timeOut)
+            End Using
 
             If Not pdfWatchRes.TimedOut Then
                 _sbSignLog.AppendLine("MTRACK válasz beérkezett, válasz beolvasása")
