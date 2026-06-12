@@ -29,6 +29,7 @@ Friend Class FrmPdfSigner
     Private _CtrlIsDown As Boolean
     Private _SaveLayout As Boolean = True
     Private _RefreshingProviders As Boolean
+    Private _DocumentActionRunning As Boolean
     Private ReadOnly _SingleBatchOpenID As Integer
 
     Private WithEvents ViewerBaseOriginalControl As New ViewerBase
@@ -408,110 +409,116 @@ Friend Class FrmPdfSigner
     End Sub
 
     Private Async Sub BtnSign_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BtnSign.ItemClick
-        If _LicenseInfo.ValidUntil < Date.Now.Date Then
-            MsgBox(String.Format(CommonRes.LicenseExpired, _LicenseInfo.ValidUntil.ToShortDateString), MsgBoxStyle.Critical, MessageBoxTitle)
-            Return
-        End If
-
-        Dim docItem As DocumentItem = GetDocumentItemFromBatchContents()
-        If docItem Is Nothing Then Return
-
-        If TabViewer.SelectedTabPage IsNot TabOriginal Then
-            MsgBox(Messages.Original_Document_Must_Be_Viewed, MsgBoxStyle.Exclamation, MessageBoxTitle)
-            TabViewer.SelectedTabPage = TabOriginal
-            Return
-        End If
-
-        If docItem.IsRejected Or docItem.Pages.Any(Function(f) f.IsRejected) Then
-            MsgBox(Messages.Rejected_Document_Cannot_Be_Signed, MsgBoxStyle.Exclamation, MessageBoxTitle)
-            Return
-        End If
-
-        If String.IsNullOrWhiteSpace(docItem.FormTypeName) Then
-            MsgBox(Messages.Document_Not_Identified, MsgBoxStyle.Exclamation, MessageBoxTitle)
-            Return
-        End If
-
-        If Not docItem.IsSigningPossible Then
-            MsgBox(Messages.Document_Not_Setup_For_Signing, MsgBoxStyle.Exclamation, MessageBoxTitle)
-            Return
-        End If
-
-        Dim provider As CryptoProviderBase = CType(BarComboProvider.EditValue, CryptoProviderBase)
-        If provider.ProviderType = CryptoProviderType.PDFSigner Then
-            If BarComboCert.EditValue Is Nothing Then
-                MsgBox(Messages.No_Signing_Certificate_Selected, MsgBoxStyle.Exclamation, MessageBoxTitle)
+        If _DocumentActionRunning Then Return
+        _DocumentActionRunning = True
+        Try
+            If _LicenseInfo.ValidUntil < Date.Now.Date Then
+                MsgBox(String.Format(CommonRes.LicenseExpired, _LicenseInfo.ValidUntil.ToShortDateString), MsgBoxStyle.Critical, MessageBoxTitle)
                 Return
             End If
-        End If
 
-        Dim cert As SigningCertificate = CType(BarComboCert.EditValue, SigningCertificate)
-        Dim docWidth As Integer = PdfViewerOriginal.PageWidth
-        Dim docHeight As Integer = PdfViewerOriginal.PageHeight
-        Dim docDimensions As String = String.Format("{0} * {1} mm", docWidth.ToString(), docHeight.ToString())
+            Dim docItem As DocumentItem = GetDocumentItemFromBatchContents()
+            If docItem Is Nothing Then Return
 
-        If PdfViewerSigned.HasDocument Then
-            PdfViewerSigned.CloseDocument()
-        End If
+            If TabViewer.SelectedTabPage IsNot TabOriginal Then
+                MsgBox(Messages.Original_Document_Must_Be_Viewed, MsgBoxStyle.Exclamation, MessageBoxTitle)
+                TabViewer.SelectedTabPage = TabOriginal
+                Return
+            End If
 
-        Dim pdfFileStream As Stream
+            If docItem.IsRejected Or docItem.Pages.Any(Function(f) f.IsRejected) Then
+                MsgBox(Messages.Rejected_Document_Cannot_Be_Signed, MsgBoxStyle.Exclamation, MessageBoxTitle)
+                Return
+            End If
 
-        If docItem.FileSize <= Constant.FileStreamSizeLimit Then
-            Dim mt As New MemoryTributary()
-            PdfViewerOriginal.GetPDFStream(mt)
-            pdfFileStream = mt
-        Else
-            Dim fo As New FileOperation
-            Dim tmpFile As String = fo.GetTempFile("tmp-")
-            Dim fs As New FileStream(tmpFile, FileMode.Create, FileAccess.ReadWrite, FileShare.None)
-            PdfViewerOriginal.GetPDFStream(fs)
-            pdfFileStream = fs
-        End If
+            If String.IsNullOrWhiteSpace(docItem.FormTypeName) Then
+                MsgBox(Messages.Document_Not_Identified, MsgBoxStyle.Exclamation, MessageBoxTitle)
+                Return
+            End If
 
-        ' MsgBox(cert.Certificate.Thumbprint, MsgBoxStyle.OkOnly, "Aláíró tanúsítvány SHA-1 lenyomata")
+            If Not docItem.IsSigningPossible Then
+                MsgBox(Messages.Document_Not_Setup_For_Signing, MsgBoxStyle.Exclamation, MessageBoxTitle)
+                Return
+            End If
 
-        ' we need to set ProgressPercent before the task is started so the document is in progress
-        ' when SelectNextSignableDocument() is hit (which happens immediately after the task is stared)
-        docItem.ProgressPercent = 1
+            Dim provider As CryptoProviderBase = CType(BarComboProvider.EditValue, CryptoProviderBase)
+            If provider.ProviderType = CryptoProviderType.PDFSigner Then
+                If BarComboCert.EditValue Is Nothing Then
+                    MsgBox(Messages.No_Signing_Certificate_Selected, MsgBoxStyle.Exclamation, MessageBoxTitle)
+                    Return
+                End If
+            End If
 
-        Dim t As New Task(Sub()
-                              Dim sigOp As New SignatureOperation()
-                              Dim res As New SignatureResult
-                              Dim startTime As Date = Date.Now
-                              Dim totalTime As TimeSpan
+            Dim cert As SigningCertificate = CType(BarComboCert.EditValue, SigningCertificate)
+            Dim docWidth As Integer = PdfViewerOriginal.PageWidth
+            Dim docHeight As Integer = PdfViewerOriginal.PageHeight
+            Dim docDimensions As String = String.Format("{0} * {1} mm", docWidth.ToString(), docHeight.ToString())
 
-                              'Thread.Sleep(30000) ' for debugging async operations
+            If PdfViewerSigned.HasDocument Then
+                PdfViewerSigned.CloseDocument()
+            End If
 
-                              res = sigOp.SignDocument(docItem, pdfFileStream, provider, cert, docDimensions, docItem.PartialCopyData, _FullUserName)
+            Dim pdfFileStream As Stream
 
-                              docItem.SignatureLogContent = res.SignatureLog
-                              docItem.ErrorMessage = res.ErrorMessage
+            If docItem.FileSize <= Constant.FileStreamSizeLimit Then
+                Dim mt As New MemoryTributary()
+                PdfViewerOriginal.GetPDFStream(mt)
+                pdfFileStream = mt
+            Else
+                Dim fo As New FileOperation
+                Dim tmpFile As String = fo.GetTempFile("tmp-")
+                Dim fs As New FileStream(tmpFile, FileMode.Create, FileAccess.ReadWrite, FileShare.None)
+                PdfViewerOriginal.GetPDFStream(fs)
+                pdfFileStream = fs
+            End If
 
-                              If docItem.IsSigned AndAlso String.IsNullOrEmpty(docItem.ErrorMessage) Then
-                                  totalTime = Date.Now - startTime
-                                  _logger.Info(Messages.Document_Signed, docItem.FormTypeName, docItem.KofaxDocumentGUID, totalTime.ToString)
-                              Else
-                                  _logger.Error(Messages.Document_Sign_Error, docItem.FormTypeName, docItem.KofaxDocumentGUID, docItem.ErrorMessage)
+            ' MsgBox(cert.Certificate.Thumbprint, MsgBoxStyle.OkOnly, "Aláíró tanúsítvány SHA-1 lenyomata")
 
-                                  If Not String.IsNullOrWhiteSpace(res.ExceptionText) Then
-                                      _logger.Error(Messages.Document_Sign_Exception, res.ExceptionText)
+            ' we need to set ProgressPercent before the task is started so the document is in progress
+            ' when SelectNextSignableDocument() is hit (which happens immediately after the task is stared)
+            docItem.ProgressPercent = 1
+
+            Dim t As New Task(Sub()
+                                  Dim sigOp As New SignatureOperation()
+                                  Dim res As New SignatureResult
+                                  Dim startTime As Date = Date.Now
+                                  Dim totalTime As TimeSpan
+
+                                  'Thread.Sleep(30000) ' for debugging async operations
+
+                                  res = sigOp.SignDocument(docItem, pdfFileStream, provider, cert, docDimensions, docItem.PartialCopyData, _FullUserName)
+
+                                  docItem.SignatureLogContent = res.SignatureLog
+                                  docItem.ErrorMessage = res.ErrorMessage
+
+                                  If docItem.IsSigned AndAlso String.IsNullOrEmpty(docItem.ErrorMessage) Then
+                                      totalTime = Date.Now - startTime
+                                      _logger.Info(Messages.Document_Signed, docItem.FormTypeName, docItem.KofaxDocumentGUID, totalTime.ToString)
+                                  Else
+                                      _logger.Error(Messages.Document_Sign_Error, docItem.FormTypeName, docItem.KofaxDocumentGUID, docItem.ErrorMessage)
+
+                                      If Not String.IsNullOrWhiteSpace(res.ExceptionText) Then
+                                          _logger.Error(Messages.Document_Sign_Exception, res.ExceptionText)
+                                      End If
+
+                                      _logger.Error(res.SignatureLog) ' we log the whole crypto provider log in case of an error
                                   End If
 
-                                  _logger.Error(res.SignatureLog) ' we log the whole crypto provider log in case of an error
-                              End If
+                                  ' we set progress bar to the end, so the document becomes available even when exceptions happen
+                                  docItem.ProgressPercent = 100
+                              End Sub)
+            _ActiveTasks.Add(t)
 
-                              ' we set progress bar to the end, so the document becomes available even when exceptions happen
-                              docItem.ProgressPercent = 100
-                          End Sub)
-        _ActiveTasks.Add(t)
+            If _LicenseInfo.AsyncOperation Then
+                t.Start()
+            Else
+                t.RunSynchronously()
+            End If
 
-        If _LicenseInfo.AsyncOperation Then
-            t.Start()
-        Else
-            t.RunSynchronously()
-        End If
-
-        Await FinishDocumentActionAsync(Messages.Batch_Closing)
+            Await FinishDocumentActionAsync(Messages.Batch_Closing)
+        Finally
+            _DocumentActionRunning = False
+        End Try
     End Sub
 
     Private Sub BtnRemoveSignatures_Click(sender As Object, e As ItemClickEventArgs) Handles BtnRemoveSignatures.ItemClick
@@ -531,39 +538,45 @@ Friend Class FrmPdfSigner
     End Sub
 
     Private Async Sub BtnSkipSign_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BtnSkipSign.ItemClick
-        If BatchTree.FocusedNode Is Nothing Then Return
+        If _DocumentActionRunning Then Return
+        _DocumentActionRunning = True
+        Try
+            If BatchTree.FocusedNode Is Nothing Then Return
 
-        Dim doc As DocumentItem = Nothing
-        Dim docOp As New DocumentOperation
-        Dim currentItem As TreeItem = BatchTree.GetDataRecordByNode(BatchTree.FocusedNode)
+            Dim doc As DocumentItem = Nothing
+            Dim docOp As New DocumentOperation
+            Dim currentItem As TreeItem = BatchTree.GetDataRecordByNode(BatchTree.FocusedNode)
 
-        If currentItem.GetType Is GetType(BatchItem) Then Return
+            If currentItem.GetType Is GetType(BatchItem) Then Return
 
-        If currentItem.GetType Is GetType(DocumentItem) Then
-            doc = currentItem
-        End If
+            If currentItem.GetType Is GetType(DocumentItem) Then
+                doc = currentItem
+            End If
 
-        If currentItem.GetType Is GetType(PageItem) Then
-            doc = CType(currentItem, PageItem).Document
-        End If
+            If currentItem.GetType Is GetType(PageItem) Then
+                doc = CType(currentItem, PageItem).Document
+            End If
 
-        If doc.IsRejected Or doc.Pages.Any(Function(f) f.IsRejected) Then
-            MsgBox(Messages.Rejected_Document_Cannot_Be_Skipped, MsgBoxStyle.Exclamation, MessageBoxTitle)
-            Return
-        End If
+            If doc.IsRejected Or doc.Pages.Any(Function(f) f.IsRejected) Then
+                MsgBox(Messages.Rejected_Document_Cannot_Be_Skipped, MsgBoxStyle.Exclamation, MessageBoxTitle)
+                Return
+            End If
 
-        Dim msg As String = doc.ErrorMessage
-        If Not String.IsNullOrEmpty(doc.SkipNote) Then msg = doc.SkipNote
+            Dim msg As String = doc.ErrorMessage
+            If Not String.IsNullOrEmpty(doc.SkipNote) Then msg = doc.SkipNote
 
-        docOp.SkipSigning(doc, msg)
+            docOp.SkipSigning(doc, msg)
 
-        If doc.IsSkipped Then ' we only do something, if skipping really happened (user can cancel the procedure in the Notes window)
-            _logger.Info(Messages.Document_Skipped, doc.FormTypeName, doc.KofaxDocumentGUID)
+            If doc.IsSkipped Then ' we only do something, if skipping really happened (user can cancel the procedure in the Notes window)
+                _logger.Info(Messages.Document_Skipped, doc.FormTypeName, doc.KofaxDocumentGUID)
 
-            PdfViewerSigned.CloseDocument()
+                PdfViewerSigned.CloseDocument()
 
-            Await FinishDocumentActionAsync(Messages.Batch_Closing_With_Rejected_PDF)
-        End If
+                Await FinishDocumentActionAsync(Messages.Batch_Closing_With_Rejected_PDF)
+            End If
+        Finally
+            _DocumentActionRunning = False
+        End Try
     End Sub
 
     Private Sub BarComboProvider_EditValueChanged(sender As Object, e As EventArgs) Handles BarComboProvider.EditValueChanged
@@ -618,31 +631,37 @@ Friend Class FrmPdfSigner
     End Sub
 
     Private Async Sub BtnReject_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BtnReject.ItemClick
-        If BatchTree.FocusedNode Is Nothing Then Return
+        If _DocumentActionRunning Then Return
+        _DocumentActionRunning = True
+        Try
+            If BatchTree.FocusedNode Is Nothing Then Return
 
-        Dim doc As DocumentItem = Nothing
-        Dim docOp As New DocumentOperation
-        Dim currentItem As TreeItem = BatchTree.GetDataRecordByNode(BatchTree.FocusedNode)
+            Dim doc As DocumentItem = Nothing
+            Dim docOp As New DocumentOperation
+            Dim currentItem As TreeItem = BatchTree.GetDataRecordByNode(BatchTree.FocusedNode)
 
-        If currentItem.GetType Is GetType(BatchItem) Then Return
+            If currentItem.GetType Is GetType(BatchItem) Then Return
 
-        If currentItem.GetType Is GetType(DocumentItem) Then
-            doc = currentItem
-            docOp.Reject(CType(currentItem, DocumentItem))
-        End If
+            If currentItem.GetType Is GetType(DocumentItem) Then
+                doc = currentItem
+                docOp.Reject(CType(currentItem, DocumentItem))
+            End If
 
-        If currentItem.GetType Is GetType(PageItem) Then
-            doc = CType(currentItem, PageItem).Document
-            docOp.Reject(CType(currentItem, PageItem))
-        End If
+            If currentItem.GetType Is GetType(PageItem) Then
+                doc = CType(currentItem, PageItem).Document
+                docOp.Reject(CType(currentItem, PageItem))
+            End If
 
-        If currentItem.IsRejected Then ' we only do something, if rejection really happened (user can cancel the procedure in the Reject window)
-            _logger.Info(Messages.Document_Rejected, doc.FormTypeName, doc.KofaxDocumentGUID)
+            If currentItem.IsRejected Then ' we only do something, if rejection really happened (user can cancel the procedure in the Reject window)
+                _logger.Info(Messages.Document_Rejected, doc.FormTypeName, doc.KofaxDocumentGUID)
 
-            PdfViewerSigned.CloseDocument()
+                PdfViewerSigned.CloseDocument()
 
-            Await FinishDocumentActionAsync(Messages.Batch_Closing_With_Rejected_PDF)
-        End If
+                Await FinishDocumentActionAsync(Messages.Batch_Closing_With_Rejected_PDF)
+            End If
+        Finally
+            _DocumentActionRunning = False
+        End Try
     End Sub
 
     Private Sub BtnUnreject_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BtnUnreject.ItemClick
@@ -1170,10 +1189,10 @@ Friend Class FrmPdfSigner
     Private Sub RefreshCryptoProviders(docitem As DocumentItem)
         Dim activeProviders As List(Of CryptoProviderBase) = docitem.SetupData.CryptographicProviders.Where(Function(x) x.Enabled).ToList
 
-        ComboProvider.Items.Clear()
-
         _RefreshingProviders = True
         Try
+            ComboProvider.Items.Clear()
+
             For Each provider As CryptoProviderBase In activeProviders
                 ComboProvider.Items.Add(provider)
 
@@ -1181,11 +1200,21 @@ Friend Class FrmPdfSigner
                     BarComboProvider.EditValue = provider
                 End If
             Next
+
+            ' reset stale selection when the previous document's provider is not offered here
+            Dim currentSelection As CryptoProviderBase = TryCast(BarComboProvider.EditValue, CryptoProviderBase)
+            If currentSelection Is Nothing OrElse Not activeProviders.Contains(currentSelection) Then
+                BarComboProvider.EditValue = activeProviders.FirstOrDefault
+            End If
         Finally
             _RefreshingProviders = False
         End Try
 
-        BtnRefreshCertificates_ItemClick(Nothing, Nothing)
+        ' enumerate the certificate store only when the selected provider can actually use local certificates
+        Dim selectedProvider As CryptoProviderBase = TryCast(BarComboProvider.EditValue, CryptoProviderBase)
+        If selectedProvider IsNot Nothing AndAlso selectedProvider.SupportsLocalCertificates Then
+            BtnRefreshCertificates_ItemClick(Nothing, Nothing)
+        End If
     End Sub
 
     Private Sub RefreshCertificates(QualifiedCertificatesOnly As Boolean)
