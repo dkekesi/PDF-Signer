@@ -65,6 +65,10 @@ Friend Class MNBSigner
             offset += bytesRead
         End While
 
+        If offset < PdfBin.Length Then
+            Throw New EndOfStreamException($"A dokumentum stream a vártnál rövidebb ({offset}/{PdfBin.Length} byte)!")
+        End If
+
         Dim response As ReturnModelOfFileContentModeliOGFhNrL
 
         Try
@@ -122,7 +126,6 @@ Friend Class MNBSigner
             If Not InitRes.Success OrElse InitRes.Value Is Nothing OrElse String.IsNullOrWhiteSpace(InitRes.Value.Guid) Then
                 res.ErrorMessage = GetErrors(InitRes)
                 res.SignatureLog = _sbSignLog.ToString
-                mtSigned.Dispose()
                 Return res
             End If
 
@@ -149,7 +152,6 @@ Friend Class MNBSigner
                 If Not ChunkSendRes.Success Then
                     res.ErrorMessage = GetErrors(ChunkSendRes)
                     res.SignatureLog = _sbSignLog.ToString
-                    mtSigned.Dispose()
                     Return res
                 End If
             Next
@@ -172,14 +174,12 @@ Friend Class MNBSigner
             If SigningStatus = 1 Then ' timeout
                 res.ErrorMessage = $"Időtúllépés: nem érkezett aláírt fájl a szerverről {(Now - StartTime).TotalSeconds} mp alatt."
                 res.SignatureLog = _sbSignLog.ToString
-                mtSigned.Dispose()
                 Return res
             End If
 
             If SigningStatus = -1 OrElse Not ServerRes.Success Then ' error while signing
                 res.ErrorMessage = GetErrors(ServerRes)
                 res.SignatureLog = _sbSignLog.ToString
-                mtSigned.Dispose()
                 Return res
             End If
 
@@ -197,7 +197,6 @@ Friend Class MNBSigner
                     If Not ChunkReceiveRes.Success Then
                         res.ErrorMessage = GetErrors(ChunkReceiveRes)
                         res.SignatureLog = _sbSignLog.ToString
-                        mtSigned.Dispose()
                         Return res
                     End If
 
@@ -207,17 +206,20 @@ Friend Class MNBSigner
 
                 _sbSignLog.AppendLine($"Darabok letöltése befejeződött, {mtSigned.Length} byte kiírva az aláírt fájlt tartalmazó streambe")
             End If
+
+            res.SignatureLog = _sbSignLog.ToString
+            res.SignedFile = mtSigned
+            Return res
+
         Catch ex As Exception
             res.ErrorMessage = ex.Message
             res.SignatureLog = ex.ToString
-            mtSigned.Dispose()
             Return res
+
+        Finally
+            ' ownership transfers to the caller only when SignedFile was assigned on the success path
+            If res.SignedFile IsNot mtSigned Then mtSigned.Dispose()
         End Try
-
-        res.SignatureLog = _sbSignLog.ToString
-        res.SignedFile = mtSigned
-
-        Return res
     End Function
 
     Private Function GetHttpBinding() As BasicHttpBinding
