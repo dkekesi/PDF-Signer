@@ -90,7 +90,7 @@ Friend Class PDFStreamerRestClient
         Using cts As New CancellationTokenSource(_callTimeout)
             documentStream.Seek(0, SeekOrigin.Begin)
 
-            Using content As New StreamContent(documentStream)
+            Using content As New StreamContent(New NonDisposingStream(documentStream))
                 content.Headers.ContentType = New MediaTypeHeaderValue("application/octet-stream")
 
                 Using request As New HttpRequestMessage(HttpMethod.Post, endpointUrl)
@@ -190,4 +190,81 @@ Friend Class PDFStreamerRestClient
         Return Nothing
     End Function
 
+End Class
+
+''' <summary>
+''' Wraps a stream so that disposing the wrapper does NOT dispose the inner stream.
+''' HttpClient's StreamContent disposes its content stream on .NET Framework (no leaveOpen
+''' overload), but the caller reuses FileToSign after signing, so the source must stay open.
+''' </summary>
+Friend NotInheritable Class NonDisposingStream
+    Inherits Stream
+
+    Private ReadOnly _inner As Stream
+
+    Friend Sub New(inner As Stream)
+        _inner = inner
+    End Sub
+
+    Public Overrides ReadOnly Property CanRead As Boolean
+        Get
+            Return _inner.CanRead
+        End Get
+    End Property
+
+    Public Overrides ReadOnly Property CanSeek As Boolean
+        Get
+            Return _inner.CanSeek
+        End Get
+    End Property
+
+    Public Overrides ReadOnly Property CanWrite As Boolean
+        Get
+            Return _inner.CanWrite
+        End Get
+    End Property
+
+    Public Overrides ReadOnly Property Length As Long
+        Get
+            Return _inner.Length
+        End Get
+    End Property
+
+    Public Overrides Property Position As Long
+        Get
+            Return _inner.Position
+        End Get
+        Set(value As Long)
+            _inner.Position = value
+        End Set
+    End Property
+
+    Public Overrides Sub Flush()
+        _inner.Flush()
+    End Sub
+
+    Public Overrides Function Read(buffer As Byte(), offset As Integer, count As Integer) As Integer
+        Return _inner.Read(buffer, offset, count)
+    End Function
+
+    Public Overrides Function ReadAsync(buffer As Byte(), offset As Integer, count As Integer, cancellationToken As CancellationToken) As Task(Of Integer)
+        Return _inner.ReadAsync(buffer, offset, count, cancellationToken)
+    End Function
+
+    Public Overrides Function Seek(offset As Long, origin As SeekOrigin) As Long
+        Return _inner.Seek(offset, origin)
+    End Function
+
+    Public Overrides Sub SetLength(value As Long)
+        _inner.SetLength(value)
+    End Sub
+
+    Public Overrides Sub Write(buffer As Byte(), offset As Integer, count As Integer)
+        _inner.Write(buffer, offset, count)
+    End Sub
+
+    Protected Overrides Sub Dispose(disposing As Boolean)
+        ' Intentionally does NOT dispose _inner — the caller owns and reuses it.
+        MyBase.Dispose(disposing)
+    End Sub
 End Class
