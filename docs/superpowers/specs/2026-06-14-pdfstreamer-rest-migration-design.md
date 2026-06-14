@@ -79,10 +79,19 @@ found, 500 other.
 - **URL semantics:** `PDFStreamerCryptoProvider.PDFStreamerURL` now holds the
   **full REST endpoint URL** (e.g. `https://host:port/api/v1/documents/stream`)
   and is POSTed to verbatim. No path is appended in code.
-- **Error parsing:** add the `System.Text.Json` NuGet package (a
-  netstandard2.0-compatible version, embedded by Costura) to deserialize the
-  ProblemDetails body. The success path needs no JSON — all metadata is in
-  headers.
+- **Error parsing:** use the inbox `System.Runtime.Serialization.Json.DataContractJsonSerializer`
+  (a `<Reference Include="System.Runtime.Serialization" />`) to deserialize the
+  flat ProblemDetails body. No NuGet package and no new Costura-embedded
+  assemblies — `FodyWeavers.xml` uses an explicit `<IncludeAssemblies>` allowlist,
+  and System.Text.Json would have dragged ~7 transitive assemblies onto it. The
+  success path needs no JSON — all metadata is in headers.
+- **`MemoryTributary` vendoring:** `MemoryTributary` (the multi-block memory
+  stream) came from the deleted `PDFStreamer.WCFCommon.dll`
+  (`PDFStreamer.WCFCommon.Helper`) and is used by `FrmPdfSigner.vb` and
+  `MNBSigner.vb` as well as indirectly by the signing flow. It is ported to a
+  local VB class `Helper\MemoryTributary.vb` in the runtime project (root
+  namespace), and the two `Imports PDFStreamer.WCFCommon.Helper` lines are
+  removed. Discovered during planning; not in the original problem statement.
 - **Client structure (Approach B):** keep `PDFStreamer.vb` as the
   mapping/orchestration layer and replace `PDFStreamerProxy.vb` with a thin
   `PDFStreamerRestClient` that owns the transport. This mirrors the existing
@@ -120,9 +129,10 @@ SignatureOperation.vb
   current behavior). Reads `X-Document-Log` (base64 → UTF-8) and `X-Valid-Until`
   (parsed with round-trip kind) from the response headers.
 - **Error handling:** for non-success status, reads the body and deserializes
-  the ProblemDetails DTO; surfaces `errorMessage` (falling back to `detail`,
-  then `title`) and `documentLog`. Network/transport exceptions are caught and
-  surfaced as the error message plus full exception text.
+  the ProblemDetails DTO with `DataContractJsonSerializer`; surfaces
+  `errorMessage` (falling back to `detail`, then `title`) and `documentLog`.
+  Network/transport exceptions are caught and surfaced as the error message plus
+  full exception text.
 - **Sync-over-async:** the HTTP work is an async core; the public method blocks
   via `Task.Run(Function() CoreAsync(...)).GetAwaiter().GetResult()` to avoid any
   UI-thread synchronization-context deadlock. `ConfigureAwait(False)` is used in
@@ -158,9 +168,11 @@ SignatureOperation.vb
   PDFStreamer.wsdl, the `.datasource`).
 - `.vbproj`: remove `<Reference Include="PDFStreamer.WCFCommon">`, the PDFStreamer
   `Reference.svcmap` `<None Update>` item, and the PDFStreamer
-  `<WCFMetadataStorage>` item. Add the `System.Text.Json` `<PackageReference>`
-  and a `<Reference Include="System.Net.Http" />` framework reference. Keep
-  `System.ServiceModel` and the MNB WCF metadata items.
+  `<WCFMetadataStorage>` item. Add `<Reference Include="System.Net.Http" />` and
+  `<Reference Include="System.Runtime.Serialization" />` framework references.
+  Keep `System.ServiceModel` and the MNB WCF metadata items.
+- `FodyWeavers.xml`: remove the `PDFStreamer.Common` and `PDFStreamer.WCFCommon`
+  entries from `<IncludeAssemblies>` (neither assembly is referenced any longer).
 - Remove the unused vendored `lib\PDF Streamer\PDFStreamer.WCFCommon.dll`.
 
 ### Config and documentation
