@@ -1,6 +1,5 @@
 ﻿Imports PDFSigner.MNBSignerServiceReference
 Imports PDFSignerCommon
-Imports PDFStreamer.WCFCommon.Helper
 Imports System.IO
 Imports System.Security.Cryptography
 Imports System.ServiceModel

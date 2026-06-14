@@ -14,7 +14,6 @@ Imports System.Globalization
 Imports System.IO
 Imports System.Reflection
 Imports System.Threading
-Imports PDFStreamer.WCFCommon.Helper
 Imports Kofax.Capture.SDK.CustomModule
 #End Region
 
