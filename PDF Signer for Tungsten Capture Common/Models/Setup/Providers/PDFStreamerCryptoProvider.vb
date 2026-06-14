@@ -25,6 +25,10 @@ Public Class PDFStreamerCryptoProvider
             If Not PDFStreamerURL.IsAbsoluteUri Then
                 Return Messages.URL_Not_Complete
             End If
+            If Not PDFStreamerURL.Scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) AndAlso
+               Not PDFStreamerURL.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase) Then
+                Return Messages.PDFStreamer_URL_Not_Http
+            End If
             If String.IsNullOrEmpty(PDFStreamerConfigFile) Then
                 Return Messages.PDFStreamer_ConfigFile_Missing
             End If

@@ -195,6 +195,9 @@
   <data name="PDFStreamer_URL_Missing" xml:space="preserve">
     <value>PDF Streamer URL nincs megadva!</value>
   </data>
+  <data name="PDFStreamer_URL_Not_Http" xml:space="preserve">
+    <value>A PDF Streamer URL csak http vagy https lehet!</value>
+  </data>
   <data name="File_Append_Text_Invalid" xml:space="preserve">
     <value>A fájlnév utótag olyan karaktert tartalmaz, amely nem forulhat elő fájlnévben!</value>
   </data>

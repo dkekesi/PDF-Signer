@@ -426,7 +426,16 @@ Namespace My.Resources
                 Return ResourceManager.GetString("PDFStreamer_URL_Missing", resourceCulture)
             End Get
         End Property
-        
+
+        '''<summary>
+        '''  Looks up a localized string similar to PDF Streamer URL must use http or https..
+        '''</summary>
+        Friend Shared ReadOnly Property PDFStreamer_URL_Not_Http() As String
+            Get
+                Return ResourceManager.GetString("PDFStreamer_URL_Not_Http", resourceCulture)
+            End Get
+        End Property
+
         '''<summary>
         '''  Looks up a localized string similar to Proxy authentication mode is not selected..
         '''</summary>
