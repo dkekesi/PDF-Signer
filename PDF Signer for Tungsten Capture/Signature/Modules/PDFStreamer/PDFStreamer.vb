@@ -1,7 +1,4 @@
-﻿Imports PDFSigner.PDFStreamerServiceReference
 Imports PDFSignerCommon
-Imports PDFStreamer.WCFCommon.Helper
-Imports System.IO
 
 Friend Class PDFStreamer
     Private _settings As PDFStreamerCryptoProvider
@@ -13,62 +10,27 @@ Friend Class PDFStreamer
     Friend Function SignDocumentStream(Request As SignatureRequest) As SignatureResult
         Dim res As New SignatureResult
 
-        Dim req As New StreamedDocumentCreateRequest
-        Dim response As New StreamedDocumentCreateResponse
+        Dim client As New PDFStreamerRestClient
+        Dim callResult As PDFStreamerRestResult = client.Sign(
+            _settings.PDFStreamerURL,
+            _settings.PDFStreamerAuthorizationCode,
+            _settings.PDFStreamerConfigFile,
+            "1",
+            "PDFSigner.pdf",
+            Request.FileToSign)
 
-        With req
-            .DocumentConfigurationFilename = _settings.PDFStreamerConfigFile
-            .AuthorizationKey = _settings.PDFStreamerAuthorizationCode
-            .DocumentStream = Request.FileToSign
-            .DocumentFileNameWithExtension = "PDFSigner.pdf"
-            .TransactionID = 1
-        End With
+        res.SignatureLog = callResult.DocumentLog
+        res.ErrorMessage = callResult.ErrorMessage
+        res.ExceptionText = callResult.ExceptionText
 
-        req.DocumentStream.Seek(0, SeekOrigin.Begin)
-
-        PDFStreamerProxy.SetDefaultBindingAndAddress(_settings.PDFStreamerURL.ToString, False)
-        Try
-            Using clt As New PDFStreamerClient(PDFStreamerProxy.ServiceBinding, PDFStreamerProxy.RemoteAddress)
-                response.DocumentLog = clt.CreatePDFStream(req.AuthorizationKey, req.DocumentConfigurationFilename, req.DocumentFileNameWithExtension, req.TransactionID, req.DocumentStream, response.ErrorMessage, response.SignerNameFromCert, response.ValidUntil)
-            End Using
-        Catch ex As Exception
-            res.ErrorMessage = ex.Message
-            res.SignatureLog = ex.ToString
-            Return res
-        End Try
-
-        res.ErrorMessage = response.ErrorMessage
-        res.SignatureLog = response.DocumentLog
-
-        If response.ValidUntil IsNot Nothing Then
-            res.SignatureExpiration = response.ValidUntil
+        If callResult.ValidUntil.HasValue Then
+            res.SignatureExpiration = callResult.ValidUntil.Value
         End If
 
-        ' read from WCF stream
-        Dim bufferLen As Integer = 65000
-        Dim buffer() As Byte = New Byte(bufferLen - 1) {}
-        Dim count As Integer
-        Dim hasData As Boolean = True
-
-        ' we have to seek to the beginning before writing,
-        'otherwise the signed file will be appended to the unsigned byte stream
-        Request.FileToSign.Seek(0, SeekOrigin.Begin)
-
-        While hasData
-            count = req.DocumentStream.Read(buffer, 0, bufferLen)
-            If count > 0 Then
-                Request.FileToSign.Write(buffer, 0, count)
-            Else
-                hasData = False
-            End If
-        End While
-
-        ' truncate: a signed file shorter than the original must not leave stale trailing bytes
-        Request.FileToSign.SetLength(Request.FileToSign.Position)
-
-        res.SignedFile = Request.FileToSign
+        If callResult.Success Then
+            res.SignedFile = callResult.SignedStream
+        End If
 
         Return res
-
     End Function
 End Class
