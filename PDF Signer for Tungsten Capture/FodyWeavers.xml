@@ -1,8 +1,6 @@
 ﻿<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
 	<Costura>
 		<IncludeAssemblies>
-			PDFStreamer.Common
-			PDFStreamer.WCFCommon
 			DevExpress.Data.Desktop.v25.2
 			DevExpress.Data.v25.2
 			DevExpress.Drawing.v25.2
