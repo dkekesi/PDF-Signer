@@ -78,6 +78,7 @@ Public Module SetupParser
                 .PDFSignerProvider.RevocationCheck = GetSetupCSSValue(SetupDocumentClassElement, CSS.RevocationCheck)
                 .PDFSignerProvider.SignatureHashMethod = GetSetupCSSValue(SetupDocumentClassElement, CSS.SignatureHashMethod)
                 .PDFSignerProvider.AllowQualifiedCertificatesOnly = Converter.StringToBoolean(GetSetupCSSValue(SetupDocumentClassElement, CSS.AllowQualifiedCertificatesOnly))
+                .PDFSignerProvider.SignerNameFromLoggedOnUser = Converter.StringToBoolean(GetSetupCSSValue(SetupDocumentClassElement, CSS.SignerNameFromLoggedOnUser))
                 .PDFSignerProvider.IsTimeStampingEnabled = Converter.StringToBoolean(GetSetupCSSValue(SetupDocumentClassElement, CSS.IsTimeStampingEnabled))
                 .PDFSignerProvider.TSAURL = Converter.StringToUri(GetSetupCSSValue(SetupDocumentClassElement, CSS.TSAURL))
                 .PDFSignerProvider.TSAUserName = GetSetupCSSValue(SetupDocumentClassElement, CSS.TSAUserName)

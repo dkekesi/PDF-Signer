@@ -18,6 +18,7 @@ Public Class PDFSignerCryptoProvider
     Public Property IsTimeStampingEnabled As Boolean
 
     Public Property AllowQualifiedCertificatesOnly As Boolean
+    Public Property SignerNameFromLoggedOnUser As Boolean
     Public Property TSAURL As Uri
     Public Property TSAUserName As String
     Public Property TSAPassword As String
@@ -98,6 +99,7 @@ Public Class PDFSignerCryptoProvider
             RevocationCheck = .ReadSetupCSSInteger(CSS.RevocationCheck, 0)
             SignatureHashMethod = .ReadSetupCSSInteger(CSS.SignatureHashMethod, 28932)
             AllowQualifiedCertificatesOnly = Converter.StringToBoolean(.ReadSetupCSS(CSS.AllowQualifiedCertificatesOnly))
+            SignerNameFromLoggedOnUser = Converter.StringToBoolean(.ReadSetupCSS(CSS.SignerNameFromLoggedOnUser))
 
             IsTimeStampingEnabled = Converter.StringToBoolean(.ReadSetupCSS(CSS.IsTimeStampingEnabled))
             TSAURL = Converter.StringToUri(.ReadSetupCSS(CSS.TSAURL))
@@ -124,6 +126,7 @@ Public Class PDFSignerCryptoProvider
             .WriteSetupCSS(CSS.RevocationCheck, RevocationCheck)
             .WriteSetupCSS(CSS.SignatureHashMethod, SignatureHashMethod)
             .WriteSetupCSS(CSS.AllowQualifiedCertificatesOnly, Converter.BooleanToNumericString(AllowQualifiedCertificatesOnly))
+            .WriteSetupCSS(CSS.SignerNameFromLoggedOnUser, Converter.BooleanToNumericString(SignerNameFromLoggedOnUser))
 
             .WriteSetupCSS(CSS.IsTimeStampingEnabled, Converter.BooleanToNumericString(IsTimeStampingEnabled))
             If TSAURL Is Nothing Then
@@ -154,6 +157,7 @@ Public Class PDFSignerCryptoProvider
                 New XElement("RevocationCheck", RevocationCheck),
                 New XElement("SignatureHashMethod", SignatureHashMethod),
                 New XElement("AllowQualifiedCertificatesOnly", Converter.BooleanToNumericString(AllowQualifiedCertificatesOnly)),
+                New XElement("SignerNameFromLoggedOnUser", Converter.BooleanToNumericString(SignerNameFromLoggedOnUser)),
                 New XElement("IsTimeStampingEnabled", Converter.BooleanToNumericString(IsTimeStampingEnabled)),
                 New XElement("TSAURL", TSAURL),
                 New XElement("TSAUserName", TSAUserName),
@@ -178,6 +182,7 @@ Public Class PDFSignerCryptoProvider
         RevocationCheck = CInt(ConfigElement.Element("RevocationCheck"))
         SignatureHashMethod = CInt(ConfigElement.Element("SignatureHashMethod"))
         AllowQualifiedCertificatesOnly = Converter.StringToBoolean(ConfigElement.Element("AllowQualifiedCertificatesOnly"))
+        SignerNameFromLoggedOnUser = Converter.StringToBoolean(ConfigElement.Element("SignerNameFromLoggedOnUser"))
 
         IsTimeStampingEnabled = Converter.StringToBoolean(ConfigElement.Element("IsTimeStampingEnabled"))
         TSAURL = Converter.StringToUri(ConfigElement.Element("TSAURL"))

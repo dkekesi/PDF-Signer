@@ -56,6 +56,7 @@
     Public Const RevocationCheck As String = BaseNamespace + "RevocationCheck"
     Public Const SignatureHashMethod As String = BaseNamespace + "SignatureHashMethod"
     Public Const AllowQualifiedCertificatesOnly As String = BaseNamespace + "AllowQualifiedCertificatesOnly"
+    Public Const SignerNameFromLoggedOnUser As String = BaseNamespace + "SignerNameFromLoggedOnUser"
 
     Public Const IsTimeStampingEnabled As String = BaseNamespace + "TimeStampingEnabled"
     Public Const TSAURL As String = BaseNamespace + "TSAURL"
