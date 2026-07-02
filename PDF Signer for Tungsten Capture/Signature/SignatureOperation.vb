@@ -39,9 +39,9 @@ Friend Class SignatureOperation
 
                 ' getting metadata
                 .MetaDataSettings = GetMetaDataSettings(Document, DocumentSize)
-                Dim signerProvider = TryCast(CryptographicProviderSettings, PDFSignerCryptoProvider)
-                If SigningCertificate IsNot Nothing AndAlso
-                   Not (signerProvider IsNot Nothing AndAlso signerProvider.SignerNameFromLoggedOnUser) Then
+                Dim signerProvider As PDFSignerCryptoProvider = TryCast(CryptographicProviderSettings, PDFSignerCryptoProvider)
+                Dim useLoggedOnUserName As Boolean = signerProvider IsNot Nothing AndAlso signerProvider.SignerNameFromLoggedOnUser
+                If SigningCertificate IsNot Nothing AndAlso Not useLoggedOnUserName Then
                     .MetaDataSettings.SignerFullName = SigningCertificate.GetIssuedToName
                 Else
                     .MetaDataSettings.SignerFullName = UserDisplayName
