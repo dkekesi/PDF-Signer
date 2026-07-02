@@ -111,6 +111,7 @@ Partial Class FrmSetup
         Me.ChkPDFSignerEnabled = New System.Windows.Forms.CheckBox()
         Me.PanelPDFSigner = New System.Windows.Forms.Panel()
         Me.ChkAllowQualifiedCertificatesOnly = New System.Windows.Forms.CheckBox()
+        Me.ChkSignerNameFromLoggedOnUser = New System.Windows.Forms.CheckBox()
         Me.ChkProxyEnabled = New System.Windows.Forms.CheckBox()
         Me.GrpProxy = New System.Windows.Forms.GroupBox()
         Me.ComboProxyAuthMethod = New System.Windows.Forms.ComboBox()
@@ -834,6 +835,7 @@ Partial Class FrmSetup
         Me.PanelPDFSigner.Controls.Add(Me.Label9)
         Me.PanelPDFSigner.Controls.Add(Me.TxtSigningOrganization)
         Me.PanelPDFSigner.Controls.Add(Me.Label8)
+        Me.PanelPDFSigner.Controls.Add(Me.ChkSignerNameFromLoggedOnUser)
         resources.ApplyResources(Me.PanelPDFSigner, "PanelPDFSigner")
         Me.PanelPDFSigner.Name = "PanelPDFSigner"
         '
@@ -843,6 +845,13 @@ Partial Class FrmSetup
         Me.ChkAllowQualifiedCertificatesOnly.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "AllowQualifiedCertificatesOnly", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.ChkAllowQualifiedCertificatesOnly.Name = "ChkAllowQualifiedCertificatesOnly"
         Me.ChkAllowQualifiedCertificatesOnly.UseVisualStyleBackColor = True
+        '
+        'ChkSignerNameFromLoggedOnUser
+        '
+        resources.ApplyResources(Me.ChkSignerNameFromLoggedOnUser, "ChkSignerNameFromLoggedOnUser")
+        Me.ChkSignerNameFromLoggedOnUser.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "SignerNameFromLoggedOnUser", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.ChkSignerNameFromLoggedOnUser.Name = "ChkSignerNameFromLoggedOnUser"
+        Me.ChkSignerNameFromLoggedOnUser.UseVisualStyleBackColor = True
         '
         'ChkProxyEnabled
         '
@@ -1607,6 +1616,7 @@ Partial Class FrmSetup
     Private WithEvents PanelMNBSignerAuthentication As Panel
     Friend WithEvents PanelMain As Panel
     Private WithEvents ChkAllowQualifiedCertificatesOnly As CheckBox
+    Private WithEvents ChkSignerNameFromLoggedOnUser As CheckBox
     Private WithEvents BsPDFSignerCryptoProvider As BindingSource
     Private WithEvents BsPDFStreamerCryptoProvider As BindingSource
     Private WithEvents BsMQFTPCryptoProvider As BindingSource

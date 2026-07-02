@@ -2496,6 +2496,30 @@
   <data name="&gt;&gt;ChkAllowQualifiedCertificatesOnly.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="ChkSignerNameFromLoggedOnUser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>366, 61</value>
+  </data>
+  <data name="ChkSignerNameFromLoggedOnUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 32</value>
+  </data>
+  <data name="ChkSignerNameFromLoggedOnUser.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ChkSignerNameFromLoggedOnUser.Text" xml:space="preserve">
+    <value>Use the logged-in user's name in the certification clause instead of the certificate name</value>
+  </data>
+  <data name="&gt;&gt;ChkSignerNameFromLoggedOnUser.Name" xml:space="preserve">
+    <value>ChkSignerNameFromLoggedOnUser</value>
+  </data>
+  <data name="&gt;&gt;ChkSignerNameFromLoggedOnUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ChkSignerNameFromLoggedOnUser.Parent" xml:space="preserve">
+    <value>PanelPDFSigner</value>
+  </data>
+  <data name="&gt;&gt;ChkSignerNameFromLoggedOnUser.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
   <data name="ChkProxyEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>

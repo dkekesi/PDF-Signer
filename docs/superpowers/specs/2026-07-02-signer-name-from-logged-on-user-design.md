@@ -51,7 +51,8 @@ No `Validate()` change — a bool needs no validation.
 ### 2. Setup UI (PDF Signer for Tungsten Capture Setup)
 
 New `CheckBox` `ChkSignerNameFromLoggedOnUser` on `PanelPDFSigner` in `FrmSetup`,
-placed directly below `ChkAllowQualifiedCertificatesOnly`, data-bound to
+placed to the right of `ChkAllowQualifiedCertificatesOnly` on the same row (the panel
+has no free row below it — the time-stamp group starts 23px lower), data-bound to
 `BsPDFSignerCryptoProvider` property `SignerNameFromLoggedOnUser` with
 `DataSourceUpdateMode.OnPropertyChanged` (same binding style as its neighbor).
 
