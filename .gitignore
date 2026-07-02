@@ -4,3 +4,6 @@ obj/
 *.user
 *.log
 *.suo
+*.s3db-shm
+*.s3db-wal
+Help/Output/*/Temporary/

@@ -1,6 +1,5 @@
 Imports System.Globalization
 Imports System.IO
-Imports System.Linq
 Imports System.Net
 Imports System.Net.Http
 Imports System.Net.Http.Headers
@@ -8,7 +7,6 @@ Imports System.Runtime.Serialization
 Imports System.Runtime.Serialization.Json
 Imports System.Text
 Imports System.Threading
-Imports System.Threading.Tasks
 
 ''' <summary>Outcome of a PDF Streamer REST streaming call.</summary>
 Friend Class PDFStreamerRestResult
@@ -49,8 +47,9 @@ Friend Class PDFStreamerRestClient
         ' net48 may not negotiate modern TLS by default
         ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol Or
                                                SecurityProtocolType.Tls12 Or SecurityProtocolType.Tls13
-        Dim c As New HttpClient()
-        c.Timeout = Timeout.InfiniteTimeSpan
+        Dim c As New HttpClient With {
+            .Timeout = Timeout.InfiniteTimeSpan
+        }
         Return c
     End Function
 

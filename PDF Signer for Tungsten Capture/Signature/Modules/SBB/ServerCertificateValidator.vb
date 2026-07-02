@@ -155,7 +155,7 @@ Friend Class ServerCertificateValidator
             Dim byteCount As Integer = first And &H7F
             If byteCount = 0 OrElse byteCount > 4 OrElse Position + byteCount > Data.Length Then Return False
             For i As Integer = 1 To byteCount
-                Length = (Length << 8) Or CInt(Data(Position))
+                Length = (Length << 8) Or Data(Position)
                 Position += 1
             Next
         End If

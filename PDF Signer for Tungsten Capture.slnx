@@ -9,15 +9,18 @@
   <Project Path="PDF Signer for Tungsten Capture Common/PDF Signer for Tungsten Capture Common.vbproj">
     <BuildType Solution="FullRelease|x86" Project="Release" />
     <Platform Solution="*|x86" Project="x86" />
+    <Platform Solution="Debug|Any CPU" Project="x86" />
   </Project>
-  <Project Path="PDF Signer for Tungsten Capture Installer/PDF Signer for Tungsten Capture Installer.wixproj">
+  <Project Path="PDF Signer for Tungsten Capture Installer/PDF Signer for Tungsten Capture Installer.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
     <BuildDependency Project="PDF Signer for Tungsten Capture Common/PDF Signer for Tungsten Capture Common.vbproj" />
     <BuildDependency Project="PDF Signer for Tungsten Capture Setup/PDF Signer for Tungsten Capture Setup.vbproj" />
     <BuildDependency Project="PDF Signer for Tungsten Capture WFA/PDF Signer for Tungsten Capture WFA.vbproj" />
     <BuildDependency Project="PDF Signer for Tungsten Capture/PDF Signer for Tungsten Capture.vbproj" />
     <BuildType Solution="FullRelease|*" Project="Release" />
     <Platform Project="x86" />
-    <Build Solution="FullRelease|x86" />
+    <Build Solution="*|Any CPU" Project="false" />
+    <Build Solution="Debug|x86" Project="false" />
+    <Build Solution="Release|x86" Project="false" />
   </Project>
   <Project Path="PDF Signer for Tungsten Capture Setup/PDF Signer for Tungsten Capture Setup.vbproj">
     <BuildDependency Project="PDF Signer for Tungsten Capture Common/PDF Signer for Tungsten Capture Common.vbproj" />
@@ -27,12 +30,14 @@
   <Project Path="PDF Signer for Tungsten Capture WFA/PDF Signer for Tungsten Capture WFA.vbproj">
     <BuildType Solution="FullRelease|*" Project="Release" />
     <Platform Solution="*|x86" Project="x86" />
+    <Platform Solution="Debug|Any CPU" Project="x86" />
   </Project>
   <Project Path="PDF Signer for Tungsten Capture/PDF Signer for Tungsten Capture.vbproj">
     <BuildDependency Project="PDF Signer for Tungsten Capture Setup/PDF Signer for Tungsten Capture Setup.vbproj" />
     <BuildDependency Project="PDF Signer for Tungsten Capture WFA/PDF Signer for Tungsten Capture WFA.vbproj" />
     <BuildType Solution="FullRelease|x86" Project="Release" />
     <Platform Solution="*|x86" Project="x86" />
+    <Platform Solution="Debug|Any CPU" Project="x86" />
   </Project>
   <Properties Name="TestCaseManagementSettings" Scope="PostLoad">
     <Property Name="CategoryFile" Value="PDF Signer NET.vsmdi" />

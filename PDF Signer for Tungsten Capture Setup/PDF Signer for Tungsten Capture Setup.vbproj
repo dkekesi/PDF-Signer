@@ -12,7 +12,8 @@
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
     <Configurations>Debug;Release;FullRelease</Configurations>
-    <Platforms>AnyCPU;x86</Platforms>
+    <Platforms>x86</Platforms>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ProjectGuid>{E9467F12-306B-4802-9F89-6C59FA143152}</ProjectGuid>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
@@ -20,28 +21,12 @@
     <AssemblyTitle>PDF Signer for Tungsten Capture Setup</AssemblyTitle>
     <Company>Doc-Soft Kkt.</Company>
     <Product>PDF Signer for Tungsten Capture</Product>
-    <Copyright>Copyright © Doc-Soft Kkt. 2025.</Copyright>
+    <Copyright>Copyright © Doc-Soft Kkt. 2026.</Copyright>
     <Version>11.2.0.0</Version>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <!-- Microsoft.NET.Sdk drops AssemblyFoldersEx/GAC lookup; restore the classic search order so
          installed-SDK dependencies (Kofax, DevExpress) resolve as in the legacy projects. -->
     <AssemblySearchPaths>{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory};{Registry:Software\Microsoft\.NETFramework,v4.8,AssemblyFoldersEx};{AssemblyFolders};{GAC};{RawFileName}</AssemblySearchPaths>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -54,13 +39,6 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FullRelease|AnyCPU'">
-    <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\FullRelease\</OutputPath>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FullRelease|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -83,6 +61,7 @@
     <Reference Include="Kofax.Capture.AdminModule">
       <HintPath>..\lib\Kofax\Kofax.Capture.AdminModule.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Windows.Forms" />

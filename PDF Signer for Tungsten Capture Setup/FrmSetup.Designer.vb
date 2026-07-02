@@ -22,1437 +22,1437 @@ Partial Class FrmSetup
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmSetup))
-        Me.BtnOK = New System.Windows.Forms.Button()
-        Me.BtnCancel = New System.Windows.Forms.Button()
-        Me.ChkSigningEnabled = New System.Windows.Forms.CheckBox()
-        Me.BsSetup = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GrpIndexes = New System.Windows.Forms.GroupBox()
-        Me.BtnRemoveIndexSkipNote = New System.Windows.Forms.Button()
-        Me.ComboSkipNote = New System.Windows.Forms.ComboBox()
-        Me.Label42 = New System.Windows.Forms.Label()
-        Me.BtnRemoveIndexSignatureExpiry = New System.Windows.Forms.Button()
-        Me.BtnRemoveIndexSigningUser = New System.Windows.Forms.Button()
-        Me.BtnRemoveIndexSignDateTime = New System.Windows.Forms.Button()
-        Me.BtnRemoveIndexIsSigned = New System.Windows.Forms.Button()
-        Me.ComboExpiry = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboSignedBy = New System.Windows.Forms.ComboBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.ComboSignedAt = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboIsSigned = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.ComboBarCode = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.GrpBarCode = New System.Windows.Forms.GroupBox()
-        Me.ChkAllowSkip = New System.Windows.Forms.CheckBox()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.BtnRemoveIndexBarCode = New System.Windows.Forms.Button()
-        Me.NumericSignatureMarkerPosition = New System.Windows.Forms.NumericUpDown()
-        Me.TxtSignatureMarker = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.ChkAllDocumentsNeedSigning = New System.Windows.Forms.CheckBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.ComboSignatureHashMethod = New System.Windows.Forms.ComboBox()
-        Me.BsPDFSignerCryptoProvider = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.ComboRevocationCheck = New System.Windows.Forms.ComboBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.TxtSigningReason = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.TxtSigningOrganization = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.TxtSignaturePolicyOID = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.TxtSignaturePolicyHash = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.TxtSignaturePolicyURL = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.GrpTimeStamp = New System.Windows.Forms.GroupBox()
-        Me.ChkSinglePassPadesLTA = New System.Windows.Forms.CheckBox()
-        Me.ComboTimeStampHashMethod = New System.Windows.Forms.ComboBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.ChkIsDocumentTimeStamp = New System.Windows.Forms.CheckBox()
-        Me.TxtTSAPassword = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.TxtTSAUser = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.TxtTSAURL = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.ChkTimeStampingEnabled = New System.Windows.Forms.CheckBox()
-        Me.GrpClause = New System.Windows.Forms.GroupBox()
-        Me.BtnRemoveDocNameIndexAssignment = New System.Windows.Forms.Button()
-        Me.ChkDocNameFromFormType = New System.Windows.Forms.CheckBox()
-        Me.ComboClauseFormat = New System.Windows.Forms.ComboBox()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.TxtCopyingRegulationVersion = New System.Windows.Forms.TextBox()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.TxtCopyingRegulationURL = New System.Windows.Forms.TextBox()
-        Me.TxtCopyingRegulationName = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.TxtCopyingOrganizationName = New System.Windows.Forms.TextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.TxtDocumentNameDefault = New System.Windows.Forms.TextBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.ComboDocumentName = New System.Windows.Forms.ComboBox()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.BtnImportSettings = New System.Windows.Forms.Button()
-        Me.BtnExportSettings = New System.Windows.Forms.Button()
-        Me.LblCryptoProvider = New System.Windows.Forms.Label()
-        Me.ComboCryptoProvider = New System.Windows.Forms.ComboBox()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.BtnRemoveIndexDocumentUID = New System.Windows.Forms.Button()
-        Me.BtnResetSettings = New System.Windows.Forms.Button()
-        Me.TabCryptoProviders = New System.Windows.Forms.TabControl()
-        Me.TabPDFSigner = New System.Windows.Forms.TabPage()
-        Me.ChkPDFSignerEnabled = New System.Windows.Forms.CheckBox()
-        Me.PanelPDFSigner = New System.Windows.Forms.Panel()
-        Me.ChkAllowQualifiedCertificatesOnly = New System.Windows.Forms.CheckBox()
-        Me.ChkSignerNameFromLoggedOnUser = New System.Windows.Forms.CheckBox()
-        Me.ChkProxyEnabled = New System.Windows.Forms.CheckBox()
-        Me.GrpProxy = New System.Windows.Forms.GroupBox()
-        Me.ComboProxyAuthMethod = New System.Windows.Forms.ComboBox()
-        Me.Label40 = New System.Windows.Forms.Label()
-        Me.NumPort = New System.Windows.Forms.NumericUpDown()
-        Me.Label39 = New System.Windows.Forms.Label()
-        Me.TxtProxyPassword = New System.Windows.Forms.TextBox()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.TxtProxyUser = New System.Windows.Forms.TextBox()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.TxtProxyServer = New System.Windows.Forms.TextBox()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.TabPDFStreamer = New System.Windows.Forms.TabPage()
-        Me.ChkPDFStreamerEnabled = New System.Windows.Forms.CheckBox()
-        Me.BsPDFStreamerCryptoProvider = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PanelPDFStreamer = New System.Windows.Forms.Panel()
-        Me.GrpSignaturePDFStreamer = New System.Windows.Forms.GroupBox()
-        Me.TxtPDFStreamerAuthorizationCode = New System.Windows.Forms.TextBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.TxtPDFStreamerConfigurationFileName = New System.Windows.Forms.TextBox()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.TxtPDFStreamerURL = New System.Windows.Forms.TextBox()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.TabMQ = New System.Windows.Forms.TabPage()
-        Me.ChkMQEnabled = New System.Windows.Forms.CheckBox()
-        Me.BsMQFTPCryptoProvider = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PanelMQFTP = New System.Windows.Forms.Panel()
-        Me.GrpSignatureMQFTP = New System.Windows.Forms.GroupBox()
-        Me.ComboMQDocUID = New System.Windows.Forms.ComboBox()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.TxtMQDomain = New System.Windows.Forms.TextBox()
-        Me.TxtMQUserName = New System.Windows.Forms.TextBox()
-        Me.TxtMQFolderIn = New System.Windows.Forms.TextBox()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.TxtMQPassword = New System.Windows.Forms.TextBox()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.TxtMQFolderOut = New System.Windows.Forms.TextBox()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.TabMNBSigner = New System.Windows.Forms.TabPage()
-        Me.ChkMNBSignerEnabled = New System.Windows.Forms.CheckBox()
-        Me.BsMNBSignerCryptoProvider = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PanelMNBSigner = New System.Windows.Forms.Panel()
-        Me.GrpMNBSignerAuthentication = New System.Windows.Forms.GroupBox()
-        Me.RadioMNBSignerPasswordAuthentication = New System.Windows.Forms.RadioButton()
-        Me.RadioMNBSignerWindowsAuthentication = New System.Windows.Forms.RadioButton()
-        Me.PanelMNBSignerAuthentication = New System.Windows.Forms.Panel()
-        Me.Label50 = New System.Windows.Forms.Label()
-        Me.TxtMNBSignerDomain = New System.Windows.Forms.TextBox()
-        Me.TxtMNBSignerUserName = New System.Windows.Forms.TextBox()
-        Me.TxtMNBSignerPassword = New System.Windows.Forms.TextBox()
-        Me.Label51 = New System.Windows.Forms.Label()
-        Me.Label52 = New System.Windows.Forms.Label()
-        Me.GrpMNBSignerWCFSettings = New System.Windows.Forms.GroupBox()
-        Me.Label48 = New System.Windows.Forms.Label()
-        Me.Label49 = New System.Windows.Forms.Label()
-        Me.NumMNBSignerChunkSize = New System.Windows.Forms.NumericUpDown()
-        Me.Label46 = New System.Windows.Forms.Label()
-        Me.Label47 = New System.Windows.Forms.Label()
-        Me.NumMNBSignerSignTimeout = New System.Windows.Forms.NumericUpDown()
-        Me.Label45 = New System.Windows.Forms.Label()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.NumMNBSignerWCFTimeout = New System.Windows.Forms.NumericUpDown()
-        Me.TxtMNBSignerURL = New System.Windows.Forms.TextBox()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.GrpFileNaming = New System.Windows.Forms.GroupBox()
-        Me.TxtFileExtension = New System.Windows.Forms.TextBox()
-        Me.LblFileExtension = New System.Windows.Forms.Label()
-        Me.TxtFileAppend = New System.Windows.Forms.TextBox()
-        Me.LblFileAppend = New System.Windows.Forms.Label()
-        Me.RadioCreateNewFile = New System.Windows.Forms.RadioButton()
-        Me.RadioOverwriteOriginal = New System.Windows.Forms.RadioButton()
-        Me.Label41 = New System.Windows.Forms.Label()
-        Me.ComboDocumentViewer = New System.Windows.Forms.ComboBox()
-        Me.PanelMain = New System.Windows.Forms.Panel()
-        Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
-        CType(Me.BsSetup, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GrpIndexes.SuspendLayout()
-        Me.GrpBarCode.SuspendLayout()
-        CType(Me.NumericSignatureMarkerPosition, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BsPDFSignerCryptoProvider, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GrpTimeStamp.SuspendLayout()
-        Me.GrpClause.SuspendLayout()
-        Me.TabCryptoProviders.SuspendLayout()
-        Me.TabPDFSigner.SuspendLayout()
-        Me.PanelPDFSigner.SuspendLayout()
-        Me.GrpProxy.SuspendLayout()
-        CType(Me.NumPort, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPDFStreamer.SuspendLayout()
-        CType(Me.BsPDFStreamerCryptoProvider, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelPDFStreamer.SuspendLayout()
-        Me.GrpSignaturePDFStreamer.SuspendLayout()
-        Me.TabMQ.SuspendLayout()
-        CType(Me.BsMQFTPCryptoProvider, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelMQFTP.SuspendLayout()
-        Me.GrpSignatureMQFTP.SuspendLayout()
-        Me.TabMNBSigner.SuspendLayout()
-        CType(Me.BsMNBSignerCryptoProvider, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelMNBSigner.SuspendLayout()
-        Me.GrpMNBSignerAuthentication.SuspendLayout()
-        Me.PanelMNBSignerAuthentication.SuspendLayout()
-        Me.GrpMNBSignerWCFSettings.SuspendLayout()
-        CType(Me.NumMNBSignerChunkSize, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumMNBSignerSignTimeout, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumMNBSignerWCFTimeout, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GrpFileNaming.SuspendLayout()
-        Me.PanelMain.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'BtnOK
-        '
-        resources.ApplyResources(Me.BtnOK, "BtnOK")
-        Me.BtnOK.Name = "BtnOK"
-        Me.BtnOK.UseVisualStyleBackColor = True
-        '
-        'BtnCancel
-        '
-        resources.ApplyResources(Me.BtnCancel, "BtnCancel")
-        Me.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BtnCancel.Name = "BtnCancel"
-        Me.BtnCancel.UseVisualStyleBackColor = True
-        '
-        'ChkSigningEnabled
-        '
-        resources.ApplyResources(Me.ChkSigningEnabled, "ChkSigningEnabled")
-        Me.ChkSigningEnabled.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsSetup, "IsSigningEnabled", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkSigningEnabled.Name = "ChkSigningEnabled"
-        Me.ChkSigningEnabled.UseVisualStyleBackColor = True
-        '
-        'BsSetup
-        '
-        Me.BsSetup.DataSource = GetType(PDFSignerCommon.SetupModel)
-        '
-        'GrpIndexes
-        '
-        resources.ApplyResources(Me.GrpIndexes, "GrpIndexes")
-        Me.GrpIndexes.Controls.Add(Me.BtnRemoveIndexSkipNote)
-        Me.GrpIndexes.Controls.Add(Me.ComboSkipNote)
-        Me.GrpIndexes.Controls.Add(Me.Label42)
-        Me.GrpIndexes.Controls.Add(Me.BtnRemoveIndexSignatureExpiry)
-        Me.GrpIndexes.Controls.Add(Me.BtnRemoveIndexSigningUser)
-        Me.GrpIndexes.Controls.Add(Me.BtnRemoveIndexSignDateTime)
-        Me.GrpIndexes.Controls.Add(Me.BtnRemoveIndexIsSigned)
-        Me.GrpIndexes.Controls.Add(Me.ComboExpiry)
-        Me.GrpIndexes.Controls.Add(Me.Label5)
-        Me.GrpIndexes.Controls.Add(Me.ComboSignedBy)
-        Me.GrpIndexes.Controls.Add(Me.Label4)
-        Me.GrpIndexes.Controls.Add(Me.ComboSignedAt)
-        Me.GrpIndexes.Controls.Add(Me.Label3)
-        Me.GrpIndexes.Controls.Add(Me.ComboIsSigned)
-        Me.GrpIndexes.Controls.Add(Me.Label2)
-        Me.GrpIndexes.Name = "GrpIndexes"
-        Me.GrpIndexes.TabStop = False
-        '
-        'BtnRemoveIndexSkipNote
-        '
-        resources.ApplyResources(Me.BtnRemoveIndexSkipNote, "BtnRemoveIndexSkipNote")
-        Me.BtnRemoveIndexSkipNote.Image = Global.PDFSignerSetup.My.Resources.Resources.Delete16
-        Me.BtnRemoveIndexSkipNote.Name = "BtnRemoveIndexSkipNote"
-        Me.BtnRemoveIndexSkipNote.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.BtnRemoveIndexSkipNote, resources.GetString("BtnRemoveIndexSkipNote.ToolTip"))
-        Me.BtnRemoveIndexSkipNote.UseVisualStyleBackColor = True
-        '
-        'ComboSkipNote
-        '
-        resources.ApplyResources(Me.ComboSkipNote, "ComboSkipNote")
-        Me.ComboSkipNote.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "IndexSkipNote", True))
-        Me.ComboSkipNote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboSkipNote.FormattingEnabled = True
-        Me.ComboSkipNote.Name = "ComboSkipNote"
-        '
-        'Label42
-        '
-        resources.ApplyResources(Me.Label42, "Label42")
-        Me.Label42.Name = "Label42"
-        '
-        'BtnRemoveIndexSignatureExpiry
-        '
-        resources.ApplyResources(Me.BtnRemoveIndexSignatureExpiry, "BtnRemoveIndexSignatureExpiry")
-        Me.BtnRemoveIndexSignatureExpiry.Image = Global.PDFSignerSetup.My.Resources.Resources.Delete16
-        Me.BtnRemoveIndexSignatureExpiry.Name = "BtnRemoveIndexSignatureExpiry"
-        Me.BtnRemoveIndexSignatureExpiry.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.BtnRemoveIndexSignatureExpiry, resources.GetString("BtnRemoveIndexSignatureExpiry.ToolTip"))
-        Me.BtnRemoveIndexSignatureExpiry.UseVisualStyleBackColor = True
-        '
-        'BtnRemoveIndexSigningUser
-        '
-        resources.ApplyResources(Me.BtnRemoveIndexSigningUser, "BtnRemoveIndexSigningUser")
-        Me.BtnRemoveIndexSigningUser.Image = Global.PDFSignerSetup.My.Resources.Resources.Delete16
-        Me.BtnRemoveIndexSigningUser.Name = "BtnRemoveIndexSigningUser"
-        Me.BtnRemoveIndexSigningUser.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.BtnRemoveIndexSigningUser, resources.GetString("BtnRemoveIndexSigningUser.ToolTip"))
-        Me.BtnRemoveIndexSigningUser.UseVisualStyleBackColor = True
-        '
-        'BtnRemoveIndexSignDateTime
-        '
-        resources.ApplyResources(Me.BtnRemoveIndexSignDateTime, "BtnRemoveIndexSignDateTime")
-        Me.BtnRemoveIndexSignDateTime.Image = Global.PDFSignerSetup.My.Resources.Resources.Delete16
-        Me.BtnRemoveIndexSignDateTime.Name = "BtnRemoveIndexSignDateTime"
-        Me.BtnRemoveIndexSignDateTime.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.BtnRemoveIndexSignDateTime, resources.GetString("BtnRemoveIndexSignDateTime.ToolTip"))
-        Me.BtnRemoveIndexSignDateTime.UseVisualStyleBackColor = True
-        '
-        'BtnRemoveIndexIsSigned
-        '
-        resources.ApplyResources(Me.BtnRemoveIndexIsSigned, "BtnRemoveIndexIsSigned")
-        Me.BtnRemoveIndexIsSigned.Image = Global.PDFSignerSetup.My.Resources.Resources.Delete16
-        Me.BtnRemoveIndexIsSigned.Name = "BtnRemoveIndexIsSigned"
-        Me.BtnRemoveIndexIsSigned.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.BtnRemoveIndexIsSigned, resources.GetString("BtnRemoveIndexIsSigned.ToolTip"))
-        Me.BtnRemoveIndexIsSigned.UseVisualStyleBackColor = True
-        '
-        'ComboExpiry
-        '
-        resources.ApplyResources(Me.ComboExpiry, "ComboExpiry")
-        Me.ComboExpiry.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "IndexSignatureValidUntil", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ComboExpiry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboExpiry.FormattingEnabled = True
-        Me.ComboExpiry.Name = "ComboExpiry"
-        '
-        'Label5
-        '
-        resources.ApplyResources(Me.Label5, "Label5")
-        Me.Label5.Name = "Label5"
-        '
-        'ComboSignedBy
-        '
-        resources.ApplyResources(Me.ComboSignedBy, "ComboSignedBy")
-        Me.ComboSignedBy.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "IndexSignedBy", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ComboSignedBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboSignedBy.FormattingEnabled = True
-        Me.ComboSignedBy.Name = "ComboSignedBy"
-        '
-        'Label4
-        '
-        resources.ApplyResources(Me.Label4, "Label4")
-        Me.Label4.Name = "Label4"
-        '
-        'ComboSignedAt
-        '
-        resources.ApplyResources(Me.ComboSignedAt, "ComboSignedAt")
-        Me.ComboSignedAt.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "IndexSignedDateTime", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ComboSignedAt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboSignedAt.FormattingEnabled = True
-        Me.ComboSignedAt.Name = "ComboSignedAt"
-        '
-        'Label3
-        '
-        resources.ApplyResources(Me.Label3, "Label3")
-        Me.Label3.Name = "Label3"
-        '
-        'ComboIsSigned
-        '
-        resources.ApplyResources(Me.ComboIsSigned, "ComboIsSigned")
-        Me.ComboIsSigned.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "IndexIsSigned", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ComboIsSigned.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboIsSigned.FormattingEnabled = True
-        Me.ComboIsSigned.Name = "ComboIsSigned"
-        '
-        'Label2
-        '
-        resources.ApplyResources(Me.Label2, "Label2")
-        Me.Label2.Name = "Label2"
-        '
-        'ComboBarCode
-        '
-        resources.ApplyResources(Me.ComboBarCode, "ComboBarCode")
-        Me.ComboBarCode.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "IndexBarCode", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ComboBarCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBarCode.FormattingEnabled = True
-        Me.ComboBarCode.Name = "ComboBarCode"
-        '
-        'Label1
-        '
-        resources.ApplyResources(Me.Label1, "Label1")
-        Me.Label1.Name = "Label1"
-        '
-        'GrpBarCode
-        '
-        resources.ApplyResources(Me.GrpBarCode, "GrpBarCode")
-        Me.GrpBarCode.Controls.Add(Me.ChkAllowSkip)
-        Me.GrpBarCode.Controls.Add(Me.Label35)
-        Me.GrpBarCode.Controls.Add(Me.BtnRemoveIndexBarCode)
-        Me.GrpBarCode.Controls.Add(Me.NumericSignatureMarkerPosition)
-        Me.GrpBarCode.Controls.Add(Me.TxtSignatureMarker)
-        Me.GrpBarCode.Controls.Add(Me.Label7)
-        Me.GrpBarCode.Controls.Add(Me.ChkAllDocumentsNeedSigning)
-        Me.GrpBarCode.Controls.Add(Me.Label6)
-        Me.GrpBarCode.Controls.Add(Me.Label1)
-        Me.GrpBarCode.Controls.Add(Me.ComboBarCode)
-        Me.GrpBarCode.Name = "GrpBarCode"
-        Me.GrpBarCode.TabStop = False
-        '
-        'ChkAllowSkip
-        '
-        resources.ApplyResources(Me.ChkAllowSkip, "ChkAllowSkip")
-        Me.ChkAllowSkip.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsSetup, "AllowSkipRequiredDocument", True))
-        Me.ChkAllowSkip.Name = "ChkAllowSkip"
-        Me.ChkAllowSkip.UseVisualStyleBackColor = True
-        '
-        'Label35
-        '
-        resources.ApplyResources(Me.Label35, "Label35")
-        Me.Label35.Name = "Label35"
-        '
-        'BtnRemoveIndexBarCode
-        '
-        resources.ApplyResources(Me.BtnRemoveIndexBarCode, "BtnRemoveIndexBarCode")
-        Me.BtnRemoveIndexBarCode.Image = Global.PDFSignerSetup.My.Resources.Resources.Delete16
-        Me.BtnRemoveIndexBarCode.Name = "BtnRemoveIndexBarCode"
-        Me.BtnRemoveIndexBarCode.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.BtnRemoveIndexBarCode, resources.GetString("BtnRemoveIndexBarCode.ToolTip"))
-        Me.BtnRemoveIndexBarCode.UseVisualStyleBackColor = True
-        '
-        'NumericSignatureMarkerPosition
-        '
-        Me.NumericSignatureMarkerPosition.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.BsSetup, "SignatureMarkerPosition", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        resources.ApplyResources(Me.NumericSignatureMarkerPosition, "NumericSignatureMarkerPosition")
-        Me.NumericSignatureMarkerPosition.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
-        Me.NumericSignatureMarkerPosition.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.NumericSignatureMarkerPosition.Name = "NumericSignatureMarkerPosition"
-        Me.NumericSignatureMarkerPosition.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'TxtSignatureMarker
-        '
-        Me.TxtSignatureMarker.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "SignatureMarker", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        resources.ApplyResources(Me.TxtSignatureMarker, "TxtSignatureMarker")
-        Me.TxtSignatureMarker.Name = "TxtSignatureMarker"
-        '
-        'Label7
-        '
-        resources.ApplyResources(Me.Label7, "Label7")
-        Me.Label7.Name = "Label7"
-        '
-        'ChkAllDocumentsNeedSigning
-        '
-        resources.ApplyResources(Me.ChkAllDocumentsNeedSigning, "ChkAllDocumentsNeedSigning")
-        Me.ChkAllDocumentsNeedSigning.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsSetup, "SignAllDocuments", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkAllDocumentsNeedSigning.Name = "ChkAllDocumentsNeedSigning"
-        Me.ChkAllDocumentsNeedSigning.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        resources.ApplyResources(Me.Label6, "Label6")
-        Me.Label6.Name = "Label6"
-        '
-        'ComboSignatureHashMethod
-        '
-        resources.ApplyResources(Me.ComboSignatureHashMethod, "ComboSignatureHashMethod")
-        Me.ComboSignatureHashMethod.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.BsPDFSignerCryptoProvider, "SignatureHashMethod", True))
-        Me.ComboSignatureHashMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboSignatureHashMethod.FormattingEnabled = True
-        Me.ComboSignatureHashMethod.Name = "ComboSignatureHashMethod"
-        '
-        'BsPDFSignerCryptoProvider
-        '
-        Me.BsPDFSignerCryptoProvider.DataSource = GetType(PDFSignerCommon.PDFSignerCryptoProvider)
-        '
-        'Label11
-        '
-        resources.ApplyResources(Me.Label11, "Label11")
-        Me.Label11.Name = "Label11"
-        '
-        'ComboRevocationCheck
-        '
-        resources.ApplyResources(Me.ComboRevocationCheck, "ComboRevocationCheck")
-        Me.ComboRevocationCheck.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.BsPDFSignerCryptoProvider, "RevocationCheck", True))
-        Me.ComboRevocationCheck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboRevocationCheck.FormattingEnabled = True
-        Me.ComboRevocationCheck.Name = "ComboRevocationCheck"
-        '
-        'Label10
-        '
-        resources.ApplyResources(Me.Label10, "Label10")
-        Me.Label10.Name = "Label10"
-        '
-        'TxtSigningReason
-        '
-        resources.ApplyResources(Me.TxtSigningReason, "TxtSigningReason")
-        Me.TxtSigningReason.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFSignerCryptoProvider, "SigningReason", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtSigningReason.Name = "TxtSigningReason"
-        '
-        'Label9
-        '
-        resources.ApplyResources(Me.Label9, "Label9")
-        Me.Label9.Name = "Label9"
-        '
-        'TxtSigningOrganization
-        '
-        resources.ApplyResources(Me.TxtSigningOrganization, "TxtSigningOrganization")
-        Me.TxtSigningOrganization.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFSignerCryptoProvider, "SigningOrganization", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtSigningOrganization.Name = "TxtSigningOrganization"
-        '
-        'Label8
-        '
-        resources.ApplyResources(Me.Label8, "Label8")
-        Me.Label8.Name = "Label8"
-        '
-        'TxtSignaturePolicyOID
-        '
-        resources.ApplyResources(Me.TxtSignaturePolicyOID, "TxtSignaturePolicyOID")
-        Me.TxtSignaturePolicyOID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "SignaturePolicyOID", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtSignaturePolicyOID.Name = "TxtSignaturePolicyOID"
-        '
-        'Label14
-        '
-        resources.ApplyResources(Me.Label14, "Label14")
-        Me.Label14.Name = "Label14"
-        '
-        'TxtSignaturePolicyHash
-        '
-        resources.ApplyResources(Me.TxtSignaturePolicyHash, "TxtSignaturePolicyHash")
-        Me.TxtSignaturePolicyHash.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "SignaturePolicyHash", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtSignaturePolicyHash.Name = "TxtSignaturePolicyHash"
-        '
-        'Label13
-        '
-        resources.ApplyResources(Me.Label13, "Label13")
-        Me.Label13.Name = "Label13"
-        '
-        'TxtSignaturePolicyURL
-        '
-        resources.ApplyResources(Me.TxtSignaturePolicyURL, "TxtSignaturePolicyURL")
-        Me.TxtSignaturePolicyURL.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "SignaturePolicyURL", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtSignaturePolicyURL.Name = "TxtSignaturePolicyURL"
-        '
-        'Label12
-        '
-        resources.ApplyResources(Me.Label12, "Label12")
-        Me.Label12.Name = "Label12"
-        '
-        'GrpTimeStamp
-        '
-        resources.ApplyResources(Me.GrpTimeStamp, "GrpTimeStamp")
-        Me.GrpTimeStamp.Controls.Add(Me.ChkSinglePassPadesLTA)
-        Me.GrpTimeStamp.Controls.Add(Me.ComboTimeStampHashMethod)
-        Me.GrpTimeStamp.Controls.Add(Me.Label18)
-        Me.GrpTimeStamp.Controls.Add(Me.ChkIsDocumentTimeStamp)
-        Me.GrpTimeStamp.Controls.Add(Me.TxtTSAPassword)
-        Me.GrpTimeStamp.Controls.Add(Me.Label16)
-        Me.GrpTimeStamp.Controls.Add(Me.TxtTSAUser)
-        Me.GrpTimeStamp.Controls.Add(Me.Label17)
-        Me.GrpTimeStamp.Controls.Add(Me.TxtTSAURL)
-        Me.GrpTimeStamp.Controls.Add(Me.Label15)
-        Me.GrpTimeStamp.Name = "GrpTimeStamp"
-        Me.GrpTimeStamp.TabStop = False
-        '
-        'ChkSinglePassPadesLTA
-        '
-        resources.ApplyResources(Me.ChkSinglePassPadesLTA, "ChkSinglePassPadesLTA")
-        Me.ChkSinglePassPadesLTA.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "IsSinglePassPadesBLTA", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkSinglePassPadesLTA.Name = "ChkSinglePassPadesLTA"
-        Me.ChkSinglePassPadesLTA.UseVisualStyleBackColor = True
-        '
-        'ComboTimeStampHashMethod
-        '
-        resources.ApplyResources(Me.ComboTimeStampHashMethod, "ComboTimeStampHashMethod")
-        Me.ComboTimeStampHashMethod.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.BsPDFSignerCryptoProvider, "TimeStampHashMethod", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ComboTimeStampHashMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboTimeStampHashMethod.FormattingEnabled = True
-        Me.ComboTimeStampHashMethod.Name = "ComboTimeStampHashMethod"
-        '
-        'Label18
-        '
-        resources.ApplyResources(Me.Label18, "Label18")
-        Me.Label18.Name = "Label18"
-        '
-        'ChkIsDocumentTimeStamp
-        '
-        resources.ApplyResources(Me.ChkIsDocumentTimeStamp, "ChkIsDocumentTimeStamp")
-        Me.ChkIsDocumentTimeStamp.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "IsDocumentTimeStamp", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkIsDocumentTimeStamp.Name = "ChkIsDocumentTimeStamp"
-        Me.ChkIsDocumentTimeStamp.UseVisualStyleBackColor = True
-        '
-        'TxtTSAPassword
-        '
-        resources.ApplyResources(Me.TxtTSAPassword, "TxtTSAPassword")
-        Me.TxtTSAPassword.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFSignerCryptoProvider, "TSAPassword", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtTSAPassword.Name = "TxtTSAPassword"
-        '
-        'Label16
-        '
-        resources.ApplyResources(Me.Label16, "Label16")
-        Me.Label16.Name = "Label16"
-        '
-        'TxtTSAUser
-        '
-        resources.ApplyResources(Me.TxtTSAUser, "TxtTSAUser")
-        Me.TxtTSAUser.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFSignerCryptoProvider, "TSAUserName", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtTSAUser.Name = "TxtTSAUser"
-        '
-        'Label17
-        '
-        resources.ApplyResources(Me.Label17, "Label17")
-        Me.Label17.Name = "Label17"
-        '
-        'TxtTSAURL
-        '
-        resources.ApplyResources(Me.TxtTSAURL, "TxtTSAURL")
-        Me.TxtTSAURL.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFSignerCryptoProvider, "TSAURL", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtTSAURL.Name = "TxtTSAURL"
-        '
-        'Label15
-        '
-        resources.ApplyResources(Me.Label15, "Label15")
-        Me.Label15.Name = "Label15"
-        '
-        'ChkTimeStampingEnabled
-        '
-        resources.ApplyResources(Me.ChkTimeStampingEnabled, "ChkTimeStampingEnabled")
-        Me.ChkTimeStampingEnabled.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ChkTimeStampingEnabled.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "IsTimeStampingEnabled", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkTimeStampingEnabled.Name = "ChkTimeStampingEnabled"
-        Me.ChkTimeStampingEnabled.UseVisualStyleBackColor = False
-        '
-        'GrpClause
-        '
-        resources.ApplyResources(Me.GrpClause, "GrpClause")
-        Me.GrpClause.Controls.Add(Me.TxtSignaturePolicyOID)
-        Me.GrpClause.Controls.Add(Me.BtnRemoveDocNameIndexAssignment)
-        Me.GrpClause.Controls.Add(Me.Label14)
-        Me.GrpClause.Controls.Add(Me.ChkDocNameFromFormType)
-        Me.GrpClause.Controls.Add(Me.TxtSignaturePolicyHash)
-        Me.GrpClause.Controls.Add(Me.ComboClauseFormat)
-        Me.GrpClause.Controls.Add(Me.Label13)
-        Me.GrpClause.Controls.Add(Me.Label25)
-        Me.GrpClause.Controls.Add(Me.TxtSignaturePolicyURL)
-        Me.GrpClause.Controls.Add(Me.Label23)
-        Me.GrpClause.Controls.Add(Me.Label12)
-        Me.GrpClause.Controls.Add(Me.TxtCopyingRegulationVersion)
-        Me.GrpClause.Controls.Add(Me.Label24)
-        Me.GrpClause.Controls.Add(Me.TxtCopyingRegulationURL)
-        Me.GrpClause.Controls.Add(Me.TxtCopyingRegulationName)
-        Me.GrpClause.Controls.Add(Me.Label22)
-        Me.GrpClause.Controls.Add(Me.TxtCopyingOrganizationName)
-        Me.GrpClause.Controls.Add(Me.Label21)
-        Me.GrpClause.Controls.Add(Me.TxtDocumentNameDefault)
-        Me.GrpClause.Controls.Add(Me.Label20)
-        Me.GrpClause.Controls.Add(Me.ComboDocumentName)
-        Me.GrpClause.Controls.Add(Me.Label19)
-        Me.GrpClause.Name = "GrpClause"
-        Me.GrpClause.TabStop = False
-        '
-        'BtnRemoveDocNameIndexAssignment
-        '
-        resources.ApplyResources(Me.BtnRemoveDocNameIndexAssignment, "BtnRemoveDocNameIndexAssignment")
-        Me.BtnRemoveDocNameIndexAssignment.Image = Global.PDFSignerSetup.My.Resources.Resources.Delete16
-        Me.BtnRemoveDocNameIndexAssignment.Name = "BtnRemoveDocNameIndexAssignment"
-        Me.BtnRemoveDocNameIndexAssignment.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.BtnRemoveDocNameIndexAssignment, resources.GetString("BtnRemoveDocNameIndexAssignment.ToolTip"))
-        Me.BtnRemoveDocNameIndexAssignment.UseVisualStyleBackColor = True
-        '
-        'ChkDocNameFromFormType
-        '
-        resources.ApplyResources(Me.ChkDocNameFromFormType, "ChkDocNameFromFormType")
-        Me.ChkDocNameFromFormType.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsSetup, "DocumentNameFromFormType", True))
-        Me.ChkDocNameFromFormType.Name = "ChkDocNameFromFormType"
-        Me.ChkDocNameFromFormType.UseVisualStyleBackColor = True
-        '
-        'ComboClauseFormat
-        '
-        resources.ApplyResources(Me.ComboClauseFormat, "ComboClauseFormat")
-        Me.ComboClauseFormat.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.BsSetup, "MetadataFormat", True))
-        Me.ComboClauseFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboClauseFormat.FormattingEnabled = True
-        Me.ComboClauseFormat.Name = "ComboClauseFormat"
-        '
-        'Label25
-        '
-        resources.ApplyResources(Me.Label25, "Label25")
-        Me.Label25.Name = "Label25"
-        '
-        'Label23
-        '
-        resources.ApplyResources(Me.Label23, "Label23")
-        Me.Label23.Name = "Label23"
-        '
-        'TxtCopyingRegulationVersion
-        '
-        resources.ApplyResources(Me.TxtCopyingRegulationVersion, "TxtCopyingRegulationVersion")
-        Me.TxtCopyingRegulationVersion.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "ConvertingRegulationVersion", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtCopyingRegulationVersion.Name = "TxtCopyingRegulationVersion"
-        '
-        'Label24
-        '
-        resources.ApplyResources(Me.Label24, "Label24")
-        Me.Label24.Name = "Label24"
-        '
-        'TxtCopyingRegulationURL
-        '
-        resources.ApplyResources(Me.TxtCopyingRegulationURL, "TxtCopyingRegulationURL")
-        Me.TxtCopyingRegulationURL.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "ConvertingRegulationURL", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtCopyingRegulationURL.Name = "TxtCopyingRegulationURL"
-        '
-        'TxtCopyingRegulationName
-        '
-        resources.ApplyResources(Me.TxtCopyingRegulationName, "TxtCopyingRegulationName")
-        Me.TxtCopyingRegulationName.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "ConvertingRegulationName", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtCopyingRegulationName.Name = "TxtCopyingRegulationName"
-        '
-        'Label22
-        '
-        resources.ApplyResources(Me.Label22, "Label22")
-        Me.Label22.Name = "Label22"
-        '
-        'TxtCopyingOrganizationName
-        '
-        resources.ApplyResources(Me.TxtCopyingOrganizationName, "TxtCopyingOrganizationName")
-        Me.TxtCopyingOrganizationName.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "ConvertingOrganization", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtCopyingOrganizationName.Name = "TxtCopyingOrganizationName"
-        '
-        'Label21
-        '
-        resources.ApplyResources(Me.Label21, "Label21")
-        Me.Label21.Name = "Label21"
-        '
-        'TxtDocumentNameDefault
-        '
-        resources.ApplyResources(Me.TxtDocumentNameDefault, "TxtDocumentNameDefault")
-        Me.TxtDocumentNameDefault.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "DocumentNameDefault", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtDocumentNameDefault.Name = "TxtDocumentNameDefault"
-        '
-        'Label20
-        '
-        resources.ApplyResources(Me.Label20, "Label20")
-        Me.Label20.Name = "Label20"
-        '
-        'ComboDocumentName
-        '
-        resources.ApplyResources(Me.ComboDocumentName, "ComboDocumentName")
-        Me.ComboDocumentName.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "IndexDocumentName", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ComboDocumentName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboDocumentName.FormattingEnabled = True
-        Me.ComboDocumentName.Name = "ComboDocumentName"
-        '
-        'Label19
-        '
-        resources.ApplyResources(Me.Label19, "Label19")
-        Me.Label19.Name = "Label19"
-        '
-        'BtnImportSettings
-        '
-        resources.ApplyResources(Me.BtnImportSettings, "BtnImportSettings")
-        Me.BtnImportSettings.Name = "BtnImportSettings"
-        Me.BtnImportSettings.UseVisualStyleBackColor = True
-        '
-        'BtnExportSettings
-        '
-        resources.ApplyResources(Me.BtnExportSettings, "BtnExportSettings")
-        Me.BtnExportSettings.Name = "BtnExportSettings"
-        Me.BtnExportSettings.UseVisualStyleBackColor = True
-        '
-        'LblCryptoProvider
-        '
-        resources.ApplyResources(Me.LblCryptoProvider, "LblCryptoProvider")
-        Me.LblCryptoProvider.Name = "LblCryptoProvider"
-        '
-        'ComboCryptoProvider
-        '
-        resources.ApplyResources(Me.ComboCryptoProvider, "ComboCryptoProvider")
-        Me.ComboCryptoProvider.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.BsSetup, "DefaultCryptographicProvider", True))
-        Me.ComboCryptoProvider.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboCryptoProvider.FormattingEnabled = True
-        Me.ComboCryptoProvider.Items.AddRange(New Object() {resources.GetString("ComboCryptoProvider.Items"), resources.GetString("ComboCryptoProvider.Items1"), resources.GetString("ComboCryptoProvider.Items2"), resources.GetString("ComboCryptoProvider.Items3")})
-        Me.ComboCryptoProvider.Name = "ComboCryptoProvider"
-        '
-        'BtnRemoveIndexDocumentUID
-        '
-        resources.ApplyResources(Me.BtnRemoveIndexDocumentUID, "BtnRemoveIndexDocumentUID")
-        Me.BtnRemoveIndexDocumentUID.Image = Global.PDFSignerSetup.My.Resources.Resources.Delete16
-        Me.BtnRemoveIndexDocumentUID.Name = "BtnRemoveIndexDocumentUID"
-        Me.BtnRemoveIndexDocumentUID.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.BtnRemoveIndexDocumentUID, resources.GetString("BtnRemoveIndexDocumentUID.ToolTip"))
-        Me.BtnRemoveIndexDocumentUID.UseVisualStyleBackColor = True
-        '
-        'BtnResetSettings
-        '
-        resources.ApplyResources(Me.BtnResetSettings, "BtnResetSettings")
-        Me.BtnResetSettings.Name = "BtnResetSettings"
-        Me.BtnResetSettings.UseVisualStyleBackColor = True
-        '
-        'TabCryptoProviders
-        '
-        resources.ApplyResources(Me.TabCryptoProviders, "TabCryptoProviders")
-        Me.TabCryptoProviders.Controls.Add(Me.TabPDFSigner)
-        Me.TabCryptoProviders.Controls.Add(Me.TabPDFStreamer)
-        Me.TabCryptoProviders.Controls.Add(Me.TabMQ)
-        Me.TabCryptoProviders.Controls.Add(Me.TabMNBSigner)
-        Me.TabCryptoProviders.Name = "TabCryptoProviders"
-        Me.TabCryptoProviders.SelectedIndex = 0
-        '
-        'TabPDFSigner
-        '
-        Me.TabPDFSigner.Controls.Add(Me.ChkPDFSignerEnabled)
-        Me.TabPDFSigner.Controls.Add(Me.PanelPDFSigner)
-        resources.ApplyResources(Me.TabPDFSigner, "TabPDFSigner")
-        Me.TabPDFSigner.Name = "TabPDFSigner"
-        Me.TabPDFSigner.UseVisualStyleBackColor = True
-        '
-        'ChkPDFSignerEnabled
-        '
-        resources.ApplyResources(Me.ChkPDFSignerEnabled, "ChkPDFSignerEnabled")
-        Me.ChkPDFSignerEnabled.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "Enabled", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkPDFSignerEnabled.Name = "ChkPDFSignerEnabled"
-        Me.ChkPDFSignerEnabled.UseVisualStyleBackColor = True
-        '
-        'PanelPDFSigner
-        '
-        Me.PanelPDFSigner.Controls.Add(Me.ChkAllowQualifiedCertificatesOnly)
-        Me.PanelPDFSigner.Controls.Add(Me.ComboSignatureHashMethod)
-        Me.PanelPDFSigner.Controls.Add(Me.ChkProxyEnabled)
-        Me.PanelPDFSigner.Controls.Add(Me.Label11)
-        Me.PanelPDFSigner.Controls.Add(Me.ComboRevocationCheck)
-        Me.PanelPDFSigner.Controls.Add(Me.ChkTimeStampingEnabled)
-        Me.PanelPDFSigner.Controls.Add(Me.Label10)
-        Me.PanelPDFSigner.Controls.Add(Me.TxtSigningReason)
-        Me.PanelPDFSigner.Controls.Add(Me.GrpTimeStamp)
-        Me.PanelPDFSigner.Controls.Add(Me.GrpProxy)
-        Me.PanelPDFSigner.Controls.Add(Me.Label9)
-        Me.PanelPDFSigner.Controls.Add(Me.TxtSigningOrganization)
-        Me.PanelPDFSigner.Controls.Add(Me.Label8)
-        Me.PanelPDFSigner.Controls.Add(Me.ChkSignerNameFromLoggedOnUser)
-        resources.ApplyResources(Me.PanelPDFSigner, "PanelPDFSigner")
-        Me.PanelPDFSigner.Name = "PanelPDFSigner"
-        '
-        'ChkAllowQualifiedCertificatesOnly
-        '
-        resources.ApplyResources(Me.ChkAllowQualifiedCertificatesOnly, "ChkAllowQualifiedCertificatesOnly")
-        Me.ChkAllowQualifiedCertificatesOnly.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "AllowQualifiedCertificatesOnly", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkAllowQualifiedCertificatesOnly.Name = "ChkAllowQualifiedCertificatesOnly"
-        Me.ChkAllowQualifiedCertificatesOnly.UseVisualStyleBackColor = True
-        '
-        'ChkSignerNameFromLoggedOnUser
-        '
-        resources.ApplyResources(Me.ChkSignerNameFromLoggedOnUser, "ChkSignerNameFromLoggedOnUser")
-        Me.ChkSignerNameFromLoggedOnUser.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "SignerNameFromLoggedOnUser", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkSignerNameFromLoggedOnUser.Name = "ChkSignerNameFromLoggedOnUser"
-        Me.ChkSignerNameFromLoggedOnUser.UseVisualStyleBackColor = True
-        '
-        'ChkProxyEnabled
-        '
-        resources.ApplyResources(Me.ChkProxyEnabled, "ChkProxyEnabled")
-        Me.ChkProxyEnabled.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ChkProxyEnabled.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFSignerCryptoProvider, "IsProxyEnabled", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkProxyEnabled.Name = "ChkProxyEnabled"
-        Me.ChkProxyEnabled.UseVisualStyleBackColor = False
-        '
-        'GrpProxy
-        '
-        resources.ApplyResources(Me.GrpProxy, "GrpProxy")
-        Me.GrpProxy.Controls.Add(Me.ComboProxyAuthMethod)
-        Me.GrpProxy.Controls.Add(Me.Label40)
-        Me.GrpProxy.Controls.Add(Me.NumPort)
-        Me.GrpProxy.Controls.Add(Me.Label39)
-        Me.GrpProxy.Controls.Add(Me.TxtProxyPassword)
-        Me.GrpProxy.Controls.Add(Me.Label36)
-        Me.GrpProxy.Controls.Add(Me.TxtProxyUser)
-        Me.GrpProxy.Controls.Add(Me.Label37)
-        Me.GrpProxy.Controls.Add(Me.TxtProxyServer)
-        Me.GrpProxy.Controls.Add(Me.Label38)
-        Me.GrpProxy.Name = "GrpProxy"
-        Me.GrpProxy.TabStop = False
-        '
-        'ComboProxyAuthMethod
-        '
-        Me.ComboProxyAuthMethod.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.BsPDFSignerCryptoProvider, "ProxyAuthMethod", True))
-        Me.ComboProxyAuthMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        resources.ApplyResources(Me.ComboProxyAuthMethod, "ComboProxyAuthMethod")
-        Me.ComboProxyAuthMethod.FormattingEnabled = True
-        Me.ComboProxyAuthMethod.Name = "ComboProxyAuthMethod"
-        '
-        'Label40
-        '
-        resources.ApplyResources(Me.Label40, "Label40")
-        Me.Label40.Name = "Label40"
-        '
-        'NumPort
-        '
-        resources.ApplyResources(Me.NumPort, "NumPort")
-        Me.NumPort.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.BsPDFSignerCryptoProvider, "ProxyPort", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.NumPort.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
-        Me.NumPort.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.NumPort.Name = "NumPort"
-        Me.NumPort.Value = New Decimal(New Integer() {8080, 0, 0, 0})
-        '
-        'Label39
-        '
-        resources.ApplyResources(Me.Label39, "Label39")
-        Me.Label39.Name = "Label39"
-        '
-        'TxtProxyPassword
-        '
-        resources.ApplyResources(Me.TxtProxyPassword, "TxtProxyPassword")
-        Me.TxtProxyPassword.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFSignerCryptoProvider, "ProxyPassword", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtProxyPassword.Name = "TxtProxyPassword"
-        '
-        'Label36
-        '
-        resources.ApplyResources(Me.Label36, "Label36")
-        Me.Label36.Name = "Label36"
-        '
-        'TxtProxyUser
-        '
-        resources.ApplyResources(Me.TxtProxyUser, "TxtProxyUser")
-        Me.TxtProxyUser.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFSignerCryptoProvider, "ProxyUserName", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtProxyUser.Name = "TxtProxyUser"
-        '
-        'Label37
-        '
-        resources.ApplyResources(Me.Label37, "Label37")
-        Me.Label37.Name = "Label37"
-        '
-        'TxtProxyServer
-        '
-        resources.ApplyResources(Me.TxtProxyServer, "TxtProxyServer")
-        Me.TxtProxyServer.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFSignerCryptoProvider, "ProxyServer", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtProxyServer.Name = "TxtProxyServer"
-        '
-        'Label38
-        '
-        resources.ApplyResources(Me.Label38, "Label38")
-        Me.Label38.Name = "Label38"
-        '
-        'TabPDFStreamer
-        '
-        Me.TabPDFStreamer.Controls.Add(Me.ChkPDFStreamerEnabled)
-        Me.TabPDFStreamer.Controls.Add(Me.PanelPDFStreamer)
-        resources.ApplyResources(Me.TabPDFStreamer, "TabPDFStreamer")
-        Me.TabPDFStreamer.Name = "TabPDFStreamer"
-        Me.TabPDFStreamer.UseVisualStyleBackColor = True
-        '
-        'ChkPDFStreamerEnabled
-        '
-        resources.ApplyResources(Me.ChkPDFStreamerEnabled, "ChkPDFStreamerEnabled")
-        Me.ChkPDFStreamerEnabled.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsPDFStreamerCryptoProvider, "Enabled", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkPDFStreamerEnabled.Name = "ChkPDFStreamerEnabled"
-        Me.ChkPDFStreamerEnabled.UseVisualStyleBackColor = True
-        '
-        'BsPDFStreamerCryptoProvider
-        '
-        Me.BsPDFStreamerCryptoProvider.DataSource = GetType(PDFSignerCommon.PDFStreamerCryptoProvider)
-        '
-        'PanelPDFStreamer
-        '
-        Me.PanelPDFStreamer.Controls.Add(Me.GrpSignaturePDFStreamer)
-        resources.ApplyResources(Me.PanelPDFStreamer, "PanelPDFStreamer")
-        Me.PanelPDFStreamer.Name = "PanelPDFStreamer"
-        '
-        'GrpSignaturePDFStreamer
-        '
-        resources.ApplyResources(Me.GrpSignaturePDFStreamer, "GrpSignaturePDFStreamer")
-        Me.GrpSignaturePDFStreamer.Controls.Add(Me.TxtPDFStreamerAuthorizationCode)
-        Me.GrpSignaturePDFStreamer.Controls.Add(Me.Label29)
-        Me.GrpSignaturePDFStreamer.Controls.Add(Me.TxtPDFStreamerConfigurationFileName)
-        Me.GrpSignaturePDFStreamer.Controls.Add(Me.Label30)
-        Me.GrpSignaturePDFStreamer.Controls.Add(Me.TxtPDFStreamerURL)
-        Me.GrpSignaturePDFStreamer.Controls.Add(Me.Label31)
-        Me.GrpSignaturePDFStreamer.Name = "GrpSignaturePDFStreamer"
-        Me.GrpSignaturePDFStreamer.TabStop = False
-        '
-        'TxtPDFStreamerAuthorizationCode
-        '
-        resources.ApplyResources(Me.TxtPDFStreamerAuthorizationCode, "TxtPDFStreamerAuthorizationCode")
-        Me.TxtPDFStreamerAuthorizationCode.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFStreamerCryptoProvider, "PDFStreamerAuthorizationCode", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtPDFStreamerAuthorizationCode.Name = "TxtPDFStreamerAuthorizationCode"
-        '
-        'Label29
-        '
-        resources.ApplyResources(Me.Label29, "Label29")
-        Me.Label29.Name = "Label29"
-        '
-        'TxtPDFStreamerConfigurationFileName
-        '
-        resources.ApplyResources(Me.TxtPDFStreamerConfigurationFileName, "TxtPDFStreamerConfigurationFileName")
-        Me.TxtPDFStreamerConfigurationFileName.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFStreamerCryptoProvider, "PDFStreamerConfigFile", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtPDFStreamerConfigurationFileName.Name = "TxtPDFStreamerConfigurationFileName"
-        '
-        'Label30
-        '
-        resources.ApplyResources(Me.Label30, "Label30")
-        Me.Label30.Name = "Label30"
-        '
-        'TxtPDFStreamerURL
-        '
-        resources.ApplyResources(Me.TxtPDFStreamerURL, "TxtPDFStreamerURL")
-        Me.TxtPDFStreamerURL.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsPDFStreamerCryptoProvider, "PDFStreamerURL", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtPDFStreamerURL.Name = "TxtPDFStreamerURL"
-        '
-        'Label31
-        '
-        resources.ApplyResources(Me.Label31, "Label31")
-        Me.Label31.Name = "Label31"
-        '
-        'TabMQ
-        '
-        Me.TabMQ.Controls.Add(Me.ChkMQEnabled)
-        Me.TabMQ.Controls.Add(Me.PanelMQFTP)
-        resources.ApplyResources(Me.TabMQ, "TabMQ")
-        Me.TabMQ.Name = "TabMQ"
-        Me.TabMQ.UseVisualStyleBackColor = True
-        '
-        'ChkMQEnabled
-        '
-        resources.ApplyResources(Me.ChkMQEnabled, "ChkMQEnabled")
-        Me.ChkMQEnabled.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsMQFTPCryptoProvider, "Enabled", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkMQEnabled.Name = "ChkMQEnabled"
-        Me.ChkMQEnabled.UseVisualStyleBackColor = True
-        '
-        'BsMQFTPCryptoProvider
-        '
-        Me.BsMQFTPCryptoProvider.DataSource = GetType(PDFSignerCommon.MQFTPCryptoProvider)
-        '
-        'PanelMQFTP
-        '
-        Me.PanelMQFTP.Controls.Add(Me.GrpSignatureMQFTP)
-        resources.ApplyResources(Me.PanelMQFTP, "PanelMQFTP")
-        Me.PanelMQFTP.Name = "PanelMQFTP"
-        '
-        'GrpSignatureMQFTP
-        '
-        resources.ApplyResources(Me.GrpSignatureMQFTP, "GrpSignatureMQFTP")
-        Me.GrpSignatureMQFTP.Controls.Add(Me.BtnRemoveIndexDocumentUID)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.ComboMQDocUID)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.Label34)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.Label33)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.TxtMQDomain)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.TxtMQUserName)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.TxtMQFolderIn)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.Label32)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.TxtMQPassword)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.Label26)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.Label27)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.TxtMQFolderOut)
-        Me.GrpSignatureMQFTP.Controls.Add(Me.Label28)
-        Me.GrpSignatureMQFTP.Name = "GrpSignatureMQFTP"
-        Me.GrpSignatureMQFTP.TabStop = False
-        '
-        'ComboMQDocUID
-        '
-        resources.ApplyResources(Me.ComboMQDocUID, "ComboMQDocUID")
-        Me.ComboMQDocUID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMQFTPCryptoProvider, "IndexMQDocUID", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ComboMQDocUID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboMQDocUID.FormattingEnabled = True
-        Me.ComboMQDocUID.Name = "ComboMQDocUID"
-        '
-        'Label34
-        '
-        resources.ApplyResources(Me.Label34, "Label34")
-        Me.Label34.Name = "Label34"
-        '
-        'Label33
-        '
-        resources.ApplyResources(Me.Label33, "Label33")
-        Me.Label33.Name = "Label33"
-        '
-        'TxtMQDomain
-        '
-        Me.TxtMQDomain.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMQFTPCryptoProvider, "MQDomain", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        resources.ApplyResources(Me.TxtMQDomain, "TxtMQDomain")
-        Me.TxtMQDomain.Name = "TxtMQDomain"
-        '
-        'TxtMQUserName
-        '
-        resources.ApplyResources(Me.TxtMQUserName, "TxtMQUserName")
-        Me.TxtMQUserName.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMQFTPCryptoProvider, "MQUserName", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtMQUserName.Name = "TxtMQUserName"
-        '
-        'TxtMQFolderIn
-        '
-        resources.ApplyResources(Me.TxtMQFolderIn, "TxtMQFolderIn")
-        Me.TxtMQFolderIn.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMQFTPCryptoProvider, "MQFolderIn", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtMQFolderIn.Name = "TxtMQFolderIn"
-        '
-        'Label32
-        '
-        resources.ApplyResources(Me.Label32, "Label32")
-        Me.Label32.Name = "Label32"
-        '
-        'TxtMQPassword
-        '
-        resources.ApplyResources(Me.TxtMQPassword, "TxtMQPassword")
-        Me.TxtMQPassword.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMQFTPCryptoProvider, "MQPassword", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtMQPassword.Name = "TxtMQPassword"
-        '
-        'Label26
-        '
-        resources.ApplyResources(Me.Label26, "Label26")
-        Me.Label26.Name = "Label26"
-        '
-        'Label27
-        '
-        resources.ApplyResources(Me.Label27, "Label27")
-        Me.Label27.Name = "Label27"
-        '
-        'TxtMQFolderOut
-        '
-        resources.ApplyResources(Me.TxtMQFolderOut, "TxtMQFolderOut")
-        Me.TxtMQFolderOut.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMQFTPCryptoProvider, "MQFolderOut", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtMQFolderOut.Name = "TxtMQFolderOut"
-        '
-        'Label28
-        '
-        resources.ApplyResources(Me.Label28, "Label28")
-        Me.Label28.Name = "Label28"
-        '
-        'TabMNBSigner
-        '
-        Me.TabMNBSigner.Controls.Add(Me.ChkMNBSignerEnabled)
-        Me.TabMNBSigner.Controls.Add(Me.PanelMNBSigner)
-        resources.ApplyResources(Me.TabMNBSigner, "TabMNBSigner")
-        Me.TabMNBSigner.Name = "TabMNBSigner"
-        Me.TabMNBSigner.UseVisualStyleBackColor = True
-        '
-        'ChkMNBSignerEnabled
-        '
-        resources.ApplyResources(Me.ChkMNBSignerEnabled, "ChkMNBSignerEnabled")
-        Me.ChkMNBSignerEnabled.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsMNBSignerCryptoProvider, "Enabled", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ChkMNBSignerEnabled.Name = "ChkMNBSignerEnabled"
-        Me.ChkMNBSignerEnabled.UseVisualStyleBackColor = True
-        '
-        'BsMNBSignerCryptoProvider
-        '
-        Me.BsMNBSignerCryptoProvider.DataSource = GetType(PDFSignerCommon.MNBSignerCryptoProvider)
-        '
-        'PanelMNBSigner
-        '
-        Me.PanelMNBSigner.Controls.Add(Me.GrpMNBSignerAuthentication)
-        Me.PanelMNBSigner.Controls.Add(Me.GrpMNBSignerWCFSettings)
-        resources.ApplyResources(Me.PanelMNBSigner, "PanelMNBSigner")
-        Me.PanelMNBSigner.Name = "PanelMNBSigner"
-        '
-        'GrpMNBSignerAuthentication
-        '
-        resources.ApplyResources(Me.GrpMNBSignerAuthentication, "GrpMNBSignerAuthentication")
-        Me.GrpMNBSignerAuthentication.Controls.Add(Me.RadioMNBSignerPasswordAuthentication)
-        Me.GrpMNBSignerAuthentication.Controls.Add(Me.RadioMNBSignerWindowsAuthentication)
-        Me.GrpMNBSignerAuthentication.Controls.Add(Me.PanelMNBSignerAuthentication)
-        Me.GrpMNBSignerAuthentication.Name = "GrpMNBSignerAuthentication"
-        Me.GrpMNBSignerAuthentication.TabStop = False
-        '
-        'RadioMNBSignerPasswordAuthentication
-        '
-        resources.ApplyResources(Me.RadioMNBSignerPasswordAuthentication, "RadioMNBSignerPasswordAuthentication")
-        Me.RadioMNBSignerPasswordAuthentication.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsMNBSignerCryptoProvider, "IsMNBSignerUserPasswordAuthentication", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.RadioMNBSignerPasswordAuthentication.Name = "RadioMNBSignerPasswordAuthentication"
-        Me.RadioMNBSignerPasswordAuthentication.TabStop = True
-        Me.RadioMNBSignerPasswordAuthentication.UseVisualStyleBackColor = True
-        '
-        'RadioMNBSignerWindowsAuthentication
-        '
-        resources.ApplyResources(Me.RadioMNBSignerWindowsAuthentication, "RadioMNBSignerWindowsAuthentication")
-        Me.RadioMNBSignerWindowsAuthentication.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsMNBSignerCryptoProvider, "IsMNBSignerWindowsAuthentication", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.RadioMNBSignerWindowsAuthentication.Name = "RadioMNBSignerWindowsAuthentication"
-        Me.RadioMNBSignerWindowsAuthentication.TabStop = True
-        Me.RadioMNBSignerWindowsAuthentication.UseVisualStyleBackColor = True
-        '
-        'PanelMNBSignerAuthentication
-        '
-        Me.PanelMNBSignerAuthentication.Controls.Add(Me.Label50)
-        Me.PanelMNBSignerAuthentication.Controls.Add(Me.TxtMNBSignerDomain)
-        Me.PanelMNBSignerAuthentication.Controls.Add(Me.TxtMNBSignerUserName)
-        Me.PanelMNBSignerAuthentication.Controls.Add(Me.TxtMNBSignerPassword)
-        Me.PanelMNBSignerAuthentication.Controls.Add(Me.Label51)
-        Me.PanelMNBSignerAuthentication.Controls.Add(Me.Label52)
-        resources.ApplyResources(Me.PanelMNBSignerAuthentication, "PanelMNBSignerAuthentication")
-        Me.PanelMNBSignerAuthentication.Name = "PanelMNBSignerAuthentication"
-        '
-        'Label50
-        '
-        resources.ApplyResources(Me.Label50, "Label50")
-        Me.Label50.Name = "Label50"
-        '
-        'TxtMNBSignerDomain
-        '
-        Me.TxtMNBSignerDomain.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMNBSignerCryptoProvider, "MNBSignerDomain", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        resources.ApplyResources(Me.TxtMNBSignerDomain, "TxtMNBSignerDomain")
-        Me.TxtMNBSignerDomain.Name = "TxtMNBSignerDomain"
-        '
-        'TxtMNBSignerUserName
-        '
-        resources.ApplyResources(Me.TxtMNBSignerUserName, "TxtMNBSignerUserName")
-        Me.TxtMNBSignerUserName.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMNBSignerCryptoProvider, "MNBSignerUserName", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtMNBSignerUserName.Name = "TxtMNBSignerUserName"
-        '
-        'TxtMNBSignerPassword
-        '
-        resources.ApplyResources(Me.TxtMNBSignerPassword, "TxtMNBSignerPassword")
-        Me.TxtMNBSignerPassword.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMNBSignerCryptoProvider, "MNBSignerPassword", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtMNBSignerPassword.Name = "TxtMNBSignerPassword"
-        '
-        'Label51
-        '
-        resources.ApplyResources(Me.Label51, "Label51")
-        Me.Label51.Name = "Label51"
-        '
-        'Label52
-        '
-        resources.ApplyResources(Me.Label52, "Label52")
-        Me.Label52.Name = "Label52"
-        '
-        'GrpMNBSignerWCFSettings
-        '
-        resources.ApplyResources(Me.GrpMNBSignerWCFSettings, "GrpMNBSignerWCFSettings")
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.Label48)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.Label49)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.NumMNBSignerChunkSize)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.Label46)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.Label47)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.NumMNBSignerSignTimeout)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.Label45)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.Label44)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.NumMNBSignerWCFTimeout)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.TxtMNBSignerURL)
-        Me.GrpMNBSignerWCFSettings.Controls.Add(Me.Label43)
-        Me.GrpMNBSignerWCFSettings.Name = "GrpMNBSignerWCFSettings"
-        Me.GrpMNBSignerWCFSettings.TabStop = False
-        '
-        'Label48
-        '
-        resources.ApplyResources(Me.Label48, "Label48")
-        Me.Label48.Name = "Label48"
-        '
-        'Label49
-        '
-        resources.ApplyResources(Me.Label49, "Label49")
-        Me.Label49.Name = "Label49"
-        '
-        'NumMNBSignerChunkSize
-        '
-        Me.NumMNBSignerChunkSize.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.BsMNBSignerCryptoProvider, "MNBSignerChunkSize", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        resources.ApplyResources(Me.NumMNBSignerChunkSize, "NumMNBSignerChunkSize")
-        Me.NumMNBSignerChunkSize.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
-        Me.NumMNBSignerChunkSize.Name = "NumMNBSignerChunkSize"
-        Me.NumMNBSignerChunkSize.Value = New Decimal(New Integer() {25000000, 0, 0, 0})
-        '
-        'Label46
-        '
-        resources.ApplyResources(Me.Label46, "Label46")
-        Me.Label46.Name = "Label46"
-        '
-        'Label47
-        '
-        resources.ApplyResources(Me.Label47, "Label47")
-        Me.Label47.Name = "Label47"
-        '
-        'NumMNBSignerSignTimeout
-        '
-        Me.NumMNBSignerSignTimeout.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.BsMNBSignerCryptoProvider, "MNBSignerSigningTimeout", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        resources.ApplyResources(Me.NumMNBSignerSignTimeout, "NumMNBSignerSignTimeout")
-        Me.NumMNBSignerSignTimeout.Maximum = New Decimal(New Integer() {1200, 0, 0, 0})
-        Me.NumMNBSignerSignTimeout.Name = "NumMNBSignerSignTimeout"
-        Me.NumMNBSignerSignTimeout.Value = New Decimal(New Integer() {60, 0, 0, 0})
-        '
-        'Label45
-        '
-        resources.ApplyResources(Me.Label45, "Label45")
-        Me.Label45.Name = "Label45"
-        '
-        'Label44
-        '
-        resources.ApplyResources(Me.Label44, "Label44")
-        Me.Label44.Name = "Label44"
-        '
-        'NumMNBSignerWCFTimeout
-        '
-        Me.NumMNBSignerWCFTimeout.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.BsMNBSignerCryptoProvider, "MNBSignerWSTimeout", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        resources.ApplyResources(Me.NumMNBSignerWCFTimeout, "NumMNBSignerWCFTimeout")
-        Me.NumMNBSignerWCFTimeout.Maximum = New Decimal(New Integer() {1200, 0, 0, 0})
-        Me.NumMNBSignerWCFTimeout.Name = "NumMNBSignerWCFTimeout"
-        Me.NumMNBSignerWCFTimeout.Value = New Decimal(New Integer() {60, 0, 0, 0})
-        '
-        'TxtMNBSignerURL
-        '
-        resources.ApplyResources(Me.TxtMNBSignerURL, "TxtMNBSignerURL")
-        Me.TxtMNBSignerURL.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsMNBSignerCryptoProvider, "MNBSignerURL", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.TxtMNBSignerURL.Name = "TxtMNBSignerURL"
-        '
-        'Label43
-        '
-        resources.ApplyResources(Me.Label43, "Label43")
-        Me.Label43.Name = "Label43"
-        '
-        'GrpFileNaming
-        '
-        resources.ApplyResources(Me.GrpFileNaming, "GrpFileNaming")
-        Me.GrpFileNaming.Controls.Add(Me.TxtFileExtension)
-        Me.GrpFileNaming.Controls.Add(Me.LblFileExtension)
-        Me.GrpFileNaming.Controls.Add(Me.TxtFileAppend)
-        Me.GrpFileNaming.Controls.Add(Me.LblFileAppend)
-        Me.GrpFileNaming.Controls.Add(Me.RadioCreateNewFile)
-        Me.GrpFileNaming.Controls.Add(Me.RadioOverwriteOriginal)
-        Me.GrpFileNaming.Name = "GrpFileNaming"
-        Me.GrpFileNaming.TabStop = False
-        '
-        'TxtFileExtension
-        '
-        resources.ApplyResources(Me.TxtFileExtension, "TxtFileExtension")
-        Me.TxtFileExtension.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "FileExtensionReplace", True))
-        Me.TxtFileExtension.Name = "TxtFileExtension"
-        '
-        'LblFileExtension
-        '
-        resources.ApplyResources(Me.LblFileExtension, "LblFileExtension")
-        Me.LblFileExtension.Name = "LblFileExtension"
-        '
-        'TxtFileAppend
-        '
-        resources.ApplyResources(Me.TxtFileAppend, "TxtFileAppend")
-        Me.TxtFileAppend.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BsSetup, "FileNameAppend", True))
-        Me.TxtFileAppend.Name = "TxtFileAppend"
-        '
-        'LblFileAppend
-        '
-        resources.ApplyResources(Me.LblFileAppend, "LblFileAppend")
-        Me.LblFileAppend.Name = "LblFileAppend"
-        '
-        'RadioCreateNewFile
-        '
-        resources.ApplyResources(Me.RadioCreateNewFile, "RadioCreateNewFile")
-        Me.RadioCreateNewFile.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsSetup, "FileCreateNew", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.RadioCreateNewFile.Name = "RadioCreateNewFile"
-        Me.RadioCreateNewFile.UseVisualStyleBackColor = True
-        '
-        'RadioOverwriteOriginal
-        '
-        resources.ApplyResources(Me.RadioOverwriteOriginal, "RadioOverwriteOriginal")
-        Me.RadioOverwriteOriginal.Checked = True
-        Me.RadioOverwriteOriginal.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.BsSetup, "FileOverwriteOriginal", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.RadioOverwriteOriginal.Name = "RadioOverwriteOriginal"
-        Me.RadioOverwriteOriginal.TabStop = True
-        Me.RadioOverwriteOriginal.UseVisualStyleBackColor = True
-        '
-        'Label41
-        '
-        resources.ApplyResources(Me.Label41, "Label41")
-        Me.Label41.Name = "Label41"
-        '
-        'ComboDocumentViewer
-        '
-        resources.ApplyResources(Me.ComboDocumentViewer, "ComboDocumentViewer")
-        Me.ComboDocumentViewer.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.BsSetup, "DocumentViewer", True))
-        Me.ComboDocumentViewer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboDocumentViewer.FormattingEnabled = True
-        Me.ComboDocumentViewer.Items.AddRange(New Object() {resources.GetString("ComboDocumentViewer.Items"), resources.GetString("ComboDocumentViewer.Items1")})
-        Me.ComboDocumentViewer.Name = "ComboDocumentViewer"
-        '
-        'PanelMain
-        '
-        Me.PanelMain.Controls.Add(Me.Label41)
-        Me.PanelMain.Controls.Add(Me.GrpIndexes)
-        Me.PanelMain.Controls.Add(Me.ComboDocumentViewer)
-        Me.PanelMain.Controls.Add(Me.GrpBarCode)
-        Me.PanelMain.Controls.Add(Me.GrpFileNaming)
-        Me.PanelMain.Controls.Add(Me.GrpClause)
-        Me.PanelMain.Controls.Add(Me.TabCryptoProviders)
-        Me.PanelMain.Controls.Add(Me.LblCryptoProvider)
-        Me.PanelMain.Controls.Add(Me.ComboCryptoProvider)
-        Me.PanelMain.DataBindings.Add(New System.Windows.Forms.Binding("Enabled", Me.BsSetup, "IsSigningEnabled", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        resources.ApplyResources(Me.PanelMain, "PanelMain")
-        Me.PanelMain.Name = "PanelMain"
-        '
-        'OpenFileDialog
-        '
-        Me.OpenFileDialog.DefaultExt = "xml"
-        Me.OpenFileDialog.FileName = "PDFSignerConfig"
-        resources.ApplyResources(Me.OpenFileDialog, "OpenFileDialog")
-        '
-        'SaveFileDialog
-        '
-        Me.SaveFileDialog.DefaultExt = "xml"
-        Me.SaveFileDialog.FileName = "PDFSignerConfig"
-        resources.ApplyResources(Me.SaveFileDialog, "SaveFileDialog")
-        '
-        'FrmSetup
-        '
-        Me.AcceptButton = Me.BtnOK
+        BtnOK = New Button()
+        BtnCancel = New Button()
+        ChkSigningEnabled = New CheckBox()
+        BsSetup = New BindingSource(components)
+        GrpIndexes = New GroupBox()
+        BtnRemoveIndexSkipNote = New Button()
+        ComboSkipNote = New ComboBox()
+        Label42 = New Label()
+        BtnRemoveIndexSignatureExpiry = New Button()
+        BtnRemoveIndexSigningUser = New Button()
+        BtnRemoveIndexSignDateTime = New Button()
+        BtnRemoveIndexIsSigned = New Button()
+        ComboExpiry = New ComboBox()
+        Label5 = New Label()
+        ComboSignedBy = New ComboBox()
+        Label4 = New Label()
+        ComboSignedAt = New ComboBox()
+        Label3 = New Label()
+        ComboIsSigned = New ComboBox()
+        Label2 = New Label()
+        ComboBarCode = New ComboBox()
+        Label1 = New Label()
+        GrpBarCode = New GroupBox()
+        ChkAllowSkip = New CheckBox()
+        Label35 = New Label()
+        BtnRemoveIndexBarCode = New Button()
+        NumericSignatureMarkerPosition = New NumericUpDown()
+        TxtSignatureMarker = New TextBox()
+        Label7 = New Label()
+        ChkAllDocumentsNeedSigning = New CheckBox()
+        Label6 = New Label()
+        ComboSignatureHashMethod = New ComboBox()
+        BsPDFSignerCryptoProvider = New BindingSource(components)
+        Label11 = New Label()
+        ComboRevocationCheck = New ComboBox()
+        Label10 = New Label()
+        TxtSigningReason = New TextBox()
+        Label9 = New Label()
+        TxtSigningOrganization = New TextBox()
+        Label8 = New Label()
+        TxtSignaturePolicyOID = New TextBox()
+        Label14 = New Label()
+        TxtSignaturePolicyHash = New TextBox()
+        Label13 = New Label()
+        TxtSignaturePolicyURL = New TextBox()
+        Label12 = New Label()
+        GrpTimeStamp = New GroupBox()
+        ChkSinglePassPadesLTA = New CheckBox()
+        ComboTimeStampHashMethod = New ComboBox()
+        Label18 = New Label()
+        ChkIsDocumentTimeStamp = New CheckBox()
+        TxtTSAPassword = New TextBox()
+        Label16 = New Label()
+        TxtTSAUser = New TextBox()
+        Label17 = New Label()
+        TxtTSAURL = New TextBox()
+        Label15 = New Label()
+        ChkTimeStampingEnabled = New CheckBox()
+        GrpClause = New GroupBox()
+        BtnRemoveDocNameIndexAssignment = New Button()
+        ChkDocNameFromFormType = New CheckBox()
+        ComboClauseFormat = New ComboBox()
+        Label25 = New Label()
+        Label23 = New Label()
+        TxtCopyingRegulationVersion = New TextBox()
+        Label24 = New Label()
+        TxtCopyingRegulationURL = New TextBox()
+        TxtCopyingRegulationName = New TextBox()
+        Label22 = New Label()
+        TxtCopyingOrganizationName = New TextBox()
+        Label21 = New Label()
+        TxtDocumentNameDefault = New TextBox()
+        Label20 = New Label()
+        ComboDocumentName = New ComboBox()
+        Label19 = New Label()
+        BtnImportSettings = New Button()
+        BtnExportSettings = New Button()
+        LblCryptoProvider = New Label()
+        ComboCryptoProvider = New ComboBox()
+        ToolTip1 = New ToolTip(components)
+        BtnRemoveIndexDocumentUID = New Button()
+        BtnResetSettings = New Button()
+        TabCryptoProviders = New TabControl()
+        TabPDFSigner = New TabPage()
+        ChkPDFSignerEnabled = New CheckBox()
+        PanelPDFSigner = New Panel()
+        ChkAllowQualifiedCertificatesOnly = New CheckBox()
+        ChkProxyEnabled = New CheckBox()
+        GrpProxy = New GroupBox()
+        ComboProxyAuthMethod = New ComboBox()
+        Label40 = New Label()
+        NumPort = New NumericUpDown()
+        Label39 = New Label()
+        TxtProxyPassword = New TextBox()
+        Label36 = New Label()
+        TxtProxyUser = New TextBox()
+        Label37 = New Label()
+        TxtProxyServer = New TextBox()
+        Label38 = New Label()
+        ChkSignerNameFromLoggedOnUser = New CheckBox()
+        TabPDFStreamer = New TabPage()
+        ChkPDFStreamerEnabled = New CheckBox()
+        BsPDFStreamerCryptoProvider = New BindingSource(components)
+        PanelPDFStreamer = New Panel()
+        GrpSignaturePDFStreamer = New GroupBox()
+        TxtPDFStreamerAuthorizationCode = New TextBox()
+        Label29 = New Label()
+        TxtPDFStreamerConfigurationFileName = New TextBox()
+        Label30 = New Label()
+        TxtPDFStreamerURL = New TextBox()
+        Label31 = New Label()
+        TabMQ = New TabPage()
+        ChkMQEnabled = New CheckBox()
+        BsMQFTPCryptoProvider = New BindingSource(components)
+        PanelMQFTP = New Panel()
+        GrpSignatureMQFTP = New GroupBox()
+        ComboMQDocUID = New ComboBox()
+        Label34 = New Label()
+        Label33 = New Label()
+        TxtMQDomain = New TextBox()
+        TxtMQUserName = New TextBox()
+        TxtMQFolderIn = New TextBox()
+        Label32 = New Label()
+        TxtMQPassword = New TextBox()
+        Label26 = New Label()
+        Label27 = New Label()
+        TxtMQFolderOut = New TextBox()
+        Label28 = New Label()
+        TabMNBSigner = New TabPage()
+        ChkMNBSignerEnabled = New CheckBox()
+        BsMNBSignerCryptoProvider = New BindingSource(components)
+        PanelMNBSigner = New Panel()
+        GrpMNBSignerAuthentication = New GroupBox()
+        RadioMNBSignerPasswordAuthentication = New RadioButton()
+        RadioMNBSignerWindowsAuthentication = New RadioButton()
+        PanelMNBSignerAuthentication = New Panel()
+        Label50 = New Label()
+        TxtMNBSignerDomain = New TextBox()
+        TxtMNBSignerUserName = New TextBox()
+        TxtMNBSignerPassword = New TextBox()
+        Label51 = New Label()
+        Label52 = New Label()
+        GrpMNBSignerWCFSettings = New GroupBox()
+        Label48 = New Label()
+        Label49 = New Label()
+        NumMNBSignerChunkSize = New NumericUpDown()
+        Label46 = New Label()
+        Label47 = New Label()
+        NumMNBSignerSignTimeout = New NumericUpDown()
+        Label45 = New Label()
+        Label44 = New Label()
+        NumMNBSignerWCFTimeout = New NumericUpDown()
+        TxtMNBSignerURL = New TextBox()
+        Label43 = New Label()
+        GrpFileNaming = New GroupBox()
+        TxtFileExtension = New TextBox()
+        LblFileExtension = New Label()
+        TxtFileAppend = New TextBox()
+        LblFileAppend = New Label()
+        RadioCreateNewFile = New RadioButton()
+        RadioOverwriteOriginal = New RadioButton()
+        Label41 = New Label()
+        ComboDocumentViewer = New ComboBox()
+        PanelMain = New Panel()
+        OpenFileDialog = New OpenFileDialog()
+        SaveFileDialog = New SaveFileDialog()
+        CType(BsSetup, ComponentModel.ISupportInitialize).BeginInit()
+        GrpIndexes.SuspendLayout()
+        GrpBarCode.SuspendLayout()
+        CType(NumericSignatureMarkerPosition, ComponentModel.ISupportInitialize).BeginInit()
+        CType(BsPDFSignerCryptoProvider, ComponentModel.ISupportInitialize).BeginInit()
+        GrpTimeStamp.SuspendLayout()
+        GrpClause.SuspendLayout()
+        TabCryptoProviders.SuspendLayout()
+        TabPDFSigner.SuspendLayout()
+        PanelPDFSigner.SuspendLayout()
+        GrpProxy.SuspendLayout()
+        CType(NumPort, ComponentModel.ISupportInitialize).BeginInit()
+        TabPDFStreamer.SuspendLayout()
+        CType(BsPDFStreamerCryptoProvider, ComponentModel.ISupportInitialize).BeginInit()
+        PanelPDFStreamer.SuspendLayout()
+        GrpSignaturePDFStreamer.SuspendLayout()
+        TabMQ.SuspendLayout()
+        CType(BsMQFTPCryptoProvider, ComponentModel.ISupportInitialize).BeginInit()
+        PanelMQFTP.SuspendLayout()
+        GrpSignatureMQFTP.SuspendLayout()
+        TabMNBSigner.SuspendLayout()
+        CType(BsMNBSignerCryptoProvider, ComponentModel.ISupportInitialize).BeginInit()
+        PanelMNBSigner.SuspendLayout()
+        GrpMNBSignerAuthentication.SuspendLayout()
+        PanelMNBSignerAuthentication.SuspendLayout()
+        GrpMNBSignerWCFSettings.SuspendLayout()
+        CType(NumMNBSignerChunkSize, ComponentModel.ISupportInitialize).BeginInit()
+        CType(NumMNBSignerSignTimeout, ComponentModel.ISupportInitialize).BeginInit()
+        CType(NumMNBSignerWCFTimeout, ComponentModel.ISupportInitialize).BeginInit()
+        GrpFileNaming.SuspendLayout()
+        PanelMain.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' BtnOK
+        ' 
+        resources.ApplyResources(BtnOK, "BtnOK")
+        BtnOK.Name = "BtnOK"
+        BtnOK.UseVisualStyleBackColor = True
+        ' 
+        ' BtnCancel
+        ' 
+        resources.ApplyResources(BtnCancel, "BtnCancel")
+        BtnCancel.DialogResult = DialogResult.Cancel
+        BtnCancel.Name = "BtnCancel"
+        BtnCancel.UseVisualStyleBackColor = True
+        ' 
+        ' ChkSigningEnabled
+        ' 
+        resources.ApplyResources(ChkSigningEnabled, "ChkSigningEnabled")
+        ChkSigningEnabled.DataBindings.Add(New Binding("Checked", BsSetup, "IsSigningEnabled", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkSigningEnabled.Name = "ChkSigningEnabled"
+        ChkSigningEnabled.UseVisualStyleBackColor = True
+        ' 
+        ' BsSetup
+        ' 
+        BsSetup.DataSource = GetType(PDFSignerCommon.SetupModel)
+        ' 
+        ' GrpIndexes
+        ' 
+        resources.ApplyResources(GrpIndexes, "GrpIndexes")
+        GrpIndexes.Controls.Add(BtnRemoveIndexSkipNote)
+        GrpIndexes.Controls.Add(ComboSkipNote)
+        GrpIndexes.Controls.Add(Label42)
+        GrpIndexes.Controls.Add(BtnRemoveIndexSignatureExpiry)
+        GrpIndexes.Controls.Add(BtnRemoveIndexSigningUser)
+        GrpIndexes.Controls.Add(BtnRemoveIndexSignDateTime)
+        GrpIndexes.Controls.Add(BtnRemoveIndexIsSigned)
+        GrpIndexes.Controls.Add(ComboExpiry)
+        GrpIndexes.Controls.Add(Label5)
+        GrpIndexes.Controls.Add(ComboSignedBy)
+        GrpIndexes.Controls.Add(Label4)
+        GrpIndexes.Controls.Add(ComboSignedAt)
+        GrpIndexes.Controls.Add(Label3)
+        GrpIndexes.Controls.Add(ComboIsSigned)
+        GrpIndexes.Controls.Add(Label2)
+        GrpIndexes.Name = "GrpIndexes"
+        GrpIndexes.TabStop = False
+        ' 
+        ' BtnRemoveIndexSkipNote
+        ' 
+        resources.ApplyResources(BtnRemoveIndexSkipNote, "BtnRemoveIndexSkipNote")
+        BtnRemoveIndexSkipNote.Image = My.Resources.Resources.Delete16
+        BtnRemoveIndexSkipNote.Name = "BtnRemoveIndexSkipNote"
+        BtnRemoveIndexSkipNote.TabStop = False
+        ToolTip1.SetToolTip(BtnRemoveIndexSkipNote, resources.GetString("BtnRemoveIndexSkipNote.ToolTip"))
+        BtnRemoveIndexSkipNote.UseVisualStyleBackColor = True
+        ' 
+        ' ComboSkipNote
+        ' 
+        resources.ApplyResources(ComboSkipNote, "ComboSkipNote")
+        ComboSkipNote.DataBindings.Add(New Binding("Text", BsSetup, "IndexSkipNote", True))
+        ComboSkipNote.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboSkipNote.FormattingEnabled = True
+        ComboSkipNote.Name = "ComboSkipNote"
+        ' 
+        ' Label42
+        ' 
+        resources.ApplyResources(Label42, "Label42")
+        Label42.Name = "Label42"
+        ' 
+        ' BtnRemoveIndexSignatureExpiry
+        ' 
+        resources.ApplyResources(BtnRemoveIndexSignatureExpiry, "BtnRemoveIndexSignatureExpiry")
+        BtnRemoveIndexSignatureExpiry.Image = My.Resources.Resources.Delete16
+        BtnRemoveIndexSignatureExpiry.Name = "BtnRemoveIndexSignatureExpiry"
+        BtnRemoveIndexSignatureExpiry.TabStop = False
+        ToolTip1.SetToolTip(BtnRemoveIndexSignatureExpiry, resources.GetString("BtnRemoveIndexSignatureExpiry.ToolTip"))
+        BtnRemoveIndexSignatureExpiry.UseVisualStyleBackColor = True
+        ' 
+        ' BtnRemoveIndexSigningUser
+        ' 
+        resources.ApplyResources(BtnRemoveIndexSigningUser, "BtnRemoveIndexSigningUser")
+        BtnRemoveIndexSigningUser.Image = My.Resources.Resources.Delete16
+        BtnRemoveIndexSigningUser.Name = "BtnRemoveIndexSigningUser"
+        BtnRemoveIndexSigningUser.TabStop = False
+        ToolTip1.SetToolTip(BtnRemoveIndexSigningUser, resources.GetString("BtnRemoveIndexSigningUser.ToolTip"))
+        BtnRemoveIndexSigningUser.UseVisualStyleBackColor = True
+        ' 
+        ' BtnRemoveIndexSignDateTime
+        ' 
+        resources.ApplyResources(BtnRemoveIndexSignDateTime, "BtnRemoveIndexSignDateTime")
+        BtnRemoveIndexSignDateTime.Image = My.Resources.Resources.Delete16
+        BtnRemoveIndexSignDateTime.Name = "BtnRemoveIndexSignDateTime"
+        BtnRemoveIndexSignDateTime.TabStop = False
+        ToolTip1.SetToolTip(BtnRemoveIndexSignDateTime, resources.GetString("BtnRemoveIndexSignDateTime.ToolTip"))
+        BtnRemoveIndexSignDateTime.UseVisualStyleBackColor = True
+        ' 
+        ' BtnRemoveIndexIsSigned
+        ' 
+        resources.ApplyResources(BtnRemoveIndexIsSigned, "BtnRemoveIndexIsSigned")
+        BtnRemoveIndexIsSigned.Image = My.Resources.Resources.Delete16
+        BtnRemoveIndexIsSigned.Name = "BtnRemoveIndexIsSigned"
+        BtnRemoveIndexIsSigned.TabStop = False
+        ToolTip1.SetToolTip(BtnRemoveIndexIsSigned, resources.GetString("BtnRemoveIndexIsSigned.ToolTip"))
+        BtnRemoveIndexIsSigned.UseVisualStyleBackColor = True
+        ' 
+        ' ComboExpiry
+        ' 
+        resources.ApplyResources(ComboExpiry, "ComboExpiry")
+        ComboExpiry.DataBindings.Add(New Binding("Text", BsSetup, "IndexSignatureValidUntil", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboExpiry.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboExpiry.FormattingEnabled = True
+        ComboExpiry.Name = "ComboExpiry"
+        ' 
+        ' Label5
+        ' 
+        resources.ApplyResources(Label5, "Label5")
+        Label5.Name = "Label5"
+        ' 
+        ' ComboSignedBy
+        ' 
+        resources.ApplyResources(ComboSignedBy, "ComboSignedBy")
+        ComboSignedBy.DataBindings.Add(New Binding("Text", BsSetup, "IndexSignedBy", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboSignedBy.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboSignedBy.FormattingEnabled = True
+        ComboSignedBy.Name = "ComboSignedBy"
+        ' 
+        ' Label4
+        ' 
+        resources.ApplyResources(Label4, "Label4")
+        Label4.Name = "Label4"
+        ' 
+        ' ComboSignedAt
+        ' 
+        resources.ApplyResources(ComboSignedAt, "ComboSignedAt")
+        ComboSignedAt.DataBindings.Add(New Binding("Text", BsSetup, "IndexSignedDateTime", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboSignedAt.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboSignedAt.FormattingEnabled = True
+        ComboSignedAt.Name = "ComboSignedAt"
+        ' 
+        ' Label3
+        ' 
+        resources.ApplyResources(Label3, "Label3")
+        Label3.Name = "Label3"
+        ' 
+        ' ComboIsSigned
+        ' 
+        resources.ApplyResources(ComboIsSigned, "ComboIsSigned")
+        ComboIsSigned.DataBindings.Add(New Binding("Text", BsSetup, "IndexIsSigned", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboIsSigned.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboIsSigned.FormattingEnabled = True
+        ComboIsSigned.Name = "ComboIsSigned"
+        ' 
+        ' Label2
+        ' 
+        resources.ApplyResources(Label2, "Label2")
+        Label2.Name = "Label2"
+        ' 
+        ' ComboBarCode
+        ' 
+        resources.ApplyResources(ComboBarCode, "ComboBarCode")
+        ComboBarCode.DataBindings.Add(New Binding("Text", BsSetup, "IndexBarCode", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboBarCode.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboBarCode.FormattingEnabled = True
+        ComboBarCode.Name = "ComboBarCode"
+        ' 
+        ' Label1
+        ' 
+        resources.ApplyResources(Label1, "Label1")
+        Label1.Name = "Label1"
+        ' 
+        ' GrpBarCode
+        ' 
+        resources.ApplyResources(GrpBarCode, "GrpBarCode")
+        GrpBarCode.Controls.Add(ChkAllowSkip)
+        GrpBarCode.Controls.Add(Label35)
+        GrpBarCode.Controls.Add(BtnRemoveIndexBarCode)
+        GrpBarCode.Controls.Add(NumericSignatureMarkerPosition)
+        GrpBarCode.Controls.Add(TxtSignatureMarker)
+        GrpBarCode.Controls.Add(Label7)
+        GrpBarCode.Controls.Add(ChkAllDocumentsNeedSigning)
+        GrpBarCode.Controls.Add(Label6)
+        GrpBarCode.Controls.Add(Label1)
+        GrpBarCode.Controls.Add(ComboBarCode)
+        GrpBarCode.Name = "GrpBarCode"
+        GrpBarCode.TabStop = False
+        ' 
+        ' ChkAllowSkip
+        ' 
+        resources.ApplyResources(ChkAllowSkip, "ChkAllowSkip")
+        ChkAllowSkip.DataBindings.Add(New Binding("Checked", BsSetup, "AllowSkipRequiredDocument", True))
+        ChkAllowSkip.Name = "ChkAllowSkip"
+        ChkAllowSkip.UseVisualStyleBackColor = True
+        ' 
+        ' Label35
+        ' 
+        resources.ApplyResources(Label35, "Label35")
+        Label35.Name = "Label35"
+        ' 
+        ' BtnRemoveIndexBarCode
+        ' 
+        resources.ApplyResources(BtnRemoveIndexBarCode, "BtnRemoveIndexBarCode")
+        BtnRemoveIndexBarCode.Image = My.Resources.Resources.Delete16
+        BtnRemoveIndexBarCode.Name = "BtnRemoveIndexBarCode"
+        BtnRemoveIndexBarCode.TabStop = False
+        ToolTip1.SetToolTip(BtnRemoveIndexBarCode, resources.GetString("BtnRemoveIndexBarCode.ToolTip"))
+        BtnRemoveIndexBarCode.UseVisualStyleBackColor = True
+        ' 
+        ' NumericSignatureMarkerPosition
+        ' 
+        NumericSignatureMarkerPosition.DataBindings.Add(New Binding("Value", BsSetup, "SignatureMarkerPosition", True, DataSourceUpdateMode.OnPropertyChanged))
+        resources.ApplyResources(NumericSignatureMarkerPosition, "NumericSignatureMarkerPosition")
+        NumericSignatureMarkerPosition.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
+        NumericSignatureMarkerPosition.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        NumericSignatureMarkerPosition.Name = "NumericSignatureMarkerPosition"
+        NumericSignatureMarkerPosition.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        ' 
+        ' TxtSignatureMarker
+        ' 
+        TxtSignatureMarker.DataBindings.Add(New Binding("Text", BsSetup, "SignatureMarker", True, DataSourceUpdateMode.OnPropertyChanged))
+        resources.ApplyResources(TxtSignatureMarker, "TxtSignatureMarker")
+        TxtSignatureMarker.Name = "TxtSignatureMarker"
+        ' 
+        ' Label7
+        ' 
+        resources.ApplyResources(Label7, "Label7")
+        Label7.Name = "Label7"
+        ' 
+        ' ChkAllDocumentsNeedSigning
+        ' 
+        resources.ApplyResources(ChkAllDocumentsNeedSigning, "ChkAllDocumentsNeedSigning")
+        ChkAllDocumentsNeedSigning.DataBindings.Add(New Binding("Checked", BsSetup, "SignAllDocuments", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkAllDocumentsNeedSigning.Name = "ChkAllDocumentsNeedSigning"
+        ChkAllDocumentsNeedSigning.UseVisualStyleBackColor = True
+        ' 
+        ' Label6
+        ' 
+        resources.ApplyResources(Label6, "Label6")
+        Label6.Name = "Label6"
+        ' 
+        ' ComboSignatureHashMethod
+        ' 
+        resources.ApplyResources(ComboSignatureHashMethod, "ComboSignatureHashMethod")
+        ComboSignatureHashMethod.DataBindings.Add(New Binding("SelectedValue", BsPDFSignerCryptoProvider, "SignatureHashMethod", True))
+        ComboSignatureHashMethod.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboSignatureHashMethod.FormattingEnabled = True
+        ComboSignatureHashMethod.Name = "ComboSignatureHashMethod"
+        ' 
+        ' BsPDFSignerCryptoProvider
+        ' 
+        BsPDFSignerCryptoProvider.DataSource = GetType(PDFSignerCommon.PDFSignerCryptoProvider)
+        ' 
+        ' Label11
+        ' 
+        resources.ApplyResources(Label11, "Label11")
+        Label11.Name = "Label11"
+        ' 
+        ' ComboRevocationCheck
+        ' 
+        resources.ApplyResources(ComboRevocationCheck, "ComboRevocationCheck")
+        ComboRevocationCheck.DataBindings.Add(New Binding("SelectedValue", BsPDFSignerCryptoProvider, "RevocationCheck", True))
+        ComboRevocationCheck.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboRevocationCheck.FormattingEnabled = True
+        ComboRevocationCheck.Name = "ComboRevocationCheck"
+        ' 
+        ' Label10
+        ' 
+        resources.ApplyResources(Label10, "Label10")
+        Label10.Name = "Label10"
+        ' 
+        ' TxtSigningReason
+        ' 
+        resources.ApplyResources(TxtSigningReason, "TxtSigningReason")
+        TxtSigningReason.DataBindings.Add(New Binding("Text", BsPDFSignerCryptoProvider, "SigningReason", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtSigningReason.Name = "TxtSigningReason"
+        ' 
+        ' Label9
+        ' 
+        resources.ApplyResources(Label9, "Label9")
+        Label9.Name = "Label9"
+        ' 
+        ' TxtSigningOrganization
+        ' 
+        resources.ApplyResources(TxtSigningOrganization, "TxtSigningOrganization")
+        TxtSigningOrganization.DataBindings.Add(New Binding("Text", BsPDFSignerCryptoProvider, "SigningOrganization", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtSigningOrganization.Name = "TxtSigningOrganization"
+        ' 
+        ' Label8
+        ' 
+        resources.ApplyResources(Label8, "Label8")
+        Label8.Name = "Label8"
+        ' 
+        ' TxtSignaturePolicyOID
+        ' 
+        resources.ApplyResources(TxtSignaturePolicyOID, "TxtSignaturePolicyOID")
+        TxtSignaturePolicyOID.DataBindings.Add(New Binding("Text", BsSetup, "SignaturePolicyOID", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtSignaturePolicyOID.Name = "TxtSignaturePolicyOID"
+        ' 
+        ' Label14
+        ' 
+        resources.ApplyResources(Label14, "Label14")
+        Label14.Name = "Label14"
+        ' 
+        ' TxtSignaturePolicyHash
+        ' 
+        resources.ApplyResources(TxtSignaturePolicyHash, "TxtSignaturePolicyHash")
+        TxtSignaturePolicyHash.DataBindings.Add(New Binding("Text", BsSetup, "SignaturePolicyHash", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtSignaturePolicyHash.Name = "TxtSignaturePolicyHash"
+        ' 
+        ' Label13
+        ' 
+        resources.ApplyResources(Label13, "Label13")
+        Label13.Name = "Label13"
+        ' 
+        ' TxtSignaturePolicyURL
+        ' 
+        resources.ApplyResources(TxtSignaturePolicyURL, "TxtSignaturePolicyURL")
+        TxtSignaturePolicyURL.DataBindings.Add(New Binding("Text", BsSetup, "SignaturePolicyURL", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtSignaturePolicyURL.Name = "TxtSignaturePolicyURL"
+        ' 
+        ' Label12
+        ' 
+        resources.ApplyResources(Label12, "Label12")
+        Label12.Name = "Label12"
+        ' 
+        ' GrpTimeStamp
+        ' 
+        resources.ApplyResources(GrpTimeStamp, "GrpTimeStamp")
+        GrpTimeStamp.Controls.Add(ChkSinglePassPadesLTA)
+        GrpTimeStamp.Controls.Add(ComboTimeStampHashMethod)
+        GrpTimeStamp.Controls.Add(Label18)
+        GrpTimeStamp.Controls.Add(ChkIsDocumentTimeStamp)
+        GrpTimeStamp.Controls.Add(TxtTSAPassword)
+        GrpTimeStamp.Controls.Add(Label16)
+        GrpTimeStamp.Controls.Add(TxtTSAUser)
+        GrpTimeStamp.Controls.Add(Label17)
+        GrpTimeStamp.Controls.Add(TxtTSAURL)
+        GrpTimeStamp.Controls.Add(Label15)
+        GrpTimeStamp.Name = "GrpTimeStamp"
+        GrpTimeStamp.TabStop = False
+        ' 
+        ' ChkSinglePassPadesLTA
+        ' 
+        resources.ApplyResources(ChkSinglePassPadesLTA, "ChkSinglePassPadesLTA")
+        ChkSinglePassPadesLTA.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "IsSinglePassPadesBLTA", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkSinglePassPadesLTA.Name = "ChkSinglePassPadesLTA"
+        ChkSinglePassPadesLTA.UseVisualStyleBackColor = True
+        ' 
+        ' ComboTimeStampHashMethod
+        ' 
+        resources.ApplyResources(ComboTimeStampHashMethod, "ComboTimeStampHashMethod")
+        ComboTimeStampHashMethod.DataBindings.Add(New Binding("SelectedValue", BsPDFSignerCryptoProvider, "TimeStampHashMethod", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboTimeStampHashMethod.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboTimeStampHashMethod.FormattingEnabled = True
+        ComboTimeStampHashMethod.Name = "ComboTimeStampHashMethod"
+        ' 
+        ' Label18
+        ' 
+        resources.ApplyResources(Label18, "Label18")
+        Label18.Name = "Label18"
+        ' 
+        ' ChkIsDocumentTimeStamp
+        ' 
+        resources.ApplyResources(ChkIsDocumentTimeStamp, "ChkIsDocumentTimeStamp")
+        ChkIsDocumentTimeStamp.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "IsDocumentTimeStamp", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkIsDocumentTimeStamp.Name = "ChkIsDocumentTimeStamp"
+        ChkIsDocumentTimeStamp.UseVisualStyleBackColor = True
+        ' 
+        ' TxtTSAPassword
+        ' 
+        resources.ApplyResources(TxtTSAPassword, "TxtTSAPassword")
+        TxtTSAPassword.DataBindings.Add(New Binding("Text", BsPDFSignerCryptoProvider, "TSAPassword", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtTSAPassword.Name = "TxtTSAPassword"
+        ' 
+        ' Label16
+        ' 
+        resources.ApplyResources(Label16, "Label16")
+        Label16.Name = "Label16"
+        ' 
+        ' TxtTSAUser
+        ' 
+        resources.ApplyResources(TxtTSAUser, "TxtTSAUser")
+        TxtTSAUser.DataBindings.Add(New Binding("Text", BsPDFSignerCryptoProvider, "TSAUserName", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtTSAUser.Name = "TxtTSAUser"
+        ' 
+        ' Label17
+        ' 
+        resources.ApplyResources(Label17, "Label17")
+        Label17.Name = "Label17"
+        ' 
+        ' TxtTSAURL
+        ' 
+        resources.ApplyResources(TxtTSAURL, "TxtTSAURL")
+        TxtTSAURL.DataBindings.Add(New Binding("Text", BsPDFSignerCryptoProvider, "TSAURL", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtTSAURL.Name = "TxtTSAURL"
+        ' 
+        ' Label15
+        ' 
+        resources.ApplyResources(Label15, "Label15")
+        Label15.Name = "Label15"
+        ' 
+        ' ChkTimeStampingEnabled
+        ' 
+        resources.ApplyResources(ChkTimeStampingEnabled, "ChkTimeStampingEnabled")
+        ChkTimeStampingEnabled.BackColor = Drawing.SystemColors.ControlLightLight
+        ChkTimeStampingEnabled.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "IsTimeStampingEnabled", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkTimeStampingEnabled.Name = "ChkTimeStampingEnabled"
+        ChkTimeStampingEnabled.UseVisualStyleBackColor = False
+        ' 
+        ' GrpClause
+        ' 
+        resources.ApplyResources(GrpClause, "GrpClause")
+        GrpClause.Controls.Add(TxtSignaturePolicyOID)
+        GrpClause.Controls.Add(BtnRemoveDocNameIndexAssignment)
+        GrpClause.Controls.Add(Label14)
+        GrpClause.Controls.Add(ChkDocNameFromFormType)
+        GrpClause.Controls.Add(TxtSignaturePolicyHash)
+        GrpClause.Controls.Add(ComboClauseFormat)
+        GrpClause.Controls.Add(Label13)
+        GrpClause.Controls.Add(Label25)
+        GrpClause.Controls.Add(TxtSignaturePolicyURL)
+        GrpClause.Controls.Add(Label23)
+        GrpClause.Controls.Add(Label12)
+        GrpClause.Controls.Add(TxtCopyingRegulationVersion)
+        GrpClause.Controls.Add(Label24)
+        GrpClause.Controls.Add(TxtCopyingRegulationURL)
+        GrpClause.Controls.Add(TxtCopyingRegulationName)
+        GrpClause.Controls.Add(Label22)
+        GrpClause.Controls.Add(TxtCopyingOrganizationName)
+        GrpClause.Controls.Add(Label21)
+        GrpClause.Controls.Add(TxtDocumentNameDefault)
+        GrpClause.Controls.Add(Label20)
+        GrpClause.Controls.Add(ComboDocumentName)
+        GrpClause.Controls.Add(Label19)
+        GrpClause.Name = "GrpClause"
+        GrpClause.TabStop = False
+        ' 
+        ' BtnRemoveDocNameIndexAssignment
+        ' 
+        resources.ApplyResources(BtnRemoveDocNameIndexAssignment, "BtnRemoveDocNameIndexAssignment")
+        BtnRemoveDocNameIndexAssignment.Image = My.Resources.Resources.Delete16
+        BtnRemoveDocNameIndexAssignment.Name = "BtnRemoveDocNameIndexAssignment"
+        BtnRemoveDocNameIndexAssignment.TabStop = False
+        ToolTip1.SetToolTip(BtnRemoveDocNameIndexAssignment, resources.GetString("BtnRemoveDocNameIndexAssignment.ToolTip"))
+        BtnRemoveDocNameIndexAssignment.UseVisualStyleBackColor = True
+        ' 
+        ' ChkDocNameFromFormType
+        ' 
+        resources.ApplyResources(ChkDocNameFromFormType, "ChkDocNameFromFormType")
+        ChkDocNameFromFormType.DataBindings.Add(New Binding("Checked", BsSetup, "DocumentNameFromFormType", True))
+        ChkDocNameFromFormType.Name = "ChkDocNameFromFormType"
+        ChkDocNameFromFormType.UseVisualStyleBackColor = True
+        ' 
+        ' ComboClauseFormat
+        ' 
+        resources.ApplyResources(ComboClauseFormat, "ComboClauseFormat")
+        ComboClauseFormat.DataBindings.Add(New Binding("SelectedValue", BsSetup, "MetadataFormat", True))
+        ComboClauseFormat.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboClauseFormat.FormattingEnabled = True
+        ComboClauseFormat.Name = "ComboClauseFormat"
+        ' 
+        ' Label25
+        ' 
+        resources.ApplyResources(Label25, "Label25")
+        Label25.Name = "Label25"
+        ' 
+        ' Label23
+        ' 
+        resources.ApplyResources(Label23, "Label23")
+        Label23.Name = "Label23"
+        ' 
+        ' TxtCopyingRegulationVersion
+        ' 
+        resources.ApplyResources(TxtCopyingRegulationVersion, "TxtCopyingRegulationVersion")
+        TxtCopyingRegulationVersion.DataBindings.Add(New Binding("Text", BsSetup, "ConvertingRegulationVersion", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtCopyingRegulationVersion.Name = "TxtCopyingRegulationVersion"
+        ' 
+        ' Label24
+        ' 
+        resources.ApplyResources(Label24, "Label24")
+        Label24.Name = "Label24"
+        ' 
+        ' TxtCopyingRegulationURL
+        ' 
+        resources.ApplyResources(TxtCopyingRegulationURL, "TxtCopyingRegulationURL")
+        TxtCopyingRegulationURL.DataBindings.Add(New Binding("Text", BsSetup, "ConvertingRegulationURL", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtCopyingRegulationURL.Name = "TxtCopyingRegulationURL"
+        ' 
+        ' TxtCopyingRegulationName
+        ' 
+        resources.ApplyResources(TxtCopyingRegulationName, "TxtCopyingRegulationName")
+        TxtCopyingRegulationName.DataBindings.Add(New Binding("Text", BsSetup, "ConvertingRegulationName", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtCopyingRegulationName.Name = "TxtCopyingRegulationName"
+        ' 
+        ' Label22
+        ' 
+        resources.ApplyResources(Label22, "Label22")
+        Label22.Name = "Label22"
+        ' 
+        ' TxtCopyingOrganizationName
+        ' 
+        resources.ApplyResources(TxtCopyingOrganizationName, "TxtCopyingOrganizationName")
+        TxtCopyingOrganizationName.DataBindings.Add(New Binding("Text", BsSetup, "ConvertingOrganization", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtCopyingOrganizationName.Name = "TxtCopyingOrganizationName"
+        ' 
+        ' Label21
+        ' 
+        resources.ApplyResources(Label21, "Label21")
+        Label21.Name = "Label21"
+        ' 
+        ' TxtDocumentNameDefault
+        ' 
+        resources.ApplyResources(TxtDocumentNameDefault, "TxtDocumentNameDefault")
+        TxtDocumentNameDefault.DataBindings.Add(New Binding("Text", BsSetup, "DocumentNameDefault", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtDocumentNameDefault.Name = "TxtDocumentNameDefault"
+        ' 
+        ' Label20
+        ' 
+        resources.ApplyResources(Label20, "Label20")
+        Label20.Name = "Label20"
+        ' 
+        ' ComboDocumentName
+        ' 
+        resources.ApplyResources(ComboDocumentName, "ComboDocumentName")
+        ComboDocumentName.DataBindings.Add(New Binding("Text", BsSetup, "IndexDocumentName", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboDocumentName.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboDocumentName.FormattingEnabled = True
+        ComboDocumentName.Name = "ComboDocumentName"
+        ' 
+        ' Label19
+        ' 
+        resources.ApplyResources(Label19, "Label19")
+        Label19.Name = "Label19"
+        ' 
+        ' BtnImportSettings
+        ' 
+        resources.ApplyResources(BtnImportSettings, "BtnImportSettings")
+        BtnImportSettings.Name = "BtnImportSettings"
+        BtnImportSettings.UseVisualStyleBackColor = True
+        ' 
+        ' BtnExportSettings
+        ' 
+        resources.ApplyResources(BtnExportSettings, "BtnExportSettings")
+        BtnExportSettings.Name = "BtnExportSettings"
+        BtnExportSettings.UseVisualStyleBackColor = True
+        ' 
+        ' LblCryptoProvider
+        ' 
+        resources.ApplyResources(LblCryptoProvider, "LblCryptoProvider")
+        LblCryptoProvider.Name = "LblCryptoProvider"
+        ' 
+        ' ComboCryptoProvider
+        ' 
+        resources.ApplyResources(ComboCryptoProvider, "ComboCryptoProvider")
+        ComboCryptoProvider.DataBindings.Add(New Binding("SelectedValue", BsSetup, "DefaultCryptographicProvider", True))
+        ComboCryptoProvider.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboCryptoProvider.FormattingEnabled = True
+        ComboCryptoProvider.Items.AddRange(New Object() {resources.GetString("ComboCryptoProvider.Items"), resources.GetString("ComboCryptoProvider.Items1"), resources.GetString("ComboCryptoProvider.Items2"), resources.GetString("ComboCryptoProvider.Items3")})
+        ComboCryptoProvider.Name = "ComboCryptoProvider"
+        ' 
+        ' BtnRemoveIndexDocumentUID
+        ' 
+        resources.ApplyResources(BtnRemoveIndexDocumentUID, "BtnRemoveIndexDocumentUID")
+        BtnRemoveIndexDocumentUID.Image = My.Resources.Resources.Delete16
+        BtnRemoveIndexDocumentUID.Name = "BtnRemoveIndexDocumentUID"
+        BtnRemoveIndexDocumentUID.TabStop = False
+        ToolTip1.SetToolTip(BtnRemoveIndexDocumentUID, resources.GetString("BtnRemoveIndexDocumentUID.ToolTip"))
+        BtnRemoveIndexDocumentUID.UseVisualStyleBackColor = True
+        ' 
+        ' BtnResetSettings
+        ' 
+        resources.ApplyResources(BtnResetSettings, "BtnResetSettings")
+        BtnResetSettings.Name = "BtnResetSettings"
+        BtnResetSettings.UseVisualStyleBackColor = True
+        ' 
+        ' TabCryptoProviders
+        ' 
+        resources.ApplyResources(TabCryptoProviders, "TabCryptoProviders")
+        TabCryptoProviders.Controls.Add(TabPDFSigner)
+        TabCryptoProviders.Controls.Add(TabPDFStreamer)
+        TabCryptoProviders.Controls.Add(TabMQ)
+        TabCryptoProviders.Controls.Add(TabMNBSigner)
+        TabCryptoProviders.Name = "TabCryptoProviders"
+        TabCryptoProviders.SelectedIndex = 0
+        ' 
+        ' TabPDFSigner
+        ' 
+        TabPDFSigner.Controls.Add(ChkPDFSignerEnabled)
+        TabPDFSigner.Controls.Add(PanelPDFSigner)
+        resources.ApplyResources(TabPDFSigner, "TabPDFSigner")
+        TabPDFSigner.Name = "TabPDFSigner"
+        TabPDFSigner.UseVisualStyleBackColor = True
+        ' 
+        ' ChkPDFSignerEnabled
+        ' 
+        resources.ApplyResources(ChkPDFSignerEnabled, "ChkPDFSignerEnabled")
+        ChkPDFSignerEnabled.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "Enabled", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkPDFSignerEnabled.Name = "ChkPDFSignerEnabled"
+        ChkPDFSignerEnabled.UseVisualStyleBackColor = True
+        ' 
+        ' PanelPDFSigner
+        ' 
+        PanelPDFSigner.Controls.Add(ChkAllowQualifiedCertificatesOnly)
+        PanelPDFSigner.Controls.Add(ComboSignatureHashMethod)
+        PanelPDFSigner.Controls.Add(ChkProxyEnabled)
+        PanelPDFSigner.Controls.Add(Label11)
+        PanelPDFSigner.Controls.Add(ComboRevocationCheck)
+        PanelPDFSigner.Controls.Add(ChkTimeStampingEnabled)
+        PanelPDFSigner.Controls.Add(Label10)
+        PanelPDFSigner.Controls.Add(TxtSigningReason)
+        PanelPDFSigner.Controls.Add(GrpTimeStamp)
+        PanelPDFSigner.Controls.Add(GrpProxy)
+        PanelPDFSigner.Controls.Add(Label9)
+        PanelPDFSigner.Controls.Add(TxtSigningOrganization)
+        PanelPDFSigner.Controls.Add(Label8)
+        PanelPDFSigner.Controls.Add(ChkSignerNameFromLoggedOnUser)
+        resources.ApplyResources(PanelPDFSigner, "PanelPDFSigner")
+        PanelPDFSigner.Name = "PanelPDFSigner"
+        ' 
+        ' ChkAllowQualifiedCertificatesOnly
+        ' 
+        resources.ApplyResources(ChkAllowQualifiedCertificatesOnly, "ChkAllowQualifiedCertificatesOnly")
+        ChkAllowQualifiedCertificatesOnly.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "AllowQualifiedCertificatesOnly", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkAllowQualifiedCertificatesOnly.Name = "ChkAllowQualifiedCertificatesOnly"
+        ChkAllowQualifiedCertificatesOnly.UseVisualStyleBackColor = True
+        ' 
+        ' ChkProxyEnabled
+        ' 
+        resources.ApplyResources(ChkProxyEnabled, "ChkProxyEnabled")
+        ChkProxyEnabled.BackColor = Drawing.SystemColors.ControlLightLight
+        ChkProxyEnabled.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "IsProxyEnabled", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkProxyEnabled.Name = "ChkProxyEnabled"
+        ChkProxyEnabled.UseVisualStyleBackColor = False
+        ' 
+        ' GrpProxy
+        ' 
+        resources.ApplyResources(GrpProxy, "GrpProxy")
+        GrpProxy.Controls.Add(ComboProxyAuthMethod)
+        GrpProxy.Controls.Add(Label40)
+        GrpProxy.Controls.Add(NumPort)
+        GrpProxy.Controls.Add(Label39)
+        GrpProxy.Controls.Add(TxtProxyPassword)
+        GrpProxy.Controls.Add(Label36)
+        GrpProxy.Controls.Add(TxtProxyUser)
+        GrpProxy.Controls.Add(Label37)
+        GrpProxy.Controls.Add(TxtProxyServer)
+        GrpProxy.Controls.Add(Label38)
+        GrpProxy.Name = "GrpProxy"
+        GrpProxy.TabStop = False
+        ' 
+        ' ComboProxyAuthMethod
+        ' 
+        ComboProxyAuthMethod.DataBindings.Add(New Binding("SelectedValue", BsPDFSignerCryptoProvider, "ProxyAuthMethod", True))
+        ComboProxyAuthMethod.DropDownStyle = ComboBoxStyle.DropDownList
+        resources.ApplyResources(ComboProxyAuthMethod, "ComboProxyAuthMethod")
+        ComboProxyAuthMethod.FormattingEnabled = True
+        ComboProxyAuthMethod.Name = "ComboProxyAuthMethod"
+        ' 
+        ' Label40
+        ' 
+        resources.ApplyResources(Label40, "Label40")
+        Label40.Name = "Label40"
+        ' 
+        ' NumPort
+        ' 
+        resources.ApplyResources(NumPort, "NumPort")
+        NumPort.DataBindings.Add(New Binding("Value", BsPDFSignerCryptoProvider, "ProxyPort", True, DataSourceUpdateMode.OnPropertyChanged))
+        NumPort.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
+        NumPort.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        NumPort.Name = "NumPort"
+        NumPort.Value = New Decimal(New Integer() {8080, 0, 0, 0})
+        ' 
+        ' Label39
+        ' 
+        resources.ApplyResources(Label39, "Label39")
+        Label39.Name = "Label39"
+        ' 
+        ' TxtProxyPassword
+        ' 
+        resources.ApplyResources(TxtProxyPassword, "TxtProxyPassword")
+        TxtProxyPassword.DataBindings.Add(New Binding("Text", BsPDFSignerCryptoProvider, "ProxyPassword", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtProxyPassword.Name = "TxtProxyPassword"
+        ' 
+        ' Label36
+        ' 
+        resources.ApplyResources(Label36, "Label36")
+        Label36.Name = "Label36"
+        ' 
+        ' TxtProxyUser
+        ' 
+        resources.ApplyResources(TxtProxyUser, "TxtProxyUser")
+        TxtProxyUser.DataBindings.Add(New Binding("Text", BsPDFSignerCryptoProvider, "ProxyUserName", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtProxyUser.Name = "TxtProxyUser"
+        ' 
+        ' Label37
+        ' 
+        resources.ApplyResources(Label37, "Label37")
+        Label37.Name = "Label37"
+        ' 
+        ' TxtProxyServer
+        ' 
+        resources.ApplyResources(TxtProxyServer, "TxtProxyServer")
+        TxtProxyServer.DataBindings.Add(New Binding("Text", BsPDFSignerCryptoProvider, "ProxyServer", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtProxyServer.Name = "TxtProxyServer"
+        ' 
+        ' Label38
+        ' 
+        resources.ApplyResources(Label38, "Label38")
+        Label38.Name = "Label38"
+        ' 
+        ' ChkSignerNameFromLoggedOnUser
+        ' 
+        resources.ApplyResources(ChkSignerNameFromLoggedOnUser, "ChkSignerNameFromLoggedOnUser")
+        ChkSignerNameFromLoggedOnUser.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "SignerNameFromLoggedOnUser", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkSignerNameFromLoggedOnUser.Name = "ChkSignerNameFromLoggedOnUser"
+        ChkSignerNameFromLoggedOnUser.UseVisualStyleBackColor = True
+        ' 
+        ' TabPDFStreamer
+        ' 
+        TabPDFStreamer.Controls.Add(ChkPDFStreamerEnabled)
+        TabPDFStreamer.Controls.Add(PanelPDFStreamer)
+        resources.ApplyResources(TabPDFStreamer, "TabPDFStreamer")
+        TabPDFStreamer.Name = "TabPDFStreamer"
+        TabPDFStreamer.UseVisualStyleBackColor = True
+        ' 
+        ' ChkPDFStreamerEnabled
+        ' 
+        resources.ApplyResources(ChkPDFStreamerEnabled, "ChkPDFStreamerEnabled")
+        ChkPDFStreamerEnabled.DataBindings.Add(New Binding("Checked", BsPDFStreamerCryptoProvider, "Enabled", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkPDFStreamerEnabled.Name = "ChkPDFStreamerEnabled"
+        ChkPDFStreamerEnabled.UseVisualStyleBackColor = True
+        ' 
+        ' BsPDFStreamerCryptoProvider
+        ' 
+        BsPDFStreamerCryptoProvider.DataSource = GetType(PDFSignerCommon.PDFStreamerCryptoProvider)
+        ' 
+        ' PanelPDFStreamer
+        ' 
+        PanelPDFStreamer.Controls.Add(GrpSignaturePDFStreamer)
+        resources.ApplyResources(PanelPDFStreamer, "PanelPDFStreamer")
+        PanelPDFStreamer.Name = "PanelPDFStreamer"
+        ' 
+        ' GrpSignaturePDFStreamer
+        ' 
+        resources.ApplyResources(GrpSignaturePDFStreamer, "GrpSignaturePDFStreamer")
+        GrpSignaturePDFStreamer.Controls.Add(TxtPDFStreamerAuthorizationCode)
+        GrpSignaturePDFStreamer.Controls.Add(Label29)
+        GrpSignaturePDFStreamer.Controls.Add(TxtPDFStreamerConfigurationFileName)
+        GrpSignaturePDFStreamer.Controls.Add(Label30)
+        GrpSignaturePDFStreamer.Controls.Add(TxtPDFStreamerURL)
+        GrpSignaturePDFStreamer.Controls.Add(Label31)
+        GrpSignaturePDFStreamer.Name = "GrpSignaturePDFStreamer"
+        GrpSignaturePDFStreamer.TabStop = False
+        ' 
+        ' TxtPDFStreamerAuthorizationCode
+        ' 
+        resources.ApplyResources(TxtPDFStreamerAuthorizationCode, "TxtPDFStreamerAuthorizationCode")
+        TxtPDFStreamerAuthorizationCode.DataBindings.Add(New Binding("Text", BsPDFStreamerCryptoProvider, "PDFStreamerAuthorizationCode", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtPDFStreamerAuthorizationCode.Name = "TxtPDFStreamerAuthorizationCode"
+        ' 
+        ' Label29
+        ' 
+        resources.ApplyResources(Label29, "Label29")
+        Label29.Name = "Label29"
+        ' 
+        ' TxtPDFStreamerConfigurationFileName
+        ' 
+        resources.ApplyResources(TxtPDFStreamerConfigurationFileName, "TxtPDFStreamerConfigurationFileName")
+        TxtPDFStreamerConfigurationFileName.DataBindings.Add(New Binding("Text", BsPDFStreamerCryptoProvider, "PDFStreamerConfigFile", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtPDFStreamerConfigurationFileName.Name = "TxtPDFStreamerConfigurationFileName"
+        ' 
+        ' Label30
+        ' 
+        resources.ApplyResources(Label30, "Label30")
+        Label30.Name = "Label30"
+        ' 
+        ' TxtPDFStreamerURL
+        ' 
+        resources.ApplyResources(TxtPDFStreamerURL, "TxtPDFStreamerURL")
+        TxtPDFStreamerURL.DataBindings.Add(New Binding("Text", BsPDFStreamerCryptoProvider, "PDFStreamerURL", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtPDFStreamerURL.Name = "TxtPDFStreamerURL"
+        ' 
+        ' Label31
+        ' 
+        resources.ApplyResources(Label31, "Label31")
+        Label31.Name = "Label31"
+        ' 
+        ' TabMQ
+        ' 
+        TabMQ.Controls.Add(ChkMQEnabled)
+        TabMQ.Controls.Add(PanelMQFTP)
+        resources.ApplyResources(TabMQ, "TabMQ")
+        TabMQ.Name = "TabMQ"
+        TabMQ.UseVisualStyleBackColor = True
+        ' 
+        ' ChkMQEnabled
+        ' 
+        resources.ApplyResources(ChkMQEnabled, "ChkMQEnabled")
+        ChkMQEnabled.DataBindings.Add(New Binding("Checked", BsMQFTPCryptoProvider, "Enabled", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkMQEnabled.Name = "ChkMQEnabled"
+        ChkMQEnabled.UseVisualStyleBackColor = True
+        ' 
+        ' BsMQFTPCryptoProvider
+        ' 
+        BsMQFTPCryptoProvider.DataSource = GetType(PDFSignerCommon.MQFTPCryptoProvider)
+        ' 
+        ' PanelMQFTP
+        ' 
+        PanelMQFTP.Controls.Add(GrpSignatureMQFTP)
+        resources.ApplyResources(PanelMQFTP, "PanelMQFTP")
+        PanelMQFTP.Name = "PanelMQFTP"
+        ' 
+        ' GrpSignatureMQFTP
+        ' 
+        resources.ApplyResources(GrpSignatureMQFTP, "GrpSignatureMQFTP")
+        GrpSignatureMQFTP.Controls.Add(BtnRemoveIndexDocumentUID)
+        GrpSignatureMQFTP.Controls.Add(ComboMQDocUID)
+        GrpSignatureMQFTP.Controls.Add(Label34)
+        GrpSignatureMQFTP.Controls.Add(Label33)
+        GrpSignatureMQFTP.Controls.Add(TxtMQDomain)
+        GrpSignatureMQFTP.Controls.Add(TxtMQUserName)
+        GrpSignatureMQFTP.Controls.Add(TxtMQFolderIn)
+        GrpSignatureMQFTP.Controls.Add(Label32)
+        GrpSignatureMQFTP.Controls.Add(TxtMQPassword)
+        GrpSignatureMQFTP.Controls.Add(Label26)
+        GrpSignatureMQFTP.Controls.Add(Label27)
+        GrpSignatureMQFTP.Controls.Add(TxtMQFolderOut)
+        GrpSignatureMQFTP.Controls.Add(Label28)
+        GrpSignatureMQFTP.Name = "GrpSignatureMQFTP"
+        GrpSignatureMQFTP.TabStop = False
+        ' 
+        ' ComboMQDocUID
+        ' 
+        resources.ApplyResources(ComboMQDocUID, "ComboMQDocUID")
+        ComboMQDocUID.DataBindings.Add(New Binding("Text", BsMQFTPCryptoProvider, "IndexMQDocUID", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboMQDocUID.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboMQDocUID.FormattingEnabled = True
+        ComboMQDocUID.Name = "ComboMQDocUID"
+        ' 
+        ' Label34
+        ' 
+        resources.ApplyResources(Label34, "Label34")
+        Label34.Name = "Label34"
+        ' 
+        ' Label33
+        ' 
+        resources.ApplyResources(Label33, "Label33")
+        Label33.Name = "Label33"
+        ' 
+        ' TxtMQDomain
+        ' 
+        TxtMQDomain.DataBindings.Add(New Binding("Text", BsMQFTPCryptoProvider, "MQDomain", True, DataSourceUpdateMode.OnPropertyChanged))
+        resources.ApplyResources(TxtMQDomain, "TxtMQDomain")
+        TxtMQDomain.Name = "TxtMQDomain"
+        ' 
+        ' TxtMQUserName
+        ' 
+        resources.ApplyResources(TxtMQUserName, "TxtMQUserName")
+        TxtMQUserName.DataBindings.Add(New Binding("Text", BsMQFTPCryptoProvider, "MQUserName", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtMQUserName.Name = "TxtMQUserName"
+        ' 
+        ' TxtMQFolderIn
+        ' 
+        resources.ApplyResources(TxtMQFolderIn, "TxtMQFolderIn")
+        TxtMQFolderIn.DataBindings.Add(New Binding("Text", BsMQFTPCryptoProvider, "MQFolderIn", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtMQFolderIn.Name = "TxtMQFolderIn"
+        ' 
+        ' Label32
+        ' 
+        resources.ApplyResources(Label32, "Label32")
+        Label32.Name = "Label32"
+        ' 
+        ' TxtMQPassword
+        ' 
+        resources.ApplyResources(TxtMQPassword, "TxtMQPassword")
+        TxtMQPassword.DataBindings.Add(New Binding("Text", BsMQFTPCryptoProvider, "MQPassword", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtMQPassword.Name = "TxtMQPassword"
+        ' 
+        ' Label26
+        ' 
+        resources.ApplyResources(Label26, "Label26")
+        Label26.Name = "Label26"
+        ' 
+        ' Label27
+        ' 
+        resources.ApplyResources(Label27, "Label27")
+        Label27.Name = "Label27"
+        ' 
+        ' TxtMQFolderOut
+        ' 
+        resources.ApplyResources(TxtMQFolderOut, "TxtMQFolderOut")
+        TxtMQFolderOut.DataBindings.Add(New Binding("Text", BsMQFTPCryptoProvider, "MQFolderOut", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtMQFolderOut.Name = "TxtMQFolderOut"
+        ' 
+        ' Label28
+        ' 
+        resources.ApplyResources(Label28, "Label28")
+        Label28.Name = "Label28"
+        ' 
+        ' TabMNBSigner
+        ' 
+        TabMNBSigner.Controls.Add(ChkMNBSignerEnabled)
+        TabMNBSigner.Controls.Add(PanelMNBSigner)
+        resources.ApplyResources(TabMNBSigner, "TabMNBSigner")
+        TabMNBSigner.Name = "TabMNBSigner"
+        TabMNBSigner.UseVisualStyleBackColor = True
+        ' 
+        ' ChkMNBSignerEnabled
+        ' 
+        resources.ApplyResources(ChkMNBSignerEnabled, "ChkMNBSignerEnabled")
+        ChkMNBSignerEnabled.DataBindings.Add(New Binding("Checked", BsMNBSignerCryptoProvider, "Enabled", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkMNBSignerEnabled.Name = "ChkMNBSignerEnabled"
+        ChkMNBSignerEnabled.UseVisualStyleBackColor = True
+        ' 
+        ' BsMNBSignerCryptoProvider
+        ' 
+        BsMNBSignerCryptoProvider.DataSource = GetType(PDFSignerCommon.MNBSignerCryptoProvider)
+        ' 
+        ' PanelMNBSigner
+        ' 
+        PanelMNBSigner.Controls.Add(GrpMNBSignerAuthentication)
+        PanelMNBSigner.Controls.Add(GrpMNBSignerWCFSettings)
+        resources.ApplyResources(PanelMNBSigner, "PanelMNBSigner")
+        PanelMNBSigner.Name = "PanelMNBSigner"
+        ' 
+        ' GrpMNBSignerAuthentication
+        ' 
+        resources.ApplyResources(GrpMNBSignerAuthentication, "GrpMNBSignerAuthentication")
+        GrpMNBSignerAuthentication.Controls.Add(RadioMNBSignerPasswordAuthentication)
+        GrpMNBSignerAuthentication.Controls.Add(RadioMNBSignerWindowsAuthentication)
+        GrpMNBSignerAuthentication.Controls.Add(PanelMNBSignerAuthentication)
+        GrpMNBSignerAuthentication.Name = "GrpMNBSignerAuthentication"
+        GrpMNBSignerAuthentication.TabStop = False
+        ' 
+        ' RadioMNBSignerPasswordAuthentication
+        ' 
+        resources.ApplyResources(RadioMNBSignerPasswordAuthentication, "RadioMNBSignerPasswordAuthentication")
+        RadioMNBSignerPasswordAuthentication.DataBindings.Add(New Binding("Checked", BsMNBSignerCryptoProvider, "IsMNBSignerUserPasswordAuthentication", True, DataSourceUpdateMode.OnPropertyChanged))
+        RadioMNBSignerPasswordAuthentication.Name = "RadioMNBSignerPasswordAuthentication"
+        RadioMNBSignerPasswordAuthentication.TabStop = True
+        RadioMNBSignerPasswordAuthentication.UseVisualStyleBackColor = True
+        ' 
+        ' RadioMNBSignerWindowsAuthentication
+        ' 
+        resources.ApplyResources(RadioMNBSignerWindowsAuthentication, "RadioMNBSignerWindowsAuthentication")
+        RadioMNBSignerWindowsAuthentication.DataBindings.Add(New Binding("Checked", BsMNBSignerCryptoProvider, "IsMNBSignerWindowsAuthentication", True, DataSourceUpdateMode.OnPropertyChanged))
+        RadioMNBSignerWindowsAuthentication.Name = "RadioMNBSignerWindowsAuthentication"
+        RadioMNBSignerWindowsAuthentication.TabStop = True
+        RadioMNBSignerWindowsAuthentication.UseVisualStyleBackColor = True
+        ' 
+        ' PanelMNBSignerAuthentication
+        ' 
+        PanelMNBSignerAuthentication.Controls.Add(Label50)
+        PanelMNBSignerAuthentication.Controls.Add(TxtMNBSignerDomain)
+        PanelMNBSignerAuthentication.Controls.Add(TxtMNBSignerUserName)
+        PanelMNBSignerAuthentication.Controls.Add(TxtMNBSignerPassword)
+        PanelMNBSignerAuthentication.Controls.Add(Label51)
+        PanelMNBSignerAuthentication.Controls.Add(Label52)
+        resources.ApplyResources(PanelMNBSignerAuthentication, "PanelMNBSignerAuthentication")
+        PanelMNBSignerAuthentication.Name = "PanelMNBSignerAuthentication"
+        ' 
+        ' Label50
+        ' 
+        resources.ApplyResources(Label50, "Label50")
+        Label50.Name = "Label50"
+        ' 
+        ' TxtMNBSignerDomain
+        ' 
+        TxtMNBSignerDomain.DataBindings.Add(New Binding("Text", BsMNBSignerCryptoProvider, "MNBSignerDomain", True, DataSourceUpdateMode.OnPropertyChanged))
+        resources.ApplyResources(TxtMNBSignerDomain, "TxtMNBSignerDomain")
+        TxtMNBSignerDomain.Name = "TxtMNBSignerDomain"
+        ' 
+        ' TxtMNBSignerUserName
+        ' 
+        resources.ApplyResources(TxtMNBSignerUserName, "TxtMNBSignerUserName")
+        TxtMNBSignerUserName.DataBindings.Add(New Binding("Text", BsMNBSignerCryptoProvider, "MNBSignerUserName", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtMNBSignerUserName.Name = "TxtMNBSignerUserName"
+        ' 
+        ' TxtMNBSignerPassword
+        ' 
+        resources.ApplyResources(TxtMNBSignerPassword, "TxtMNBSignerPassword")
+        TxtMNBSignerPassword.DataBindings.Add(New Binding("Text", BsMNBSignerCryptoProvider, "MNBSignerPassword", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtMNBSignerPassword.Name = "TxtMNBSignerPassword"
+        ' 
+        ' Label51
+        ' 
+        resources.ApplyResources(Label51, "Label51")
+        Label51.Name = "Label51"
+        ' 
+        ' Label52
+        ' 
+        resources.ApplyResources(Label52, "Label52")
+        Label52.Name = "Label52"
+        ' 
+        ' GrpMNBSignerWCFSettings
+        ' 
+        resources.ApplyResources(GrpMNBSignerWCFSettings, "GrpMNBSignerWCFSettings")
+        GrpMNBSignerWCFSettings.Controls.Add(Label48)
+        GrpMNBSignerWCFSettings.Controls.Add(Label49)
+        GrpMNBSignerWCFSettings.Controls.Add(NumMNBSignerChunkSize)
+        GrpMNBSignerWCFSettings.Controls.Add(Label46)
+        GrpMNBSignerWCFSettings.Controls.Add(Label47)
+        GrpMNBSignerWCFSettings.Controls.Add(NumMNBSignerSignTimeout)
+        GrpMNBSignerWCFSettings.Controls.Add(Label45)
+        GrpMNBSignerWCFSettings.Controls.Add(Label44)
+        GrpMNBSignerWCFSettings.Controls.Add(NumMNBSignerWCFTimeout)
+        GrpMNBSignerWCFSettings.Controls.Add(TxtMNBSignerURL)
+        GrpMNBSignerWCFSettings.Controls.Add(Label43)
+        GrpMNBSignerWCFSettings.Name = "GrpMNBSignerWCFSettings"
+        GrpMNBSignerWCFSettings.TabStop = False
+        ' 
+        ' Label48
+        ' 
+        resources.ApplyResources(Label48, "Label48")
+        Label48.Name = "Label48"
+        ' 
+        ' Label49
+        ' 
+        resources.ApplyResources(Label49, "Label49")
+        Label49.Name = "Label49"
+        ' 
+        ' NumMNBSignerChunkSize
+        ' 
+        NumMNBSignerChunkSize.DataBindings.Add(New Binding("Value", BsMNBSignerCryptoProvider, "MNBSignerChunkSize", True, DataSourceUpdateMode.OnPropertyChanged))
+        resources.ApplyResources(NumMNBSignerChunkSize, "NumMNBSignerChunkSize")
+        NumMNBSignerChunkSize.Maximum = New Decimal(New Integer() {Integer.MaxValue, 0, 0, 0})
+        NumMNBSignerChunkSize.Name = "NumMNBSignerChunkSize"
+        NumMNBSignerChunkSize.Value = New Decimal(New Integer() {25000000, 0, 0, 0})
+        ' 
+        ' Label46
+        ' 
+        resources.ApplyResources(Label46, "Label46")
+        Label46.Name = "Label46"
+        ' 
+        ' Label47
+        ' 
+        resources.ApplyResources(Label47, "Label47")
+        Label47.Name = "Label47"
+        ' 
+        ' NumMNBSignerSignTimeout
+        ' 
+        NumMNBSignerSignTimeout.DataBindings.Add(New Binding("Value", BsMNBSignerCryptoProvider, "MNBSignerSigningTimeout", True, DataSourceUpdateMode.OnPropertyChanged))
+        resources.ApplyResources(NumMNBSignerSignTimeout, "NumMNBSignerSignTimeout")
+        NumMNBSignerSignTimeout.Maximum = New Decimal(New Integer() {1200, 0, 0, 0})
+        NumMNBSignerSignTimeout.Name = "NumMNBSignerSignTimeout"
+        NumMNBSignerSignTimeout.Value = New Decimal(New Integer() {60, 0, 0, 0})
+        ' 
+        ' Label45
+        ' 
+        resources.ApplyResources(Label45, "Label45")
+        Label45.Name = "Label45"
+        ' 
+        ' Label44
+        ' 
+        resources.ApplyResources(Label44, "Label44")
+        Label44.Name = "Label44"
+        ' 
+        ' NumMNBSignerWCFTimeout
+        ' 
+        NumMNBSignerWCFTimeout.DataBindings.Add(New Binding("Value", BsMNBSignerCryptoProvider, "MNBSignerWSTimeout", True, DataSourceUpdateMode.OnPropertyChanged))
+        resources.ApplyResources(NumMNBSignerWCFTimeout, "NumMNBSignerWCFTimeout")
+        NumMNBSignerWCFTimeout.Maximum = New Decimal(New Integer() {1200, 0, 0, 0})
+        NumMNBSignerWCFTimeout.Name = "NumMNBSignerWCFTimeout"
+        NumMNBSignerWCFTimeout.Value = New Decimal(New Integer() {60, 0, 0, 0})
+        ' 
+        ' TxtMNBSignerURL
+        ' 
+        resources.ApplyResources(TxtMNBSignerURL, "TxtMNBSignerURL")
+        TxtMNBSignerURL.DataBindings.Add(New Binding("Text", BsMNBSignerCryptoProvider, "MNBSignerURL", True, DataSourceUpdateMode.OnPropertyChanged))
+        TxtMNBSignerURL.Name = "TxtMNBSignerURL"
+        ' 
+        ' Label43
+        ' 
+        resources.ApplyResources(Label43, "Label43")
+        Label43.Name = "Label43"
+        ' 
+        ' GrpFileNaming
+        ' 
+        resources.ApplyResources(GrpFileNaming, "GrpFileNaming")
+        GrpFileNaming.Controls.Add(TxtFileExtension)
+        GrpFileNaming.Controls.Add(LblFileExtension)
+        GrpFileNaming.Controls.Add(TxtFileAppend)
+        GrpFileNaming.Controls.Add(LblFileAppend)
+        GrpFileNaming.Controls.Add(RadioCreateNewFile)
+        GrpFileNaming.Controls.Add(RadioOverwriteOriginal)
+        GrpFileNaming.Name = "GrpFileNaming"
+        GrpFileNaming.TabStop = False
+        ' 
+        ' TxtFileExtension
+        ' 
+        resources.ApplyResources(TxtFileExtension, "TxtFileExtension")
+        TxtFileExtension.DataBindings.Add(New Binding("Text", BsSetup, "FileExtensionReplace", True))
+        TxtFileExtension.Name = "TxtFileExtension"
+        ' 
+        ' LblFileExtension
+        ' 
+        resources.ApplyResources(LblFileExtension, "LblFileExtension")
+        LblFileExtension.Name = "LblFileExtension"
+        ' 
+        ' TxtFileAppend
+        ' 
+        resources.ApplyResources(TxtFileAppend, "TxtFileAppend")
+        TxtFileAppend.DataBindings.Add(New Binding("Text", BsSetup, "FileNameAppend", True))
+        TxtFileAppend.Name = "TxtFileAppend"
+        ' 
+        ' LblFileAppend
+        ' 
+        resources.ApplyResources(LblFileAppend, "LblFileAppend")
+        LblFileAppend.Name = "LblFileAppend"
+        ' 
+        ' RadioCreateNewFile
+        ' 
+        resources.ApplyResources(RadioCreateNewFile, "RadioCreateNewFile")
+        RadioCreateNewFile.DataBindings.Add(New Binding("Checked", BsSetup, "FileCreateNew", True, DataSourceUpdateMode.OnPropertyChanged))
+        RadioCreateNewFile.Name = "RadioCreateNewFile"
+        RadioCreateNewFile.UseVisualStyleBackColor = True
+        ' 
+        ' RadioOverwriteOriginal
+        ' 
+        resources.ApplyResources(RadioOverwriteOriginal, "RadioOverwriteOriginal")
+        RadioOverwriteOriginal.Checked = True
+        RadioOverwriteOriginal.DataBindings.Add(New Binding("Checked", BsSetup, "FileOverwriteOriginal", True, DataSourceUpdateMode.OnPropertyChanged))
+        RadioOverwriteOriginal.Name = "RadioOverwriteOriginal"
+        RadioOverwriteOriginal.TabStop = True
+        RadioOverwriteOriginal.UseVisualStyleBackColor = True
+        ' 
+        ' Label41
+        ' 
+        resources.ApplyResources(Label41, "Label41")
+        Label41.Name = "Label41"
+        ' 
+        ' ComboDocumentViewer
+        ' 
+        resources.ApplyResources(ComboDocumentViewer, "ComboDocumentViewer")
+        ComboDocumentViewer.DataBindings.Add(New Binding("SelectedValue", BsSetup, "DocumentViewer", True))
+        ComboDocumentViewer.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboDocumentViewer.FormattingEnabled = True
+        ComboDocumentViewer.Items.AddRange(New Object() {resources.GetString("ComboDocumentViewer.Items"), resources.GetString("ComboDocumentViewer.Items1")})
+        ComboDocumentViewer.Name = "ComboDocumentViewer"
+        ' 
+        ' PanelMain
+        ' 
+        resources.ApplyResources(PanelMain, "PanelMain")
+        PanelMain.Controls.Add(Label41)
+        PanelMain.Controls.Add(GrpIndexes)
+        PanelMain.Controls.Add(ComboDocumentViewer)
+        PanelMain.Controls.Add(GrpBarCode)
+        PanelMain.Controls.Add(GrpFileNaming)
+        PanelMain.Controls.Add(GrpClause)
+        PanelMain.Controls.Add(TabCryptoProviders)
+        PanelMain.Controls.Add(LblCryptoProvider)
+        PanelMain.Controls.Add(ComboCryptoProvider)
+        PanelMain.DataBindings.Add(New Binding("Enabled", BsSetup, "IsSigningEnabled", True, DataSourceUpdateMode.OnPropertyChanged))
+        PanelMain.Name = "PanelMain"
+        ' 
+        ' OpenFileDialog
+        ' 
+        OpenFileDialog.DefaultExt = "xml"
+        OpenFileDialog.FileName = "PDFSignerConfig"
+        resources.ApplyResources(OpenFileDialog, "OpenFileDialog")
+        ' 
+        ' SaveFileDialog
+        ' 
+        SaveFileDialog.DefaultExt = "xml"
+        SaveFileDialog.FileName = "PDFSignerConfig"
+        resources.ApplyResources(SaveFileDialog, "SaveFileDialog")
+        ' 
+        ' FrmSetup
+        ' 
+        AcceptButton = BtnOK
         resources.ApplyResources(Me, "$this")
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.BtnCancel
-        Me.Controls.Add(Me.BtnResetSettings)
-        Me.Controls.Add(Me.BtnExportSettings)
-        Me.Controls.Add(Me.BtnImportSettings)
-        Me.Controls.Add(Me.ChkSigningEnabled)
-        Me.Controls.Add(Me.BtnCancel)
-        Me.Controls.Add(Me.BtnOK)
-        Me.Controls.Add(Me.PanelMain)
-        Me.MaximizeBox = False
-        Me.Name = "FrmSetup"
-        Me.ShowInTaskbar = False
-        CType(Me.BsSetup, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GrpIndexes.ResumeLayout(False)
-        Me.GrpIndexes.PerformLayout()
-        Me.GrpBarCode.ResumeLayout(False)
-        Me.GrpBarCode.PerformLayout()
-        CType(Me.NumericSignatureMarkerPosition, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BsPDFSignerCryptoProvider, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GrpTimeStamp.ResumeLayout(False)
-        Me.GrpTimeStamp.PerformLayout()
-        Me.GrpClause.ResumeLayout(False)
-        Me.GrpClause.PerformLayout()
-        Me.TabCryptoProviders.ResumeLayout(False)
-        Me.TabPDFSigner.ResumeLayout(False)
-        Me.TabPDFSigner.PerformLayout()
-        Me.PanelPDFSigner.ResumeLayout(False)
-        Me.PanelPDFSigner.PerformLayout()
-        Me.GrpProxy.ResumeLayout(False)
-        Me.GrpProxy.PerformLayout()
-        CType(Me.NumPort, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPDFStreamer.ResumeLayout(False)
-        Me.TabPDFStreamer.PerformLayout()
-        CType(Me.BsPDFStreamerCryptoProvider, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelPDFStreamer.ResumeLayout(False)
-        Me.GrpSignaturePDFStreamer.ResumeLayout(False)
-        Me.GrpSignaturePDFStreamer.PerformLayout()
-        Me.TabMQ.ResumeLayout(False)
-        Me.TabMQ.PerformLayout()
-        CType(Me.BsMQFTPCryptoProvider, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelMQFTP.ResumeLayout(False)
-        Me.GrpSignatureMQFTP.ResumeLayout(False)
-        Me.GrpSignatureMQFTP.PerformLayout()
-        Me.TabMNBSigner.ResumeLayout(False)
-        Me.TabMNBSigner.PerformLayout()
-        CType(Me.BsMNBSignerCryptoProvider, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelMNBSigner.ResumeLayout(False)
-        Me.GrpMNBSignerAuthentication.ResumeLayout(False)
-        Me.GrpMNBSignerAuthentication.PerformLayout()
-        Me.PanelMNBSignerAuthentication.ResumeLayout(False)
-        Me.PanelMNBSignerAuthentication.PerformLayout()
-        Me.GrpMNBSignerWCFSettings.ResumeLayout(False)
-        Me.GrpMNBSignerWCFSettings.PerformLayout()
-        CType(Me.NumMNBSignerChunkSize, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumMNBSignerSignTimeout, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumMNBSignerWCFTimeout, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GrpFileNaming.ResumeLayout(False)
-        Me.GrpFileNaming.PerformLayout()
-        Me.PanelMain.ResumeLayout(False)
-        Me.PanelMain.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        AutoScaleMode = AutoScaleMode.Font
+        CancelButton = BtnCancel
+        Controls.Add(BtnResetSettings)
+        Controls.Add(BtnExportSettings)
+        Controls.Add(BtnImportSettings)
+        Controls.Add(ChkSigningEnabled)
+        Controls.Add(BtnCancel)
+        Controls.Add(BtnOK)
+        Controls.Add(PanelMain)
+        MaximizeBox = False
+        Name = "FrmSetup"
+        ShowInTaskbar = False
+        CType(BsSetup, ComponentModel.ISupportInitialize).EndInit()
+        GrpIndexes.ResumeLayout(False)
+        GrpIndexes.PerformLayout()
+        GrpBarCode.ResumeLayout(False)
+        GrpBarCode.PerformLayout()
+        CType(NumericSignatureMarkerPosition, ComponentModel.ISupportInitialize).EndInit()
+        CType(BsPDFSignerCryptoProvider, ComponentModel.ISupportInitialize).EndInit()
+        GrpTimeStamp.ResumeLayout(False)
+        GrpTimeStamp.PerformLayout()
+        GrpClause.ResumeLayout(False)
+        GrpClause.PerformLayout()
+        TabCryptoProviders.ResumeLayout(False)
+        TabPDFSigner.ResumeLayout(False)
+        TabPDFSigner.PerformLayout()
+        PanelPDFSigner.ResumeLayout(False)
+        PanelPDFSigner.PerformLayout()
+        GrpProxy.ResumeLayout(False)
+        GrpProxy.PerformLayout()
+        CType(NumPort, ComponentModel.ISupportInitialize).EndInit()
+        TabPDFStreamer.ResumeLayout(False)
+        TabPDFStreamer.PerformLayout()
+        CType(BsPDFStreamerCryptoProvider, ComponentModel.ISupportInitialize).EndInit()
+        PanelPDFStreamer.ResumeLayout(False)
+        GrpSignaturePDFStreamer.ResumeLayout(False)
+        GrpSignaturePDFStreamer.PerformLayout()
+        TabMQ.ResumeLayout(False)
+        TabMQ.PerformLayout()
+        CType(BsMQFTPCryptoProvider, ComponentModel.ISupportInitialize).EndInit()
+        PanelMQFTP.ResumeLayout(False)
+        GrpSignatureMQFTP.ResumeLayout(False)
+        GrpSignatureMQFTP.PerformLayout()
+        TabMNBSigner.ResumeLayout(False)
+        TabMNBSigner.PerformLayout()
+        CType(BsMNBSignerCryptoProvider, ComponentModel.ISupportInitialize).EndInit()
+        PanelMNBSigner.ResumeLayout(False)
+        GrpMNBSignerAuthentication.ResumeLayout(False)
+        GrpMNBSignerAuthentication.PerformLayout()
+        PanelMNBSignerAuthentication.ResumeLayout(False)
+        PanelMNBSignerAuthentication.PerformLayout()
+        GrpMNBSignerWCFSettings.ResumeLayout(False)
+        GrpMNBSignerWCFSettings.PerformLayout()
+        CType(NumMNBSignerChunkSize, ComponentModel.ISupportInitialize).EndInit()
+        CType(NumMNBSignerSignTimeout, ComponentModel.ISupportInitialize).EndInit()
+        CType(NumMNBSignerWCFTimeout, ComponentModel.ISupportInitialize).EndInit()
+        GrpFileNaming.ResumeLayout(False)
+        GrpFileNaming.PerformLayout()
+        PanelMain.ResumeLayout(False)
+        PanelMain.PerformLayout()
+        ResumeLayout(False)
+        PerformLayout()
 
     End Sub
     Private WithEvents ChkSigningEnabled As System.Windows.Forms.CheckBox

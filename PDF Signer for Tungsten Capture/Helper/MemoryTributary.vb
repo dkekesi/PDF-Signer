@@ -62,7 +62,7 @@ Public Class MemoryTributary
             While blcks.Count <= blockId
                 blcks.Add(New Byte(CInt(blockSize) - 1) {})
             End While
-            Return blcks(CInt(blockId))
+            Return blcks(blockId)
         End Get
     End Property
 
@@ -84,13 +84,13 @@ Public Class MemoryTributary
     End Sub
 
     Public Overrides Function Read(buff As Byte(), offset As Integer, count As Integer) As Integer
-        Dim lcount As Long = CLng(count)
+        Dim lcount As Long = count
 
         If lcount < 0 Then
             Throw New ArgumentOutOfRangeException("count", lcount, "Number of bytes to copy cannot be negative.")
         End If
 
-        Dim remaining As Long = (lngt - Position)
+        Dim remaining As Long = lngt - Position
         If lcount > remaining Then lcount = remaining
 
         If buff Is Nothing Then
@@ -106,7 +106,7 @@ Public Class MemoryTributary
         Dim rd As Integer = 0
         Do
             Dim copysize As Long = Math.Min(lcount, (blockSize - blockOffset))
-            Buffer.BlockCopy(blck, CInt(blockOffset), buff, offset, CInt(copysize))
+            Buffer.BlockCopy(blck, blockOffset, buff, offset, copysize)
             lcount -= copysize
             offset += CInt(copysize)
             rd += CInt(copysize)
@@ -139,7 +139,7 @@ Public Class MemoryTributary
             Do
                 copysize = Math.Min(count, CInt(blockSize - blockOffset))
                 EnsureCapacity(Position + copysize)
-                Buffer.BlockCopy(buff, offset, blck, CInt(blockOffset), copysize)
+                Buffer.BlockCopy(buff, offset, blck, blockOffset, copysize)
                 count -= copysize
                 offset += copysize
                 Position += copysize
@@ -152,14 +152,14 @@ Public Class MemoryTributary
 
     Public Overrides Function ReadByte() As Integer
         If Position >= lngt Then Return -1
-        Dim b As Byte = blck(CInt(blockOffset))
+        Dim b As Byte = blck(blockOffset)
         Position += 1
         Return b
     End Function
 
     Public Overrides Sub WriteByte(value As Byte)
         EnsureCapacity(Position + 1)
-        blck(CInt(blockOffset)) = value
+        blck(blockOffset) = value
         Position += 1
     End Sub
 
@@ -177,7 +177,7 @@ Public Class MemoryTributary
         Dim firstposition As Long = Position
         Position = 0
         Dim destination As Byte() = New Byte(CInt(Length) - 1) {}
-        Read(destination, 0, CInt(Length))
+        Read(destination, 0, Length)
         Position = firstposition
         Return destination
     End Function
@@ -187,9 +187,9 @@ Public Class MemoryTributary
         Dim buffer As Byte() = New Byte(4095) {}
         Dim read As Integer
         Do
-            read = source.Read(buffer, 0, CInt(Math.Min(4096, length)))
+            read = source.Read(buffer, 0, Math.Min(4096, length))
             length -= read
-            Me.Write(buffer, 0, read)
+            Write(buffer, 0, read)
         Loop While length > 0
     End Sub
 
@@ -197,7 +197,7 @@ Public Class MemoryTributary
     Public Sub WriteTo(destination As Stream)
         Dim initialpos As Long = Position
         Position = 0
-        Me.CopyTo(destination)
+        CopyTo(destination)
         Position = initialpos
     End Sub
 End Class
