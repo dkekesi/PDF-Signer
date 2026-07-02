@@ -2499,6 +2499,9 @@
   <data name="ChkSignerNameFromLoggedOnUser.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="ChkSignerNameFromLoggedOnUser.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="ChkSignerNameFromLoggedOnUser.Location" type="System.Drawing.Point, System.Drawing">
     <value>213, 72</value>
   </data>
@@ -2506,7 +2509,7 @@
     <value>362, 17</value>
   </data>
   <data name="ChkSignerNameFromLoggedOnUser.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="ChkSignerNameFromLoggedOnUser.Text" xml:space="preserve">
     <value>Use the logged-in user's name in the clause instead of the certificate name</value>
