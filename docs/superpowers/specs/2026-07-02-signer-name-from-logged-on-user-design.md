@@ -58,7 +58,7 @@ has no free row below it — the time-stamp group starts 23px lower), data-bound
 
 Label text in `FrmSetup.resx` (the setup form is English-only, no `hu` satellite):
 
-> Use the logged-in user's name in the certification clause instead of the certificate name
+> Use the logged-in user's name in the clause instead of the certificate name
 
 ### 3. Runtime (PDF Signer for Tungsten Capture)
 
