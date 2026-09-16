@@ -63,12 +63,9 @@ Friend Class SbbSignatureCreator
 
             Dim policy As MetaData = Request.MetaDataSettings
             Dim policyHash As String = Nothing
-            If policy?.SignaturePolicyURL IsNot Nothing Then
-                policyHash = SbbTranslator.PolicyHashHex(policy.SignaturePolicyHash)
-                If policyHash Is Nothing Then Return Fail(res, "Az aláírás-szabályzat lenyomata nem érvényes base64 érték!")
-            Else
-                policy = Nothing
-            End If
+            Dim policyError As String = CheckSignaturePolicy(policy, policyHash)
+            If policyError IsNot Nothing Then Return Fail(res, policyError)
+            If policyHash Is Nothing Then policy = Nothing
 
             _stores = WindowsCertificateStores.Load()
             _largeDocument = SigningBufferFactory.IsLargeDocument(Request.FileToSign)
@@ -266,9 +263,20 @@ Friend Class SbbSignatureCreator
         End Try
     End Function
 
+    ''' <summary>Returns the operator error of an unusable signature policy, else Nothing; PolicyHashHex is Nothing when no policy applies.</summary>
+    ''' <remarks>A blank OID must be refused: SecureBlackbox then signs silently without the policy.</remarks>
+    Friend Shared Function CheckSignaturePolicy(Policy As MetaData, ByRef PolicyHashHex As String) As String
+        PolicyHashHex = Nothing
+        If Policy?.SignaturePolicyURL Is Nothing Then Return Nothing
+        If String.IsNullOrWhiteSpace(Policy.SignaturePolicyOID) Then Return "Az aláírás-szabályzat azonosítója (OID) nincs megadva, pedig a szabályzat URL be van állítva!"
+        PolicyHashHex = SbbTranslator.PolicyHashHex(Policy.SignaturePolicyHash)
+        If PolicyHashHex Is Nothing Then Return "Az aláírás-szabályzat lenyomata nem érvényes base64 érték!"
+        Return Nothing
+    End Function
+
     ''' <summary>Makes Signature an EPES signature under Policy: OID, hex hash (PolicyHashHex) with the signature's hash algorithm, and URI.</summary>
     Friend Shared Sub ApplySignaturePolicy(Signature As PDFSignature, Policy As MetaData, PolicyHashHex As String, HashMethod As Integer)
-        Signature.PolicyID = Policy.SignaturePolicyOID
+        Signature.PolicyID = Policy.SignaturePolicyOID.Trim()
         Signature.PolicyHash = PolicyHashHex
         Signature.PolicyHashAlgorithm = SbbTranslator.HashAlgorithmName(HashMethod)
         Signature.PolicyURI = Policy.SignaturePolicyURL.ToString()
@@ -333,7 +341,7 @@ Friend Class SbbSignatureCreator
                 Dim input As DocumentValidationInput = EtsiValidityInputBuilder.From(verifier, atTime, AddressOf Append, traceSink)
                 Dim result As DocumentValidityResult = EtsiValidityCalculator.Compute(input, atTime)
                 LogValidity(result)
-                ' Date.MinValue is the index field's "no value"; an unbounded expiry maps to it.
+                ' An unbounded expiry leaves the default Date.MinValue, as the other providers do.
                 Validity = If(result.Expiry = DateTimeOffset.MaxValue, Date.MinValue, result.Expiry.UtcDateTime)
                 Return True
             Catch ex As Exception

@@ -34,6 +34,33 @@ Public Class SbbSignatureCreatorTests
     End Sub
 
     <TestMethod>
+    Public Sub Signature_policy_check_requires_an_oid_and_valid_hash_only_when_a_url_is_set()
+        Dim url As New Uri("http://policy.test/pol.pdf")
+        Dim hex As String = "unset"
+
+        Assert.IsNull(SbbSignatureCreator.CheckSignaturePolicy(Nothing, hex))
+        Assert.IsNull(hex, "no metadata: no policy")
+        hex = "unset"
+        Assert.IsNull(SbbSignatureCreator.CheckSignaturePolicy(New MetaData With {.SignaturePolicyOID = "1.2.3"}, hex))
+        Assert.IsNull(hex, "no URL: no policy")
+
+        For Each blank In {Nothing, "", "  "}
+            hex = "unset"
+            Assert.AreEqual("Az aláírás-szabályzat azonosítója (OID) nincs megadva, pedig a szabályzat URL be van állítva!",
+                            SbbSignatureCreator.CheckSignaturePolicy(New MetaData With {.SignaturePolicyURL = url, .SignaturePolicyOID = blank, .SignaturePolicyHash = "AAr/EA=="}, hex))
+            Assert.IsNull(hex)
+        Next
+
+        Assert.AreEqual("Az aláírás-szabályzat lenyomata nem érvényes base64 érték!",
+                        SbbSignatureCreator.CheckSignaturePolicy(New MetaData With {.SignaturePolicyURL = url, .SignaturePolicyOID = "1.2.3", .SignaturePolicyHash = "not base64!"}, hex))
+
+        Assert.IsNull(SbbSignatureCreator.CheckSignaturePolicy(New MetaData With {.SignaturePolicyURL = url, .SignaturePolicyOID = "1.2.3", .SignaturePolicyHash = "AAr/EA=="}, hex))
+        Assert.AreEqual("000AFF10", hex)
+        Assert.IsNull(SbbSignatureCreator.CheckSignaturePolicy(New MetaData With {.SignaturePolicyURL = url, .SignaturePolicyOID = "1.2.3"}, hex))
+        Assert.AreEqual(String.Empty, hex, "URL and OID without a hash: policy with an empty hash")
+    End Sub
+
+    <TestMethod>
     Public Sub Applied_signature_policy_is_embedded_in_the_signature()
         Dim hash = New Byte(31) {}
         For i = 0 To hash.Length - 1 : hash(i) = CByte(i * 7 + 3) : Next
