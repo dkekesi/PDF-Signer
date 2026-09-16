@@ -11,8 +11,8 @@ Friend NotInheritable Class SbbEventLogger
     ''' <summary>Certificate currently processed, so OnError (which names none) can be attributed.</summary>
     Private ReadOnly _context As New ChainContextTracker
     Private _contextBeforeTls As ChainContext
-    ''' <summary>TLS handshakes in progress; while positive, chain events belong to the TLS server certificate.</summary>
-    Private _tlsHandshakeDepth As Integer
+    ''' <summary>Tracks TLS handshakes so chain events during them can be demoted to trace and the pre-handshake context restored once every handshake has resolved.</summary>
+    Private ReadOnly _tls As New TlsHandshakeScope
 
     ''' <summary>Display ids (S0 / T0 / S0T0) for known entity labels; unmapped labels pass through.</summary>
     Friend Property Naming As EntityNaming = EntityNaming.Empty
@@ -25,7 +25,7 @@ Friend NotInheritable Class SbbEventLogger
 
     ''' <summary>Resets the tracked chain/TLS state and subscribes to S's validation events.</summary>
     Friend Sub Attach(S As SbbPdfSigner)
-        _tlsHandshakeDepth = 0
+        _tls.Reset()
         _context.Reset()
         _contextBeforeTls = Nothing
         AddHandler S.OnError, AddressOf Signer_OnError
@@ -68,6 +68,7 @@ Friend NotInheritable Class SbbEventLogger
         Dim msg As String = SbbErrorTranslator.Describe(e.ErrorCode, e.Description, _context.Current)
         Line(msg)
         _logger.Error("{0}", msg)
+        If _tls.InProgress Then Unwind(_tls.Failed())
     End Sub
 
     Private Sub Signer_OnChainElementDownload(sender As Object, e As PDFSignerChainElementDownloadEventArgs)
@@ -135,8 +136,7 @@ Friend NotInheritable Class SbbEventLogger
     End Sub
 
     Private Sub Signer_OnTLSHandshake(sender As Object, e As PDFSignerTLSHandshakeEventArgs)
-        If _tlsHandshakeDepth = 0 Then _contextBeforeTls = _context.Current
-        _tlsHandshakeDepth += 1
+        If _tls.Begin() Then _contextBeforeTls = _context.Current
         TraceLine($"  TLS kézfogás indul: {e.Host}")
     End Sub
 
@@ -145,15 +145,12 @@ Friend NotInheritable Class SbbEventLogger
     End Sub
 
     Private Sub Signer_OnTLSEstablished(sender As Object, e As PDFSignerTLSEstablishedEventArgs)
-        If _tlsHandshakeDepth > 0 Then _tlsHandshakeDepth -= 1
-        If _tlsHandshakeDepth = 0 AndAlso _contextBeforeTls IsNot Nothing Then
-            _context.Restore(_contextBeforeTls)
-            _contextBeforeTls = Nothing
-        End If
+        Unwind(_tls.Established())
         TraceLine($"  TLS kapcsolat létrejött: {e.Host}, verzió: {e.Version}, titkosítás: {e.Ciphersuite}")
     End Sub
 
     Private Sub Signer_OnTLSShutdown(sender As Object, e As PDFSignerTLSShutdownEventArgs)
+        Unwind(_tls.Shutdown())
         TraceLine($"  TLS kapcsolat lezárva: {e.Host}")
     End Sub
 
@@ -163,10 +160,18 @@ Friend NotInheritable Class SbbEventLogger
 
     ''' <summary>Chain lines during a TLS handshake describe the TLS server certificate and are demoted to trace.</summary>
     Private Sub ChainLine(M As String)
-        If _tlsHandshakeDepth > 0 Then
+        If _tls.InProgress Then
             TraceLine(M)
         Else
             Line(M)
+        End If
+    End Sub
+
+    ''' <summary>Restores the pre-handshake chain context once Resolved reports no TLS handshake remains pending.</summary>
+    Private Sub Unwind(Resolved As Boolean)
+        If Resolved AndAlso _contextBeforeTls IsNot Nothing Then
+            _context.Restore(_contextBeforeTls)
+            _contextBeforeTls = Nothing
         End If
     End Sub
 

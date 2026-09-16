@@ -73,4 +73,24 @@ Public Class SbbErrorTranslatorTests
         Assert.AreEqual("[SBPAdES hiba] szöveg", SbbErrorTranslator.StripComponentPrefix("[SBPAdES hiba] szöveg"))
         Assert.AreEqual("Chain validation failed", SbbErrorTranslator.ExceptionText(New Exception("[SBPAdES.EElPDFError] Chain validation failed")))
     End Sub
+
+    <TestMethod>
+    Public Sub Url_credentials_are_scrubbed_from_a_free_text_description()
+        Assert.AreEqual("általános hiba: Connection to https://tsa.example/ts failed [SBB 1048585]",
+                        SbbErrorTranslator.Describe(1048585, "Connection to https://u:p@tsa.example/ts failed", Nothing))
+        Assert.AreEqual("Connection to https://tsa.example/ts failed",
+                        SbbErrorTranslator.ExceptionText(New Exception("Connection to https://u:p@tsa.example/ts failed")))
+    End Sub
+
+    <TestMethod>
+    Public Sub Url_credentials_are_scrubbed_from_every_url_in_the_text()
+        Assert.AreEqual("Primary https://a.example/x failed, falling back to https://b.example/y",
+                        SbbErrorTranslator.ScrubUrlCredentials("Primary https://u1:p1@a.example/x failed, falling back to https://u2:p2@b.example/y"))
+    End Sub
+
+    <TestMethod>
+    Public Sub A_plain_at_sign_without_a_url_is_left_alone()
+        Assert.AreEqual("contact admin@example.com for help", SbbErrorTranslator.ScrubUrlCredentials("contact admin@example.com for help"))
+        Assert.IsNull(SbbErrorTranslator.ScrubUrlCredentials(Nothing))
+    End Sub
 End Class

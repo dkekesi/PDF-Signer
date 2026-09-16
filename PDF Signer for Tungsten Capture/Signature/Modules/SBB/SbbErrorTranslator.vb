@@ -9,6 +9,11 @@ Friend Module SbbErrorTranslator
         "^\s*(?<family>OCSP|CRL)\s+error\s+(?<sub>[0-9]{1,9})\s*\(location:\s*(?<loc>[^)]*)\)\s*$",
         RegexOptions.IgnoreCase Or RegexOptions.CultureInvariant)
 
+    ''' <summary>Matches "scheme://user[:pass]@" anywhere in free text, so embedded URL credentials can be scrubbed from messages SecureBlackbox did not template.</summary>
+    Private ReadOnly UrlCredentials As New Regex(
+        "(?<scheme>[a-zA-Z][a-zA-Z0-9+.-]*://)[^/\s@]+@",
+        RegexOptions.CultureInvariant)
+
     Private ReadOnly OcspSubCodes As New Dictionary(Of Integer, String) From {
         {2001, "a kapott OCSP válasz elutasítva (a válaszadó tanúsítványlánca nem megbízható, vagy az aláírása érvénytelen)"},
         {2002, "nincs használható OCSP válasz ehhez a válaszadóhoz (offline módban: nincs megfelelő beágyazott válasz)"},
@@ -71,7 +76,7 @@ Friend Module SbbErrorTranslator
             End If
             sb.Append(" [SBB ").Append(ErrorCode).Append(If(ocsp, " / OCSP ", " / CRL ")).Append(subCode).Append("]"c)
         Else
-            sb.Append(If(String.IsNullOrWhiteSpace(Description), "(nincs leírás)", Description.Trim()))
+            sb.Append(If(String.IsNullOrWhiteSpace(Description), "(nincs leírás)", ScrubUrlCredentials(Description.Trim())))
             If Context IsNot Nothing AndAlso Not String.IsNullOrEmpty(Context.SubjectCommonName) Then
                 sb.Append(" – ").Append(CertificateClause(Context))
             End If
@@ -112,7 +117,7 @@ Friend Module SbbErrorTranslator
             If Not unit.StartsWith("SB", StringComparison.Ordinal) OrElse Not unit.Contains(".") OrElse unit.IndexOfAny({" "c, vbTab(0)}) >= 0 Then Exit While
             text = text.Substring(close + 1).TrimStart()
         End While
-        Return text
+        Return ScrubUrlCredentials(text)
     End Function
 
     ''' <summary>Removes "user:password@" from the authority of a URL; an '@' in the path or query is left alone.</summary>
@@ -125,5 +130,11 @@ Friend Module SbbErrorTranslator
         Dim at As Integer = Url.IndexOf("@"c, authorityStart)
         If at >= 0 AndAlso (authorityEnd < 0 OrElse at < authorityEnd) Then Return Url.Remove(authorityStart, at - authorityStart + 1)
         Return Url
+    End Function
+
+    ''' <summary>Removes "user[:pass]@" from every "scheme://user@host" occurrence in free text; a bare '@' outside a URL authority is left alone.</summary>
+    Friend Function ScrubUrlCredentials(Text As String) As String
+        If String.IsNullOrEmpty(Text) Then Return Text
+        Return UrlCredentials.Replace(Text, "${scheme}")
     End Function
 End Module
