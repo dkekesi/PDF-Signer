@@ -229,10 +229,11 @@
     <value>Hiba a meglévő beállítások betöltése közben:
 {0}</value>
   </data>
-  <data name="LTA_Signature_Config_Incorrect" xml:space="preserve">
-    <value>Ha be van kapcsolva az egymenetes PAdES B-LTA készítése, akkor a következő beállítások is szükségesek:
-- dokumentum-szintű időbélyeg elhelyezése bekapcsolva;
-- visszavonás ellenőrzés: OCSP-re állítva.</value>
+  <data name="LTV_Requires_Revocation_Embedding" xml:space="preserve">
+    <value>A PAdES B-LT és B-LTA szintekhez a visszavonás-ellenőrzést és a visszavonási információk beágyazását is be kell kapcsolni.</value>
+  </data>
+  <data name="PAdES_Level_Missing" xml:space="preserve">
+    <value>Nincs kiválasztva PAdES szint.</value>
   </data>
   <data name="Proxy_Server_Missing" xml:space="preserve">
     <value>A proxy szerver neve vagy IP-je nincs megadva!</value>

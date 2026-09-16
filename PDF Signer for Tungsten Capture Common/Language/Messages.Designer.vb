@@ -273,13 +273,11 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to If &apos;Create single-pass PAdES B-LTA&apos; is enabled, then following settings must be applied:
-        '''- &apos;Create document time stamp&apos; enabled,
-        '''- Revocation check must be set to OCSP..
+        '''  Looks up a localized string similar to PAdES B-LT and B-LTA require revocation checking and embedding of the revocation information to be enabled..
         '''</summary>
-        Friend Shared ReadOnly Property LTA_Signature_Config_Incorrect() As String
+        Friend Shared ReadOnly Property LTV_Requires_Revocation_Embedding() As String
             Get
-                Return ResourceManager.GetString("LTA_Signature_Config_Incorrect", resourceCulture)
+                Return ResourceManager.GetString("LTV_Requires_Revocation_Embedding", resourceCulture)
             End Get
         End Property
         
@@ -399,7 +397,16 @@ Namespace My.Resources
                 Return ResourceManager.GetString("No_Crypto_Provider_Enabled", resourceCulture)
             End Get
         End Property
-        
+
+        '''<summary>
+        '''  Looks up a localized string similar to PAdES level is not selected..
+        '''</summary>
+        Friend Shared ReadOnly Property PAdES_Level_Missing() As String
+            Get
+                Return ResourceManager.GetString("PAdES_Level_Missing", resourceCulture)
+            End Get
+        End Property
+
         '''<summary>
         '''  Looks up a localized string similar to PDF Streamer authorization code is not provided..
         '''</summary>
