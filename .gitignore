@@ -7,3 +7,4 @@ obj/
 *.s3db-shm
 *.s3db-wal
 Help/Output/*/Temporary/
+TestResults/
