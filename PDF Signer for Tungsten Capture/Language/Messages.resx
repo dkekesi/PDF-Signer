@@ -183,7 +183,7 @@ Do you want to suspend the batch?</value>
     <value>  Checking if PDF document can be opened</value>
   </data>
   <data name="Clause_Attachment_Prepared" xml:space="preserve">
-    <value>  '{0}' csatolmány előkészítve</value>
+    <value>  '{0}' attachment prepared</value>
   </data>
   <data name="Creating_Certification_Clause" xml:space="preserve">
     <value>Creating certification clause</value>

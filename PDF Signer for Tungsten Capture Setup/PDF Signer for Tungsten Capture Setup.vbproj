@@ -17,13 +17,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ProjectGuid>{E9467F12-306B-4802-9F89-6C59FA143152}</ProjectGuid>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
-    <!-- Assembly info (migrated from My Project\AssemblyInfo.vb) -->
     <AssemblyTitle>PDF Signer for Tungsten Capture Setup</AssemblyTitle>
-    <Company>Doc-Soft Kkt.</Company>
-    <Product>PDF Signer for Tungsten Capture</Product>
-    <Copyright>Copyright © Doc-Soft Kkt. 2026.</Copyright>
-    <Version>11.3.0.0</Version>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <!-- Microsoft.NET.Sdk drops AssemblyFoldersEx/GAC lookup; restore the classic search order so
          installed-SDK dependencies (Kofax, DevExpress) resolve as in the legacy projects. -->
     <AssemblySearchPaths>{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory};{Registry:Software\Microsoft\.NETFramework,v4.8,AssemblyFoldersEx};{AssemblyFolders};{GAC};{RawFileName}</AssemblySearchPaths>
@@ -100,5 +94,7 @@
   <!-- Dev-machine convenience deploy; skip with /p:CopyToCaptureBin=false (needs admin + installed Capture) -->
   <Target Name="CopyToCaptureBin" AfterTargets="PostBuildEvent" Condition="'$(CopyToCaptureBin)' != 'false'">
     <Exec Command="copy &quot;$(TargetPath)&quot; &quot;C:\Program Files (x86)\Tungsten\Capture\Bin\&quot;" />
+    <!-- The hu satellite must match the main assembly version, otherwise .NET silently falls back to the English resources -->
+    <Copy SourceFiles="$(TargetDir)hu\$(TargetName).resources.dll" DestinationFolder="C:\Program Files (x86)\Tungsten\Capture\Bin\hu\" Condition="Exists('$(TargetDir)hu\$(TargetName).resources.dll')" />
   </Target>
 </Project>

@@ -4,8 +4,9 @@
     <InstallerPlatform>x86</InstallerPlatform>
     <Platforms>x86</Platforms>
     <OutputPath>bin\</OutputPath>
-    <!-- Generated webhelp harvested by Help.wxs; lives at the repo root -->
-    <DefineConstants>$(DefineConstants);SourceDirHU=$(MSBuildThisFileDirectory)..\Help\Output\Online Help</DefineConstants>
+    <!-- SourceDirHU: generated webhelp harvested by Help.wxs (repo root).
+         ProductVersion: the product-wide $(Version) from Directory.Build.props, used as the MSI package version. -->
+    <DefineConstants>$(DefineConstants);SourceDirHU=$(MSBuildThisFileDirectory)..\Help\Output\Online Help;ProductVersion=$(Version)</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="WixToolset.Netfx.wixext" Version="6.0.2" />

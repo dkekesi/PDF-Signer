@@ -1,0 +1,18 @@
+<Project>
+
+  <!--
+    Product-wide assembly metadata, imported automatically by every project in the repository.
+    The installer passes $(Version) to Product.wxs as the MSI package version; bump it here only.
+  -->
+  <PropertyGroup>
+    <Version>11.2</Version>
+    <AssemblyVersion>11.2.0.0</AssemblyVersion>
+    <FileVersion>11.2.0.0</FileVersion>
+    <Product>PDF Signer for Tungsten Capture</Product>
+    <Company>Doc-Soft Kkt.</Company>
+    <Copyright>Copyright © Doc-Soft Kkt. 2026.</Copyright>
+    <!-- Keeps ProductVersion a clean "11.2" instead of "11.2+<git commit hash>". -->
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+
+</Project>

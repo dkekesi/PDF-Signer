@@ -14,17 +14,18 @@ Comments, log messages, exception texts, and UI resources are largely **Hungaria
 
 ## Build
 
-Builds use MSBuild from Visual Studio (scripts hardcode `c:\Program Files\Microsoft Visual Studio\18\Enterprise\MSBuild\Current\Bin\`). There are no automated tests or linters; verification is build success (scripts grep the log for " 0 Error(s)").
+Builds use MSBuild from Visual Studio (scripts hardcode `c:\Program Files\Microsoft Visual Studio\18\Enterprise\MSBuild\Current\Bin\`). There are no automated tests or linters; verification is build success (the scripts check MSBuild's exit code).
 
-- `PDFSigner32bit.cmd` — rebuilds the solution (FullRelease|x86), the shipping configuration; also produces the MSI (`PDF Signer for Tungsten Capture Installer\bin\PDFSignerSetup.msi`).
+- `BuildApplication.cmd` — rebuilds the four assemblies in FullRelease|x86, the shipping configuration (solution target `PDF Signer for Tungsten Capture:Rebuild`; installer and tests are skipped). Extra arguments pass through to MSBuild, e.g. `/p:CopyToCaptureBin=false`.
+- `BuildInstaller.cmd` — rebuilds only the MSI (`PDF Signer for Tungsten Capture Installer\bin\PDFSignerSetup.msi`) from the existing `bin\Release` outputs; run `BuildApplication.cmd` first.
 - Quick check: `msbuild "PDF Signer for Tungsten Capture.slnx" /restore /p:Configuration=Debug /p:Platform="Any CPU" /p:CopyToCaptureBin=false` (the installer project only builds in FullRelease|x86).
 
 Build gotchas:
 - All four projects have a `CopyToCaptureBin` post-build target copying their output to `C:\Program Files (x86)\Tungsten\Capture\Bin\` — requires admin rights and an installed Capture; pass `/p:CopyToCaptureBin=false` to skip.
 - `/restore` is required: the runtime uses `PackageReference` (NLog, NLog.WindowsIdentity, Fody, Costura.Fody — Costura embeds dependencies into `PDFSigner.exe`) and the installer resolves `WixToolset.Sdk` from NuGet.
-- Assembly metadata (company, copyright, version) lives in the vbproj files (`<Company>`, `<Copyright>`, `<Version>`, plus `AssemblyAttribute` items for ComVisible/Guid and the TallComponents license key); the old `My Project\AssemblyInfo.vb` files were deleted in the SDK conversion. **Bump versions in the vbproj.**
+- Product-wide assembly metadata (`Version`, `AssemblyVersion`, `FileVersion`, `Product`, `Company`, `Copyright`) lives in `Directory.Build.props` at the repo root, currently 11.2; each vbproj keeps only its `AssemblyTitle` and `AssemblyAttribute` items (ComVisible/Guid, the TallComponents license key). **Bump versions in `Directory.Build.props`.**
 - The vbproj files override `AssemblySearchPaths` to restore the classic AssemblyFoldersEx/GAC lookup that Microsoft.NET.Sdk drops — without it the installed DevExpress and the Kofax SDK's dependencies do not resolve. The runtime keeps an explicit `mscorlib` reference; removing it breaks Fody ("Could not find 'System.Object'").
-- The WiX 6 installer (`wix` CLI 6.0.2 installed) harvests the webhelp via a `Files` wildcard in `Help.wxs` (WiX 3's HeatDirectory is gone); the MSI ProductVersion is set in `Product.wxs` (`Package Version`, currently 11.1 — predates the 11.2 assemblies).
+- The WiX 6 installer (`wix` CLI 6.0.2 installed) harvests the webhelp via a `Files` wildcard in `Help.wxs` (WiX 3's HeatDirectory is gone); the MSI package version is `$(var.ProductVersion)`, which the wixproj sets from the shared `$(Version)`.
 - Vendored third-party DLLs live in `lib\`: nsoftware SecureBlackbox, TallComponents PDF viewer, and the Kofax SDK per Capture version (`lib\Kofax`, `lib\Kofax 11.1`, `lib\Kofax 11.1 SP1`, `lib\Kofax 11.2`). DevExpress v25.2 assemblies are resolved from the installed DevExpress, not from `lib`.
 - PDF Signer no longer links any PDF Streamer assemblies: it calls PDF Streamer's REST streaming endpoint (`POST /api/v1/documents/stream`) over `HttpClient` (see `Signature\Modules\PDFStreamer\PDFStreamerRestClient.vb`). PDF Streamer dropped its net48 `PDFStreamer.WCFCommon`/`PDFStreamer.Common` assemblies in its .NET 10 / CoreWCF migration. `MemoryTributary` (previously from WCFCommon) is now a local class at `PDF Signer for Tungsten Capture\Helper\MemoryTributary.vb`. PDF Streamer lives in its own Git repo at `C:\Projects\PDF Streamer` (github.com/dkekesi/PDF-Streamer).
 - The solution has a third configuration, **FullRelease**, used for shipping builds.

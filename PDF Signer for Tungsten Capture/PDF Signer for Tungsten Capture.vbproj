@@ -17,13 +17,7 @@
     <ApplicationIcon>PDFSigner.ico</ApplicationIcon>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <ProjectGuid>{DE276830-C34D-4F84-B2DD-142FFEB6A3FB}</ProjectGuid>
-    <!-- Assembly info (migrated from My Project\AssemblyInfo.vb) -->
     <AssemblyTitle>PDF Signer for Tungsten Capture</AssemblyTitle>
-    <Company>Doc-Soft Kkt.</Company>
-    <Product>eWay</Product>
-    <Copyright>Copyright © Doc-Soft Kkt. 2026.</Copyright>
-    <Version>11.3.0.0</Version>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -174,6 +168,8 @@
   <!-- Dev-machine convenience deploy; skip with /p:CopyToCaptureBin=false (needs admin + installed Capture) -->
   <Target Name="CopyToCaptureBin" AfterTargets="PostBuildEvent" Condition="'$(CopyToCaptureBin)' != 'false'">
     <Exec Command="copy &quot;$(TargetPath)&quot; &quot;C:\Program Files (x86)\Tungsten\Capture\Bin\&quot;" />
+    <!-- The hu satellite must match the main assembly version, otherwise .NET silently falls back to the English resources -->
+    <Copy SourceFiles="$(TargetDir)hu\$(TargetName).resources.dll" DestinationFolder="C:\Program Files (x86)\Tungsten\Capture\Bin\hu\" Condition="Exists('$(TargetDir)hu\$(TargetName).resources.dll')" />
   </Target>
   <ItemGroup>
     <Analyzer Include="C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.4\analyzers\dotnet\DevExpress.Generator.dll" Visible="false" Condition="Exists('C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.4\analyzers\dotnet\DevExpress.Generator.dll')" />

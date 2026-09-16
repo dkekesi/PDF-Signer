@@ -286,7 +286,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to   &apos;{0}&apos; csatolmány előkészítve.
+        '''  Looks up a localized string similar to   &apos;{0}&apos; attachment prepared.
         '''</summary>
         Friend Shared ReadOnly Property Clause_Attachment_Prepared() As String
             Get
