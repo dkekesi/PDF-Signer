@@ -20,9 +20,17 @@ Public Class SbbLicenseTests
 
     <TestMethod>
     Public Sub Every_factory_returns_a_licensed_component()
-        Assert.AreEqual(SbbLicense.Key, SbbLicense.CreateSigner().RuntimeLicense)
-        Assert.AreEqual(SbbLicense.Key, SbbLicense.CreateVerifier().RuntimeLicense)
-        Assert.AreEqual(SbbLicense.Key, SbbLicense.CreateCertificateManager().RuntimeLicense)
-        Assert.AreEqual(SbbLicense.Key, SbbLicense.CreateCertificateValidator().RuntimeLicense)
+        Using signer = SbbLicense.CreateSigner()
+            Using verifier = SbbLicense.CreateVerifier()
+                Using certManager = SbbLicense.CreateCertificateManager()
+                    Using certValidator = SbbLicense.CreateCertificateValidator()
+                        Assert.AreEqual(SbbLicense.Key, signer.RuntimeLicense)
+                        Assert.AreEqual(SbbLicense.Key, verifier.RuntimeLicense)
+                        Assert.AreEqual(SbbLicense.Key, certManager.RuntimeLicense)
+                        Assert.AreEqual(SbbLicense.Key, certValidator.RuntimeLicense)
+                    End Using
+                End Using
+            End Using
+        End Using
     End Sub
 End Class
