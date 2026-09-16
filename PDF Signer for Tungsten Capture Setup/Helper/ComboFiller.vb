@@ -88,4 +88,18 @@ Friend Class ComboFiller
         Combo.ValueMember = NameOf(ComboKeyValue.Id)
         Combo.DataSource = methods
     End Sub
+
+    ''' <summary>Fills a combo with the four PAdES baseline levels the built-in provider offers.</summary>
+    Friend Sub FillComboWithPAdESLevels(Combo As ComboBox)
+        Dim levels = New BindingList(Of ComboKeyValue) From {
+            New ComboKeyValue() With {.Id = PAdESLevelType.BaselineB, .DisplayText = "PAdES B-B (signature only)"},
+            New ComboKeyValue() With {.Id = PAdESLevelType.BaselineT, .DisplayText = "PAdES B-T (signature time stamp)"},
+            New ComboKeyValue() With {.Id = PAdESLevelType.BaselineLT, .DisplayText = "PAdES B-LT (embedded revocation information)"},
+            New ComboKeyValue() With {.Id = PAdESLevelType.BaselineLTA, .DisplayText = "PAdES B-LTA (archive document time stamp)"}
+        }
+
+        Combo.DisplayMember = NameOf(ComboKeyValue.DisplayText)
+        Combo.ValueMember = NameOf(ComboKeyValue.Id)
+        Combo.DataSource = levels
+    End Sub
 End Class

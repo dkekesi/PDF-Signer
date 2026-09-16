@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>494, 896</value>
+    <value>494, 945</value>
   </data>
   <data name="BtnOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -157,7 +157,7 @@
     <value>NoControl</value>
   </data>
   <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>575, 896</value>
+    <value>575, 945</value>
   </data>
   <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1048,64 +1048,64 @@
     <value>PanelPDFSigner</value>
   </data>
   <data name="&gt;&gt;Label11.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ComboRevocationCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="ComboRevocationCheck.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="ComboRevocationCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 50</value>
-  </data>
-  <data name="ComboRevocationCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 21</value>
-  </data>
-  <data name="ComboRevocationCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;ComboRevocationCheck.Name" xml:space="preserve">
-    <value>ComboRevocationCheck</value>
-  </data>
-  <data name="&gt;&gt;ComboRevocationCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ComboRevocationCheck.Parent" xml:space="preserve">
-    <value>PanelPDFSigner</value>
-  </data>
-  <data name="&gt;&gt;ComboRevocationCheck.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="Label10.AutoSize" type="System.Boolean, mscorlib">
+  <data name="LblPAdESLevel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="Label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="LblPAdESLevel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Label10.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="LblPAdESLevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 53</value>
   </data>
-  <data name="Label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 13</value>
+  <data name="LblPAdESLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
   </data>
-  <data name="Label10.TabIndex" type="System.Int32, mscorlib">
+  <data name="LblPAdESLevel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="Label10.Text" xml:space="preserve">
-    <value>Revocation check</value>
+  <data name="LblPAdESLevel.Text" xml:space="preserve">
+    <value>PAdES level</value>
   </data>
-  <data name="&gt;&gt;Label10.Name" xml:space="preserve">
-    <value>Label10</value>
+  <data name="&gt;&gt;LblPAdESLevel.Name" xml:space="preserve">
+    <value>LblPAdESLevel</value>
   </data>
-  <data name="&gt;&gt;Label10.Type" xml:space="preserve">
+  <data name="&gt;&gt;LblPAdESLevel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Label10.Parent" xml:space="preserve">
+  <data name="&gt;&gt;LblPAdESLevel.Parent" xml:space="preserve">
     <value>PanelPDFSigner</value>
   </data>
-  <data name="&gt;&gt;Label10.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;LblPAdESLevel.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="ComboPAdESLevel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="ComboPAdESLevel.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ComboPAdESLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 50</value>
+  </data>
+  <data name="ComboPAdESLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 21</value>
+  </data>
+  <data name="ComboPAdESLevel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ComboPAdESLevel.Name" xml:space="preserve">
+    <value>ComboPAdESLevel</value>
+  </data>
+  <data name="&gt;&gt;ComboPAdESLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ComboPAdESLevel.Parent" xml:space="preserve">
+    <value>PanelPDFSigner</value>
+  </data>
+  <data name="&gt;&gt;ComboPAdESLevel.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="TxtSigningReason.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1165,7 +1165,7 @@
     <value>PanelPDFSigner</value>
   </data>
   <data name="&gt;&gt;Label9.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="TxtSigningOrganization.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1192,7 +1192,7 @@
     <value>PanelPDFSigner</value>
   </data>
   <data name="&gt;&gt;TxtSigningOrganization.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="Label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1222,7 +1222,7 @@
     <value>PanelPDFSigner</value>
   </data>
   <data name="&gt;&gt;Label8.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="TxtSignaturePolicyOID.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1398,50 +1398,20 @@
   <data name="GrpTimeStamp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="ChkSinglePassPadesLTA.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ChkSinglePassPadesLTA.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ChkSinglePassPadesLTA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 75</value>
-  </data>
-  <data name="ChkSinglePassPadesLTA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 17</value>
-  </data>
-  <data name="ChkSinglePassPadesLTA.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="ChkSinglePassPadesLTA.Text" xml:space="preserve">
-    <value>Create single-pass PAdES B-LTA</value>
-  </data>
-  <data name="&gt;&gt;ChkSinglePassPadesLTA.Name" xml:space="preserve">
-    <value>ChkSinglePassPadesLTA</value>
-  </data>
-  <data name="&gt;&gt;ChkSinglePassPadesLTA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ChkSinglePassPadesLTA.Parent" xml:space="preserve">
-    <value>GrpTimeStamp</value>
-  </data>
-  <data name="&gt;&gt;ChkSinglePassPadesLTA.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="ComboTimeStampHashMethod.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+    <value>Top, Left, Right</value>
   </data>
   <data name="ComboTimeStampHashMethod.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
   <data name="ComboTimeStampHashMethod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>445, 73</value>
+    <value>111, 73</value>
   </data>
   <data name="ComboTimeStampHashMethod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 21</value>
+    <value>233, 21</value>
   </data>
   <data name="ComboTimeStampHashMethod.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;ComboTimeStampHashMethod.Name" xml:space="preserve">
     <value>ComboTimeStampHashMethod</value>
@@ -1453,10 +1423,10 @@
     <value>GrpTimeStamp</value>
   </data>
   <data name="&gt;&gt;ComboTimeStampHashMethod.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="Label18.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+    <value>Top, Left</value>
   </data>
   <data name="Label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1465,13 +1435,13 @@
     <value>NoControl</value>
   </data>
   <data name="Label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>369, 76</value>
+    <value>5, 76</value>
   </data>
   <data name="Label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
   </data>
   <data name="Label18.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="Label18.Text" xml:space="preserve">
     <value>Hash method</value>
@@ -1486,37 +1456,7 @@
     <value>GrpTimeStamp</value>
   </data>
   <data name="&gt;&gt;Label18.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ChkIsDocumentTimeStamp.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ChkIsDocumentTimeStamp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ChkIsDocumentTimeStamp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 75</value>
-  </data>
-  <data name="ChkIsDocumentTimeStamp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 17</value>
-  </data>
-  <data name="ChkIsDocumentTimeStamp.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="ChkIsDocumentTimeStamp.Text" xml:space="preserve">
-    <value>Create document time stamp</value>
-  </data>
-  <data name="&gt;&gt;ChkIsDocumentTimeStamp.Name" xml:space="preserve">
-    <value>ChkIsDocumentTimeStamp</value>
-  </data>
-  <data name="&gt;&gt;ChkIsDocumentTimeStamp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ChkIsDocumentTimeStamp.Parent" xml:space="preserve">
-    <value>GrpTimeStamp</value>
-  </data>
-  <data name="&gt;&gt;ChkIsDocumentTimeStamp.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="TxtTSAPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1546,7 +1486,7 @@
     <value>GrpTimeStamp</value>
   </data>
   <data name="&gt;&gt;TxtTSAPassword.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="Label16.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1579,7 +1519,7 @@
     <value>GrpTimeStamp</value>
   </data>
   <data name="&gt;&gt;Label16.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="TxtTSAUser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1606,7 +1546,7 @@
     <value>GrpTimeStamp</value>
   </data>
   <data name="&gt;&gt;TxtTSAUser.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="Label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1636,7 +1576,7 @@
     <value>GrpTimeStamp</value>
   </data>
   <data name="&gt;&gt;Label17.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="TxtTSAURL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1663,7 +1603,7 @@
     <value>GrpTimeStamp</value>
   </data>
   <data name="&gt;&gt;TxtTSAURL.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="Label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1693,7 +1633,7 @@
     <value>GrpTimeStamp</value>
   </data>
   <data name="&gt;&gt;Label15.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="GrpTimeStamp.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 95</value>
@@ -1703,6 +1643,9 @@
   </data>
   <data name="GrpTimeStamp.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="GrpTimeStamp.Text" xml:space="preserve">
+    <value>Time stamping</value>
   </data>
   <data name="&gt;&gt;GrpTimeStamp.Name" xml:space="preserve">
     <value>GrpTimeStamp</value>
@@ -1715,39 +1658,6 @@
   </data>
   <data name="&gt;&gt;GrpTimeStamp.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="ChkTimeStampingEnabled.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ChkTimeStampingEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ChkTimeStampingEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 95</value>
-  </data>
-  <data name="ChkTimeStampingEnabled.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 0, 0</value>
-  </data>
-  <data name="ChkTimeStampingEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 17</value>
-  </data>
-  <data name="ChkTimeStampingEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="ChkTimeStampingEnabled.Text" xml:space="preserve">
-    <value>Time stamping enabled</value>
-  </data>
-  <data name="&gt;&gt;ChkTimeStampingEnabled.Name" xml:space="preserve">
-    <value>ChkTimeStampingEnabled</value>
-  </data>
-  <data name="&gt;&gt;ChkTimeStampingEnabled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ChkTimeStampingEnabled.Parent" xml:space="preserve">
-    <value>PanelPDFSigner</value>
-  </data>
-  <data name="&gt;&gt;ChkTimeStampingEnabled.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="GrpClause.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2248,7 +2158,7 @@
     <value>NoControl</value>
   </data>
   <data name="BtnImportSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 896</value>
+    <value>12, 945</value>
   </data>
   <data name="BtnImportSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 23</value>
@@ -2278,7 +2188,7 @@
     <value>NoControl</value>
   </data>
   <data name="BtnExportSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 896</value>
+    <value>138, 945</value>
   </data>
   <data name="BtnExportSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 23</value>
@@ -2410,7 +2320,7 @@
     <value>NoControl</value>
   </data>
   <data name="BtnResetSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 896</value>
+    <value>264, 945</value>
   </data>
   <data name="BtnResetSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 23</value>
@@ -2496,6 +2406,144 @@
   <data name="&gt;&gt;ChkAllowQualifiedCertificatesOnly.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="ChkEnableRevocationChecking.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ChkEnableRevocationChecking.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ChkEnableRevocationChecking.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 196</value>
+  </data>
+  <data name="ChkEnableRevocationChecking.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 0, 0</value>
+  </data>
+  <data name="ChkEnableRevocationChecking.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 17</value>
+  </data>
+  <data name="ChkEnableRevocationChecking.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="ChkEnableRevocationChecking.Text" xml:space="preserve">
+    <value>Revocation checking enabled</value>
+  </data>
+  <data name="&gt;&gt;ChkEnableRevocationChecking.Name" xml:space="preserve">
+    <value>ChkEnableRevocationChecking</value>
+  </data>
+  <data name="&gt;&gt;ChkEnableRevocationChecking.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ChkEnableRevocationChecking.Parent" xml:space="preserve">
+    <value>PanelPDFSigner</value>
+  </data>
+  <data name="&gt;&gt;ChkEnableRevocationChecking.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GrpRevocation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="ChkEmbedRevocationInformation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ChkEmbedRevocationInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ChkEmbedRevocationInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 17</value>
+  </data>
+  <data name="ChkEmbedRevocationInformation.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ChkEmbedRevocationInformation.Text" xml:space="preserve">
+    <value>Embed revocation information into the document</value>
+  </data>
+  <data name="&gt;&gt;ChkEmbedRevocationInformation.Name" xml:space="preserve">
+    <value>ChkEmbedRevocationInformation</value>
+  </data>
+  <data name="&gt;&gt;ChkEmbedRevocationInformation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ChkEmbedRevocationInformation.Parent" xml:space="preserve">
+    <value>GrpRevocation</value>
+  </data>
+  <data name="&gt;&gt;ChkEmbedRevocationInformation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ComboRevocationCheckProtocol.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="ComboRevocationCheckProtocol.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ComboRevocationCheckProtocol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 22</value>
+  </data>
+  <data name="ComboRevocationCheckProtocol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 21</value>
+  </data>
+  <data name="ComboRevocationCheckProtocol.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ComboRevocationCheckProtocol.Name" xml:space="preserve">
+    <value>ComboRevocationCheckProtocol</value>
+  </data>
+  <data name="&gt;&gt;ComboRevocationCheckProtocol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ComboRevocationCheckProtocol.Parent" xml:space="preserve">
+    <value>GrpRevocation</value>
+  </data>
+  <data name="&gt;&gt;ComboRevocationCheckProtocol.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LblRevocationProtocol.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblRevocationProtocol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 25</value>
+  </data>
+  <data name="LblRevocationProtocol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="LblRevocationProtocol.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="LblRevocationProtocol.Text" xml:space="preserve">
+    <value>Protocol</value>
+  </data>
+  <data name="&gt;&gt;LblRevocationProtocol.Name" xml:space="preserve">
+    <value>LblRevocationProtocol</value>
+  </data>
+  <data name="&gt;&gt;LblRevocationProtocol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblRevocationProtocol.Parent" xml:space="preserve">
+    <value>GrpRevocation</value>
+  </data>
+  <data name="&gt;&gt;LblRevocationProtocol.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GrpRevocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 196</value>
+  </data>
+  <data name="GrpRevocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>625, 50</value>
+  </data>
+  <data name="GrpRevocation.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;GrpRevocation.Name" xml:space="preserve">
+    <value>GrpRevocation</value>
+  </data>
+  <data name="&gt;&gt;GrpRevocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpRevocation.Parent" xml:space="preserve">
+    <value>PanelPDFSigner</value>
+  </data>
+  <data name="&gt;&gt;GrpRevocation.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="ChkProxyEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2503,7 +2551,7 @@
     <value>NoControl</value>
   </data>
   <data name="ChkProxyEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 196</value>
+    <value>4, 246</value>
   </data>
   <data name="ChkProxyEnabled.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 0, 0</value>
@@ -2512,7 +2560,7 @@
     <value>95, 17</value>
   </data>
   <data name="ChkProxyEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="ChkProxyEnabled.Text" xml:space="preserve">
     <value>Proxy enabled</value>
@@ -2527,7 +2575,7 @@
     <value>PanelPDFSigner</value>
   </data>
   <data name="&gt;&gt;ChkProxyEnabled.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="GrpProxy.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2821,13 +2869,13 @@
     <value>9</value>
   </data>
   <data name="GrpProxy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 196</value>
+    <value>0, 246</value>
   </data>
   <data name="GrpProxy.Size" type="System.Drawing.Size, System.Drawing">
     <value>625, 75</value>
   </data>
   <data name="GrpProxy.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;GrpProxy.Name" xml:space="preserve">
     <value>GrpProxy</value>
@@ -2839,7 +2887,7 @@
     <value>PanelPDFSigner</value>
   </data>
   <data name="&gt;&gt;GrpProxy.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="ChkSignerNameFromLoggedOnUser.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2854,7 +2902,7 @@
     <value>376, 17</value>
   </data>
   <data name="ChkSignerNameFromLoggedOnUser.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="ChkSignerNameFromLoggedOnUser.Text" xml:space="preserve">
     <value>Use the logged-in user's name in the clause instead of the certificate name</value>
@@ -2869,7 +2917,7 @@
     <value>PanelPDFSigner</value>
   </data>
   <data name="&gt;&gt;ChkSignerNameFromLoggedOnUser.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="PanelPDFSigner.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2878,7 +2926,7 @@
     <value>3, 3</value>
   </data>
   <data name="PanelPDFSigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>625, 272</value>
+    <value>625, 321</value>
   </data>
   <data name="PanelPDFSigner.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2902,7 +2950,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPDFSigner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>631, 278</value>
+    <value>631, 327</value>
   </data>
   <data name="TabPDFSigner.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4363,7 +4411,7 @@
     <value>7, 552</value>
   </data>
   <data name="TabCryptoProviders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>639, 304</value>
+    <value>639, 353</value>
   </data>
   <data name="TabCryptoProviders.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4654,7 +4702,7 @@
     <value>5, 35</value>
   </data>
   <data name="PanelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 857</value>
+    <value>656, 906</value>
   </data>
   <data name="PanelMain.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4693,7 +4741,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>662, 931</value>
+    <value>662, 980</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6773,7 +6821,7 @@
 </value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>678, 970</value>
+    <value>678, 1019</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
