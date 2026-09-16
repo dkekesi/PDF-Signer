@@ -9,6 +9,8 @@ Friend Class FrmSetup
     Private ReadOnly _FormCSHIDString As String = "SETUPDOCUMENTCLASS"
     Private Settings As Setup
     Private DocClass As DocumentClass
+    ' Setting values as bound at load time; closing only asks to save when the current values differ.
+    Private LoadedValueSnapshot As String
 
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
         If keyData = Keys.F1 Then
@@ -73,15 +75,21 @@ Friend Class FrmSetup
         BsPDFStreamerCryptoProvider.DataSource = Settings.PDFStreamerProvider
         BsMQFTPCryptoProvider.DataSource = Settings.MQFTPProvider
         BsMNBSignerCryptoProvider.DataSource = Settings.MNBSignerProvider
+
+        LoadedValueSnapshot = Settings.GetValueSnapshot()
     End Sub
 
     Private Sub FrmSetup_FormClosing(sender As Object, e As Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         If DialogResult = DialogResult.OK Then Return
 
+        ' Some bindings write to the model only on validation, so push the focused control's pending edit first.
+        Validate()
+        If Settings.GetValueSnapshot() = LoadedValueSnapshot Then Return
+
         Select Case MsgBox(Messages.Ask_Save_Changes, MsgBoxStyle.YesNoCancel + MsgBoxStyle.Question, Messages.Header_Save_Changes)
             Case vbYes
                 If Not ValidateSettings() Then
-                    DialogResult = DialogResult.None
+                    e.Cancel = True
                     Return
                 End If
 

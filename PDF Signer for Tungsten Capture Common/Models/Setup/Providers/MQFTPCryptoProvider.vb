@@ -73,14 +73,14 @@ Public Class MQFTPCryptoProvider
         End With
     End Sub
 
-    Public Overrides Function SetupDataToXml() As XElement
+    Public Overrides Function SetupDataToXml(EncryptSecrets As Boolean) As XElement
         Dim dom As New XElement(ConfigXmlElementName,
                 New XElement("Enabled", Converter.BooleanToNumericString(Enabled)),
                 New XElement("FolderOut", MQFolderOut),
                 New XElement("FolderIn", MQFolderIn),
                 New XElement("Domain", MQDomain),
                 New XElement("UserName", MQUserName),
-                New XElement("Password", enc.AES256Encrypt(MQPassword)),
+                New XElement("Password", SecretToXml(MQPassword, EncryptSecrets)),
                 New XElement("DocUID", IndexMQDocUID))
 
         Return dom

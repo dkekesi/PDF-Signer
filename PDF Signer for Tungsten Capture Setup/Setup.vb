@@ -209,8 +209,25 @@ Public Class Setup
     End Sub
 
     Friend Function ToXml() As String
-        Dim enc As New Encrypt
+        Return BuildXml(EncryptSecrets:=True).ToString
+    End Function
 
+    ''' <summary>
+    ''' Returns all setting values as normalized XML for detecting unsaved edits.
+    ''' Secrets are in plain text, so the result must never be persisted or exported.
+    ''' </summary>
+    Friend Function GetValueSnapshot() As String
+        Dim dom = BuildXml(EncryptSecrets:=False)
+
+        ' Nothing and empty text both mean "not set": cleared controls write either one.
+        For Each element In dom.Descendants.Where(Function(x) x.IsEmpty).ToList
+            element.Value = String.Empty
+        Next
+
+        Return dom.ToString
+    End Function
+
+    Private Function BuildXml(EncryptSecrets As Boolean) As XElement
         Dim dom As New XElement("PDFSignerConfig")
         dom.Add(New XElement("IsSigningEnabled", Converter.BooleanToNumericString(IsSigningEnabled)))
         dom.Add(New XElement("IndexIsSigned", IndexIsSigned))
@@ -243,10 +260,10 @@ Public Class Setup
 
         ' Create nodes using cryptographic providers
         For Each p As CryptoProviderBase In CryptographicProviders
-            dom.Add(p.SetupDataToXml)
+            dom.Add(p.SetupDataToXml(EncryptSecrets))
         Next
 
-        Return dom.ToString
+        Return dom
     End Function
 
     Friend Sub FromXml(XmlText As String)

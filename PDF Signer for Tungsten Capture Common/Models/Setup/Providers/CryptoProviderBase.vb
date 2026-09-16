@@ -13,6 +13,15 @@
     Public MustOverride Function Validate() As String
     Public MustOverride Sub LoadSetupDataInAdmin(Parser As SetupCSSParser)
     Public MustOverride Sub SaveSetupDataInAdmin(Parser As SetupCSSParser)
-    Public MustOverride Function SetupDataToXml() As XElement
+    ''' <summary>
+    ''' Serializes the provider settings. Secrets are AES-encrypted with a random IV when <paramref name="EncryptSecrets"/> is True,
+    ''' so only unencrypted output is stable enough to compare.
+    ''' </summary>
+    Public MustOverride Function SetupDataToXml(EncryptSecrets As Boolean) As XElement
     Public MustOverride Sub SetupDataFromXml(XmlElement As XElement)
+
+    ''' <summary>Returns a secret value for XML output, AES-encrypted when <paramref name="EncryptSecrets"/> is True.</summary>
+    Protected Function SecretToXml(Value As String, EncryptSecrets As Boolean) As String
+        Return If(EncryptSecrets, enc.AES256Encrypt(Value), Value)
+    End Function
 End Class

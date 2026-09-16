@@ -66,12 +66,12 @@ Public Class PDFStreamerCryptoProvider
         End With
     End Sub
 
-    Public Overrides Function SetupDataToXml() As XElement
+    Public Overrides Function SetupDataToXml(EncryptSecrets As Boolean) As XElement
         Dim dom As New XElement(ConfigXmlElementName,
                 New XElement("Enabled", Converter.BooleanToNumericString(Enabled)),
                 New XElement("URL", PDFStreamerURL),
                 New XElement("ConfigFile", PDFStreamerConfigFile),
-                New XElement("AuthorizationCode", enc.AES256Encrypt(PDFStreamerAuthorizationCode)))
+                New XElement("AuthorizationCode", SecretToXml(PDFStreamerAuthorizationCode, EncryptSecrets)))
 
         Return dom
     End Function

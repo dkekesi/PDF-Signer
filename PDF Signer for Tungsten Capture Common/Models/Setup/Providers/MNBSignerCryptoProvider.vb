@@ -103,7 +103,7 @@ Public Class MNBSignerCryptoProvider
         End With
     End Sub
 
-    Public Overrides Function SetupDataToXml() As XElement
+    Public Overrides Function SetupDataToXml(EncryptSecrets As Boolean) As XElement
         Dim dom As New XElement(ConfigXmlElementName,
                 New XElement("Enabled", Converter.BooleanToNumericString(Enabled)),
                 New XElement("URL", MNBSignerURL),
@@ -114,7 +114,7 @@ Public Class MNBSignerCryptoProvider
                 New XElement("IsUserPasswordAuthentication", Converter.BooleanToNumericString(IsMNBSignerUserPasswordAuthentication)),
                 New XElement("Domain", MNBSignerDomain),
                 New XElement("UserName", MNBSignerUserName),
-                New XElement("Password", enc.AES256Encrypt(MNBSignerPassword)))
+                New XElement("Password", SecretToXml(MNBSignerPassword, EncryptSecrets)))
 
         Return dom
     End Function

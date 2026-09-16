@@ -149,7 +149,7 @@ Public Class PDFSignerCryptoProvider
         End With
     End Sub
 
-    Public Overrides Function SetupDataToXml() As XElement
+    Public Overrides Function SetupDataToXml(EncryptSecrets As Boolean) As XElement
         Dim dom As New XElement(ConfigXmlElementName,
                 New XElement("Enabled", Converter.BooleanToNumericString(Enabled)),
                 New XElement("SigningOrganization", SigningOrganization),
@@ -161,7 +161,7 @@ Public Class PDFSignerCryptoProvider
                 New XElement("IsTimeStampingEnabled", Converter.BooleanToNumericString(IsTimeStampingEnabled)),
                 New XElement("TSAURL", TSAURL),
                 New XElement("TSAUserName", TSAUserName),
-                New XElement("TSAPassword", enc.AES256Encrypt(TSAPassword)),
+                New XElement("TSAPassword", SecretToXml(TSAPassword, EncryptSecrets)),
                 New XElement("IsDocumentTimeStamp", Converter.BooleanToNumericString(IsDocumentTimeStamp)),
                 New XElement("IsSinglePassPadesBLTA", Converter.BooleanToNumericString(IsSinglePassPadesBLTA)),
                 New XElement("TimeStampHashMethod", TimeStampHashMethod),
@@ -170,7 +170,7 @@ Public Class PDFSignerCryptoProvider
                 New XElement("ProxyPort", ProxyPort),
                 New XElement("ProxyAuthMethod", ProxyAuthMethod),
                 New XElement("ProxyUserName", ProxyUserName),
-                New XElement("ProxyPassword", enc.AES256Encrypt(ProxyPassword)))
+                New XElement("ProxyPassword", SecretToXml(ProxyPassword, EncryptSecrets)))
 
         Return dom
     End Function
