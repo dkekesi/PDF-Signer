@@ -127,19 +127,23 @@
         <ul>
             <li><b>Aláíró szervezet (Signing organization):</b> az aláíráson Adobe Reader-ben megjelenítendő név. Eltérhet az aláíró tanúsítványban szereplő névtől.</li>
             <li><b>Aláírás oka (Signing reason):</b> az aláírás oka, amely Adobe Reader-ben is megjelenik .</li>
-            <li><b>Visszavonás ellenőrzés (Revocation check):</b> az aláíró tanúsítvány visszavonásának ellenőrzési módja. Lehetséges értékek:<ul><li><b>Nincs ellenőrzés (None):</b> az aláíró tanúsítványt nem ellenőrzi a rendszer külső forrásból, csak a helyi cache-ből (nem javasolt, csak ha később hozzárendeljük a aláíráshoz az online beszerzett visszavonási információkat).</li><li><b>CRL:</b> ellenőrzés visszavonási listával.</li><li><b>OCSP:</b> ellenőrzés OCSP-vel. Ha a tanúsítvány nem ellenőrizhető OCSP-vel (pl. mert a hitelesítés-szolgáltató nem nyújtja a szolgáltatást), akkor az aláírási művelet megszakad.</li><li><b>OCSP vagy CRL, ha OCSP nem elérhető (OCSP (CRL fallback)):</b> ellenőrzés OCSP-vel. Ha a tanúsítvány nem ellenőrizhető OCSP-vel, akkor CRL-el kerül ellenőrzésre.</li></ul></li>
+            <li><b>PAdES szint (PAdES level):</b> az elkészítendő aláírás szintje. PAdES B-B: csak aláírás. PAdES B-T: aláírás és aláírás-időbélyeg. PAdES B-LT: aláírás, időbélyeg és a dokumentumba beágyazott visszavonási információk (hosszú távú ellenőrizhetőség). PAdES B-LTA: B-LT kiegészítve dokumentumszintű archív időbélyeggel.</li>
             <li><b>Hash algoritmus (Hash method):</b> az aláíráshoz használt, az aláírandó dokumentumból képzett lenyomat (hash) képzésének algoritmusa.</li>
         </ul>
         <h5>Időbélyegzés beállításai (Time stamping...)</h5>
         <ul>
-            <li><b>Időbélyegzés bekapcsolva (Time stamping enabled):</b> a hitelesített dokumentumon az aláírás mellett időbélyeget is elhelyez a rendszer.</li>
             <li><b>TSA URL:</b> az időbélyeg-szolgáltató URL-je.</li>
-            <li><b>TSA felhasználónév (TSA connection user):</b> az időbélyeg-szolgáltatóhoz történő kapcsolódáshoz használt felhasználónév. Ha a belépéshez nem kell felhasználónév, akkor a mezőt hagyjuk üresen.</li>
+            <li><b>TSA felhasználónév (TSA user name):</b> az időbélyeg-szolgáltatóhoz történő kapcsolódáshoz használt felhasználónév. Ha a belépéshez nem kell felhasználónév, akkor a mezőt hagyjuk üresen.</li>
             <li><b>Jelszó (Password):</b> az időbélyeg-szolgáltatóhoz történő kapcsolódáshoz használt felhasználónévhez tartozó jelszó. Ha a belépéshez nem kell felhasználónév, vagy nem tartozik hozzá jelszó, akkor a mezőt hagyjuk üresen.</li>
-            <li><b>Dokumentumszintű időbélyeg készítése (Create document time stamp):</b> az aláírt PDF dokumentumra nem aláírásszintű, hanem dokumentumszintű időbélyeget helyez el a rendszer.</li>
-            <li><b>Egymenetes PAdES B-LTA készítése (Create single-pass PAdES B-LTA):</b> a PDF dokumentumra egy lépésben PAdES B-LTA szabvány szerinti aláírás készül, amely a legmagasabb szintű aláírás: beágyazva tartalmazza az összes visszavonási információt és ezeket dokumentumszintű időbélyeggel védi. Amennyiben ez az opció be van kapcsolva, akkor a visszavonás ellenőrzést OCSP-re kell állítani és a dokumentumszintű időbélyeg készítése opciót be kell kapcsolni.</li>
+            <li><b>Hash algoritmus (Hash method):</b> a B-LTA archív időbélyeg lenyomatképző algoritmusa.</li>
         </ul>
         <p class="warning">Figyelem! A PAdES B-LTA aláírások dokumentumonként két időbélyeget követelnek meg, ami az időbélyeg szolgáltató terheltségétől és az internet kapcsolat sebességétől függően pár dokumentumonként másodperccel lassítja a hitelesítési folyamatot. Az időbélyegzés költsége fájlonként kétszeres lesz!</p>
+        <h5>Visszavonás-ellenőrzés beállításai (Revocation checking)</h5>
+        <ul>
+            <li><b>Visszavonás-ellenőrzés bekapcsolva (Revocation checking enabled):</b> az aláíró tanúsítvány és az időbélyeg-szolgáltató tanúsítványláncának visszavonási állapotát a rendszer online ellenőrzi; visszavont vagy nem megbízható lánc esetén az aláírás meghiúsul.</li>
+            <li><b>Protokoll (Protocol):</b> CRL, OCSP vagy OCSP (CRL fallback).</li>
+            <li><b>Visszavonási információk beágyazása (Embed revocation information into the document):</b> a letöltött visszavonási adatok a dokumentumba kerülnek (B-LT és B-LTA esetén kötelező).</li>
+        </ul>
         <h5>Proxy szerver beállításai (Proxy)</h5>
         <ul>
             <li><b>Proxy használat bekapcsolva (Proxy enabled):</b> a külső hálózattal történő kommunikáció proxy szerveren keresztül történik. A beállítás befolyásolja az időbélyeg lekéréseket, a CRL letöltéseket és az OCSP válaszok beszerzését.</li>
@@ -149,6 +153,7 @@
             <li><b>Proxy felhasználónév (Proxy user name):</b> a proxy szerverre történő bejelentkezéshez szükséges felhasználónév.</li>
             <li><b>Proxy jelszó (Password):</b> a proxy szerverre történő bejelentkezéshez szükséges felhasználónévhez tartozó jelszó.</li>
         </ul>
+        <p>Frissítés korábbi verzióról: a dokumentumosztályok PDF Signer beállításait a frissítés előtt XML fájlba kell exportálni, majd a frissítés után importálni; a PAdES szint nélkül mentett beállításokat a rendszer alapértelmezettként kezeli.</p>
         <h4><a name="PDF Stre"></a>PDF Streamer</h4>
         <p>
             <img src="../../Resources/Images/Screenshots/CryptoProviderSetupPDFStreamer.png" class="Screenshot" />

@@ -22,7 +22,7 @@
     <Company>Doc-Soft Kkt.</Company>
     <Product>eWay</Product>
     <Copyright>Copyright © Doc-Soft Kkt. 2026.</Copyright>
-    <Version>11.2.0.0</Version>
+    <Version>11.3.0.0</Version>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

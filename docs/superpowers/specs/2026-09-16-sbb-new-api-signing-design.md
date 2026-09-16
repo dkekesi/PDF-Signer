@@ -1,7 +1,7 @@
 # Built-in "PDF Signer" provider on the SecureBlackbox v24 component API
 
 **Date:** 2026-09-16
-**Status:** approved design, awaiting implementation plan
+**Status:** implemented
 **Branch / worktree:** `worktree-sbb-new-api` at `.claude\worktrees\sbb-new-api`
 
 ## 1. Goal
@@ -39,7 +39,7 @@ pre/post processors (`PDFPreProcessor.vb`, `PDFPostProcessor.vb`), which keep us
 `Models\Enum.vb`:
 
 ```vb
-Public Enum PAdESLevel As Integer
+Public Enum PAdESLevelType As Integer
     BaselineB = 3
     BaselineT = 4
     BaselineLT = 5
@@ -60,7 +60,7 @@ products agree on meaning. The undefined values 0-2 are rejected by validation.
 | `SignatureHashMethod` | Integer (`HashType`) | SHA256 | `SignatureHashMethod` | same | unchanged |
 | `AllowQualifiedCertificatesOnly` | Boolean | False | `AllowQualifiedCertificatesOnly` | same | unchanged |
 | `SignerNameFromLoggedOnUser` | Boolean | False | `SignerNameFromLoggedOnUser` | same | unchanged |
-| **`PAdESLevel`** | `PAdESLevel` | `BaselineB` | **`PAdESLevel`** (new) | **`PAdESLevel`** (new) | stored as the integer value |
+| **`PAdESLevel`** | `Integer (PAdESLevelType)` | `BaselineB` | **`PAdESLevel`** (new) | **`PAdESLevel`** (new) | stored as the integer value |
 | `TSAURL` | Uri | Nothing | `TSAURL` | same | unchanged |
 | `TSAUserName` | String | "" | `TSAUserName` | same | unchanged |
 | `TSAPassword` | String | "" | `TSAPassword` | same | AES, unchanged |
@@ -69,6 +69,9 @@ products agree on meaning. The undefined values 0-2 are rejected by validation.
 | **`RevocationCheckProtocol`** | Integer (`RevocationType`) | OCSP | `RevocationCheck` (kept) | `RevocationCheck` (kept) | renamed property `RevocationCheck` → `RevocationCheckProtocol`; the persisted names are contracts and stay |
 | **`EmbedRevocationInformation`** | Boolean | True | **`EmbedRevocationInformation`** (new) | **`EmbedRevocationInformation`** (new) | |
 | `IsProxyEnabled`, `ProxyServer`, `ProxyPort`, `ProxyAuthMethod`, `ProxyUserName`, `ProxyPassword` | | | | | unchanged |
+
+Enum-backed settings are `Integer` properties, matching the existing provider fields and the
+WinForms `SelectedValue` bindings.
 
 Removed properties and CSS constants: `IsTimeStampingEnabled`, `IsDocumentTimeStamp`,
 `IsSinglePassPadesBLTA` (CSS suffixes `TimeStampingEnabled`, `DocumentTimeStamp`,
@@ -82,7 +85,7 @@ are never read again.
   constructor defaults listed above (including `Enabled = False`). Nothing else is read for the
   block. The other providers and the document-class index settings load as before.
 - **`SetupDataFromXml` (backup import):** if the `PAdESLevel` element is absent, the new fields
-  are derived by `PDFSignerCryptoProvider.DeriveFromLegacyXml` (a pure `Shared` function):
+  are derived by `LegacyLevelDerivation.FromLegacy` (a pure `Shared` function):
   - `IsTimeStampingEnabled = 0` → `BaselineB`
   - `IsTimeStampingEnabled = 1`, `IsDocumentTimeStamp = 0` → `BaselineLT` when the old
     `RevocationCheck` ≠ None, else `BaselineT`
@@ -122,8 +125,16 @@ project's duplicate `Messages.resx` / `.hu.resx`, in English and Hungarian.
 | `SbbEventLogger.vb` | Attaches `PDFSigner` and `CertificateValidator` events (`OnError`, `OnChainElementDownload`, `OnChainElementNeeded`, `OnChainValidated`, `OnChainValidationProgress`, `OnTimestampRequest`, `OnTimestampValidated`, `OnTLSCertValidate`, `OnBeforeCertificateValidation`, `OnAfterCertificateValidation`) to the signature log. No endpoint limiting. |
 | `TsaUrlBuilder.vb` | Embeds TSA credentials as URL user-info (`OnTimestampRequest` is not raised for HTTP(S) in this build). |
 | `DocumentCertificateHarvester.vb` | Parse-only `PDFVerifier` pass returning the certificates, CRLs and OCSP responses currently carried by the document, plus the last signature's `EntityLabel`. |
+| `DerReader.vb` | Minimal DER reader for the two certificate extensions the module inspects (QC statements, authority information access). |
+| `QualifiedCertificateDetector.vb` | Decides whether a certificate carries the ETSI QcCompliance statement, i.e. is a qualified certificate. |
+| `SigningCertificatePrecheck.vb` | Offline checks of the operator's signing certificate before any SecureBlackbox pass; every failure is a Hungarian operator message. |
+| `ChainContextTracker.vb` | Follows the certificate under validation from chain events so an error event, which names no certificate, can be attributed to it. |
+| `TlsHandshakeScope.vb` | Tracks nested TLS handshakes so chain events during a pending handshake are demoted to trace in the signature log. |
+| `EntityNaming.vb` | Display ids of a document's signing entities for the log: signatures S0, S1…, document timestamps T0, T1…, a signature's own timestamps S0T0…. |
+| `WindowsCertificateStores.vb` | Trust anchors and intermediate certificates of the Windows stores as SecureBlackbox lists, loaded once per signing call and copied per pass (§4.2). |
+| `Helper\MomentFormat.vb` | Renders moments for the signature log: local time first, the UTC instant in parentheses. |
 | `EtsiValidity\ValidityModels.vb`, `AlgorithmSunsetTable.vb`, `EtsiValidityInputBuilder.vb`, `EtsiValidityCalculator.vb` | Port of PDF Streamer's ETSI EN 319 102-1 end-of-validity calculation; yields `ValidUntil` and `EvidenceValidUntil`. |
-| `SbbSignatureCreator.vb` | The orchestrator. Public surface unchanged from `SBBPDF`: `Initialize(PDFSignerCryptoProvider)`, `ActivateLicense()`, `GetCertificatesFromStore(QualifiedCertificatesOnly)`, `SignDocument(SignatureRequest) As SignatureResult`, `IDisposable`. |
+| `SbbSignatureCreator.vb` | The orchestrator. Public surface unchanged from `SBBPDF`: `Initialize(PDFSignerCryptoProvider)`, `ActivateLicense()`, `GetCertificatesFromStore(QualifiedCertificatesOnly)`, `SignDocument(SignatureRequest) As SignatureResult`. Not `IDisposable`: it holds no unmanaged or disposable state of its own. |
 | kept: `CertificateTranslator.vb`, `ServerCertificateValidator.vb` | unchanged |
 | deleted: `SBBPDF.vb`, `SBBCodeTranslator.vb` | legacy engine and its `TEl*` code tables |
 
@@ -149,6 +160,9 @@ dispatch changes.
   `DocumentCertificateHarvester`), so the Update and archive-timestamp passes see the TSA chain
   even when it is not installed in Windows. Harvested CRLs and OCSP responses are passed as
   `KnownCRLs` / `KnownOCSPs` so a later pass never re-downloads what an earlier pass embedded.
+- Each pass gets its own `CertificateList` copies of `TrustedCertificates` and the Windows-store
+  part of `KnownCertificates` (`WindowsCertificateStores.CopyOf`), because SecureBlackbox consumes
+  a list assigned to one component.
 
 ### 4.3 Signing plan
 
@@ -202,7 +216,8 @@ the `SignatureLogContent` CSS. SBB errors are translated by `SbbErrorTranslator`
 `<wrapper text> <sub-code text> <certificate CN> <responder URL without user-info> [SBB <code> /
 OCSP|CRL <sub>]`. Unexpected exceptions are logged through NLog and reported with
 `ExceptionText`. Log and error texts stay Hungarian string literals in the module, matching the
-other modules.
+other modules. `SbbErrorTranslator.ScrubUrlCredentials` strips `user:password@` from any URL
+found in an SBB error description or exception text before it is logged.
 
 ## 5. Setup UI (`PDF Signer for Tungsten Capture Setup\FrmSetup`)
 

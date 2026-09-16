@@ -20,7 +20,7 @@
     <Company>Doc-Soft Kkt.</Company>
     <Product>PDF Signer for Tungsten Capture</Product>
     <Copyright>Copyright © Doc-Soft Kkt. 2026.</Copyright>
-    <Version>11.2.0.0</Version>
+    <Version>11.3.0.0</Version>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <!-- Microsoft.NET.Sdk drops AssemblyFoldersEx/GAC lookup; restore the classic search order so
          installed-SDK dependencies (Kofax, DevExpress) resolve as in the legacy projects. -->
