@@ -48,7 +48,7 @@ Friend Module DerReader
         If Content Is Nothing Then Return res
         Dim offset As Integer = 0
         While offset < Content.Length
-            Dim element As DerElement
+            Dim element As New DerElement()
             If Not TryRead(Content, offset, element) Then Exit While
             res.Add(element)
         End While

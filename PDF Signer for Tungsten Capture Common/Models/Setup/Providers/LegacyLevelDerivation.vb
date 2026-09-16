@@ -1,8 +1,12 @@
 ''' <summary>Provider values derived from a backup file written before the PAdESLevel element existed (timestamp switches + one revocation setting).</summary>
 Public Class LegacyLevelDerivation
+    ''' <summary>Derived PAdES baseline level.</summary>
     Public Property Level As PAdESLevelType
+    ''' <summary>Whether revocation checking should be enabled for the derived level.</summary>
     Public Property EnableRevocationChecking As Boolean
+    ''' <summary>Derived revocation check protocol (a <see cref="RevocationType"/> value); OCSP when checking is disabled.</summary>
     Public Property RevocationCheckProtocol As Integer
+    ''' <summary>Whether revocation data should be embedded; always true for a legacy backup.</summary>
     Public Property EmbedRevocationInformation As Boolean
 
     ''' <summary>Maps the timestamp switches and the single revocation setting onto a level and the three revocation switches.</summary>

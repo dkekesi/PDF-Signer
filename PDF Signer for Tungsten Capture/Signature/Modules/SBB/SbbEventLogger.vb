@@ -4,7 +4,7 @@ Imports NLog
 Imports nsoftware.SecureBlackbox
 Imports SbbPdfSigner = nsoftware.SecureBlackbox.PDFSigner
 
-''' <summary>Writes PDFSigner validation events into the Hungarian signature log; chain events during a TLS handshake describe the TLS server certificate and go to trace only.</summary>
+''' <summary>Writes PDFSigner validation events into the Hungarian signature log; chain events during a TLS handshake describe the TLS server certificate and are written into the log only when NLog trace logging is enabled.</summary>
 Friend NotInheritable Class SbbEventLogger
     Private ReadOnly _log As StringBuilder
     Private ReadOnly _logger As Logger
@@ -17,7 +17,7 @@ Friend NotInheritable Class SbbEventLogger
     ''' <summary>Display ids (S0 / T0 / S0T0) for known entity labels; unmapped labels pass through.</summary>
     Friend Property Naming As EntityNaming = EntityNaming.Empty
 
-    ''' <summary>Creates a logger that appends to Log and mirrors every line to Logger.</summary>
+    ''' <summary>Creates a logger that appends every line to Log; only OnError additionally reports to Logger, at Error level.</summary>
     Friend Sub New(Log As StringBuilder, Logger As Logger)
         _log = Log
         _logger = Logger
@@ -158,7 +158,7 @@ Friend NotInheritable Class SbbEventLogger
         If _logger.IsTraceEnabled Then Line(M)
     End Sub
 
-    ''' <summary>Chain lines during a TLS handshake describe the TLS server certificate and are demoted to trace.</summary>
+    ''' <summary>Chain lines during a TLS handshake describe the TLS server certificate; they are written into the log only when NLog trace logging is enabled.</summary>
     Private Sub ChainLine(M As String)
         If _tls.InProgress Then
             TraceLine(M)

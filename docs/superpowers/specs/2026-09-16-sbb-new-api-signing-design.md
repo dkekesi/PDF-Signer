@@ -136,8 +136,8 @@ project's duplicate `Messages.resx` / `.hu.resx`, in English and Hungarian.
 | `EtsiValidity\ValidityModels.vb`, `AlgorithmSunsetTable.vb`, `EtsiValidityInputBuilder.vb`, `EtsiValidityCalculator.vb` | Port of PDF Streamer's ETSI EN 319 102-1 end-of-validity calculation; yields `ValidUntil` and `EvidenceValidUntil`. |
 | `SbbSignatureCreator.vb` | The orchestrator. Public surface unchanged from `SBBPDF`: `Initialize(PDFSignerCryptoProvider)`, `ActivateLicense()`, `GetCertificatesFromStore(QualifiedCertificatesOnly)`, `SignDocument(SignatureRequest) As SignatureResult`. Not `IDisposable`: it holds no unmanaged or disposable state of its own. |
 | `SigningBufferFactory.vb` | Chooses the working-copy/pass-output buffer: `MemoryTributary`, or a self-deleting temp `FileStream` for large documents (§4.4). |
-| kept: `CertificateTranslator.vb`, `ServerCertificateValidator.vb` | unchanged |
-| deleted: `SBBPDF.vb`, `SBBCodeTranslator.vb` | legacy engine and its `TEl*` code tables |
+| kept: `CertificateTranslator.vb` | unchanged |
+| deleted: `SBBPDF.vb`, `SBBCodeTranslator.vb`, `ServerCertificateValidator.vb` | legacy engine, its `TEl*` code tables, and the unused TLS certificate validator |
 
 `SignatureOperation.vb` swaps `New SBBPDF` for `New SbbSignatureCreator`; nothing else in the
 dispatch changes.

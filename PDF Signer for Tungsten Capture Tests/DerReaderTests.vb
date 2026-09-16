@@ -7,7 +7,7 @@ Public Class DerReaderTests
     Public Sub Reads_a_short_form_element()
         Dim data As Byte() = {&H6, &H3, &H2A, &H3, &H4}
         Dim offset As Integer = 0
-        Dim e As DerReader.DerElement
+        Dim e As New DerReader.DerElement()
         Assert.IsTrue(DerReader.TryRead(data, offset, e))
         Assert.AreEqual(CByte(&H6), e.Tag)
         CollectionAssert.AreEqual(New Byte() {&H2A, &H3, &H4}, e.Content)
@@ -20,7 +20,7 @@ Public Class DerReaderTests
         Dim data As New List(Of Byte) From {&H4, &H81, &HC8}
         data.AddRange(content)
         Dim offset As Integer = 0
-        Dim e As DerReader.DerElement
+        Dim e As New DerReader.DerElement()
         Assert.IsTrue(DerReader.TryRead(data.ToArray(), offset, e))
         Assert.AreEqual(200, e.Content.Length)
         Assert.AreEqual(203, offset)
@@ -29,7 +29,7 @@ Public Class DerReaderTests
     <TestMethod>
     Public Sub Truncated_input_is_rejected()
         Dim offset As Integer = 0
-        Dim e As DerReader.DerElement
+        Dim e As New DerReader.DerElement()
         Assert.IsFalse(DerReader.TryRead(New Byte() {&H30, &H5, &H1}, offset, e))
         Assert.IsFalse(DerReader.TryRead(New Byte() {&H30}, offset, e))
         Assert.IsFalse(DerReader.TryRead(Nothing, offset, e))
@@ -38,7 +38,7 @@ Public Class DerReaderTests
     <TestMethod>
     Public Sub Oversized_long_form_length_is_rejected()
         Dim offset As Integer = 0
-        Dim e As DerReader.DerElement
+        Dim e As New DerReader.DerElement()
         Assert.IsFalse(DerReader.TryRead(New Byte() {&H4, &H84, &H7F, &HFF, &HFF, &HFF, &H0}, offset, e))
     End Sub
 

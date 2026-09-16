@@ -135,7 +135,7 @@
             <li><b>TSA URL:</b> az időbélyeg-szolgáltató URL-je.</li>
             <li><b>TSA felhasználónév (TSA user name):</b> az időbélyeg-szolgáltatóhoz történő kapcsolódáshoz használt felhasználónév. Ha a belépéshez nem kell felhasználónév, akkor a mezőt hagyjuk üresen.</li>
             <li><b>Jelszó (Password):</b> az időbélyeg-szolgáltatóhoz történő kapcsolódáshoz használt felhasználónévhez tartozó jelszó. Ha a belépéshez nem kell felhasználónév, vagy nem tartozik hozzá jelszó, akkor a mezőt hagyjuk üresen.</li>
-            <li><b>Hash algoritmus (Hash method):</b> a B-LTA archív időbélyeg lenyomatképző algoritmusa.</li>
+            <li><b>Archív időbélyeg hash algoritmusa (Hash method):</b> a B-LTA archív időbélyeg lenyomatképző algoritmusa.</li>
         </ul>
         <p class="warning">Figyelem! A PAdES B-LTA aláírások dokumentumonként két időbélyeget követelnek meg, ami az időbélyeg szolgáltató terheltségétől és az internet kapcsolat sebességétől függően pár dokumentumonként másodperccel lassítja a hitelesítési folyamatot. Az időbélyegzés költsége fájlonként kétszeres lesz!</p>
         <h5>Visszavonás-ellenőrzés beállításai (Revocation checking)</h5>
@@ -153,7 +153,7 @@
             <li><b>Proxy felhasználónév (Proxy user name):</b> a proxy szerverre történő bejelentkezéshez szükséges felhasználónév.</li>
             <li><b>Proxy jelszó (Password):</b> a proxy szerverre történő bejelentkezéshez szükséges felhasználónévhez tartozó jelszó.</li>
         </ul>
-        <p>Frissítés korábbi verzióról: a dokumentumosztályok PDF Signer beállításait a frissítés előtt XML fájlba kell exportálni, majd a frissítés után importálni; a PAdES szint nélkül mentett beállításokat a rendszer alapértelmezettként kezeli.</p>
+        <p>Frissítés korábbi verzióról: azoknál a dokumentumosztályoknál, amelyeknek PDF Signer beállításait a frissítés után nem importálták vissza (vagy nem adták meg újra), a PDF Signer szolgáltató letiltott állapotban marad (alapértelmezett beállításokkal), amíg a beállításokat vissza nem importálják vagy újra meg nem adják. Ezért a beállításokat a frissítés előtt XML fájlba kell exportálni, majd a frissítés után importálni.</p>
         <h4><a name="PDF Stre"></a>PDF Streamer</h4>
         <p>
             <img src="../../Resources/Images/Screenshots/CryptoProviderSetupPDFStreamer.png" class="Screenshot" />

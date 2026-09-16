@@ -17,7 +17,7 @@ Friend Module QualifiedCertificateDetector
     ''' <summary>True when the DER QCStatements value (SEQUENCE OF SEQUENCE { statementId, statementInfo }) contains QcCompliance.</summary>
     Friend Function ContainsQcCompliance(QcStatements As Byte()) As Boolean
         Dim offset As Integer = 0
-        Dim outer As DerReader.DerElement
+        Dim outer As New DerReader.DerElement()
         If Not DerReader.TryRead(QcStatements, offset, outer) OrElse outer.Tag <> &H30 Then Return False
 
         For Each statement As DerReader.DerElement In DerReader.Children(outer.Content)

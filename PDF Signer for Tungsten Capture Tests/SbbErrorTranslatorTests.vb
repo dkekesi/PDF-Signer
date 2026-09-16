@@ -93,4 +93,27 @@ Public Class SbbErrorTranslatorTests
         Assert.AreEqual("contact admin@example.com for help", SbbErrorTranslator.ScrubUrlCredentials("contact admin@example.com for help"))
         Assert.IsNull(SbbErrorTranslator.ScrubUrlCredentials(Nothing))
     End Sub
+
+    <TestMethod>
+    Public Sub A_decoded_at_sign_in_the_password_is_fully_scrubbed()
+        Assert.AreEqual("Connection to https://tsa.example/ts failed",
+                        SbbErrorTranslator.ScrubUrlCredentials("Connection to https://u:p@ss@tsa.example/ts failed"))
+    End Sub
+
+    <TestMethod>
+    Public Sub A_decoded_space_in_the_password_is_fully_scrubbed()
+        Assert.AreEqual("Connection to https://tsa.example/ts failed",
+                        SbbErrorTranslator.ScrubUrlCredentials("Connection to https://u:pa ss@tsa.example/ts failed"))
+    End Sub
+
+    <TestMethod>
+    Public Sub Two_credentialed_urls_on_one_line_are_both_scrubbed_and_the_gap_kept()
+        Assert.AreEqual("Primary https://a.example/x then https://b.example/y",
+                        SbbErrorTranslator.ScrubUrlCredentials("Primary https://u1:p1@a.example/x then https://u2:p2@b.example/y"))
+    End Sub
+
+    <TestMethod>
+    Public Sub An_at_sign_in_the_path_past_the_authority_is_left_alone()
+        Assert.AreEqual("http://host/path@x", SbbErrorTranslator.ScrubUrlCredentials("http://host/path@x"))
+    End Sub
 End Class

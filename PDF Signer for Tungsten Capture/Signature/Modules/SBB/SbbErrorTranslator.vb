@@ -9,9 +9,9 @@ Friend Module SbbErrorTranslator
         "^\s*(?<family>OCSP|CRL)\s+error\s+(?<sub>[0-9]{1,9})\s*\(location:\s*(?<loc>[^)]*)\)\s*$",
         RegexOptions.IgnoreCase Or RegexOptions.CultureInvariant)
 
-    ''' <summary>Matches "scheme://user[:pass]@" anywhere in free text, so embedded URL credentials can be scrubbed from messages SecureBlackbox did not template.</summary>
+    ''' <summary>Matches "scheme://userinfo@" anywhere in free text, userinfo running up to the last '@' before the authority's first '/'; a percent-decoded '@' or space inside the userinfo is included, and the match cannot cross into a following "scheme://".</summary>
     Private ReadOnly UrlCredentials As New Regex(
-        "(?<scheme>[a-zA-Z][a-zA-Z0-9+.-]*://)[^/\s@]+@",
+        "(?<scheme>[a-zA-Z][a-zA-Z0-9+.-]*://)[^/]*@",
         RegexOptions.CultureInvariant)
 
     Private ReadOnly OcspSubCodes As New Dictionary(Of Integer, String) From {

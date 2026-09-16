@@ -73,7 +73,7 @@ Friend Module SigningCertificatePrecheck
     ''' <summary>True when the DER AuthorityInfoAccessSyntax (SEQUENCE OF SEQUENCE { accessMethod, accessLocation }) has an id-ad-ocsp entry.</summary>
     Friend Function AiaContainsOcsp(Aia As Byte()) As Boolean
         Dim offset As Integer = 0
-        Dim outer As DerReader.DerElement
+        Dim outer As New DerReader.DerElement()
         If Not DerReader.TryRead(Aia, offset, outer) OrElse outer.Tag <> &H30 Then Return False
 
         For Each description As DerReader.DerElement In DerReader.Children(outer.Content)

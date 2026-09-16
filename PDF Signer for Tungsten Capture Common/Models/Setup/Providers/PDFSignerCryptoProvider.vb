@@ -4,24 +4,36 @@ Imports PDFSignerCommon.My.Resources
 Public Class PDFSignerCryptoProvider
     Inherits CryptoProviderBase
 
+    ''' <summary>Returns the provider's display name, "PDF Signer".</summary>
     Public Overrides Function ToString() As String
         Return "PDF Signer"
     End Function
 
+    ''' <summary>Identifies this provider as <see cref="CryptoProviderType.PDFSigner"/>.</summary>
     Public Overrides ReadOnly Property ProviderType As CryptoProviderType = CryptoProviderType.PDFSigner
+    ''' <summary>XML element name a backup stores this provider's settings under.</summary>
     Public Overrides ReadOnly Property ConfigXmlElementName As String = "PDFSignerCryptoProvider"
+    ''' <summary>True: this provider can sign with certificates from the local certificate store.</summary>
     Public Overrides ReadOnly Property SupportsLocalCertificates As Boolean = True
 
+    ''' <summary>Organization name embedded in the signature; empty when not configured.</summary>
     Public Property SigningOrganization As String
+    ''' <summary>Reason text embedded in the signature; empty when not configured.</summary>
     Public Property SigningReason As String
     ''' <summary>PAdES baseline level to produce (a <see cref="PAdESLevelType"/> value).</summary>
     Public Property PAdESLevel As Integer
+    ''' <summary>Hash algorithm for the signature itself (a <see cref="HashType"/> value).</summary>
     Public Property SignatureHashMethod As Integer
 
+    ''' <summary>Restricts signing to qualified certificates when true.</summary>
     Public Property AllowQualifiedCertificatesOnly As Boolean
+    ''' <summary>Uses the Windows logged-on user's display name as the signer name when true.</summary>
     Public Property SignerNameFromLoggedOnUser As Boolean
+    ''' <summary>URL of the timestamp authority; required when the configured level is timestamped.</summary>
     Public Property TSAURL As Uri
+    ''' <summary>User name for TSA basic authentication; empty when not required.</summary>
     Public Property TSAUserName As String
+    ''' <summary>Password for TSA basic authentication, stored AES-256 encrypted.</summary>
     Public Property TSAPassword As String
     ''' <summary>Hash of the B-LTA archive document timestamp.</summary>
     Public Property TimeStampHashMethod As Integer
@@ -33,13 +45,20 @@ Public Class PDFSignerCryptoProvider
     ''' <summary>Whether the revocation data is written into the document (B-LT / B-LTA).</summary>
     Public Property EmbedRevocationInformation As Boolean
 
+    ''' <summary>Routes SecureBlackbox network calls through an HTTP proxy when true.</summary>
     Public Property IsProxyEnabled As Boolean
+    ''' <summary>Proxy host name or address; must not itself contain a scheme or port.</summary>
     Public Property ProxyServer As String
+    ''' <summary>Proxy TCP port; defaults to 8080.</summary>
     Public Property ProxyPort As Integer
+    ''' <summary>Proxy authentication method (a <see cref="ProxyAuthenticationMethod"/> value).</summary>
     Public Property ProxyAuthMethod As Integer
+    ''' <summary>User name for proxy authentication; required when ProxyAuthMethod is UserPassword.</summary>
     Public Property ProxyUserName As String
+    ''' <summary>Password for proxy authentication, stored AES-256 encrypted.</summary>
     Public Property ProxyPassword As String
 
+    ''' <summary>Initializes SHA-256 hashing, OCSP revocation checking and proxy port 8080 as the provider's defaults.</summary>
     Public Sub New()
         PAdESLevel = PAdESLevelType.BaselineB
         SignatureHashMethod = HashType.SHA256
@@ -68,6 +87,7 @@ Public Class PDFSignerCryptoProvider
         End Get
     End Property
 
+    ''' <summary>Trims the free-text fields, then returns the first failing validation rule's message, or an empty string when the settings are valid.</summary>
     Public Overrides Function Validate() As String
         If Not String.IsNullOrEmpty(SigningOrganization) Then SigningOrganization = SigningOrganization.Trim
         If Not String.IsNullOrEmpty(SigningReason) Then SigningReason = SigningReason.Trim
@@ -128,6 +148,7 @@ Public Class PDFSignerCryptoProvider
         End With
     End Sub
 
+    ''' <summary>Writes the block into the document class, encrypting the TSA and proxy passwords.</summary>
     Public Overrides Sub SaveSetupDataInAdmin(Parser As SetupCSSParser)
         With Parser
             .WriteSetupCSS(CSS.IsPDFSignerEnabled, Converter.BooleanToNumericString(Enabled))
@@ -156,6 +177,7 @@ Public Class PDFSignerCryptoProvider
         End With
     End Sub
 
+    ''' <summary>Serializes the block to XML for a backup, encrypting the TSA and proxy passwords only when EncryptSecrets is true.</summary>
     Public Overrides Function SetupDataToXml(EncryptSecrets As Boolean) As XElement
         Return New XElement(ConfigXmlElementName,
                 New XElement("Enabled", Converter.BooleanToNumericString(Enabled)),
