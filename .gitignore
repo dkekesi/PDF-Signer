@@ -7,3 +7,6 @@ obj/
 *.s3db-shm
 *.s3db-wal
 Help/Output/*/Temporary/
+
+# Claude Code worktrees (created by EnterWorktree)
+.claude/worktrees/
