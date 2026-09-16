@@ -33,7 +33,8 @@ Friend Module DerReader
             Next
         End If
 
-        If length < 0 OrElse pos + length > Data.Length Then Return False
+        ' Compares without adding: pos + length can overflow Integer for a maliciously large long-form length.
+        If length < 0 OrElse length > Data.Length - pos Then Return False
         Dim content(length - 1) As Byte
         Array.Copy(Data, pos, content, 0, length)
         Element = New DerElement With {.Tag = tag, .Content = content}

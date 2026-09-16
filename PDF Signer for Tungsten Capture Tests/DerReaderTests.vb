@@ -36,6 +36,13 @@ Public Class DerReaderTests
     End Sub
 
     <TestMethod>
+    Public Sub Oversized_long_form_length_is_rejected()
+        Dim offset As Integer = 0
+        Dim e As DerReader.DerElement
+        Assert.IsFalse(DerReader.TryRead(New Byte() {&H4, &H84, &H7F, &HFF, &HFF, &HFF, &H0}, offset, e))
+    End Sub
+
+    <TestMethod>
     Public Sub Children_splits_a_sequence()
         Dim seq As Byte() = {&H2, &H1, &H5, &H6, &H2, &H2A, &H3}
         Dim children = DerReader.Children(seq)
