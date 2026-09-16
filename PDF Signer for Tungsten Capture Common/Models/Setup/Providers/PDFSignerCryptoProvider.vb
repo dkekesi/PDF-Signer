@@ -1,5 +1,6 @@
-﻿Imports PDFSignerCommon.My.Resources
+Imports PDFSignerCommon.My.Resources
 
+''' <summary>Settings of the built-in SecureBlackbox signing provider ("PDF Signer") for one document class.</summary>
 Public Class PDFSignerCryptoProvider
     Inherits CryptoProviderBase
 
@@ -13,18 +14,24 @@ Public Class PDFSignerCryptoProvider
 
     Public Property SigningOrganization As String
     Public Property SigningReason As String
-    Public Property RevocationCheck As Integer
+    ''' <summary>PAdES baseline level to produce (a <see cref="PAdESLevelType"/> value).</summary>
+    Public Property PAdESLevel As Integer
     Public Property SignatureHashMethod As Integer
-    Public Property IsTimeStampingEnabled As Boolean
 
     Public Property AllowQualifiedCertificatesOnly As Boolean
     Public Property SignerNameFromLoggedOnUser As Boolean
     Public Property TSAURL As Uri
     Public Property TSAUserName As String
     Public Property TSAPassword As String
-    Public Property IsDocumentTimeStamp As Boolean
-    Public Property IsSinglePassPadesBLTA As Boolean
+    ''' <summary>Hash of the B-LTA archive document timestamp.</summary>
     Public Property TimeStampHashMethod As Integer
+
+    ''' <summary>Whether the chains of the new signature and its timestamps are revocation-checked.</summary>
+    Public Property EnableRevocationChecking As Boolean
+    ''' <summary>Protocol of the revocation check (a <see cref="RevocationType"/> value); stored under the CSS/XML name RevocationCheck.</summary>
+    Public Property RevocationCheckProtocol As Integer
+    ''' <summary>Whether the revocation data is written into the document (B-LT / B-LTA).</summary>
+    Public Property EmbedRevocationInformation As Boolean
 
     Public Property IsProxyEnabled As Boolean
     Public Property ProxyServer As String
@@ -34,12 +41,32 @@ Public Class PDFSignerCryptoProvider
     Public Property ProxyPassword As String
 
     Public Sub New()
-        RevocationCheck = RevocationType.CRL
+        PAdESLevel = PAdESLevelType.BaselineB
         SignatureHashMethod = HashType.SHA256
         TimeStampHashMethod = HashType.SHA256
+        EnableRevocationChecking = False
+        RevocationCheckProtocol = RevocationType.OCSP
+        EmbedRevocationInformation = True
         ProxyPort = 8080
         ProxyAuthMethod = ProxyAuthenticationMethod.NoAuthentication
     End Sub
+
+    ''' <summary>True when the value is one of the four offered baseline levels.</summary>
+    Public Shared Function IsDefinedLevel(Level As Integer) As Boolean
+        Return Level >= PAdESLevelType.BaselineB AndAlso Level <= PAdESLevelType.BaselineLTA
+    End Function
+
+    Private ReadOnly Property IsTimestamped As Boolean
+        Get
+            Return PAdESLevel = PAdESLevelType.BaselineT OrElse IsLongTerm
+        End Get
+    End Property
+
+    Private ReadOnly Property IsLongTerm As Boolean
+        Get
+            Return PAdESLevel = PAdESLevelType.BaselineLT OrElse PAdESLevel = PAdESLevelType.BaselineLTA
+        End Get
+    End Property
 
     Public Overrides Function Validate() As String
         If Not String.IsNullOrEmpty(SigningOrganization) Then SigningOrganization = SigningOrganization.Trim
@@ -48,66 +75,49 @@ Public Class PDFSignerCryptoProvider
         If Not String.IsNullOrEmpty(ProxyServer) Then ProxyServer = ProxyServer.Trim
         If Not String.IsNullOrEmpty(ProxyUserName) Then ProxyUserName = ProxyUserName.Trim
 
-        If Enabled Then
-            If String.IsNullOrEmpty(RevocationCheck) Then
-                Return Messages.Revocation_Method_Missing
-            End If
-            If String.IsNullOrEmpty(SignatureHashMethod) Then
-                Return Messages.Signature_Hash_Algorithm_Missing
-            End If
+        If Not Enabled Then Return String.Empty
 
-            If IsTimeStampingEnabled Then
-                If String.IsNullOrEmpty(TSAURL?.ToString) Then
-                    Return Messages.TSA_URL_Missing
-                End If
-                If String.IsNullOrEmpty(TimeStampHashMethod) Then
-                    Return Messages.Time_Stamp_Hash_Algorithm_Missing
-                End If
+        If SignatureHashMethod = HashType.None Then Return Messages.Signature_Hash_Algorithm_Missing
+        If Not IsDefinedLevel(PAdESLevel) Then Return Messages.PAdES_Level_Missing
 
-                If IsSinglePassPadesBLTA AndAlso (Not IsDocumentTimeStamp OrElse RevocationCheck <> RevocationType.OCSP) Then
-                    Return Messages.LTA_Signature_Config_Incorrect
-                End If
-            End If
+        If IsTimestamped AndAlso String.IsNullOrEmpty(TSAURL?.ToString) Then Return Messages.TSA_URL_Missing
+        If PAdESLevel = PAdESLevelType.BaselineLTA AndAlso TimeStampHashMethod = HashType.None Then Return Messages.Time_Stamp_Hash_Algorithm_Missing
 
-            If IsProxyEnabled Then
-                If String.IsNullOrEmpty(ProxyServer) Then
-                    Return Messages.Proxy_Server_Missing
-                End If
+        If EnableRevocationChecking AndAlso RevocationCheckProtocol = RevocationType.None Then Return Messages.Revocation_Method_Missing
+        ' B-LT / B-LTA only exist with collected and embedded revocation data.
+        If IsLongTerm AndAlso Not (EnableRevocationChecking AndAlso EmbedRevocationInformation) Then Return Messages.LTV_Requires_Revocation_Embedding
 
-                If ProxyServer.Contains("://") OrElse ProxyServer.Contains(":") Then
-                    Return Messages.Proxy_Server_Invalid
-                End If
-
-                If String.IsNullOrEmpty(ProxyAuthMethod) Then
-                    Return Messages.Proxy_Auth_Method_Missing
-                End If
-
-                If ProxyAuthMethod = ProxyAuthenticationMethod.UserPassword AndAlso String.IsNullOrWhiteSpace(ProxyUserName) Then
-                    Return Messages.Proxy_User_Missing
-                End If
-            End If
+        If IsProxyEnabled Then
+            If String.IsNullOrEmpty(ProxyServer) Then Return Messages.Proxy_Server_Missing
+            If ProxyServer.Contains("://") OrElse ProxyServer.Contains(":") Then Return Messages.Proxy_Server_Invalid
+            If ProxyAuthMethod = ProxyAuthenticationMethod.UserPassword AndAlso String.IsNullOrWhiteSpace(ProxyUserName) Then Return Messages.Proxy_User_Missing
         End If
 
         Return String.Empty
     End Function
 
+    ''' <summary>Loads the block from the document class; a class without a stored PAdES level keeps the constructor defaults.</summary>
     Public Overrides Sub LoadSetupDataInAdmin(Parser As SetupCSSParser)
         With Parser
+            Dim levelValue As String = .ReadSetupCSS(CSS.PAdESLevel)
+            If String.IsNullOrEmpty(levelValue) Then Return
+
             Enabled = Converter.StringToBoolean(.ReadSetupCSS(CSS.IsPDFSignerEnabled))
             SigningOrganization = .ReadSetupCSS(CSS.SigningOrganization)
             SigningReason = .ReadSetupCSS(CSS.SigningReason)
-            RevocationCheck = .ReadSetupCSSInteger(CSS.RevocationCheck, 0)
-            SignatureHashMethod = .ReadSetupCSSInteger(CSS.SignatureHashMethod, 28932)
+            PAdESLevel = .ReadSetupCSSInteger(CSS.PAdESLevel, PAdESLevelType.BaselineB)
+            SignatureHashMethod = .ReadSetupCSSInteger(CSS.SignatureHashMethod, HashType.SHA256)
             AllowQualifiedCertificatesOnly = Converter.StringToBoolean(.ReadSetupCSS(CSS.AllowQualifiedCertificatesOnly))
             SignerNameFromLoggedOnUser = Converter.StringToBoolean(.ReadSetupCSS(CSS.SignerNameFromLoggedOnUser))
 
-            IsTimeStampingEnabled = Converter.StringToBoolean(.ReadSetupCSS(CSS.IsTimeStampingEnabled))
             TSAURL = Converter.StringToUri(.ReadSetupCSS(CSS.TSAURL))
             TSAUserName = .ReadSetupCSS(CSS.TSAUserName)
             TSAPassword = enc.AES256Decrypt(.ReadSetupCSS(CSS.TSAPassword))
-            IsDocumentTimeStamp = Converter.StringToBoolean(.ReadSetupCSS(CSS.IsDocumentTimeStamp))
-            IsSinglePassPadesBLTA = Converter.StringToBoolean(.ReadSetupCSS(CSS.IsSinglePassPadesBLTA))
-            TimeStampHashMethod = .ReadSetupCSSInteger(CSS.TimeStampHashMethod, 28932)
+            TimeStampHashMethod = .ReadSetupCSSInteger(CSS.TimeStampHashMethod, HashType.SHA256)
+
+            EnableRevocationChecking = Converter.StringToBoolean(.ReadSetupCSS(CSS.EnableRevocationChecking))
+            RevocationCheckProtocol = .ReadSetupCSSInteger(CSS.RevocationCheck, RevocationType.OCSP)
+            EmbedRevocationInformation = Converter.StringToBoolean(.ReadSetupCSS(CSS.EmbedRevocationInformation))
 
             IsProxyEnabled = Converter.StringToBoolean(.ReadSetupCSS(CSS.IsProxyEnabled))
             ProxyAuthMethod = .ReadSetupCSSInteger(CSS.ProxyAuthMethod, 0)
@@ -123,22 +133,19 @@ Public Class PDFSignerCryptoProvider
             .WriteSetupCSS(CSS.IsPDFSignerEnabled, Converter.BooleanToNumericString(Enabled))
             .WriteSetupCSS(CSS.SigningOrganization, SigningOrganization)
             .WriteSetupCSS(CSS.SigningReason, SigningReason)
-            .WriteSetupCSS(CSS.RevocationCheck, RevocationCheck)
+            .WriteSetupCSS(CSS.PAdESLevel, PAdESLevel)
             .WriteSetupCSS(CSS.SignatureHashMethod, SignatureHashMethod)
             .WriteSetupCSS(CSS.AllowQualifiedCertificatesOnly, Converter.BooleanToNumericString(AllowQualifiedCertificatesOnly))
             .WriteSetupCSS(CSS.SignerNameFromLoggedOnUser, Converter.BooleanToNumericString(SignerNameFromLoggedOnUser))
 
-            .WriteSetupCSS(CSS.IsTimeStampingEnabled, Converter.BooleanToNumericString(IsTimeStampingEnabled))
-            If TSAURL Is Nothing Then
-                .WriteSetupCSS(CSS.TSAURL, String.Empty)
-            Else
-                .WriteSetupCSS(CSS.TSAURL, TSAURL?.ToString)
-            End If
+            .WriteSetupCSS(CSS.TSAURL, If(TSAURL Is Nothing, String.Empty, TSAURL.ToString))
             .WriteSetupCSS(CSS.TSAUserName, TSAUserName)
             .WriteSetupCSS(CSS.TSAPassword, enc.AES256Encrypt(TSAPassword))
-            .WriteSetupCSS(CSS.IsDocumentTimeStamp, Converter.BooleanToNumericString(IsDocumentTimeStamp))
-            .WriteSetupCSS(CSS.IsSinglePassPadesBLTA, Converter.BooleanToNumericString(IsSinglePassPadesBLTA))
             .WriteSetupCSS(CSS.TimeStampHashMethod, TimeStampHashMethod)
+
+            .WriteSetupCSS(CSS.EnableRevocationChecking, Converter.BooleanToNumericString(EnableRevocationChecking))
+            .WriteSetupCSS(CSS.RevocationCheck, RevocationCheckProtocol)
+            .WriteSetupCSS(CSS.EmbedRevocationInformation, Converter.BooleanToNumericString(EmbedRevocationInformation))
 
             .WriteSetupCSS(CSS.IsProxyEnabled, Converter.BooleanToNumericString(IsProxyEnabled))
             .WriteSetupCSS(CSS.ProxyAuthMethod, ProxyAuthMethod)
@@ -150,47 +157,58 @@ Public Class PDFSignerCryptoProvider
     End Sub
 
     Public Overrides Function SetupDataToXml(EncryptSecrets As Boolean) As XElement
-        Dim dom As New XElement(ConfigXmlElementName,
+        Return New XElement(ConfigXmlElementName,
                 New XElement("Enabled", Converter.BooleanToNumericString(Enabled)),
                 New XElement("SigningOrganization", SigningOrganization),
                 New XElement("SigningReason", SigningReason),
-                New XElement("RevocationCheck", RevocationCheck),
+                New XElement("PAdESLevel", PAdESLevel),
                 New XElement("SignatureHashMethod", SignatureHashMethod),
                 New XElement("AllowQualifiedCertificatesOnly", Converter.BooleanToNumericString(AllowQualifiedCertificatesOnly)),
                 New XElement("SignerNameFromLoggedOnUser", Converter.BooleanToNumericString(SignerNameFromLoggedOnUser)),
-                New XElement("IsTimeStampingEnabled", Converter.BooleanToNumericString(IsTimeStampingEnabled)),
                 New XElement("TSAURL", TSAURL),
                 New XElement("TSAUserName", TSAUserName),
                 New XElement("TSAPassword", SecretToXml(TSAPassword, EncryptSecrets)),
-                New XElement("IsDocumentTimeStamp", Converter.BooleanToNumericString(IsDocumentTimeStamp)),
-                New XElement("IsSinglePassPadesBLTA", Converter.BooleanToNumericString(IsSinglePassPadesBLTA)),
                 New XElement("TimeStampHashMethod", TimeStampHashMethod),
+                New XElement("EnableRevocationChecking", Converter.BooleanToNumericString(EnableRevocationChecking)),
+                New XElement("RevocationCheck", RevocationCheckProtocol),
+                New XElement("EmbedRevocationInformation", Converter.BooleanToNumericString(EmbedRevocationInformation)),
                 New XElement("IsProxyEnabled", Converter.BooleanToNumericString(IsProxyEnabled)),
                 New XElement("ProxyServer", ProxyServer),
                 New XElement("ProxyPort", ProxyPort),
                 New XElement("ProxyAuthMethod", ProxyAuthMethod),
                 New XElement("ProxyUserName", ProxyUserName),
                 New XElement("ProxyPassword", SecretToXml(ProxyPassword, EncryptSecrets)))
-
-        Return dom
     End Function
 
+    ''' <summary>Restores the block from a backup; a backup without a PAdESLevel element is mapped through <see cref="LegacyLevelDerivation"/>.</summary>
     Public Overrides Sub SetupDataFromXml(ConfigElement As XElement)
         Enabled = Converter.StringToBoolean(ConfigElement.Element("Enabled"))
         SigningOrganization = ConfigElement.Element("SigningOrganization")
         SigningReason = ConfigElement.Element("SigningReason")
-        RevocationCheck = CInt(ConfigElement.Element("RevocationCheck"))
         SignatureHashMethod = CInt(ConfigElement.Element("SignatureHashMethod"))
         AllowQualifiedCertificatesOnly = Converter.StringToBoolean(ConfigElement.Element("AllowQualifiedCertificatesOnly"))
         SignerNameFromLoggedOnUser = Converter.StringToBoolean(ConfigElement.Element("SignerNameFromLoggedOnUser"))
 
-        IsTimeStampingEnabled = Converter.StringToBoolean(ConfigElement.Element("IsTimeStampingEnabled"))
         TSAURL = Converter.StringToUri(ConfigElement.Element("TSAURL"))
         TSAUserName = ConfigElement.Element("TSAUserName")
         TSAPassword = enc.AES256Decrypt(ConfigElement.Element("TSAPassword"))
-        IsDocumentTimeStamp = Converter.StringToBoolean(ConfigElement.Element("IsDocumentTimeStamp"))
-        IsSinglePassPadesBLTA = Converter.StringToBoolean(ConfigElement.Element("IsSinglePassPadesBLTA"))
         TimeStampHashMethod = CInt(ConfigElement.Element("TimeStampHashMethod"))
+
+        If ConfigElement.Element("PAdESLevel") IsNot Nothing Then
+            PAdESLevel = CInt(ConfigElement.Element("PAdESLevel"))
+            EnableRevocationChecking = Converter.StringToBoolean(ConfigElement.Element("EnableRevocationChecking"))
+            RevocationCheckProtocol = CInt(ConfigElement.Element("RevocationCheck"))
+            EmbedRevocationInformation = Converter.StringToBoolean(ConfigElement.Element("EmbedRevocationInformation"))
+        Else
+            Dim derived As LegacyLevelDerivation = LegacyLevelDerivation.FromLegacy(
+                Converter.StringToBoolean(ConfigElement.Element("IsTimeStampingEnabled")),
+                Converter.StringToBoolean(ConfigElement.Element("IsDocumentTimeStamp")),
+                CInt(ConfigElement.Element("RevocationCheck")))
+            PAdESLevel = derived.Level
+            EnableRevocationChecking = derived.EnableRevocationChecking
+            RevocationCheckProtocol = derived.RevocationCheckProtocol
+            EmbedRevocationInformation = derived.EmbedRevocationInformation
+        End If
 
         IsProxyEnabled = Converter.StringToBoolean(ConfigElement.Element("IsProxyEnabled"))
         ProxyServer = ConfigElement.Element("ProxyServer")

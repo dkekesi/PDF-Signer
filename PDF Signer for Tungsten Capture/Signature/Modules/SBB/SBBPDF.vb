@@ -209,7 +209,7 @@ Friend Class SBBPDF
             End If
 
             ' checking if certifiacate revocation can be checked via OCSP, if it is a requirement
-            If _settings.RevocationCheck = RevocationType.OCSP Then
+            If _settings.RevocationCheckProtocol = RevocationType.OCSP Then
                 Dim HasOCSPResponder As Boolean
 
                 For j As Integer = 0 To Cert.Extensions.AuthorityInformationAccess.Count - 1
@@ -236,7 +236,7 @@ Friend Class SBBPDF
 
             '********** Signing PDF document **********
 
-            If _settings.IsTimeStampingEnabled Then
+            If (_settings.PAdESLevel <> PAdESLevelType.BaselineB) Then
                 _sbSignLog.AppendLine("PDF dokumentum megnyitása aláíráshoz és időbélyegzéshez")
             Else
                 _sbSignLog.AppendLine("PDF dokumentum megnyitása aláíráshoz")
@@ -300,7 +300,7 @@ Friend Class SBBPDF
 
             '********** Adding timestamp **********
 
-            If _settings.IsTimeStampingEnabled Then
+            If (_settings.PAdESLevel <> PAdESLevelType.BaselineB) Then
                 _sbSignLog.AppendLine("Időbélyeg paraméterezése")
 
                 If Not String.IsNullOrEmpty(_settings.TSAUserName) Then
@@ -317,8 +317,8 @@ Friend Class SBBPDF
                 ' Create embedded time stamp when
                 ' document time stamp and single pass PAdES B-LTA is disabled or when
                 ' both document time stamp and single pass PAdES B-LTA is enabled
-                If Not _settings.IsDocumentTimeStamp AndAlso Not _settings.IsSinglePassPadesBLTA OrElse
-                    _settings.IsDocumentTimeStamp AndAlso _settings.IsSinglePassPadesBLTA Then
+                If Not (_settings.PAdESLevel = PAdESLevelType.BaselineLTA) AndAlso Not (_settings.PAdESLevel = PAdESLevelType.BaselineLTA) OrElse
+                    (_settings.PAdESLevel = PAdESLevelType.BaselineLTA) AndAlso (_settings.PAdESLevel = PAdESLevelType.BaselineLTA) Then
 
                     PADESSignatureHandler.TSPClient = TSPClient
                 End If
@@ -332,7 +332,7 @@ Friend Class SBBPDF
 
             _sbSignLog.AppendLine("Hitelesítési művelet megkezdése")
 
-            If _settings.IsTimeStampingEnabled Then
+            If (_settings.PAdESLevel <> PAdESLevelType.BaselineB) Then
                 _sbSignLog.AppendLine($"Időbélyeg szolgáltató URL: {_settings.TSAURL}, felhasználó: '{_settings.TSAUserName}'")
             End If
 
@@ -344,7 +344,7 @@ Friend Class SBBPDF
 
             ' We only embed revocation information if revocation checking should be performed
             ' either on the signature or on the time stamp
-            If _settings.RevocationCheck <> RevocationType.None Then
+            If _settings.RevocationCheckProtocol <> RevocationType.None Then
                 _sbSignLog.AppendLine()
                 _sbSignLog.AppendLine("PDF dokumentum megnyitása PAdES szabványú aláírások/időbélyegek visszavonási információinak beszerzéséhez")
                 Try
@@ -388,7 +388,7 @@ Friend Class SBBPDF
 
             '********** Adding document time stamp **********
 
-            If _settings.IsTimeStampingEnabled AndAlso _settings.IsDocumentTimeStamp Then
+            If (_settings.PAdESLevel <> PAdESLevelType.BaselineB) AndAlso (_settings.PAdESLevel = PAdESLevelType.BaselineLTA) Then
                 _sbSignLog.AppendLine("PDF dokumentum megnyitása dokumentumszintű időbélyeg készítéséhez")
                 Try
                     Request.FileToSign.Seek(0, SeekOrigin.Begin)
@@ -404,7 +404,7 @@ Friend Class SBBPDF
                 Dim ind As Integer = doc.AddSignature
                 sig = doc.Signatures(ind)
                 sig.Handler = PADESDocTimeStampHandler
-                If _settings.RevocationCheck = RevocationType.None Then
+                If _settings.RevocationCheckProtocol = RevocationType.None Then
                     PADESDocTimeStampHandler.AutoCollectRevocationInfo = False
                     PADESDocTimeStampHandler.IgnoreChainValidationErrors = True
                     PADESDocTimeStampHandler.ForceCompleteChainValidation = False
@@ -426,7 +426,7 @@ Friend Class SBBPDF
                 _sbSignLog.AppendLine("Dokumentumszintű időbélyeg elkészítve")
 
                 ' We only embed revocation information if revocation checking should be performed on time stamps
-                If _settings.RevocationCheck <> RevocationType.None Then
+                If _settings.RevocationCheckProtocol <> RevocationType.None Then
                     _sbSignLog.AppendLine()
                     _sbSignLog.AppendLine("PDF dokumentum megnyitása az utolsó dokumentumszintű időbélyeg visszavonási információinak beszerzéséhez")
                     Try
@@ -675,7 +675,7 @@ Friend Class SBBPDF
 
         CertValidator.AddTrustedCertificates(_TrustedRootCertStorage)
 
-        If _settings.RevocationCheck = RevocationType.None Then
+        If _settings.RevocationCheckProtocol = RevocationType.None Then
             CertValidator.MandatoryRevocationCheck = False
             CertValidator.CheckCRL = False
             CertValidator.CheckOCSP = False
@@ -684,21 +684,21 @@ Friend Class SBBPDF
             CertValidator.RevocationCheckPreference = TSBX509RevocationCheckPreference.rcpPreferOCSP
         End If
 
-        If _settings.RevocationCheck = RevocationType.CRL Then
+        If _settings.RevocationCheckProtocol = RevocationType.CRL Then
             CertValidator.MandatoryRevocationCheck = True
             CertValidator.MandatoryCRLCheck = True
             CertValidator.MandatoryOCSPCheck = False
             CertValidator.RevocationCheckPreference = TSBX509RevocationCheckPreference.rcpPreferCRL
         End If
 
-        If _settings.RevocationCheck = RevocationType.OCSP Then
+        If _settings.RevocationCheckProtocol = RevocationType.OCSP Then
             CertValidator.MandatoryRevocationCheck = True
             CertValidator.MandatoryCRLCheck = False
             CertValidator.MandatoryOCSPCheck = True
             CertValidator.RevocationCheckPreference = TSBX509RevocationCheckPreference.rcpPreferOCSP
         End If
 
-        If _settings.RevocationCheck = RevocationType.OCSPWithCRLFallback Then
+        If _settings.RevocationCheckProtocol = RevocationType.OCSPWithCRLFallback Then
             CertValidator.MandatoryRevocationCheck = True
             CertValidator.MandatoryCRLCheck = False
             CertValidator.MandatoryOCSPCheck = False
