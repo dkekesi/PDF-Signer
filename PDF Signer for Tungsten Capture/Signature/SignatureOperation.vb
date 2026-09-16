@@ -95,10 +95,9 @@ Friend Class SignatureOperation
 
             ' call external signing routine
             If TypeOf sigReq.SignSettings Is PDFSignerCryptoProvider Then
-                Using sbb As New SBBPDF
-                    sbb.Initialize(sigReq.SignSettings)
-                    sigRes = sbb.SignDocument(sigReq)
-                End Using
+                Dim sbb As New SbbSignatureCreator
+                sbb.Initialize(sigReq.SignSettings)
+                sigRes = sbb.SignDocument(sigReq)
             End If
             If TypeOf sigReq.SignSettings Is PDFStreamerCryptoProvider Then
                 Dim pdfstr As New PDFStreamer
@@ -250,8 +249,8 @@ Friend Class SignatureOperation
                 End If
             End If
 
-            ' deterministically release the signed-file stream (MNB MemoryTributary / MQFTP FileStream);
-            ' SBB and PDFStreamer return the input stream, which is disposed above
+            ' deterministically release the signed-file stream (SBB MemoryTributary or self-deleting temp file,
+            ' MNB MemoryTributary, MQFTP FileStream); PDFStreamer returns the input stream, disposed above
             If sigRes IsNot Nothing AndAlso sigRes.SignedFile IsNot Nothing AndAlso sigRes.SignedFile IsNot FileToSign Then
                 sigRes.SignedFile.Dispose()
                 sigRes.SignedFile = Nothing
@@ -263,9 +262,8 @@ Friend Class SignatureOperation
     End Function
 
     Friend Function GetCertificatesFromMyWinCertStore(QualifiedCertificatesOnly As Boolean) As List(Of SigningCertificate)
-        Using sbb As New SBBPDF
-            Return sbb.GetCertificatesFromStore(QualifiedCertificatesOnly)
-        End Using
+        Dim sbb As New SbbSignatureCreator
+        Return sbb.GetCertificatesFromStore(QualifiedCertificatesOnly)
     End Function
 
     Private Function GetMetaDataSettings(Document As DocumentItem, DocumentSize As String) As MetaData
@@ -296,9 +294,7 @@ Friend Class SignatureOperation
     End Function
 
     Friend Sub ActivateSBBLicense()
-        Using e As New SBBPDF
-            e.ActivateLicense()
-        End Using
+        SbbSignatureCreator.ActivateLicense()
     End Sub
 
     Private Function GetDocumentUID(Document As DocumentItem) As String

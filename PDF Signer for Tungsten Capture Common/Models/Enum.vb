@@ -45,6 +45,14 @@ Public Enum RevocationType As Integer
     OCSPWithCRLFallback = 3
 End Enum
 
+''' <summary>PAdES baseline level the built-in provider produces; values equal PDF Streamer's PAdESLevel members.</summary>
+Public Enum PAdESLevelType As Integer
+    BaselineB = 3
+    BaselineT = 4
+    BaselineLT = 5
+    BaselineLTA = 6
+End Enum
+
 Public Enum ProxyAuthenticationMethod As Integer
     NoAuthentication = 0
     UserPassword = 1

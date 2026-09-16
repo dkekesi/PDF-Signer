@@ -58,8 +58,8 @@ Partial Class FrmSetup
         ComboSignatureHashMethod = New ComboBox()
         BsPDFSignerCryptoProvider = New BindingSource(components)
         Label11 = New Label()
-        ComboRevocationCheck = New ComboBox()
-        Label10 = New Label()
+        ComboRevocationCheckProtocol = New ComboBox()
+        LblPAdESLevel = New Label()
         TxtSigningReason = New TextBox()
         Label9 = New Label()
         TxtSigningOrganization = New TextBox()
@@ -71,17 +71,14 @@ Partial Class FrmSetup
         TxtSignaturePolicyURL = New TextBox()
         Label12 = New Label()
         GrpTimeStamp = New GroupBox()
-        ChkSinglePassPadesLTA = New CheckBox()
         ComboTimeStampHashMethod = New ComboBox()
         Label18 = New Label()
-        ChkIsDocumentTimeStamp = New CheckBox()
         TxtTSAPassword = New TextBox()
         Label16 = New Label()
         TxtTSAUser = New TextBox()
         Label17 = New Label()
         TxtTSAURL = New TextBox()
         Label15 = New Label()
-        ChkTimeStampingEnabled = New CheckBox()
         GrpClause = New GroupBox()
         BtnRemoveDocNameIndexAssignment = New Button()
         ChkDocNameFromFormType = New CheckBox()
@@ -124,6 +121,11 @@ Partial Class FrmSetup
         TxtProxyServer = New TextBox()
         Label38 = New Label()
         ChkSignerNameFromLoggedOnUser = New CheckBox()
+        ComboPAdESLevel = New ComboBox()
+        GrpRevocation = New GroupBox()
+        ChkEnableRevocationChecking = New CheckBox()
+        LblRevocationProtocol = New Label()
+        ChkEmbedRevocationInformation = New CheckBox()
         TabPDFStreamer = New TabPage()
         ChkPDFStreamerEnabled = New CheckBox()
         BsPDFStreamerCryptoProvider = New BindingSource(components)
@@ -201,6 +203,7 @@ Partial Class FrmSetup
         TabPDFSigner.SuspendLayout()
         PanelPDFSigner.SuspendLayout()
         GrpProxy.SuspendLayout()
+        GrpRevocation.SuspendLayout()
         CType(NumPort, ComponentModel.ISupportInitialize).BeginInit()
         TabPDFStreamer.SuspendLayout()
         CType(BsPDFStreamerCryptoProvider, ComponentModel.ISupportInitialize).BeginInit()
@@ -477,18 +480,55 @@ Partial Class FrmSetup
         resources.ApplyResources(Label11, "Label11")
         Label11.Name = "Label11"
         ' 
-        ' ComboRevocationCheck
+        ' ComboRevocationCheckProtocol
         ' 
-        resources.ApplyResources(ComboRevocationCheck, "ComboRevocationCheck")
-        ComboRevocationCheck.DataBindings.Add(New Binding("SelectedValue", BsPDFSignerCryptoProvider, "RevocationCheck", True))
-        ComboRevocationCheck.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboRevocationCheck.FormattingEnabled = True
-        ComboRevocationCheck.Name = "ComboRevocationCheck"
+        resources.ApplyResources(ComboRevocationCheckProtocol, "ComboRevocationCheckProtocol")
+        ComboRevocationCheckProtocol.DataBindings.Add(New Binding("SelectedValue", BsPDFSignerCryptoProvider, "RevocationCheckProtocol", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboRevocationCheckProtocol.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboRevocationCheckProtocol.FormattingEnabled = True
+        ComboRevocationCheckProtocol.Name = "ComboRevocationCheckProtocol"
         ' 
-        ' Label10
+        ' LblPAdESLevel
         ' 
-        resources.ApplyResources(Label10, "Label10")
-        Label10.Name = "Label10"
+        resources.ApplyResources(LblPAdESLevel, "LblPAdESLevel")
+        LblPAdESLevel.Name = "LblPAdESLevel"
+        ' 
+        ' ComboPAdESLevel
+        ' 
+        resources.ApplyResources(ComboPAdESLevel, "ComboPAdESLevel")
+        ComboPAdESLevel.DataBindings.Add(New Binding("SelectedValue", BsPDFSignerCryptoProvider, "PAdESLevel", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboPAdESLevel.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboPAdESLevel.FormattingEnabled = True
+        ComboPAdESLevel.Name = "ComboPAdESLevel"
+        ' 
+        ' ChkEnableRevocationChecking
+        ' 
+        resources.ApplyResources(ChkEnableRevocationChecking, "ChkEnableRevocationChecking")
+        ChkEnableRevocationChecking.BackColor = Drawing.SystemColors.ControlLightLight
+        ChkEnableRevocationChecking.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "EnableRevocationChecking", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkEnableRevocationChecking.Name = "ChkEnableRevocationChecking"
+        ChkEnableRevocationChecking.UseVisualStyleBackColor = False
+        ' 
+        ' GrpRevocation
+        ' 
+        resources.ApplyResources(GrpRevocation, "GrpRevocation")
+        GrpRevocation.Controls.Add(ChkEmbedRevocationInformation)
+        GrpRevocation.Controls.Add(ComboRevocationCheckProtocol)
+        GrpRevocation.Controls.Add(LblRevocationProtocol)
+        GrpRevocation.Name = "GrpRevocation"
+        GrpRevocation.TabStop = False
+        ' 
+        ' LblRevocationProtocol
+        ' 
+        resources.ApplyResources(LblRevocationProtocol, "LblRevocationProtocol")
+        LblRevocationProtocol.Name = "LblRevocationProtocol"
+        ' 
+        ' ChkEmbedRevocationInformation
+        ' 
+        resources.ApplyResources(ChkEmbedRevocationInformation, "ChkEmbedRevocationInformation")
+        ChkEmbedRevocationInformation.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "EmbedRevocationInformation", True, DataSourceUpdateMode.OnPropertyChanged))
+        ChkEmbedRevocationInformation.Name = "ChkEmbedRevocationInformation"
+        ChkEmbedRevocationInformation.UseVisualStyleBackColor = True
         ' 
         ' TxtSigningReason
         ' 
@@ -548,10 +588,8 @@ Partial Class FrmSetup
         ' GrpTimeStamp
         ' 
         resources.ApplyResources(GrpTimeStamp, "GrpTimeStamp")
-        GrpTimeStamp.Controls.Add(ChkSinglePassPadesLTA)
         GrpTimeStamp.Controls.Add(ComboTimeStampHashMethod)
         GrpTimeStamp.Controls.Add(Label18)
-        GrpTimeStamp.Controls.Add(ChkIsDocumentTimeStamp)
         GrpTimeStamp.Controls.Add(TxtTSAPassword)
         GrpTimeStamp.Controls.Add(Label16)
         GrpTimeStamp.Controls.Add(TxtTSAUser)
@@ -560,13 +598,6 @@ Partial Class FrmSetup
         GrpTimeStamp.Controls.Add(Label15)
         GrpTimeStamp.Name = "GrpTimeStamp"
         GrpTimeStamp.TabStop = False
-        ' 
-        ' ChkSinglePassPadesLTA
-        ' 
-        resources.ApplyResources(ChkSinglePassPadesLTA, "ChkSinglePassPadesLTA")
-        ChkSinglePassPadesLTA.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "IsSinglePassPadesBLTA", True, DataSourceUpdateMode.OnPropertyChanged))
-        ChkSinglePassPadesLTA.Name = "ChkSinglePassPadesLTA"
-        ChkSinglePassPadesLTA.UseVisualStyleBackColor = True
         ' 
         ' ComboTimeStampHashMethod
         ' 
@@ -580,13 +611,6 @@ Partial Class FrmSetup
         ' 
         resources.ApplyResources(Label18, "Label18")
         Label18.Name = "Label18"
-        ' 
-        ' ChkIsDocumentTimeStamp
-        ' 
-        resources.ApplyResources(ChkIsDocumentTimeStamp, "ChkIsDocumentTimeStamp")
-        ChkIsDocumentTimeStamp.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "IsDocumentTimeStamp", True, DataSourceUpdateMode.OnPropertyChanged))
-        ChkIsDocumentTimeStamp.Name = "ChkIsDocumentTimeStamp"
-        ChkIsDocumentTimeStamp.UseVisualStyleBackColor = True
         ' 
         ' TxtTSAPassword
         ' 
@@ -620,14 +644,6 @@ Partial Class FrmSetup
         ' 
         resources.ApplyResources(Label15, "Label15")
         Label15.Name = "Label15"
-        ' 
-        ' ChkTimeStampingEnabled
-        ' 
-        resources.ApplyResources(ChkTimeStampingEnabled, "ChkTimeStampingEnabled")
-        ChkTimeStampingEnabled.BackColor = Drawing.SystemColors.ControlLightLight
-        ChkTimeStampingEnabled.DataBindings.Add(New Binding("Checked", BsPDFSignerCryptoProvider, "IsTimeStampingEnabled", True, DataSourceUpdateMode.OnPropertyChanged))
-        ChkTimeStampingEnabled.Name = "ChkTimeStampingEnabled"
-        ChkTimeStampingEnabled.UseVisualStyleBackColor = False
         ' 
         ' GrpClause
         ' 
@@ -824,13 +840,14 @@ Partial Class FrmSetup
         ' 
         PanelPDFSigner.Controls.Add(ChkAllowQualifiedCertificatesOnly)
         PanelPDFSigner.Controls.Add(ComboSignatureHashMethod)
+        PanelPDFSigner.Controls.Add(ChkEnableRevocationChecking)
         PanelPDFSigner.Controls.Add(ChkProxyEnabled)
         PanelPDFSigner.Controls.Add(Label11)
-        PanelPDFSigner.Controls.Add(ComboRevocationCheck)
-        PanelPDFSigner.Controls.Add(ChkTimeStampingEnabled)
-        PanelPDFSigner.Controls.Add(Label10)
+        PanelPDFSigner.Controls.Add(ComboPAdESLevel)
+        PanelPDFSigner.Controls.Add(LblPAdESLevel)
         PanelPDFSigner.Controls.Add(TxtSigningReason)
         PanelPDFSigner.Controls.Add(GrpTimeStamp)
+        PanelPDFSigner.Controls.Add(GrpRevocation)
         PanelPDFSigner.Controls.Add(GrpProxy)
         PanelPDFSigner.Controls.Add(Label9)
         PanelPDFSigner.Controls.Add(TxtSigningOrganization)
@@ -1421,6 +1438,8 @@ Partial Class FrmSetup
         PanelPDFSigner.PerformLayout()
         GrpProxy.ResumeLayout(False)
         GrpProxy.PerformLayout()
+        GrpRevocation.ResumeLayout(False)
+        GrpRevocation.PerformLayout()
         CType(NumPort, ComponentModel.ISupportInitialize).EndInit()
         TabPDFStreamer.ResumeLayout(False)
         TabPDFStreamer.PerformLayout()
@@ -1473,8 +1492,8 @@ Partial Class FrmSetup
     Private WithEvents Label6 As System.Windows.Forms.Label
     Private WithEvents ComboSignatureHashMethod As System.Windows.Forms.ComboBox
     Private WithEvents Label11 As System.Windows.Forms.Label
-    Private WithEvents ComboRevocationCheck As System.Windows.Forms.ComboBox
-    Private WithEvents Label10 As System.Windows.Forms.Label
+    Private WithEvents ComboRevocationCheckProtocol As System.Windows.Forms.ComboBox
+    Private WithEvents LblPAdESLevel As System.Windows.Forms.Label
     Private WithEvents TxtSigningReason As System.Windows.Forms.TextBox
     Private WithEvents Label9 As System.Windows.Forms.Label
     Private WithEvents TxtSigningOrganization As System.Windows.Forms.TextBox
@@ -1487,14 +1506,12 @@ Partial Class FrmSetup
     Private WithEvents Label13 As System.Windows.Forms.Label
     Private WithEvents ComboTimeStampHashMethod As System.Windows.Forms.ComboBox
     Private WithEvents Label18 As System.Windows.Forms.Label
-    Private WithEvents ChkIsDocumentTimeStamp As System.Windows.Forms.CheckBox
     Private WithEvents TxtTSAPassword As System.Windows.Forms.TextBox
     Private WithEvents Label16 As System.Windows.Forms.Label
     Private WithEvents TxtTSAUser As System.Windows.Forms.TextBox
     Private WithEvents Label17 As System.Windows.Forms.Label
     Private WithEvents TxtTSAURL As System.Windows.Forms.TextBox
     Private WithEvents Label15 As System.Windows.Forms.Label
-    Private WithEvents ChkTimeStampingEnabled As System.Windows.Forms.CheckBox
     Private WithEvents TxtDocumentNameDefault As System.Windows.Forms.TextBox
     Private WithEvents Label20 As System.Windows.Forms.Label
     Private WithEvents ComboDocumentName As System.Windows.Forms.ComboBox
@@ -1564,7 +1581,6 @@ Partial Class FrmSetup
     Private WithEvents BtnRemoveIndexDocumentUID As System.Windows.Forms.Button
     Private WithEvents ComboMQDocUID As System.Windows.Forms.ComboBox
     Private WithEvents Label34 As System.Windows.Forms.Label
-    Private WithEvents ChkSinglePassPadesLTA As System.Windows.Forms.CheckBox
     Private WithEvents ChkProxyEnabled As System.Windows.Forms.CheckBox
     Private WithEvents GrpProxy As System.Windows.Forms.GroupBox
     Private WithEvents TxtProxyPassword As System.Windows.Forms.TextBox
@@ -1617,6 +1633,11 @@ Partial Class FrmSetup
     Friend WithEvents PanelMain As Panel
     Private WithEvents ChkAllowQualifiedCertificatesOnly As CheckBox
     Private WithEvents ChkSignerNameFromLoggedOnUser As CheckBox
+    Private WithEvents ComboPAdESLevel As ComboBox
+    Private WithEvents GrpRevocation As GroupBox
+    Private WithEvents ChkEnableRevocationChecking As CheckBox
+    Private WithEvents LblRevocationProtocol As Label
+    Private WithEvents ChkEmbedRevocationInformation As CheckBox
     Private WithEvents BsPDFSignerCryptoProvider As BindingSource
     Private WithEvents BsPDFStreamerCryptoProvider As BindingSource
     Private WithEvents BsMQFTPCryptoProvider As BindingSource

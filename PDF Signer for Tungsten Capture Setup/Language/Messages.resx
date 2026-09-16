@@ -229,10 +229,11 @@
     <value>Exception occured while loading existing settings:
 {0}</value>
   </data>
-  <data name="LTA_Signature_Config_Incorrect" xml:space="preserve">
-    <value>If 'Create single-pass PAdES B-LTA' is enabled, then following settings must be applied:
-- 'Create document time stamp' enabled,
-- Revocation check must be set to OCSP.</value>
+  <data name="LTV_Requires_Revocation_Embedding" xml:space="preserve">
+    <value>PAdES B-LT and B-LTA require revocation checking and embedding of the revocation information to be enabled.</value>
+  </data>
+  <data name="PAdES_Level_Missing" xml:space="preserve">
+    <value>PAdES level is not selected.</value>
   </data>
   <data name="Proxy_Server_Missing" xml:space="preserve">
     <value>Proxy server name or IP is not provided.</value>

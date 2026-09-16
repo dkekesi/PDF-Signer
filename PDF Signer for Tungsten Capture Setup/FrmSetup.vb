@@ -44,7 +44,8 @@ Friend Class FrmSetup
 
             .FillComboWithHashMethods(ComboSignatureHashMethod)
             .FillComboWithHashMethods(ComboTimeStampHashMethod)
-            .FillComboWithRevocationMethods(ComboRevocationCheck)
+            .FillComboWithRevocationMethods(ComboRevocationCheckProtocol)
+            .FillComboWithPAdESLevels(ComboPAdESLevel)
             .FillComboWithProxyAuthMethods(ComboProxyAuthMethod)
         End With
 
@@ -77,6 +78,7 @@ Friend Class FrmSetup
         BsMNBSignerCryptoProvider.DataSource = Settings.MNBSignerProvider
 
         LoadedValueSnapshot = Settings.GetValueSnapshot()
+        RefreshPdfSignerControlState()
     End Sub
 
     Private Sub FrmSetup_FormClosing(sender As Object, e As Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
@@ -165,6 +167,37 @@ Friend Class FrmSetup
         ComboMQDocUID.SelectedIndex = -1
     End Sub
 
+    ''' <summary>Enables the time-stamp and revocation controls that the selected PAdES level allows; B-LT/B-LTA force both revocation switches on.</summary>
+    Private Sub RefreshPdfSignerControlState()
+        If ComboPAdESLevel.SelectedValue Is Nothing Then Return
+
+        Dim level As Integer = CInt(ComboPAdESLevel.SelectedValue)
+        Dim longTerm As Boolean = level = PAdESLevelType.BaselineLT OrElse level = PAdESLevelType.BaselineLTA
+
+        GrpTimeStamp.Enabled = level <> PAdESLevelType.BaselineB
+        Label18.Enabled = level = PAdESLevelType.BaselineLTA
+        ComboTimeStampHashMethod.Enabled = level = PAdESLevelType.BaselineLTA
+
+        If longTerm Then
+            ChkEnableRevocationChecking.Checked = True
+            ChkEmbedRevocationInformation.Checked = True
+        End If
+        ChkEnableRevocationChecking.Enabled = Not longTerm
+        ChkEmbedRevocationInformation.Enabled = Not longTerm AndAlso ChkEnableRevocationChecking.Checked
+        LblRevocationProtocol.Enabled = ChkEnableRevocationChecking.Checked
+        ComboRevocationCheckProtocol.Enabled = ChkEnableRevocationChecking.Checked
+    End Sub
+
+    ''' <summary>Updates the dependent controls when the operator picks another PAdES level.</summary>
+    Private Sub ComboPAdESLevel_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComboPAdESLevel.SelectedValueChanged
+        RefreshPdfSignerControlState()
+    End Sub
+
+    ''' <summary>Updates the revocation controls when revocation checking is switched on or off.</summary>
+    Private Sub ChkEnableRevocationChecking_CheckedChanged(sender As Object, e As EventArgs) Handles ChkEnableRevocationChecking.CheckedChanged
+        RefreshPdfSignerControlState()
+    End Sub
+
 #Region "Import/Export/Reset settings"
 
     Private Sub BtnImportSettings_Click(sender As Object, e As EventArgs) Handles BtnImportSettings.Click
@@ -180,6 +213,7 @@ Friend Class FrmSetup
             BsPDFStreamerCryptoProvider.ResetBindings(False)
             BsMQFTPCryptoProvider.ResetBindings(False)
             BsMNBSignerCryptoProvider.ResetBindings(False)
+            RefreshPdfSignerControlState()
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, Messages.Header_File_Open_Error)
@@ -234,6 +268,7 @@ Friend Class FrmSetup
         BsMNBSignerCryptoProvider.DataSource = Settings.MNBSignerProvider
         BsMNBSignerCryptoProvider.ResetBindings(False)
         BsMNBSignerCryptoProvider.ResumeBinding()
+        RefreshPdfSignerControlState()
 
         If ctrlDown Then
             If MsgBox(String.Format(Messages.Reset_CSS_In_Kofax_Admin, CSS.BaseNamespace), MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, Messages.Header_Reset_Settings) = MsgBoxResult.No Then Return

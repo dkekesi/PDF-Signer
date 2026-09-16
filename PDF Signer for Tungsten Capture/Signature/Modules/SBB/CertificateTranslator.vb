@@ -39,15 +39,4 @@ Friend Class CertificateTranslator
         Return res
     End Function
 
-    Friend Function GetIssuerName(cert As TElX509Certificate) As String
-        Dim res As String = cert.IssuerName.CommonName
-        If String.IsNullOrEmpty(res) Then
-            res = cert.IssuerName.OrganizationUnit
-        End If
-        If String.IsNullOrEmpty(res) Then
-            res = cert.IssuerName.Organization
-        End If
-        Return res
-    End Function
-
 End Class

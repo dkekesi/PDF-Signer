@@ -22,7 +22,7 @@
     <Company>Doc-Soft Kkt.</Company>
     <Product>eWay</Product>
     <Copyright>Copyright © Doc-Soft Kkt. 2026.</Copyright>
-    <Version>11.2.0.0</Version>
+    <Version>11.3.0.0</Version>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -177,5 +177,8 @@
   </Target>
   <ItemGroup>
     <Analyzer Include="C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.4\analyzers\dotnet\DevExpress.Generator.dll" Visible="false" Condition="Exists('C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.4\analyzers\dotnet\DevExpress.Generator.dll')" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="PDFSignerTests" />
   </ItemGroup>
 </Project>

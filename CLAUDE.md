@@ -14,10 +14,11 @@ Comments, log messages, exception texts, and UI resources are largely **Hungaria
 
 ## Build
 
-Builds use MSBuild from Visual Studio (scripts hardcode `c:\Program Files\Microsoft Visual Studio\18\Enterprise\MSBuild\Current\Bin\`). There are no automated tests or linters; verification is build success (scripts grep the log for " 0 Error(s)").
+Builds use MSBuild from Visual Studio (scripts hardcode `c:\Program Files\Microsoft Visual Studio\18\Enterprise\MSBuild\Current\Bin\`). There are no linters; verification is build success (scripts grep the log for " 0 Error(s)") plus the `PDF Signer for Tungsten Capture Tests` unit tests.
 
 - `PDFSigner32bit.cmd` — rebuilds the solution (FullRelease|x86), the shipping configuration; also produces the MSI (`PDF Signer for Tungsten Capture Installer\bin\PDFSignerSetup.msi`).
 - Quick check: `msbuild "PDF Signer for Tungsten Capture.slnx" /restore /p:Configuration=Debug /p:Platform="Any CPU" /p:CopyToCaptureBin=false` (the installer project only builds in FullRelease|x86).
+- `PDF Signer for Tungsten Capture Tests` (MSTest, x86, excluded from FullRelease) covers the pure units of the signing engine and configuration model; run it with `vstest.console.exe "PDF Signer for Tungsten Capture Tests\bin\Debug\PDFSignerTests.dll" /Platform:x86` after an MSBuild Debug build.
 
 Build gotchas:
 - All four projects have a `CopyToCaptureBin` post-build target copying their output to `C:\Program Files (x86)\Tungsten\Capture\Bin\` — requires admin rights and an installed Capture; pass `/p:CopyToCaptureBin=false` to skip.
@@ -29,12 +30,13 @@ Build gotchas:
 - PDF Signer no longer links any PDF Streamer assemblies: it calls PDF Streamer's REST streaming endpoint (`POST /api/v1/documents/stream`) over `HttpClient` (see `Signature\Modules\PDFStreamer\PDFStreamerRestClient.vb`). PDF Streamer dropped its net48 `PDFStreamer.WCFCommon`/`PDFStreamer.Common` assemblies in its .NET 10 / CoreWCF migration. `MemoryTributary` (previously from WCFCommon) is now a local class at `PDF Signer for Tungsten Capture\Helper\MemoryTributary.vb`. PDF Streamer lives in its own Git repo at `C:\Projects\PDF Streamer` (github.com/dkekesi/PDF-Streamer).
 - The solution has a third configuration, **FullRelease**, used for shipping builds.
 - The installer harvests the online help at build time (`HeatDirectory` over `$(SolutionDir)Help\Output\Online Help`, regenerating `Help.wxs`); that folder is the generated output of the Help & Manual project in `Help\`.
+- The SecureBlackbox assembly (`lib\nsoftware.SecureBlackbox.dll`) is 24.0.9710 (netstandard2.0 build, shared with PDF Streamer). The `SBB` module's `PDFSigner`/`PDFVerifier`/`CertificateValidator`/`CertificateManager` components take their license from `SbbLicense.Key` as a per-instance `RuntimeLicense`.
 
 ## Architecture
 
 A Kofax/Tungsten Capture batch-class custom module (module ID `DocSoft.PDFSigner`).
 
-- **PDF Signer for Tungsten Capture** — the runtime exe (`PDFSigner.exe`). `BatchManagement\` handles Capture batch polling/opening/closing via the Kofax SDK; `Signature\SignatureOperation.vb` dispatches to pluggable signing providers under `Signature\Modules\`: `SBB` (local SecureBlackbox signing), `MNBSigner` (MNB — Hungarian National Bank — web service), `MQFTP` (IBM MQ/FTP transfer), and `PDFStreamer` (delegates to the external PDF Streamer Windows service via its REST streaming endpoint, `POST {configured-url}` → `/api/v1/documents/stream`, using `HttpClient`). `Viewers\` has interchangeable PDF viewers (TallComponents and DevExpress) behind `ViewerBase`.
+- **PDF Signer for Tungsten Capture** — the runtime exe (`PDFSigner.exe`). `BatchManagement\` handles Capture batch polling/opening/closing via the Kofax SDK; `Signature\SignatureOperation.vb` dispatches to pluggable signing providers under `Signature\Modules\`: `SBB` (local signing on the SecureBlackbox v24 component API: `SbbSignatureCreator` runs the passes of a `SigningPlan` built from the PAdES level and revocation switches; unsigned input only; validity end from `EtsiValidity`), `MNBSigner` (MNB — Hungarian National Bank — web service), `MQFTP` (IBM MQ/FTP transfer), and `PDFStreamer` (delegates to the external PDF Streamer Windows service via its REST streaming endpoint, `POST {configured-url}` → `/api/v1/documents/stream`, using `HttpClient`). `Viewers\` has interchangeable PDF viewers (TallComponents and DevExpress) behind `ViewerBase`.
 - **PDF Signer for Tungsten Capture Common** — shared between runtime and setup: `SetupModel` and parsers that read per-document-class configuration stored in Capture setup data, license handling, Kofax registry access, and `Models\Setup\Providers\` crypto-provider descriptors mirroring the runtime signing modules.
 - **PDF Signer for Tungsten Capture Setup** — a library (`PDFSignerSetup`) hosting the admin setup panel inside Capture Administration, where the per-batch-class signing configuration is defined.
 - **PDF Signer for Tungsten Capture WFA** — COM-visible workflow agent (`IACWorkflowAgent`, ProgId `DocSoft.PDFSignerWFA`) that inspects batch documents and routes the batch past the PDF Signer queue when nothing needs signing.

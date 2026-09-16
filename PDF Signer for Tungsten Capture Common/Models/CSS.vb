@@ -53,18 +53,19 @@
     Public Const IsPDFSignerEnabled As String = BaseNamespace + "IsPDFSignerEnabled"
     Public Const SigningOrganization As String = BaseNamespace + "SigningOrganization"
     Public Const SigningReason As String = BaseNamespace + "SigningReason"
-    Public Const RevocationCheck As String = BaseNamespace + "RevocationCheck"
+    Public Const PAdESLevel As String = BaseNamespace + "PAdESLevel"
     Public Const SignatureHashMethod As String = BaseNamespace + "SignatureHashMethod"
     Public Const AllowQualifiedCertificatesOnly As String = BaseNamespace + "AllowQualifiedCertificatesOnly"
     Public Const SignerNameFromLoggedOnUser As String = BaseNamespace + "SignerNameFromLoggedOnUser"
 
-    Public Const IsTimeStampingEnabled As String = BaseNamespace + "TimeStampingEnabled"
     Public Const TSAURL As String = BaseNamespace + "TSAURL"
     Public Const TSAUserName As String = BaseNamespace + "TSAUserName"
     Public Const TSAPassword As String = BaseNamespace + "TSAPassword"
-    Public Const IsDocumentTimeStamp As String = BaseNamespace + "DocumentTimeStamp"
-    Public Const IsSinglePassPadesBLTA As String = BaseNamespace + "SinglePassPadesBLTA"
     Public Const TimeStampHashMethod As String = BaseNamespace + "TimeStampHashMethod"
+
+    Public Const EnableRevocationChecking As String = BaseNamespace + "EnableRevocationChecking"
+    Public Const RevocationCheck As String = BaseNamespace + "RevocationCheck" ' revocation protocol; name kept for stored data
+    Public Const EmbedRevocationInformation As String = BaseNamespace + "EmbedRevocationInformation"
 
     Public Const IsProxyEnabled As String = BaseNamespace + "ProxyEnabled"
     Public Const ProxyServer As String = BaseNamespace + "ProxyServer"
