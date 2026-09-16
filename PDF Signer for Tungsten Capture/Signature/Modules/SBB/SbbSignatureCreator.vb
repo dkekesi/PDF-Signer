@@ -15,13 +15,14 @@ Friend Class SbbSignatureCreator
     Private _stores As WindowsCertificateStores
     Private _harvest As HarvestedMaterial = HarvestedMaterial.Empty()
     Private _eventLogger As SbbEventLogger
+    Private _largeDocument As Boolean
 
     ''' <summary>Stores the provider settings every later call reads.</summary>
     Friend Sub Initialize(ProviderSettings As PDFSignerCryptoProvider)
         _settings = ProviderSettings
     End Sub
 
-    ''' <summary>Applies the legacy-API license used by the PDF pre/post processors; the new components carry their own RuntimeLicense.</summary>
+    ''' <summary>Applies the license of the TEl* API used by the PDF pre/post processors; the components carry their own RuntimeLicense.</summary>
     Friend Shared Sub ActivateLicense()
         SBUtils.Unit.SetLicenseKey(SbbLicense.Key)
         SBPDF.Unit.Initialize()
@@ -45,10 +46,10 @@ Friend Class SbbSignatureCreator
     End Function
 
     ''' <summary>Signs Request.FileToSign into a new stream; never throws, a failure sets ErrorMessage and the log.</summary>
-    ''' <remarks>The caller owns the returned SignedFile; Request.FileToSign is only read.</remarks>
+    ''' <remarks>The caller owns SignedFile (a self-deleting temp file for large documents); FileToSign is only read.</remarks>
     Friend Function SignDocument(Request As SignatureRequest) As SignatureResult
         Dim res As New SignatureResult
-        Dim working As MemoryTributary = Nothing
+        Dim working As Stream = Nothing
         _eventLogger = New SbbEventLogger(_log, _logger)
         Try
             Dim plan As SigningPlan = SigningPlanBuilder.Build(_settings)
@@ -60,8 +61,18 @@ Friend Class SbbSignatureCreator
             Dim precheckError As String = SigningCertificatePrecheck.Check(cert, requireOcsp)
             If precheckError IsNot Nothing Then Return Fail(res, precheckError)
 
+            Dim policy As MetaData = Request.MetaDataSettings
+            Dim policyHash As String = Nothing
+            If policy?.SignaturePolicyURL IsNot Nothing Then
+                policyHash = SbbTranslator.PolicyHashHex(policy.SignaturePolicyHash)
+                If policyHash Is Nothing Then Return Fail(res, "Az aláírás-szabályzat lenyomata nem érvényes base64 érték!")
+            Else
+                policy = Nothing
+            End If
+
             _stores = WindowsCertificateStores.Load()
-            working = New MemoryTributary
+            _largeDocument = SigningBufferFactory.IsLargeDocument(Request.FileToSign)
+            working = SigningBufferFactory.Create(_largeDocument)
             Request.FileToSign.Seek(0, SeekOrigin.Begin)
             Request.FileToSign.CopyTo(working)
 
@@ -76,7 +87,7 @@ Friend Class SbbSignatureCreator
                 If Not RunValidatorCheck(leaf, "aláíró tanúsítvány", res) Then Return res
             End If
 
-            working = Advance(working, RunSignPass(plan, cert, working, res))
+            working = Advance(working, RunSignPass(plan, cert, policy, policyHash, working, res))
             If working Is Nothing Then Return res
             _harvest = DocumentCertificateHarvester.Harvest(working)
             _eventLogger.Naming = _harvest.Naming
@@ -129,22 +140,25 @@ Friend Class SbbSignatureCreator
 #Region "Passes"
 
     ''' <summary>Sign pass at the plan's level; B-LT/B-LTA sign lean (crcNone) and are lifted by the Update pass.</summary>
-    Private Function RunSignPass(Plan As SigningPlan, SigningCert As X509Certificate2, Source As MemoryTributary, Res As SignatureResult) As MemoryTributary
+    ''' <remarks>Policy (with its hex hash PolicyHash) is the document class's signature policy, or Nothing for none.</remarks>
+    Private Function RunSignPass(Plan As SigningPlan, SigningCert As X509Certificate2, Policy As MetaData, PolicyHash As String, Source As Stream, Res As SignatureResult) As Stream
         _log.AppendLine()
         Append("PDF dokumentum aláírása")
+        If Policy IsNot Nothing Then Append($"Aláírás-szabályzat: OID '{Policy.SignaturePolicyOID}', URL: {SbbErrorTranslator.StripUserInfo(Policy.SignaturePolicyURL.ToString())}")
         If Plan.EmbedSignatureTimestamp Then LogTsa()
         LogProxy()
 
         Using certManager As CertificateManager = SbbLicense.CreateCertificateManager()
             certManager.ImportFromObject(SigningCert)
             Dim failure As String = Nothing
-            Dim output As MemoryTributary = RunSignerPass(Source,
+            Dim output As Stream = RunSignerPass(Source,
                 Sub(signer As SbbPdfSigner)
                     signer.SigningCertificate = certManager.Certificate
                     signer.NewSignature.Level = Plan.SignatureLevel
                     signer.NewSignature.HashAlgorithm = SbbTranslator.HashAlgorithmName(_settings.SignatureHashMethod)
                     signer.NewSignature.AuthorName = _settings.SigningOrganization
                     signer.NewSignature.Reason = _settings.SigningReason
+                    If Policy IsNot Nothing Then ApplySignaturePolicy(signer.NewSignature, Policy, PolicyHash, _settings.SignatureHashMethod)
                     signer.Widget.Invisible = True
                     signer.RevocationCheck = Plan.SignPassRevocationCheck
                     signer.OfflineMode = False
@@ -164,7 +178,7 @@ Friend Class SbbSignatureCreator
     End Function
 
     ''' <summary>Update pass over the last entity: checks the chains with the configured protocol and embeds the collected revocation data; no TSA.</summary>
-    Private Function RunUpdatePass(Plan As SigningPlan, Source As MemoryTributary, Res As SignatureResult) As MemoryTributary
+    Private Function RunUpdatePass(Plan As SigningPlan, Source As Stream, Res As SignatureResult) As Stream
         _log.AppendLine()
         Dim entityLabel As String = _harvest.LastSignatureEntityLabel
         If String.IsNullOrEmpty(entityLabel) Then
@@ -175,7 +189,7 @@ Friend Class SbbSignatureCreator
         LogProxy()
 
         Dim failure As String = Nothing
-        Dim output As MemoryTributary = RunSignerPass(Source,
+        Dim output As Stream = RunSignerPass(Source,
             Sub(signer As SbbPdfSigner)
                 signer.RevocationCheck = Plan.Revocation
                 signer.OfflineMode = False
@@ -196,13 +210,13 @@ Friend Class SbbSignatureCreator
     End Function
 
     ''' <summary>Lean archive document timestamp: no revocation checking or collection in the creating pass (SecureBlackbox never embeds the new timestamp's own revocation there).</summary>
-    Private Function RunDocumentTimestampPass(Source As MemoryTributary, Res As SignatureResult) As MemoryTributary
+    Private Function RunDocumentTimestampPass(Source As Stream, Res As SignatureResult) As Stream
         _log.AppendLine()
         Append("Dokumentumszintű időbélyeg készítése")
         LogTsa()
 
         Dim failure As String = Nothing
-        Dim output As MemoryTributary = RunSignerPass(Source,
+        Dim output As Stream = RunSignerPass(Source,
             Sub(signer As SbbPdfSigner)
                 signer.NewSignature.SignatureType = PDFSignatureTypes.pstDocumentTimestamp
                 signer.NewSignature.HashAlgorithm = SbbTranslator.HashAlgorithmName(_settings.TimeStampHashMethod)
@@ -223,10 +237,11 @@ Friend Class SbbSignatureCreator
     End Function
 
     ''' <summary>One PDFSigner pass: fresh component and output buffer, stores, harvested material, then configure and execute. Never throws; a failure comes back as text.</summary>
-    Private Function RunSignerPass(Source As MemoryTributary, Configure As Action(Of SbbPdfSigner), Execute As Action(Of SbbPdfSigner), ByRef Failure As String) As MemoryTributary
-        Dim output As New MemoryTributary
-        Using signer As SbbPdfSigner = SbbLicense.CreateSigner()
-            Try
+    Private Function RunSignerPass(Source As Stream, Configure As Action(Of SbbPdfSigner), Execute As Action(Of SbbPdfSigner), ByRef Failure As String) As Stream
+        Dim output As Stream = Nothing
+        Try
+            Using signer As SbbPdfSigner = SbbLicense.CreateSigner()
+                output = SigningBufferFactory.Create(_largeDocument)
                 Source.Seek(0, SeekOrigin.Begin)
                 signer.InputStream = Source
                 signer.OutputStream = output
@@ -243,13 +258,21 @@ Friend Class SbbSignatureCreator
                 output.Seek(0, SeekOrigin.Begin)
                 Failure = Nothing
                 Return output
-            Catch ex As Exception
-                Failure = SbbErrorTranslator.ExceptionText(ex)
-                output.Dispose()
-                Return Nothing
-            End Try
-        End Using
+            End Using
+        Catch ex As Exception
+            Failure = SbbErrorTranslator.ExceptionText(ex)
+            output?.Dispose()
+            Return Nothing
+        End Try
     End Function
+
+    ''' <summary>Makes Signature an EPES signature under Policy: OID, hex hash (PolicyHashHex) with the signature's hash algorithm, and URI.</summary>
+    Friend Shared Sub ApplySignaturePolicy(Signature As PDFSignature, Policy As MetaData, PolicyHashHex As String, HashMethod As Integer)
+        Signature.PolicyID = Policy.SignaturePolicyOID
+        Signature.PolicyHash = PolicyHashHex
+        Signature.PolicyHashAlgorithm = SbbTranslator.HashAlgorithmName(HashMethod)
+        Signature.PolicyURI = Policy.SignaturePolicyURL.ToString()
+    End Sub
 
     ''' <summary>Fail-closed online CertificateValidator pass; False (with the error recorded in Res) unless the chain is cvtValid.</summary>
     Private Function RunValidatorCheck(Leaf As Certificate, Label As String, Res As SignatureResult) As Boolean
@@ -293,7 +316,7 @@ Friend Class SbbSignatureCreator
     End Function
 
     ''' <summary>Offline parse of the finished document and the ETSI validity calculation; the archival expiry becomes the result's validity end.</summary>
-    Private Function TryComputeValidity(Final As MemoryTributary, Res As SignatureResult, ByRef Validity As Date) As Boolean
+    Private Function TryComputeValidity(Final As Stream, Res As SignatureResult, ByRef Validity As Date) As Boolean
         _log.AppendLine()
         Append("Hitelesség lejárati idejének meghatározása")
         Using verifier As PDFVerifier = SbbLicense.CreateVerifier()
@@ -310,7 +333,8 @@ Friend Class SbbSignatureCreator
                 Dim input As DocumentValidationInput = EtsiValidityInputBuilder.From(verifier, atTime, AddressOf Append, traceSink)
                 Dim result As DocumentValidityResult = EtsiValidityCalculator.Compute(input, atTime)
                 LogValidity(result)
-                Validity = result.Expiry.UtcDateTime
+                ' Date.MinValue is the index field's "no value"; an unbounded expiry maps to it.
+                Validity = If(result.Expiry = DateTimeOffset.MaxValue, Date.MinValue, result.Expiry.UtcDateTime)
                 Return True
             Catch ex As Exception
                 Fail(Res, $"Hiba a PDF dokumentum hitelességi lejárati idejének meghatározása közben: {SbbErrorTranslator.ExceptionText(ex)}")
@@ -361,7 +385,7 @@ Friend Class SbbSignatureCreator
 #Region "Helpers"
 
     ''' <summary>Releases the pass's input buffer and returns its output (Nothing when the pass failed).</summary>
-    Private Shared Function Advance(Current As MemoryTributary, Output As MemoryTributary) As MemoryTributary
+    Private Shared Function Advance(Current As Stream, Output As Stream) As Stream
         Current.Dispose()
         Return Output
     End Function

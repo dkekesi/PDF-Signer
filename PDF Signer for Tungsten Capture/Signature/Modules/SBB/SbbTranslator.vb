@@ -17,6 +17,17 @@ Friend Module SbbTranslator
         Throw New NotSupportedException($"Nem támogatott lenyomatképző algoritmus azonosító: {HashMethod}")
     End Function
 
+    ''' <summary>Stored base64 signature-policy hash as the hex string PDFSignature.PolicyHash requires.</summary>
+    ''' <remarks>Blank input gives an empty string; invalid base64 gives Nothing.</remarks>
+    Friend Function PolicyHashHex(Base64Hash As String) As String
+        If String.IsNullOrWhiteSpace(Base64Hash) Then Return String.Empty
+        Try
+            Return BitConverter.ToString(Convert.FromBase64String(Base64Hash.Trim())).Replace("-", "")
+        Catch ex As FormatException
+            Return Nothing
+        End Try
+    End Function
+
     ''' <summary>Provider <see cref="RevocationType"/> mapped onto the PDFSigner component's revocation-check enum.</summary>
     Friend Function RevocationCheck(Protocol As RevocationType) As PDFSignerRevocationChecks
         Select Case Protocol

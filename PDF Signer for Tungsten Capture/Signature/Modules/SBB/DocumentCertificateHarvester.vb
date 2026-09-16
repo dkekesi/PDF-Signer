@@ -55,7 +55,7 @@ End Class
 ''' <summary>Parse-only reads of the working document: encryption/entity probe and harvest of its embedded validation material.</summary>
 Friend Module DocumentCertificateHarvester
     ''' <summary>Opens the document without validation and reports whether it is encrypted and how many signature entities it holds.</summary>
-    Friend Sub Probe(Document As MemoryTributary, ByRef Encrypted As Boolean, ByRef EntityCount As Integer)
+    Friend Sub Probe(Document As Stream, ByRef Encrypted As Boolean, ByRef EntityCount As Integer)
         Document.Seek(0, SeekOrigin.Begin)
         Using verifier As PDFVerifier = SbbLicense.CreateVerifier()
             verifier.InputStream = Document
@@ -72,7 +72,7 @@ Friend Module DocumentCertificateHarvester
     End Sub
 
     ''' <summary>Parse-only Verify() (no network, no chain build) capturing the DSS and the last entity's label; Verify() closes the document itself.</summary>
-    Friend Function Harvest(Document As MemoryTributary) As HarvestedMaterial
+    Friend Function Harvest(Document As Stream) As HarvestedMaterial
         Dim material As New HarvestedMaterial
         Document.Seek(0, SeekOrigin.Begin)
         Using verifier As PDFVerifier = SbbLicense.CreateVerifier()

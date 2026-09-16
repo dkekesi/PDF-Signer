@@ -15,6 +15,15 @@ Public Class SbbTranslatorTests
     End Sub
 
     <TestMethod>
+    Public Sub Policy_hash_base64_becomes_uppercase_hex_blank_stays_empty_and_invalid_is_nothing()
+        Assert.AreEqual("000AFF10", SbbTranslator.PolicyHashHex(Convert.ToBase64String(New Byte() {&H0, &HA, &HFF, &H10})))
+        Assert.AreEqual("000AFF10", SbbTranslator.PolicyHashHex(" AAr/EA== "))
+        Assert.AreEqual(String.Empty, SbbTranslator.PolicyHashHex(Nothing))
+        Assert.AreEqual(String.Empty, SbbTranslator.PolicyHashHex("  "))
+        Assert.IsNull(SbbTranslator.PolicyHashHex("not base64!"))
+    End Sub
+
+    <TestMethod>
     Public Sub Unknown_hash_is_rejected()
         Assert.ThrowsException(Of NotSupportedException)(Sub() SbbTranslator.HashAlgorithmName(0))
     End Sub

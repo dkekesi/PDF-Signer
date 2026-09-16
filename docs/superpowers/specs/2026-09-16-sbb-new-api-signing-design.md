@@ -135,6 +135,7 @@ project's duplicate `Messages.resx` / `.hu.resx`, in English and Hungarian.
 | `Helper\MomentFormat.vb` | Renders moments for the signature log: local time first, the UTC instant in parentheses. |
 | `EtsiValidity\ValidityModels.vb`, `AlgorithmSunsetTable.vb`, `EtsiValidityInputBuilder.vb`, `EtsiValidityCalculator.vb` | Port of PDF Streamer's ETSI EN 319 102-1 end-of-validity calculation; yields `ValidUntil` and `EvidenceValidUntil`. |
 | `SbbSignatureCreator.vb` | The orchestrator. Public surface unchanged from `SBBPDF`: `Initialize(PDFSignerCryptoProvider)`, `ActivateLicense()`, `GetCertificatesFromStore(QualifiedCertificatesOnly)`, `SignDocument(SignatureRequest) As SignatureResult`. Not `IDisposable`: it holds no unmanaged or disposable state of its own. |
+| `SigningBufferFactory.vb` | Chooses the working-copy/pass-output buffer: `MemoryTributary`, or a self-deleting temp `FileStream` for large documents (§4.4). |
 | kept: `CertificateTranslator.vb`, `ServerCertificateValidator.vb` | unchanged |
 | deleted: `SBBPDF.vb`, `SBBCodeTranslator.vb` | legacy engine and its `TEl*` code tables |
 
@@ -189,7 +190,10 @@ embed (validation guarantees the switches are on); B-B / B-T never embed.
    `AuthorName` (= `SigningOrganization`), `Reason`, `Widget.Invisible = True`,
    `RevocationCheck` = `SignPassRevocationCheck`, `OfflineMode = False`,
    `IgnoreChainValidationErrors = False`, `TimestampServer` when `EmbedSignatureTimestamp`,
-   proxy settings, then `Sign()`.
+   proxy settings, then `Sign()`. When the document class sets a signature policy URL, the sign
+   pass applies that policy (`NewSignature.PolicyID`, `PolicyHash` as hex converted from the stored
+   base64, `PolicyHashAlgorithm` = `SignatureHashMethod`, `PolicyURI`); PDFSigner offers no
+   commitment-type setting.
 4a. **TSA-chain post-check** (B-T, checking on): the same validator check over the TSA
    certificate harvested from the fresh signature timestamp.
 5. **Update pass** (B-LT / B-LTA): `RevocationCheck` = `Revocation`,
@@ -205,8 +209,10 @@ embed (validation guarantees the switches are on); B-B / B-T never embed.
    `EvidenceValidUntil` is written to the log only.
 8. Return `SignedFile`; on any failure return `ErrorMessage` plus the accumulated log.
 
-Every pass runs once; there is no lean/full retry. Streams larger than
-`Constant.MemoryStreamSizeLimit` use `MemoryTributary`, as elsewhere in the runtime.
+Every pass runs once; there is no lean/full retry. `SigningBufferFactory` backs the working copy
+and every pass output with a self-deleting temp `FileStream` (`FileOptions.DeleteOnClose`, in
+`Path.GetTempPath()`) when the input is a `FileStream` or longer than
+`Constant.FileStreamSizeLimit`, and with `MemoryTributary` otherwise.
 
 ### 4.5 Errors and logging
 
@@ -250,6 +256,8 @@ Plain WinForms, English captions in `FrmSetup.resx`, bindings through the existi
   keep working through the unchanged provider properties.
 - `MetaDataModel.vb` and the WFA project: no change (they do not read the affected fields).
 - `SignatureResult`: no shape change.
+- `SignatureRequest.MetaDataSettings` supplies the document class's signature policy (URL, base64
+  hash, OID) that the sign pass applies.
 
 ## 7. Tests
 

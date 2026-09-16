@@ -249,8 +249,8 @@ Friend Class SignatureOperation
                 End If
             End If
 
-            ' deterministically release the signed-file stream (SBB/MNB MemoryTributary, MQFTP FileStream);
-            ' PDFStreamer returns the input stream, which is disposed above
+            ' deterministically release the signed-file stream (SBB MemoryTributary or self-deleting temp file,
+            ' MNB MemoryTributary, MQFTP FileStream); PDFStreamer returns the input stream, disposed above
             If sigRes IsNot Nothing AndAlso sigRes.SignedFile IsNot Nothing AndAlso sigRes.SignedFile IsNot FileToSign Then
                 sigRes.SignedFile.Dispose()
                 sigRes.SignedFile = Nothing
