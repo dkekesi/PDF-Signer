@@ -21,6 +21,18 @@ Friend NotInheritable Class WindowsCertificateStores
         Return res
     End Function
 
+    ''' <summary>A new list of fresh Certificate copies built from List's DER bytes; List and its certificates are left untouched, so each signing pass can dispose its own copy independently.</summary>
+    Friend Shared Function CopyOf(List As CertificateList) As CertificateList
+        Dim copy As New CertificateList
+        If List IsNot Nothing Then
+            For i As Integer = 0 To List.Count - 1
+                Dim raw As Byte() = List(i).Bytes
+                copy.Add(New Certificate(raw, 0, raw.Length))
+            Next
+        End If
+        Return copy
+    End Function
+
     ''' <summary>Adds every certificate of one store; an unreadable store is logged and skipped so signing can still proceed on the other stores.</summary>
     Private Shared Sub AddStore(Name As StoreName, Location As StoreLocation, Target As CertificateList)
         Try

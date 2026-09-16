@@ -22,14 +22,9 @@ Friend NotInheritable Class HarvestedMaterial
         Return New HarvestedMaterial
     End Function
 
-    ''' <summary>A new list holding the store certificates followed by the harvested ones; the input list is never mutated.</summary>
+    ''' <summary>A new list holding fresh copies of the store certificates followed by the harvested ones; neither StoreCertificates nor its certificates are shared with the result.</summary>
     Friend Function BuildKnownCertificates(StoreCertificates As CertificateList) As CertificateList
-        Dim combined As New CertificateList
-        If StoreCertificates IsNot Nothing Then
-            For i As Integer = 0 To StoreCertificates.Count - 1
-                combined.Add(StoreCertificates(i))
-            Next
-        End If
+        Dim combined As CertificateList = WindowsCertificateStores.CopyOf(StoreCertificates)
         For Each b As Byte() In CertificateBytes
             combined.Add(New Certificate(b, 0, b.Length))
         Next
