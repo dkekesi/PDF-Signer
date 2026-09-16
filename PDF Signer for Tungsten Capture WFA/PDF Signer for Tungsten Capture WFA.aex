@@ -1,7 +1,7 @@
 [Workflow Agents]
-PDF Signer for Tungsten Capture WFA
+PDF Signer WFA
 
-[PDF Signer for Tungsten Capture WFA]
+[PDF Signer WFA]
 WorkflowAgentID=PDFSignerWFA.PDFSignerWFA
 WorkflowAgentProgID=DocSoft.PDFSignerWFA
 WorkflowAgentFile=PDFSignerWFA.dll
