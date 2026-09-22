@@ -18,6 +18,7 @@ Visible=0
 MinSizeX=300
 MinSizeY=550
 DocumentClassMenus=PDFSignerSetupMenu
+ManagedApi=1
 
 [PDFSignerSetupMenu]
 MenuText=PDF Signer Setup...

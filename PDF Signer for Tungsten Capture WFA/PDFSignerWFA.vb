@@ -3,9 +3,10 @@ Imports Kofax.Capture.SDK.Data
 Imports System.Runtime.InteropServices
 Imports PDFSignerCommon
 
-'*** You must generate a GUID and replace the GUID below
-'*** Also, it is recomended that the PROGID be explicitly set
+' Capture activates the agent through the ProgID named in the .aex, so the COM attributes are
+' load-bearing; the assembly is ComVisible(False), so the class has to opt in on its own.
 <Guid("A4F33D6B-674C-4AFA-8747-9FF5137FF82A"),
+ComVisible(True),
 ClassInterface(ClassInterfaceType.None),
 ProgId("DocSoft.PDFSignerWFA"),
 CLSCompliant(False)>

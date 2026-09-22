@@ -30,6 +30,14 @@
     <CustomAction Id="InstallWFA" Property="WixQuietExecCmdLine" Value="&quot;[INSTALLFOLDER]\RegAscCM.exe&quot; /f [INSTALLFOLDER]\PDF Signer for Tungsten Capture WFA.aex" />
     <CustomAction Id="QtExecCommand" DllEntry="WixQuietExec" Execute="immediate" Return="check" BinaryRef="Wix4UtilCA_X86" />
 
+    <!-- PDFSignerWFA.dll is a managed COM server that Capture activates by ProgID; RegAsm /codebase
+         registers it from the Capture Bin folder, the 32-bit RegAsm matching the x86 Capture client. -->
+    <CustomAction Id="SetRegisterWFACom" Property="WixQuietExecCmdLine" Value="&quot;[WindowsFolder]Microsoft.NET\Framework\v4.0.30319\RegAsm.exe&quot; &quot;[INSTALLFOLDER]\PDFSignerWFA.dll&quot; /codebase" />
+    <CustomAction Id="RegisterWFACom" DllEntry="WixQuietExec" Execute="immediate" Return="check" BinaryRef="Wix4UtilCA_X86" />
+
+    <CustomAction Id="SetUnregisterWFACom" Property="WixQuietExecCmdLine" Value="&quot;[WindowsFolder]Microsoft.NET\Framework\v4.0.30319\RegAsm.exe&quot; &quot;[INSTALLFOLDER]\PDFSignerWFA.dll&quot; /unregister" />
+    <CustomAction Id="UnregisterWFACom" DllEntry="WixQuietExec" Execute="immediate" Return="ignore" BinaryRef="Wix4UtilCA_X86" />
+
     
 
     <DirectoryRef Id="INSTALLFOLDER">
@@ -89,6 +97,14 @@
     </Feature>
 
     <InstallExecuteSequence>
+      <!-- The COM class has to be registered before Capture picks the agent up, and unregistered
+           while PDFSignerWFA.dll is still on disk. -->
+      <Custom Action="SetUnregisterWFACom" Before="UnregisterWFACom" Condition="REMOVE=&quot;ALL&quot;" />
+      <Custom Action="UnregisterWFACom" Before="RemoveFiles" Condition="REMOVE=&quot;ALL&quot;" />
+
+      <Custom Action="SetRegisterWFACom" Before="RegisterWFACom" Condition="NOT Installed" />
+      <Custom Action="RegisterWFACom" Before="InstallCM" Condition="NOT Installed" />
+
       <Custom Action="InstallCM" After="InstallFinalize" />
       <Custom Action="InstallWFA" After="InstallCM" />
       <Custom Action="QtExecCommand" After="InstallWFA" />
